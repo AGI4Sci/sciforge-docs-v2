@@ -3,7 +3,7 @@ module.exports = {
   title: 'SciForge 使用导览',
   date: '2026-09-05',
   slug: 'sciforge-guide-2026-09-05',
-  publicUrl: 'https://hanhuiyang5-web.github.io/sciforge-docs/',
+  publicUrl: 'https://hanhuiyang5-web.github.io/sciforge-docs-v2/',
   chapters: [
     {title: '从科研任务开始', shots: [
       {id: 'welcome', route: '/', title: 'SciForge · 科研工作台', sentences: [

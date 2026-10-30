@@ -2,12 +2,13 @@ const fs = require('node:fs');
 const http = require('node:http');
 const path = require('node:path');
 const root = path.resolve(__dirname, '../build');
+const basePath = (process.env.BASE_PATH || '/sciforge-docs-v2/').replace(/\/?$/, '/');
 const types = {'.html':'text/html; charset=utf-8','.css':'text/css','.js':'application/javascript','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.mp4':'video/mp4','.vtt':'text/vtt','.srt':'text/plain','.md':'text/plain; charset=utf-8'};
 http.createServer((req,res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url,'http://localhost').pathname);
-    if (!pathname.startsWith('/sciforge-docs/')) { res.writeHead(302,{Location:'/sciforge-docs/'}); return res.end(); }
-    let file = path.resolve(root, pathname.slice('/sciforge-docs/'.length) || 'index.html');
+    if (!pathname.startsWith(basePath)) { res.writeHead(302,{Location:basePath}); return res.end(); }
+    let file = path.resolve(root, pathname.slice(basePath.length) || 'index.html');
     if (!file.startsWith(root + path.sep)) { res.writeHead(403); return res.end(); }
     if (!fs.existsSync(file) && fs.existsSync(file+'.html')) file += '.html';
     if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file,'index.html');
@@ -27,4 +28,4 @@ http.createServer((req,res) => {
       fs.createReadStream(file).pipe(res);
     }
   } catch { res.writeHead(400); res.end('Bad request'); }
-}).listen(Number(process.env.PORT || 3025),'127.0.0.1',() => console.log('Preview: http://127.0.0.1:'+ (process.env.PORT || 3025) +'/sciforge-docs/'));
+}).listen(Number(process.env.PORT || 3025),'127.0.0.1',() => console.log('Preview: http://127.0.0.1:' + (process.env.PORT || 3025) + basePath));
