@@ -2,13 +2,13 @@
 
 录制日期：2026-09-05。文档图文导览；界面截图不代表现场连续操作。
 
-文档站：https://hanhuiyang5-web.github.io/sciforge-docs/
+文档站：https://agi4sci.github.io/sciforge-docs-v2/
 
 ## 01 从科研任务开始
 
 ### 00:00:00.000 · SciForge · 科研工作台
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/
+页面：https://agi4sci.github.io/sciforge-docs-v2/
 
 欢迎来到 SciForge。这份导览带你从一个研究问题出发，找到输入、执行过程和可以检查的交付物。
 
@@ -16,7 +16,7 @@
 
 ### 00:00:11.533 · 首页案例 · 任务、产物与验证状态
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/
+页面：https://agi4sci.github.io/sciforge-docs-v2/
 
 首页把案例的研究目标、核心产物和验证状态放在一起，方便先判断它是否适合自己的任务。
 
@@ -24,7 +24,7 @@
 
 ### 00:00:22.733 · 功能分类 · 按任务找到入口
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/
+页面：https://agi4sci.github.io/sciforge-docs-v2/
 
 功能区按科研工作流、工作台、连接与扩展分类，帮助你从目标找到入口。
 
@@ -34,7 +34,7 @@
 
 ### 00:00:34.600 · 先看完整案例，再学习具体功能
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/overview
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/overview
 
 建议先浏览两个虚拟细胞案例，理解一项任务怎样从数据走到证据和报告，再按需要查阅功能。
 
@@ -44,7 +44,7 @@
 
 ### 00:00:45.533 · 模型接入与执行运行时
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/getting-started/runtime-and-models
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/getting-started/runtime-and-models
 
 模型接入提供模型能力，执行运行时负责文件和工具。本次只读教程选择 Codex 运行时。
 
@@ -52,7 +52,7 @@
 
 ### 00:00:56.400 · 启用只读沙箱
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/getting-started/read-only-sandbox
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/getting-started/read-only-sandbox
 
 截图展示设置入口。请在 Codex 栏把可修改工作目录改为只能读取文件，应用后重启并新建会话。
 
@@ -60,7 +60,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:01:07.133 · 记录任务前的文件状态
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/getting-started/five-minute-quickstart
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/getting-started/five-minute-quickstart
 
 使用干净的 Git 工作区，先运行页面中的状态检查命令并保存结果；非 Git 项目先制作副本。
 
@@ -68,7 +68,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:01:16.733 · 发送文档中的完整提示词
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/getting-started/five-minute-quickstart
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/getting-started/five-minute-quickstart
 
 把文档中的完整只读提示词复制到输入框。任务只查看顶层文件和目录，并简要判断项目用途。
 
@@ -76,7 +76,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:01:27.400 · 检查执行过程
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/getting-started/five-minute-quickstart
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/getting-started/five-minute-quickstart
 
 执行时观察文件读取、工具调用和命令返回结果。出现审批请求时，检查实际操作和目标路径。
 
@@ -84,7 +84,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:01:38.267 · 用结果与 Git 状态双重验收
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/getting-started/five-minute-quickstart
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/getting-started/five-minute-quickstart
 
 完成后核对回答，并再次比较 Git 状态。它不会列出被忽略的文件；严格验收还要比较副本清单和哈希。
 
@@ -94,7 +94,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:01:50.000 · ECCITE-seq · 从研究问题到交付
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-evidence-atlas
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-evidence-atlas
 
 第一个案例关注基因扰动之后，转录、蛋白、通路和细胞适应性之间的证据关系。
 
@@ -102,7 +102,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:02:00.467 · 工作区中的输入、脚本与产物
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-evidence-atlas
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-evidence-atlas
 
 先在文件面板清点来源数据、重建脚本、派生表、图表和报告。每个阶段都要有明确的输入与输出。
 
@@ -110,7 +110,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:02:12.067 · 把研究任务写成可检查的要求
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-evidence-atlas
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-evidence-atlas
 
 完整提示词从清点文件开始，要求先列计划，再做质量检查、审阅表、图表和科研档案。
 
@@ -118,7 +118,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:02:22.933 · 阶段一 · 冻结来源与审计质量
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-evidence-atlas
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-evidence-atlas
 
 来源清单和质量报告是第一阶段的交付。检查对照是否丢失，未测量是否被错误解释为没有响应。
 
@@ -126,7 +126,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:02:34.067 · 阶段二 · 逐行追溯扰动与响应
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-evidence-atlas
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-evidence-atlas
 
 把扰动、靶点注释、通路和多模态响应连接成审阅表，为每一行保留来源与变换记录。
 
@@ -134,7 +134,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:02:45.400 · 阶段三 · 从审计结果生成图表
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-evidence-atlas
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-evidence-atlas
 
 图表从通过审计的派生表生成，记录输入、脚本、参数和版本。完整工作区让结果路径仍然可见。
 
@@ -142,7 +142,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:02:56.400 · 区分观测、候选解释与因果结论
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-evidence-atlas
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-evidence-atlas
 
 跨层一致性可以帮助提出假设，但单张图不能自动支持因果结论。
 
@@ -150,7 +150,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:03:05.467 · 阶段四 · 审查并固化交付
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-evidence-atlas
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-evidence-atlas
 
 最后核对文件变更，把关键主张连接到数据、方法、图表和限制，保存版本与研究检查点。
 
@@ -160,7 +160,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:03:16.733 · 实验性 · 先确认模型与验证状态
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-benchmark
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-benchmark
 
 第二个案例面向已有外部预测模型的研究者。SciForge 组织协议和运行记录，预测能力来自接入的模型。
 
@@ -168,7 +168,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:03:28.067 · 分清离线评分与官方预检
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-benchmark
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-benchmark
 
 离线路径在预测密封后打开预留参考答案，再做本地评分。官方路径使用当期工具完成提交前预检。
 
@@ -176,7 +176,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:03:39.333 · 预测前固定协议、模型和环境
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-benchmark
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-benchmark
 
 首次预测之前固定数据切分、指标、聚合规则与停止条件，明确模型可以看到哪些内容。
 
@@ -184,7 +184,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:03:50.467 · 用小样本检查硬性契约
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-benchmark
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-benchmark
 
 先用最小切片检查形状、基因顺序、背景标签、每条件细胞数和数值类型。
 
@@ -192,7 +192,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:04:01.200 · 密封预测，保留独立运行记录
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-benchmark
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-benchmark
 
 预测完成后计算文件哈希，将命令、返回码、日志和产物放进独立的运行目录。
 
@@ -200,7 +200,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:04:11.400 · 报告总分，也报告失败条件
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/cases/virtual-cell-benchmark
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/cases/virtual-cell-benchmark
 
 将结果拆成契约检查、指标组件、按背景和扰动分层的表现，以及生物学解释。
 
@@ -210,7 +210,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:04:21.533 · 工作区限定输入，会话保留上下文
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/workbench/workspaces-and-sessions
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/workbench/workspaces-and-sessions
 
 工作区承载项目文件，会话保留研究目标与执行过程。开始前确认项目名称和实际目录。
 
@@ -218,7 +218,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:04:31.933 · 写清目标、边界、交付和停止条件
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/workbench/agent-workflows
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/workbench/agent-workflows
 
 给智能体的任务至少说明目标、输入范围、交付物，以及权限与停止条件。
 
@@ -226,7 +226,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:04:42.333 · 检查工具结果与文件变更
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/workbench/workspaces-and-sessions
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/workbench/workspaces-and-sessions
 
 核对工具调用、终端输出和返回码，再打开变更面板检查新增、修改与删除。
 
@@ -236,7 +236,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:04:52.067 · 按用途选择记录对象
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/features/evidence-and-reproducibility
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/features/evidence-and-reproducibility
 
 文件版本固定某个产物，研究检查点固定阶段状态，证据图连接主张与支持它的数据和方法。
 
@@ -244,7 +244,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:05:02.067 · 让结论能够回到输入与过程
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/features/evidence-and-reproducibility
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/features/evidence-and-reproducibility
 
 科研档案应保留研究问题、输入、方法、结果、可信度、限制和复跑方式。
 
@@ -254,7 +254,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:05:12.133 · 定时任务 · 按频率重复执行
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/features/automation
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/features/automation
 
 需要定期重复的独立任务，可以设置执行频率、工作区、输入和通知策略。
 
@@ -262,7 +262,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:05:21.133 · Loop · 组织依赖、条件与检查
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/features/automation
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/features/automation
 
 多个步骤存在依赖和分支时，使用流程画布组织节点、条件和人工检查。
 
@@ -272,7 +272,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:05:30.667 · 按需要选择扩展能力
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/features/extensions
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/features/extensions
 
 扩展中心用于检查已安装扩展的来源、版本与状态。先找到需要的能力，再用最小任务验证输入和输出。
 
@@ -280,7 +280,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:05:41.333 · Skill、MCP 与图形界面工具
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/features/extensions
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/features/extensions
 
 技能提供专项方法与工作流；MCP 连接外部工具和数据；图形界面工具用于必须操作应用的步骤。
 
@@ -288,7 +288,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:05:53.133 · 连接已有服务器与计算环境
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/operations/remote-and-collaboration
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/operations/remote-and-collaboration
 
 需要实验室服务器或远程计算环境时，通过远程资源向导配置 SSH 工作区。
 
@@ -296,7 +296,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:06:03.933 · 协作前确认项目和数据范围
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/operations/remote-and-collaboration
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/operations/remote-and-collaboration
 
 云端协作页面用于连接和查看协作项目，实际可用范围取决于当前服务与权限配置。
 
@@ -306,7 +306,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:06:14.267 · 让权限与任务范围一致
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/operations/security
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/operations/security
 
 只读分析和写入任务使用不同的文件范围。审批时核对实际命令、路径和外部目标。
 
@@ -314,7 +314,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:06:24.333 · 沿五层定位问题
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/reference/troubleshooting
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/reference/troubleshooting
 
 遇到问题，依次检查工作区、运行时与模型、工具与权限、外部服务，以及科研产物。
 
@@ -322,7 +322,7 @@ Claude 的计划模式与这个沙箱不等效。只写不要修改文件，也�
 
 ### 00:06:35.133 · 下一步 · 跑通只读任务，再选择案例
 
-页面：https://hanhuiyang5-web.github.io/sciforge-docs/docs/intro
+页面：https://agi4sci.github.io/sciforge-docs-v2/docs/intro
 
 现在可以从五分钟快速开始亲自跑通只读任务，再选择与你的研究目标接近的案例。
 

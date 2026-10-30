@@ -11,9 +11,9 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://hanhuiyang5-web.github.io',
+  url: 'https://agi4sci.github.io',
   baseUrl: '/sciforge-docs-v2/',
-  organizationName: 'hanhuiyang5-web',
+  organizationName: 'AGI4Sci',
   projectName: 'sciforge-docs-v2',
   trailingSlash: false,
   onBrokenLinks: 'throw',
@@ -36,7 +36,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/hanhuiyang5-web/sciforge-docs-v2/edit/main/',
+            'https://github.com/AGI4Sci/sciforge-docs-v2/edit/main/',
         },
         blog: false,
         theme: {
@@ -89,7 +89,7 @@ const config: Config = {
         },
         {type: 'custom-docSearch', position: 'right'},
         {
-          href: 'https://github.com/hanhuiyang5-web/sciforge-docs-v2',
+          href: 'https://github.com/AGI4Sci/sciforge-docs-v2',
           label: 'GitHub',
           position: 'right',
         },
@@ -118,7 +118,7 @@ const config: Config = {
           items: [
             {label: '功能状态', to: '/docs/reference/feature-status'},
             {label: '故障排查', to: '/docs/reference/troubleshooting'},
-            {label: 'GitHub', href: 'https://github.com/hanhuiyang5-web/sciforge-docs-v2'},
+            {label: 'GitHub', href: 'https://github.com/AGI4Sci/sciforge-docs-v2'},
           ],
         },
       ],

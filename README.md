@@ -59,7 +59,7 @@ npm run build
 
 仓库需要在 **Settings → Pages → Build and deployment** 中选择 **GitHub Actions**。
 
-目标地址：`https://hanhuiyang5-web.github.io/sciforge-docs-v2/`
+目标地址：`https://agi4sci.github.io/sciforge-docs-v2/`
 
 ## 内容原则
 
@@ -68,6 +68,13 @@ npm run build
 - 公开仓库只保存审核后的文档与脱敏截图，不包含 `SciForge_private` 源码。
 - 操作型页面应说明权限、外部影响、完成标志和已知限制。
 - 已退出产品的能力（如 Paper Radar、OpenContent）不再写成可用功能。
+
+## 迁移与维护
+
+- 本仓库从 [hanhuiyang5-web/sciforge-docs-v2](https://github.com/hanhuiyang5-web/sciforge-docs-v2) 复制迁入，保留原 Git 历史与 MIT 作者署名，并非 GitHub 所有权转移。
+- 源码基线：`18ae2b6b74f08b7bbff17239fadf9626ea43aa0f`。旧仓库和旧站保持不变；旧站跳转需原仓库维护者另行配置。
+- 后续修改通过 Pull Request 审阅，合并到 `main` 后自动发布。
+- 回退：对出问题的后续提交使用 `git revert <commit>` 并走 Pull Request，合并后重新部署；不要直接部署迁移前版本，以免恢复旧域名配置。必要时可暂时继续使用原站。
 
 ## 许可
 
