@@ -21,7 +21,7 @@ sidebar_position: 1
 | Scientific Plotting | 部分可用 | 从可用输入生成并审查图表；需核对 Worker 与依赖 |
 | Artifact / Evidence / Dossier | 部分可用 | 入口已注册；内容质量取决于任务是否生成相应记录 |
 | Remote SSH | 部分可用 | 可连接远程工作区；复杂 Git、快照和文件操作需逐项验证 |
-| Cloud 协作 | 部分可用 | 依赖外部部署、账号、Desktop 注册和协作服务 |
+| Cloud 协作 | 部分可用 | 支持需求确认、任务交付、返修、采纳和结项；使用前需完成云端登录与设备连接，参见 [Pasilla 三人协作案例](../cases/pasilla-collaboration.md) |
 | 扩展中心、Skills 与 MCP | 部分可用 | 对象类型和安全边界不同；部分变更需重启会话 |
 | 虚拟细胞预测模型 | 未内置 | 可由用户通过 Agent、脚本和外部环境接入 |
 | Slurm/PBS/Kubernetes 自动调度 | 未声明为内置 | 当前教程只描述 Remote SSH 与终端使用外部环境 |

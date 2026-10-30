@@ -34,6 +34,8 @@ Remote SSH 解决“计算和数据在哪里”；Cloud 协作解决“谁围绕
 
 需要在手机继续个人 Session，或让团队围绕 Project 分配和验收 Task 时，使用 Cloud 协作。它需要管理员提供的 Cloud 服务地址、账号和协作服务配置。
 
+团队操作步骤见[协作使用说明](../features/collaboration.md)，真实的提交、返修和下游接力见[Pasilla 三人协作案例](../cases/pasilla-collaboration.md)。团队协作的登录与设备前提请按该说明核对；手机个人 Session 的设置是另一条使用路径。
+
 ![SciForge Cloud 连接页面](/img/docs/guides/cloud-collaboration-connect.png)
 *图 2：Cloud 连接状态与本地工作区相互独立。*
 

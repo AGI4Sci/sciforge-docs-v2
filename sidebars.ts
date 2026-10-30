@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
         'cases/overview',
         'cases/virtual-cell-evidence-atlas',
         'cases/virtual-cell-benchmark',
+        'cases/pasilla-collaboration',
       ],
     },
     {
