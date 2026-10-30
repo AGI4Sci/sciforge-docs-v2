@@ -21,7 +21,7 @@ SciForge 是面向科研任务的智能工作台。它让 **Codex** 或 **Claude
 | ---: | --- | --- |
 | 1 | [五分钟快速开始](./getting-started/five-minute-quickstart.md) | 在只读沙箱中完成第一次本地任务 |
 | 2 | [端到端案例](./cases/overview.md) | 理解 SciForge 如何连接科研问题、执行、证据与交付 |
-| 3 | [功能与扩展](./features/overview.md) | 按目标学习工作台、科研能力、自动化与扩展 |
+| 3 | [功能与扩展](./features/overview.md) | 按插件浏览 23 个内置领域扩展，并了解 Skill、MCP 与扩展市场 |
 | 4 | [权限与安全](./operations/security.md) | 选择合适的沙箱、审批和文件访问范围 |
 | 5 | [功能状态](./reference/feature-status.md) | 核对已验证、部分可用和实验性能力 |
 

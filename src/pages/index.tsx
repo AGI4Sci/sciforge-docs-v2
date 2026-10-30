@@ -14,7 +14,7 @@ const groups = ['科研工作流', '工作台', '连接与扩展'] as const;
 const capabilities = [
   {group: '科研工作流', name: '证据与可复现性', detail: '版本、检查点、Evidence DAG 与科研档案。', to: '/docs/features/evidence-and-reproducibility'},
   {group: '科研工作流', name: '自动化与定时任务', detail: '为重复工作设置计划，使用 Loop 组织多步流程。', to: '/docs/features/automation'},
-  {group: '科研工作流', name: '文献、分析与图表', detail: '按研究目标找到文件、论文与绘图工具。', to: '/docs/features/overview'},
+  {group: '科研工作流', name: '文献、分析与图表', detail: '按插件查找生命科学预览、数据集 API、科学绘图与图片审改。', to: '/docs/features/overview'},
   {group: '工作台', name: '工作区与会话', detail: '打开项目、引用文件，保留连续任务的上下文。', to: '/docs/workbench/workspaces-and-sessions'},
   {group: '工作台', name: '与 Agent 协作', detail: '从明确目标，到计划、执行与结果检查。', to: '/docs/workbench/agent-workflows'},
   {group: '工作台', name: '工作台工具', detail: '了解预览、终端、变更与 Computer Use 的使用场景。', to: '/docs/workbench/tools'},

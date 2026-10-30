@@ -8,16 +8,28 @@ sidebar_position: 2
 
 科研任务完成后，一段看似正确的总结并不等于可复现交付。SciForge 使用几类互补对象记录“发生了什么、得到了什么、依据是什么、下一次从哪里继续”。
 
+本组由 7 个独立插件组成，每个插件负责一类记录；本页只讲它们如何串联：
+
+| 插件 | 负责的记录 |
+| --- | --- |
+| [产物版本](./artifact-versions.md) | 单个产物的不可变版本、比较与恢复 |
+| [Git 检查点](./git-checkpoints.md) | 工作区某一阶段的 Git 快照 |
+| [研究检查点](./research-checkpoints.md) | 一次科研阶段的上下文与恢复位置 |
+| [变更检查](./change-inspector.md) | 一次会话真正改动的文件清单 |
+| [Evidence DAG](./evidence-dag.md) | 会话内主张与来源、方法、图表、限制的关系 |
+| [Project DAG](./project-dag.md) | 跨会话的项目级目标、主张与审查状态 |
+| [科研档案](./research-dossier.md) | 面向他人的最终研究交付 |
+
 ## 选择正确的记录对象
 
 | 对象 | 解决的问题 | 典型内容 |
 | --- | --- | --- |
 | **会话** | 任务是如何推进的？ | 消息、工具调用、命令、审批和最终回答 |
-| **Artifact Version** | 某个图表或文件如何演变？ | 产物路径、版本、输入与生成信息 |
-| **Git Checkpoint** | 工作区文件处于什么阶段？ | Git 状态与阶段性代码快照 |
-| **Research Checkpoint** | 一次科研阶段如何继续？ | 研究上下文、关键产物和恢复位置 |
-| **Evidence DAG** | 主张由什么支持或反驳？ | 主张、来源、方法、产物、限制及关系 |
-| **Research Dossier** | 最终交付如何被他人阅读？ | 研究问题、输入、方法、结果、可信度和局限 |
+| [**Artifact Version**](./artifact-versions.md) | 某个图表或文件如何演变？ | 产物路径、版本、输入与生成信息 |
+| [**Git Checkpoint**](./git-checkpoints.md) | 工作区文件处于什么阶段？ | Git 状态与阶段性代码快照 |
+| [**Research Checkpoint**](./research-checkpoints.md) | 一次科研阶段如何继续？ | 研究上下文、关键产物和恢复位置 |
+| [**Evidence DAG**](./evidence-dag.md) | 主张由什么支持或反驳？ | 主张、来源、方法、产物、限制及关系 |
+| [**Research Dossier**](./research-dossier.md) | 最终交付如何被他人阅读？ | 研究问题、输入、方法、结果、可信度和局限 |
 
 ## 建立一条可复查链
 
