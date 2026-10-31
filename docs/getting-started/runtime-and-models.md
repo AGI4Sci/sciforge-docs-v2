@@ -1,6 +1,6 @@
 ---
 title: Runtime 与模型接入
-description: 区分模型 API、Coding Plan、Codex 与 Claude Code，并完成最小配置。
+description: 区分模型 API、Coding Plan、Codex、Claude Code 与 DeepSeek Harness，并完成最小配置。
 sidebar_position: 2
 ---
 
@@ -11,7 +11,7 @@ SciForge 把“模型从哪里来”和“谁来执行任务”分成两层配�
 | 层 | 决定什么 | 用户入口 |
 | --- | --- | --- |
 | 模型接入 | 请求通过模型 API 还是受支持的 Coding Plan | 首次启动引导或 **设置 → 通用** |
-| AI 助手 Runtime | 由 Codex 或 Claude Code 规划并调用工具 | **设置 → AI 助手**，以及输入框右下角 |
+| AI 助手 Runtime | 由 Codex、Claude Code 或 DeepSeek Harness (DSH) 规划并调用工具 | **设置 → AI 助手**，以及输入框右下角 |
 
 ## 选择模型接入
 
@@ -22,12 +22,13 @@ SciForge 把“模型从哪里来”和“谁来执行任务”分成两层配�
 
 选择 **Coding Plan** 时，按界面使用官方登录或设备码完成授权。当前实现支持 Codex 的 Coding Plan 路径；Claude Code 需要使用模型 API 接入。连接失败不会静默切换到模型 API。
 
-## 配置 Codex 或 Claude Code
+## 配置 Codex、Claude Code 或 DSH
 
-在 **设置 → AI 助手** 中分别配置两个 Runtime：
+在 **设置 → AI 助手** 中分别配置各 Runtime：
 
 - **Codex**：默认选择，适合通用代码、文件和工具任务。
 - **Claude Code**：需要显式选择，并配置模型 API，沿用 Claude Code 的执行方式。
+- **DeepSeek Harness (DSH)**：需要显式选择。SciForge 按顺序查找你显式配置的路径、PATH 与常见安装位置，仅在这些都失败时才使用随包携带的 DSH 组件；DSH 的模型与推理档位在连接后由 ACP 会话生效，不在这里修改。DSH 的原生 shell 工具默认关闭，开启后每次执行仍需你逐条批准。
 
 通常保留默认命令 `codex` 或 `claude`。自动探测失败时，再填写可执行文件的绝对路径。
 

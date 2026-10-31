@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # 功能与扩展总览
 
-SciForge 随安装包提供 **23 个内置领域扩展（bundled domain extension）**。它们以插件为单位独立拥有能力、界面入口与权限边界，并在扩展中心统一列出。本章一节一页，逐个说明每个插件的入口、能做什么、产出什么，以及当前限制。
+SciForge 随安装包提供 **22 个内置领域扩展（bundled domain extension）**。它们以插件为单位独立拥有能力、界面入口与权限边界，并在扩展中心统一列出。本章一节一页，逐个说明每个插件的入口、能做什么、产出什么，以及当前限制。
 
 :::info[本页所说的“插件”]
 指随应用编译、无需单独下载的内置领域扩展（trusted compile-time）。扩展中心里的本地安装包、Agent Skill 与 MCP Server 属于另外三类对象，见 [Skills、MCP 与扩展](./extensions.md)。
@@ -53,7 +53,6 @@ SciForge 随安装包提供 **23 个内置领域扩展（bundled domain extensio
 | [终端](./terminal.md) | 在受控工作区里执行命令，并保留命令与输出 | 底部面板、顶部工具栏 |
 | [浏览器预览](./browser-preview.md) | 在应用内打开网页，并让 Agent 在明确审批下操作页面 | 右侧面板 |
 | [电脑操作](./computer-use.md) | 让支持的 Runtime 通过本地 Backend 操作桌面应用 | MCP、系统权限 |
-| [远程 SSH](./remote-ssh.md) | 连接实验室服务器，把远程目录当工作区使用 | 右侧面板、工作区 |
 
 ### 自动化
 
@@ -84,6 +83,7 @@ SciForge 随安装包提供 **23 个内置领域扩展（bundled domain extensio
 
 - 每个插件的成熟度以 [功能状态与限制](../reference/feature-status.md) 为准；页面正文只描述当前实现范围，不把源码注册写成已完成验证。
 - **Paper Radar** 与 **OpenContent** 已退出当前产品线，旧文档和旧截图中的相关入口不再代表可用功能。
+- **Remote SSH** 连接管理面板（实验室、VPN 与 SSH 目标登记）未包含在开源客户端中；开源版本的工作区位置选择器只用于在本地工作区与已附着的远程会话之间切换。
 - 内容空间当前以用户自备的 **思源** 服务为主要 Provider；本地 mock Provider 只用于测试，不作为用户功能。
 - 扩展市场是否可安装以应用内当前索引为准；未上架或被阻止（blocked）的条目会写明原因，这不影响内置插件使用。
 

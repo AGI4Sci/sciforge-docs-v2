@@ -7,11 +7,11 @@ slug: /intro
 
 # SciForge 使用文档
 
-SciForge 是面向科研任务的智能工作台。它让 **Codex** 或 **Claude Code** 在明确的工作区、工具与权限边界内执行任务，并把文件、命令、图表、证据和人工审查保留在同一条可继续的工作流中。
+SciForge 是面向科研任务的智能工作台。它让 **Codex**、**Claude Code** 或 **DeepSeek Harness (DSH)** 在明确的工作区、工具与权限边界内执行任务，并把文件、命令、图表、证据和人工审查保留在同一条可继续的工作流中。
 
 :::info[内容基线]
 
-本站以 `SciForge_private` 当前源码、生成的能力目录和真实界面为依据。历史 Wiki、设计稿或一次 Agent 回答不会单独被当作已发布功能。
+本站以 [AGI4Sci/SciForge](https://github.com/AGI4Sci/SciForge) 公开源码、生成的能力目录和真实界面为依据。历史 Wiki、设计稿或一次 Agent 回答不会单独被当作已发布功能。
 
 :::
 
@@ -21,7 +21,7 @@ SciForge 是面向科研任务的智能工作台。它让 **Codex** 或 **Claude
 | ---: | --- | --- |
 | 1 | [五分钟快速开始](./getting-started/five-minute-quickstart.md) | 在只读沙箱中完成第一次本地任务 |
 | 2 | [端到端案例](./cases/overview.md) | 理解 SciForge 如何连接科研问题、执行、证据与交付 |
-| 3 | [功能与扩展](./features/overview.md) | 按插件浏览 23 个内置领域扩展，并了解 Skill、MCP 与扩展市场 |
+| 3 | [功能与扩展](./features/overview.md) | 按插件浏览 22 个内置领域扩展，并了解 Skill、MCP 与扩展市场 |
 | 4 | [权限与安全](./operations/security.md) | 选择合适的沙箱、审批和文件访问范围 |
 | 5 | [功能状态](./reference/feature-status.md) | 核对已验证、部分可用和实验性能力 |
 
@@ -31,7 +31,7 @@ SciForge 是面向科研任务的智能工作台。它让 **Codex** 或 **Claude
 | --- | --- |
 | **工作区** | 指向本地或远程项目目录，决定文件、Git 和终端上下文 |
 | **会话** | 保存围绕一个目标的消息、执行过程和结果 |
-| **Runtime** | 由 Codex 或 Claude Code 负责规划、调用工具和处理文件 |
+| **Runtime** | 由 Codex、Claude Code 或 DSH 负责规划、调用工具和处理文件 |
 | **科研记录** | 用产物版本、Checkpoint、Evidence DAG 和 Research Dossier 固定结果与依据 |
 
 ## 文档如何标注能力

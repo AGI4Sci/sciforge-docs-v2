@@ -128,10 +128,7 @@ virtual-cell-benchmark/
 
 记录代码 commit、权重 hash、许可证、环境锁文件、设备和随机种子。不得静默下载新权重、替换模型或切换数据预处理。
 
-需要外部 GPU 或实验室集群时，可以通过 **远程资源** 配置 Remote SSH 工作区；远端仍使用相同输出契约。
-
-![SciForge 远程资源配置](/img/docs/guides/remote-resources.jpg)
-*图 2：远程资源向导用于连接用户已有的计算环境；它不代表 SciForge 内置了 Slurm、PBS 或云调度器。*
+需要外部 GPU 或实验室集群时，可以通过终端把任务提交到你自己的远程环境；远端仍使用相同输出契约。
 
 ### 3. 小样本 dry run
 

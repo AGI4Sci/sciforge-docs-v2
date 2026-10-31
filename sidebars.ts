@@ -67,12 +67,11 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Agent 与工作台工具',
-          link: {type: 'generated-index', slug: '/category/agent-与工作台工具', description: '终端、浏览器、桌面操作与远程主机：让 Agent 在明确边界内执行。'},
+          link: {type: 'generated-index', slug: '/category/agent-与工作台工具', description: '终端、浏览器与桌面操作：让 Agent 在明确边界内执行。'},
           items: [
             'features/terminal',
             'features/browser-preview',
             'features/computer-use',
-            'features/remote-ssh',
           ],
         },
         {

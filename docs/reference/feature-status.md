@@ -13,6 +13,7 @@ sidebar_position: 1
 | 本地工作区与会话 | 已验证 | 可打开项目、新建和继续会话、浏览工作区 |
 | Codex Runtime | 已验证 | 默认 Runtime；配置和登录失败会显式报错 |
 | Claude Code Runtime | 已验证 | 需要用户显式选择及模型 API 接入，不与 Codex 静默回退 |
+| DSH Runtime（DeepSeek Harness） | 实现已核对 | 需要用户显式选择；模型与推理档位由 ACP 会话生效，原生 shell 工具默认关闭、逐条批准 |
 | 模型 API / Coding Plan | 已验证 | API 可配 Codex 或 Claude；当前 Coding Plan 路径支持 Codex |
 | 只读与工作区写入范围 | 实现已核对 | 两者默认允许工作区写入；Codex 只读沙箱与 Claude Plan 模式不同，外部工具权限另行核对 |
 | 文件预览与变更检查 | 已验证 | 适用格式与远程支持范围存在差异 |
@@ -20,11 +21,11 @@ sidebar_position: 1
 | Create Loop | 已验证 | 支持多节点流程；暂停审批状态不跨应用重启保存 |
 | Scientific Plotting | 部分可用 | 从可用输入生成并审查图表；需核对 Worker 与依赖 |
 | Artifact / Evidence / Dossier | 部分可用 | 入口已注册；内容质量取决于任务是否生成相应记录 |
-| Remote SSH | 部分可用 | 可连接远程工作区；复杂 Git、快照和文件操作需逐项验证 |
+| 远程工作区 | 开源版未包含连接管理 | 工作区位置选择器可在本地与已附着远程会话间切换；SSH 目标、VPN 与授权管理面板未包含在开源仓库 |
 | Cloud 协作 | 部分可用 | 支持需求确认、任务交付、返修、采纳和结项；使用前需完成云端登录与设备连接，参见 [Pasilla 三人协作案例](../cases/pasilla-collaboration.md) |
 | 扩展中心、Skills 与 MCP | 部分可用 | 对象类型和安全边界不同；部分变更需重启会话 |
 | 虚拟细胞预测模型 | 未内置 | 可由用户通过 Agent、脚本和外部环境接入 |
-| Slurm/PBS/Kubernetes 自动调度 | 未声明为内置 | 当前教程只描述 Remote SSH 与终端使用外部环境 |
+| Slurm/PBS/Kubernetes 自动调度 | 未声明为内置 | 当前教程只描述通过终端使用外部环境 |
 
 ## 状态判定规则
 

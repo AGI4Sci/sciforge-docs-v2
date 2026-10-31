@@ -1,6 +1,6 @@
 # SciForge 文档站 v2
 
-SciForge 中文使用文档，基于 Docusaurus 3 构建并通过 GitHub Pages 发布。本版本把「功能与扩展」重构为**按内置插件逐页介绍**：23 个内置领域扩展各有一页，覆盖入口、能力、典型流程、权限边界与已知限制。
+SciForge 中文使用文档，基于 Docusaurus 3 构建并通过 GitHub Pages 发布。本版本把「功能与扩展」重构为**按内置插件逐页介绍**：22 个内置领域扩展各有一页，覆盖入口、能力、典型流程、权限边界与已知限制。
 
 ## 内容结构
 
@@ -72,7 +72,7 @@ npm run build
 ## 迁移与维护
 
 - 本仓库从 [hanhuiyang5-web/sciforge-docs-v2](https://github.com/hanhuiyang5-web/sciforge-docs-v2) 复制迁入，保留原 Git 历史与 MIT 作者署名，并非 GitHub 所有权转移。
-- 源码基线：`18ae2b6b74f08b7bbff17239fadf9626ea43aa0f`。旧仓库和旧站保持不变；旧站跳转需原仓库维护者另行配置。
+- 功能基线：公开客户端源码 [AGI4Sci/SciForge](https://github.com/AGI4Sci/SciForge)（2026-10-31 快照，`6b16487d`）。开源范围之外的能力（如 Remote SSH 连接管理面板）不在本站描述。旧仓库和旧站保持不变；旧站跳转需原仓库维护者另行配置。
 - 后续修改通过 Pull Request 审阅，合并到 `main` 后自动发布。
 - 回退：对出问题的后续提交使用 `git revert <commit>` 并走 Pull Request，合并后重新部署；不要直接部署迁移前版本，以免恢复旧域名配置。必要时可暂时继续使用原站。
 

@@ -89,6 +89,11 @@ const config: Config = {
         },
         {type: 'custom-docSearch', position: 'right'},
         {
+          href: 'https://github.com/AGI4Sci/SciForge',
+          label: '客户端源码',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/AGI4Sci/sciforge-docs-v2',
           label: 'GitHub',
           position: 'right',
@@ -118,6 +123,7 @@ const config: Config = {
           items: [
             {label: '功能状态', to: '/docs/reference/feature-status'},
             {label: '故障排查', to: '/docs/reference/troubleshooting'},
+            {label: '客户端源码', href: 'https://github.com/AGI4Sci/SciForge'},
             {label: 'GitHub', href: 'https://github.com/AGI4Sci/sciforge-docs-v2'},
           ],
         },
