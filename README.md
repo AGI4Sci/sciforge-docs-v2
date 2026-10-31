@@ -8,7 +8,7 @@ SciForge 中文使用文档，基于 Docusaurus 3 构建并通过 GitHub Pages �
 docs/
 ├── getting-started/    # 快速开始
 ├── cases/              # 端到端案例
-├── features/           # 功能与扩展（23 个插件页）
+├── features/           # 功能与扩展（22 个插件页 + 4 个落地页）
 │   ├── overview.md     # 插件总览与选择指南
 │   ├── life-science-preview.md
 │   ├── dataset-api.md
@@ -71,8 +71,9 @@ npm run build
 
 ## 迁移与维护
 
-- 本仓库从 [hanhuiyang5-web/sciforge-docs-v2](https://github.com/hanhuiyang5-web/sciforge-docs-v2) 复制迁入，保留原 Git 历史与 MIT 作者署名，并非 GitHub 所有权转移。
-- 功能基线：公开客户端源码 [AGI4Sci/SciForge](https://github.com/AGI4Sci/SciForge)（2026-10-31 快照，`6b16487d`）。开源范围之外的能力（如 Remote SSH 连接管理面板）不在本站描述。旧仓库和旧站保持不变；旧站跳转需原仓库维护者另行配置。
+- 本仓库由原文档仓库复制迁入，保留原 Git 历史与 MIT 作者署名（见 `LICENSE`），并非 GitHub 所有权转移。
+- 功能基线：公开客户端源码 [AGI4Sci/SciForge](https://github.com/AGI4Sci/SciForge)（2026-10-31 快照，功能代码 `6b16487d`；README 后续更新至 `553c6a8`）。开源范围之外的能力（如 Remote SSH 连接管理面板）不在本站描述。旧仓库和旧站保持不变；旧站跳转需原仓库维护者另行配置。
+- 同步流程：新快照发布后按[文档同步检查清单](./docs/operations/docs-sync-checklist.md)核对域清单、版本号、已退出功能与公开边界，再更新文档站与仓内 wiki。
 - 后续修改通过 Pull Request 审阅，合并到 `main` 后自动发布。
 - 回退：对出问题的后续提交使用 `git revert <commit>` 并走 Pull Request，合并后重新部署；不要直接部署迁移前版本，以免恢复旧域名配置。必要时可暂时继续使用原站。
 

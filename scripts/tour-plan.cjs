@@ -17,7 +17,7 @@ module.exports = {
       {id: 'home-capabilities', route: '/', targetSelector: '#capabilities', title: '功能分类 · 按任务找到入口', sentences: [
         '功能区按科研工作流、工作台、连接与扩展分类，帮助你从目标找到入口。',
         '切换到工作台，可以继续学习会话、智能体协作和工具。',
-        '连接与扩展则集中提供运行时、远程资源和专项能力的指南。',
+        '连接与扩展则集中提供运行时、远程与协作边界，以及专项能力的指南。',
       ], actions: [{sentence: 1, region: '功能分类', button: '工作台'}, {sentence: 2, region: '功能分类', button: '连接与扩展'}]},
       {id: 'case-first', route: '/docs/cases/overview', targetText: '两个案例的分工', title: '先看完整案例，再学习具体功能', sentences: [
         '建议先浏览两个虚拟细胞案例，理解一项任务怎样从数据走到证据和报告，再按需要查阅功能。',
@@ -144,7 +144,7 @@ module.exports = {
         '为失败节点定义恢复路径和停止条件；自动化运行仍然遵守任务原有权限范围。',
       ]},
     ]},
-    {title: '扩展能力与连接远程资源', shots: [
+    {title: '扩展能力与协作边界', shots: [
       {id: 'extensions', route: '/docs/features/extensions', targetImage: '扩展中心页面', title: '按需要选择扩展能力', sentences: [
         '扩展中心用于检查已安装扩展的来源、版本与状态。先找到需要的能力，再用最小任务验证输入和输出。',
         '界面显示已启用，只说明配置状态；具体任务仍需检查实际运行结果。',
@@ -153,9 +153,9 @@ module.exports = {
         '技能提供专项方法与工作流；MCP 连接外部工具和数据；图形界面工具用于必须操作应用的步骤。',
         '使用前了解脚本、依赖、凭据和外部影响，优先选择过程清楚、结果可检查的工具。',
       ]},
-      {id: 'remote', route: '/docs/operations/remote-and-collaboration', targetImage: '远程资源向导', title: '连接已有服务器与计算环境', sentences: [
-        '需要实验室服务器或远程计算环境时，通过远程资源向导配置 SSH 工作区。',
-        '确认远端路径和环境，保留同样的输入、输出与运行记录，检查断线后的恢复方式。',
+      {id: 'remote', route: '/docs/operations/remote-and-collaboration', targetText: '开源客户端不包含登记 SSH 目标', title: '远程执行的开源边界', sentences: [
+        '开源客户端不包含登记 SSH 目标、VPN 与工作区授权的连接管理面板；远程会话由部署方提供并附着后，才会出现在工作区位置选择器。',
+        '远程文件与命令实际作用于远端目录，保留同样的输入、输出与运行记录，并检查断线后的恢复方式。',
       ]},
       {id: 'cloud', route: '/docs/operations/remote-and-collaboration', targetImage: 'Cloud 连接页面', title: '协作前确认项目和数据范围', sentences: [
         '云端协作页面用于连接和查看协作项目，实际可用范围取决于当前服务与权限配置。',
