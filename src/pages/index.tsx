@@ -19,7 +19,7 @@ const capabilities = [
   {group: '工作台', name: '与 Agent 协作', detail: '从明确目标，到计划、执行与结果检查。', to: '/docs/workbench/agent-workflows'},
   {group: '工作台', name: '工作台工具', detail: '了解预览、终端、变更与 Computer Use 的使用场景。', to: '/docs/workbench/tools'},
   {group: '连接与扩展', name: 'Runtime 与模型', detail: '配置模型接入，选择 Codex 或 Claude Code。', to: '/docs/getting-started/runtime-and-models'},
-  {group: '连接与扩展', name: '远程资源与协作', detail: '连接实验室服务器，管理远程工作区与云端协作。', to: '/docs/operations/remote-and-collaboration'},
+  {group: '连接与扩展', name: '远程资源与协作', detail: '切换远程工作区会话，理解云端协作与数据边界。', to: '/docs/operations/remote-and-collaboration'},
   {group: '连接与扩展', name: 'Skills、MCP 与扩展', detail: '接入专项方法、外部工具与签名扩展包。', to: '/docs/features/extensions'},
 ];
 function Arrow({diagonal = false}: {diagonal?: boolean}) { return <span aria-hidden="true">{diagonal ? '↗' : '→'}</span>; }
@@ -51,7 +51,7 @@ export default function Home(): ReactNode {
             <p>从一个问题、一份数据开始。<br />在 SciForge 中组织 Agent、分析与图表，<br />把研究过程沉淀为可检查、可复跑的成果。</p>
             <div className={styles.actions}><Link className={styles.primaryLink} to="/docs/cases/overview">从案例开始 <Arrow /></Link><Link className={styles.textLink} to="/docs/getting-started/five-minute-quickstart">五分钟快速上手 <Arrow /></Link></div>
             <Link className={styles.videoLink} to="/guide"><span className={styles.playIcon}>▶</span> 观看分章节视频导览 <Arrow diagonal /></Link>
-            <div className={styles.heroFoot}><span>本地与远程工作区</span><span>Codex / Claude Code</span></div>
+            <div className={styles.heroFoot}><span>本地与远程工作区</span><span>Codex / Claude Code / DSH</span></div>
           </div><ProductPreview />
         </div>
         <div className={styles.workflow} aria-label="研究工作流"><span className={styles.workflowLabel}>一条完整的研究路径</span>{['准备工作区', '与 Agent 分析', '审查图表与证据', '固化研究交付'].map((label, i) => <span key={label}><small>0{i + 1}</small>{label}{i < 3 && <b aria-hidden="true">→</b>}</span>)}</div>
