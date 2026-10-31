@@ -150,3 +150,5 @@ sidebar_position: 61
 - [Runtime 与模型](../getting-started/runtime-and-models.md)：本机执行环境。
 - [远程资源与协作](../operations/remote-and-collaboration.md)：区分远程工作区与团队协作。
 - [功能状态与限制](../reference/feature-status.md)：当前整体支持范围。
+
+> 实现依据：`@sciforge/domain-collaboration` v13.0.0。
