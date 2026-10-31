@@ -46,7 +46,7 @@ git grep -n "<功能名或包名>" -- src packages/domains packages/workers | gr
 ## 3. 复核公开边界
 
 ```bash
-git grep -n "remote-ssh\|Remote SSH\|远程资源向导\|VPN\|Zulip" -- docs README.md
+git grep -nE "remote-ssh|Remote SSH|VPN|Zulip" -- docs README.md
 ```
 
 - 允许：一句"该能力未包含在开源版本"的边界说明。
