@@ -9,8 +9,10 @@ sidebar_position: 20
 **选择文件 → 告诉 AI 怎么画 → 查看结果 → 满意后接受。** 科研图件将文字要求、Python 代码、实际运行与图片版本关联起来。修改图片时继续打字说明即可，不需要在图片上框选、画箭头或放置图钉。
 
 :::info 当前版本
-本页根据 `@sciforge/plugin-scientific-plotting` **0.4.0-mvp.8** 的真实本地验收更新（2026-11-05）。已验证 macOS arm64、DSH Runtime、Python + Matplotlib；这是本地签名 MVP 的能力说明，不表示该版本已在公共市场向所有用户发布。R 执行尚未实现。
+本页根据 `@sciforge/plugin-scientific-plotting` **0.4.0-mvp.9** 的真实本地验收更新（2026-11-05）。已验证 macOS arm64、DSH Runtime、Python + Matplotlib；这是本地签名 MVP 的能力说明，不表示该版本已在公共市场向所有用户发布。R 执行尚未实现。
 :::
+
+多文件清洗、四面板图、缺失值矩阵与失败恢复的实际操作和截图，见 [复杂科研图件案例](../cases/scientific-figures-complex.md)。
 
 ## 安装与打开
 
