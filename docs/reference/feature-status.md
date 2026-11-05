@@ -19,7 +19,7 @@ sidebar_position: 1
 | 文件预览与变更检查 | 已验证 | 适用格式与远程支持范围存在差异 |
 | 定时任务 | 已验证 | 应用需运行，电脑在触发时需保持唤醒 |
 | Create Loop | 已验证 | 支持多节点流程；暂停审批状态不跨应用重启保存 |
-| Scientific Plotting | 部分可用 | 从可用输入生成并审查图表；需核对 Worker 与依赖 |
+| [科研图件（Scientific Figures）](../features/scientific-plotting.md) | 本地 MVP 已验证，未声明公开发行 | 0.4.0-mvp.6：文件与文字聊天、真实 Python/Matplotlib、候选预览、正式审批、重启恢复及聊天图片附件已实测；需兼容签名包与本机依赖，当前验收为 macOS arm64 + DSH，R 未实现 |
 | Artifact / Evidence / Dossier | 部分可用 | 入口已注册；内容质量取决于任务是否生成相应记录 |
 | 远程工作区 | 开源版未包含连接管理 | 工作区位置选择器可在本地与已附着远程会话间切换；SSH 目标、VPN 与授权管理面板未包含在开源仓库 |
 | Cloud 协作 | 部分可用 | 支持需求确认、任务交付、返修、采纳和结项；使用前需完成云端登录与设备连接，参见 [Pasilla 三人协作案例](../cases/pasilla-collaboration.md) |

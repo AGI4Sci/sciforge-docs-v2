@@ -48,7 +48,7 @@ sidebar_position: 21
 
 ## 相关页面
 
-- [科学绘图](./scientific-plotting.md)：正式图表版本可以进入图片审改做人工确认。
+- [科研图件](./scientific-plotting.md)：独立的聊天式 Python 绘图插件，在自身面板比较候选并申请正式接受；不要求使用本页的图上批注工具。
 - [证据与可复现性](./evidence-and-reproducibility.md)：接受后形成新的 Artifact Version。
 - [Agent 工作流](../workbench/agent-workflows.md)：修改请求如何回到会话并生成候选。
 - [权限与安全](../operations/security.md)：破坏性操作与确认边界。
