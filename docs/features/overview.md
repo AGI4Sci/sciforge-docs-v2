@@ -30,7 +30,7 @@ SciForge 随安装包提供 **22 个内置领域扩展（bundled domain extensio
 
 | 插件 | 解决什么问题 | 主要入口 |
 | --- | --- | --- |
-| [科学绘图](./scientific-plotting.md) | 从已验证的派生表生成可复跑、可溯源的科研图 | 右侧面板 |
+| [科研图件](./scientific-plotting.md) | 选择文件、聊天绘图，关联 Python 代码与运行，比较并正式接受候选 | 右侧栏“科研图件”（本地 MVP） |
 | [图片审改](./visual-review.md) | 对图片和图表做人工审阅，把意见明确回传给 Agent | 右侧面板 |
 | [锚定批注](./anchored-comments.md) | 把批注锚定到文件、文本位置或选区，供人和 Agent 共用 | 顶部工具栏、全局浮层 |
 
@@ -73,7 +73,7 @@ SciForge 随安装包提供 **22 个内置领域扩展（bundled domain extensio
 
 - **先看资料**：文件打不开或看不懂格式，从 [生命科学预览](./life-science-preview.md) 开始。
 - **先取数据**：需要公共数据库或对象存储，用 [数据集 API](./dataset-api.md) 登记来源，再让 Agent 基于来源工作。
-- **要出图**：图表用 [科学绘图](./scientific-plotting.md)，审改走 [图片审改](./visual-review.md)，版本用 [产物版本](./artifact-versions.md) 固定。
+- **要出图**：用 [科研图件](./scientific-plotting.md) 通过聊天生成、修改和接受候选，代码与运行记录在插件内关联保存。[图片审改](./visual-review.md) 和 [产物版本](./artifact-versions.md) 是独立能力，使用前分别核对适用范围。
 - **要交付**：按“变更检查 → 检查点 → Evidence DAG → 科研档案”的顺序固化，见 [证据与可复现](./evidence-and-reproducibility.md)。
 - **要重复执行**：单条指令用 [定时任务](./automation.md)，多步骤用 [Create Loop](./create-loop.md)。
 - **要团队协作**：先确认 [身份与登录](./identity-access.md)，再进入 [协作](./collaboration.md)。
