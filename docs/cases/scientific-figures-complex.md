@@ -83,7 +83,27 @@ sidebar_position: 5
 
 源数据改变后，默认编辑子代码应继承父版本冻结输入；更新数据需要显式创建新输入快照。复跑要创建新的运行 ID，以便同时保留原运行和复跑记录。
 
-当前不会把临时输出目录里的任意 CSV/JSON 自动持久保存。需要后续使用的数据和统计结果必须显式保存并冻结；数值日志也受长度上限约束。环境清单不是完整二进制环境归档。
+以上四组最初使用 v8/v9，当时 CSV/JSON 需要显式另存。**v10 已补齐** PNG 与 CSV/TSV/JSON/TXT 的正式产物保存，分析文件可直接冻结为下一步输入；旧版本记录不改写。数值日志仍受长度上限约束，环境清单不是完整二进制环境归档。
+
+## 案例五：分析产物接力、分页与提交恢复
+
+v10 的实际运行 `hardening-root-run-v10-20261105` 直接保存 7 个文件：`figure.png`、1200 字节的 `cleaned.csv`、81 字节的 `summary.json`、`rules.txt`，以及 `_environment` 下三份环境重建文件。独立读取核对清洗表确有 57 条数据，统计为 raw=60、retained=57、excluded=3；所有摘要和长度逐一验证。
+
+后续 `hardening-child-run-v10-20261105` 从已保存的清洗 CSV 再次冻结输入，独立保留数据副本后绘图，不需要人工拷贝临时文件。父输出与子输入路径不同，SHA-256 均为 `3e9a9c0b722f9bae558f9fbbe1796721e3a365519e8ac67d4cc821d8bf20d85b`；真实日志确认 `FROZEN_ROWS 57`。
+
+![已保存分析文件和摘要；CSV 不可当作图片发布](/img/docs/scientific-figures/hardening/04-analysis-artifacts.png)
+
+环境文件包含 12 个已安装包的精确版本和虚拟环境重建步骤；没有执行安装或联网下载，也不声称是带哈希的依赖锁。
+
+恢复测试先真正运行 Python 生成 JSON，在源码调度测试中注入一次提交 `run.json` 的写入故障。进程日志和结果已保存，暂存目录仍存在。然后在已安装插件中点击 **完成中断记录**，成功提交原来的 JSON 和日志，完成后才清理暂存。故障注入是受控测试，不是随机事故或伪造进程成功。
+
+![提交中断后，安装版显示可完成的记录](/img/docs/scientific-figures/hardening/01-recovery-before.png)
+
+![完成同一运行的原结果提交后，日志与产物保留](/img/docs/scientific-figures/hardening/02-recovery-after.png)
+
+历史列表也实际点击分页加载：第一页最多扫描 20 条记录，点击 **更多运行记录** 再加载下一页。预留但未提交的目录不会伪装为终态记录，因此单页显示数可能少于 20；单条损坏不阻断其他页。
+
+![真实安装版的分页运行历史](/img/docs/scientific-figures/hardening/03-pagination.png)
 
 ## 截图与验证边界
 
