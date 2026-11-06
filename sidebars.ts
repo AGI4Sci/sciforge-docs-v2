@@ -15,14 +15,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '端到端案例',
-      link: {type: 'generated-index', slug: '/category/端到端案例'},
+      label: '工作台指南',
       items: [
-        'cases/overview',
-        'cases/virtual-cell-evidence-atlas',
-        'cases/virtual-cell-benchmark',
-        'cases/pasilla-collaboration',
-        'cases/scientific-figures-complex',
+        'workbench/workspaces-and-sessions',
+        'workbench/agent-workflows',
+        'workbench/tools',
       ],
     },
     {
@@ -94,16 +91,19 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '工作台指南',
+      label: '案例教程',
+      link: {type: 'generated-index', slug: '/category/端到端案例'},
       items: [
-        'workbench/workspaces-and-sessions',
-        'workbench/agent-workflows',
-        'workbench/tools',
+        'cases/overview',
+        'cases/virtual-cell-evidence-atlas',
+        'cases/virtual-cell-benchmark',
+        'cases/pasilla-collaboration',
+        'cases/scientific-figures-complex',
       ],
     },
     {
       type: 'category',
-      label: '配置与运维',
+      label: '设置与安全',
       items: [
         'operations/security',
         'operations/remote-and-collaboration',
@@ -111,7 +111,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '参考手册',
+      label: '参考与排错',
       items: [
         'reference/version-and-compatibility',
         'reference/plugin-licenses',
