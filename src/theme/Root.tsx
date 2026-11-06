@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ReactNode} from 'react';
+import {useLocation} from '@docusaurus/router';
 
 type Preview = {src: string; alt: string; caption: string};
 const imageSelector = '.theme-doc-markdown img, img[data-sf-preview]';
@@ -22,6 +23,10 @@ function ImagePreview(): ReactNode {
   useEffect(() => {
     const enhance = () => {
       if (dialogRef.current?.open && !triggerRef.current?.isConnected) close();
+      document.querySelectorAll<HTMLTableElement>('.theme-doc-markdown table').forEach((table) => {
+        table.tabIndex = 0;
+        if (!table.hasAttribute('aria-label')) table.setAttribute('aria-label', '表格，可横向滚动查看');
+      });
       document.querySelectorAll<HTMLImageElement>(imageSelector).forEach((img) => {
         if (img.closest('a, button') || img.classList.contains('sf-zoomable-image')) return;
         img.classList.add('sf-zoomable-image');
@@ -82,7 +87,7 @@ function ImagePreview(): ReactNode {
       {preview && <>
         <div className="sf-image-dialog__toolbar">
           <div className="sf-image-dialog__heading">
-            <span className="sf-image-dialog__eyebrow">SciForge / 界面预览</span>
+            <span className="sf-image-dialog__eyebrow">SciForge / 图片预览</span>
             <span id="sf-image-preview-title" className="sf-image-dialog__title">{preview.alt || '文档图片'}</span>
           </div>
           <div className="sf-image-dialog__actions">
@@ -102,5 +107,10 @@ function ImagePreview(): ReactNode {
 }
 
 export default function Root({children}: {children: ReactNode}): ReactNode {
-  return <>{children}<ImagePreview /></>;
+  const {pathname} = useLocation();
+  const kind = pathname.includes('/docs/cases/') ? 'case'
+    : pathname.includes('/docs/features/') ? 'feature'
+    : /\/docs\/(getting-started|workbench)\//.test(pathname) ? 'tutorial'
+    : pathname.includes('/docs/') ? 'reference' : 'page';
+  return <div className="sf-site" data-reading-kind={kind}>{children}<ImagePreview /></div>;
 }

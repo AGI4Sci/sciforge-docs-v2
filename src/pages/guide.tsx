@@ -12,12 +12,13 @@ export default function Guide() {
   const player = useRef<HTMLVideoElement>(null);
   const pendingChapter = useRef<number | null>(null);
   const chapterList = useRef<HTMLOListElement>(null);
+  const cinemaToggle = useRef<HTMLButtonElement>(null);
   const [active, setActive] = useState(0);
   const [playError, setPlayError] = useState(false);
   const [mediaError, setMediaError] = useState(false);
   const [cinema, setCinema] = useState(false);
   const [shareStatus, setShareStatus] = useState('');
-  const [chaptersExpanded, setChaptersExpanded] = useState(false);
+  const [chaptersExpanded, setChaptersExpanded] = useState(true);
   const current = chapters[active];
   const media = useBaseUrl('/video/');
   const revision = 'revision' in tour ? String(tour.revision) : '2026-09-05';
@@ -50,21 +51,28 @@ export default function Guide() {
     if (item.top < bounds.top) list.scrollTop += item.top - bounds.top;
     else if (item.bottom > bounds.bottom) list.scrollTop += item.bottom - bounds.bottom;
   }, [active]);
+  useEffect(() => {
+    if (!cinema) return;
+    function exitCinema(event: KeyboardEvent) {
+      if (event.key !== 'Escape' || document.fullscreenElement) return;
+      setCinema(false);
+      cinemaToggle.current?.focus({preventScroll: true});
+    }
+    window.addEventListener('keydown', exitCinema);
+    return () => window.removeEventListener('keydown', exitCinema);
+  }, [cinema]);
   function seek(index: number) {
     if (!player.current || !chapters[index]) return;
-    const restoreFocus = window.matchMedia('(max-width: 620px)').matches && chapterList.current?.contains(document.activeElement);
     pendingChapter.current = index;
     setActive(index);
-    setChaptersExpanded(false);
-    if (restoreFocus) requestAnimationFrame(() => player.current?.focus({preventScroll: true}));
     setShareStatus('');
     setPlayError(false);
     applyPendingChapter();
     window.history.replaceState(window.history.state, '', `#chapter-${index + 1}`);
     player.current.play().catch(() => setPlayError(true));
     const bounds = player.current.getBoundingClientRect();
-    if (bounds.top < 90 || bounds.bottom > window.innerHeight) {
-      player.current.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center'});
+    if (window.matchMedia('(max-width: 996px)').matches && (bounds.bottom < 0 || bounds.top > window.innerHeight)) {
+      player.current.scrollIntoView({block: 'center', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
     }
   }
   async function shareChapter() {
@@ -81,11 +89,10 @@ export default function Guide() {
   return <Layout title="视频导览" description="按章节学习 SciForge：快速开始、虚拟细胞案例、工作台、证据与扩展。配有中文旁白、字幕、原文与章节跳转。">
     <main className={`${styles.guide} ${cinema ? styles.cinema : ''}`}>
       <header className={styles.heading}>
-        <div><span className={styles.eyebrow}>SCIFORGE FIELD GUIDE / 观看与实践</span><h1>从研究问题，<br />到可检查的成果。</h1></div>
-        <div className={styles.introduction}><p>跟着两个虚拟细胞案例，认识工作台、证据与扩展。<br />先看流程，再回到手册动手实践。</p><div className={styles.facts}><span><b>{time(tour.duration)}</b>分钟导览</span><span><b>{String(chapters.length).padStart(2, '0')}</b>个章节</span><span><b>中文</b>旁白与字幕</span></div></div>
+        <div><h1>视频导览</h1><p className={styles.introduction}>按章节了解 SciForge 的研究流程与两个虚拟细胞案例，再打开对应手册动手实践。</p></div>
+        <div className={styles.facts} aria-label="导览信息"><span><b>{time(tour.duration)}</b> 总时长</span><span><b>{chapters.length}</b> 个章节</span><span>中文旁白与字幕</span></div>
       </header>
-      <p>这段视频使用早期界面录制。当前工具位置和功能变化请看<Link to="/docs/reference/version-and-compatibility">版本说明</Link>；视频中的旧数据集 API 和科学计算入口已退役。</p>
-      <div className={styles.watchToolbar}><span><i aria-hidden="true" />文档与真实界面讲解</span><button type="button" onClick={() => setCinema(!cinema)} aria-pressed={cinema} aria-controls="guide-player-layout"><span aria-hidden="true">▣</span>{cinema ? '收起宽屏' : '宽屏观看'}</button></div>
+      <div className={styles.watchToolbar}><span>选择章节即可跳转播放</span><button ref={cinemaToggle} type="button" onClick={() => setCinema(!cinema)} aria-pressed={cinema} aria-controls="guide-player-layout"><span aria-hidden="true">▣</span>{cinema ? '收起宽屏' : '宽屏观看'}</button></div>
       <div id="guide-player-layout" className={styles.playerGrid}>
         <div>
           {tour.ready ? <video ref={player} className={styles.video} aria-label="SciForge 中文使用导览" tabIndex={0} controls playsInline preload="metadata" poster={mediaAsset('poster.jpg')} onLoadedMetadata={applyPendingChapter} onError={() => setMediaError(true)} onTimeUpdate={() => { if (pendingChapter.current !== null) return; const now = player.current?.currentTime || 0; setActive(chapters.reduce((index, chapter, i) => now + .001 >= chapter.start ? i : index, 0)); }}>
@@ -98,10 +105,10 @@ export default function Guide() {
           {(playError || mediaError) && <p className={styles.error} role="status">{mediaError ? '视频暂时无法加载。可以刷新页面重试，或使用下方的 MP4 下载链接。' : '点击播放器的播放按钮继续观看。'}</p>}
           <p className={styles.scopeNote}>画面包含文档演示与完整 SciForge 工作区截图，不代表一次连续实验运行。实验性能力在对应章节中单独说明。</p>
         </div>
-        <aside className={styles.chapterNav} aria-label="视频章节"><div className={styles.chapterHeading}><h2>观看目录</h2><span>按需选择 · 点击即播</span><button className={styles.mobileChapterToggle} type="button" aria-expanded={chaptersExpanded} aria-controls="guide-chapters" onClick={() => setChaptersExpanded(!chaptersExpanded)}>{chaptersExpanded ? '收起目录 −' : `展开 ${chapters.length} 章 ＋`}</button></div><ol id="guide-chapters" ref={chapterList} className={`${styles.chapterList} ${chaptersExpanded ? '' : styles.collapsed}`}>{chapters.map((chapter, index) => <li key={chapter.title} className={`${styles.chapter} ${active === index ? styles.active : ''}`}><button type="button" onClick={() => seek(index)} aria-current={active === index ? 'true' : undefined} aria-label={`${time(chapter.start)} ${chapter.title}`}><span className={styles.chapterNumber}>{String(index + 1).padStart(2, '0')}</span><span className={styles.chapterInfo}><strong>{chapter.title}</strong><span>{time(chapter.start)}<span aria-hidden="true"> / </span>{time((chapters[index + 1]?.start ?? tour.duration) - chapter.start)} 时长</span></span><span className={styles.chapterPlay} aria-hidden="true">{active === index ? '●' : '↗'}</span></button></li>)}</ol></aside>
+        <aside className={styles.chapterNav} aria-label="视频章节"><div className={styles.chapterHeading}><h2>观看目录</h2><span>{chapters.length} 章 · 按需观看</span><button className={styles.mobileChapterToggle} type="button" aria-expanded={chaptersExpanded} aria-controls="guide-chapters" onClick={() => setChaptersExpanded(!chaptersExpanded)}>{chaptersExpanded ? '收起目录 −' : `展开 ${chapters.length} 章 ＋`}</button></div><ol id="guide-chapters" ref={chapterList} className={`${styles.chapterList} ${chaptersExpanded ? '' : styles.collapsed}`}>{chapters.map((chapter, index) => <li key={chapter.title} className={`${styles.chapter} ${active === index ? styles.active : ''}`}><button type="button" onClick={() => seek(index)} aria-current={active === index ? 'true' : undefined} aria-label={`${active === index ? '当前章节，' : ''}${time(chapter.start)} ${chapter.title}`}><span className={styles.chapterNumber}>{String(index + 1).padStart(2, '0')}</span><span className={styles.chapterInfo}><strong>{chapter.title}</strong><span>{time(chapter.start)}<span aria-hidden="true"> / </span>{time((chapters[index + 1]?.start ?? tour.duration) - chapter.start)} 时长</span></span><span className={styles.chapterPlay} aria-hidden="true">{active === index ? '▶' : '↗'}</span></button></li>)}</ol></aside>
       </div>
-      {tour.ready && <section className={styles.downloads} aria-labelledby="take-guide-title"><div><span className={styles.eyebrow}>KEEP A COPY</span><h2 id="take-guide-title">留一份，随时回看。</h2><p>下载视频离线观看，或用文字快速回顾。</p></div><div className={styles.downloadLinks}><a href={mediaAsset('sciforge-guide-2026-09-05.mp4')} download><span>完整视频<small>MP4 · 中文旁白</small></span><span aria-hidden="true">↓</span></a><a href={mediaAsset('captions.srt')} download><span>逐句字幕<small>SRT · 简体中文</small></span><span aria-hidden="true">↓</span></a><a href={mediaAsset('transcript.md')} download><span>旁白与时间线<small>Markdown · 可检索</small></span><span aria-hidden="true">↓</span></a></div></section>}
-      <section className={styles.next}><div><span className={styles.eyebrow}>YOUR FIRST TASK</span><h2>看过之后，<br />完成自己的第一项任务。</h2></div><div className={styles.nextLinks}><Link to="/docs/getting-started/five-minute-quickstart"><span>01</span>五分钟快速开始 <b aria-hidden="true">→</b></Link><Link to="/docs/cases/virtual-cell-evidence-atlas"><span>02</span>ECCITE-seq 证据案例 <b aria-hidden="true">→</b></Link><Link to="/docs/features/overview"><span>03</span>查找功能与扩展 <b aria-hidden="true">→</b></Link></div></section>
+      {tour.ready && <section className={styles.downloads} aria-labelledby="take-guide-title"><div><h2 id="take-guide-title">下载与文字回顾</h2><p>保存视频离线观看，或检索旁白与时间线。</p></div><div className={styles.downloadLinks}><a href={mediaAsset('sciforge-guide-2026-09-05.mp4')} download><span>完整视频<small>MP4 · 中文旁白</small></span><span aria-hidden="true">↓</span></a><a href={mediaAsset('captions.srt')} download><span>逐句字幕<small>SRT · 简体中文</small></span><span aria-hidden="true">↓</span></a><a href={mediaAsset('transcript.md')} download><span>旁白与时间线<small>Markdown · 可检索</small></span><span aria-hidden="true">↓</span></a></div></section>}
+      <section className={styles.next}><div><h2>接下来，动手实践</h2><p>从快速开始入手，或继续阅读案例与功能手册。</p></div><div className={styles.nextLinks}><Link to="/docs/getting-started/five-minute-quickstart"><span>01</span>五分钟快速开始 <b aria-hidden="true">→</b></Link><Link to="/docs/cases/virtual-cell-evidence-atlas"><span>02</span>ECCITE-seq 证据案例 <b aria-hidden="true">→</b></Link><Link to="/docs/features/overview"><span>03</span>查找功能与扩展 <b aria-hidden="true">→</b></Link></div></section>
     </main>
   </Layout>;
 }

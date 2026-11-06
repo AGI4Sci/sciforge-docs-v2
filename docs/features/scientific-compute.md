@@ -1,17 +1,16 @@
 ---
-title: 科学计算（Scientific Compute）
-description: 已退役能力的迁移说明与真实计算记录建议。
+title: 运行分析与计算
+description: 使用自行配置的 Python、R 或集群环境运行分析，保存输入、依赖与实际输出。
 sidebar_position: 13
 ---
 
-# 科学计算（Scientific Compute）
+# 运行分析与计算
 
-:::info 迁移说明
-在[当前源码基线](../reference/version-and-compatibility.md)中，旧 `scientific-compute` 域已退役，不再提供可调用的内置能力或独立插件。本页保留原 URL，供旧链接和历史记录定位。
-:::
+运行分析前，先准备并验证自己配置的 Python、R 或集群环境。需要 Agent 执行时，在会话中说明使用的环境、输入文件、分析步骤和输出位置；可用操作取决于执行环境与权限。
 
-旧版页面介绍的是本地确定性 fixture 作业循环，用于测试提交、监控、阻塞与恢复的事件轨迹；它从未代表真实集群调度或科学计算结果。请勿继续按旧页面查找状态查询、四场景基线运行或作业监控入口。
+1. 确认输入文件的位置、格式与版本，保留原始数据和来源记录。
+2. 准备脚本及所需依赖，记录解释器、软件包版本、运行参数；集群任务还应记录提交命令与资源要求。
+3. 实际执行分析，检查运行状态、退出码和日志；失败时保留错误信息，修正后重新运行。
+4. 核对输出文件、统计结果与预期是否一致，保存输入、代码、依赖和输出之间的对应关系。没有实际运行记录时，不应把预期结果写成已完成的计算。
 
-需要真实计算时，使用[工作台终端](../workbench/tools.md)及你自己的计算环境；远程文件与执行位置见[远程与协作](../operations/remote-and-collaboration.md)。保留实际命令、输入摘要、软件版本、参数、退出状态与输出文件，并按[证据与可复现性](./evidence-and-reproducibility.md)整理记录。
-
-Python + Matplotlib 图件可以使用独立的[科研图件插件](./scientific-plotting.md)，其代码与输入快照、运行回执不等于通用作业调度器。当前基线不应被理解为内置 Slurm、PBS 或 Kubernetes 自动调度承诺。
+从数据和 Python 代码绘图、修改并接受候选图，可使用 [Scientific Figures](./scientific-plotting.md)；该插件需要单独安装及配置所需依赖，当前支持 Python + Matplotlib。跨任务的来源与计算记录见[证据与可复现性](./evidence-and-reproducibility.md)。
