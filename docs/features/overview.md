@@ -40,4 +40,4 @@ Paper Radar、OpenContent 的历史材料不代表当前能力。Remote SSH 的�
 
 ## 如何判断能否使用
 
-先看当前客户端版本、插件来源和宿主依赖，再看[功能状态](../reference/feature-status.md)。页面介绍实现不等于所有平台都有发行包；历史截图和案例保留自己的日期、平台与验收版本。本轮未对所有功能重新做 GUI 验证，源码核对与实际验收分别记录。
+安装要求和当前限制见[功能状态](../reference/feature-status.md)。

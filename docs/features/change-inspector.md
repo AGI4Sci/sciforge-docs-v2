@@ -6,7 +6,7 @@ sidebar_position: 43
 
 # 变更检查（Change Inspector）
 
-Change Inspector 的唯一生产实现是独立 DSH 插件 `@sciforge/plugin-change-inspector` **0.1.2**。它读取宿主授权的当前真实 Agent 会话，将 `file_change` 记录投影为有界 diff 快照与分页摘要，结果返回发起调用的会话。旧顶部 **变更** 面板、静态域与 fallback 已移除。
+Change Inspector 用于查看当前会话修改了哪些文件。安装插件后，让 Agent 列出改动并检查差异。
 
 ## 使用方式
 
@@ -21,7 +21,7 @@ Change Inspector 的唯一生产实现是独立 DSH 插件 `@sciforge/plugin-cha
 | `open_session` | 当前会话身份、结果标识与有界完整快照 |
 | `list_changes` | 变更摘要、下一页 cursor、revision 与截断原因；默认每页 100 条，最多 500 条 |
 
-宿主可以另外派生会话资源 opener；它不是第三个插件声明工具。省略选择参数时使用宿主当前会话；显式 session/runtime 必须匹配当前调用者。同工作区其他会话、其他 runtime 或任意会话发现均不在授权范围。停用或撤权后失败，不切回旧实现。
+插件只检查发起调用的当前会话，不能读取同工作区的其他会话或其他 Runtime 的记录。停用插件或撤销权限后，需要重新启用或授权才能继续使用。
 
 ## 如何判断记录是否完整
 
@@ -30,13 +30,8 @@ Change Inspector 的唯一生产实现是独立 DSH 插件 `@sciforge/plugin-cha
 - 检查 `patchBytes`、`patchTruncated`、`truncated` 与 `truncationReasons`。尾部空格、LF/CRLF 保留在未截断的原始 patch 中；被截断的输出不能用于完整文件重建。
 - cursor 绑定会话与 revision。发生后续编辑或 cursor 被拒绝时，从不带 cursor 的第一页重新读取；只读分页本身不应改变 revision。
 
-## 权限与验证边界
+## 权限与数据
 
-插件不写文件、不回滚、不保存检查点，也不发起网络请求；数据唯一来自宿主认证的真实 Agent thread aggregate。工具入参不能注入录制会话或 fixture。
-
-0.1.2 的既有本地应用验收覆盖真实两回合尾空格差异、稳定分页及部分拒绝与故障恢复；其他权限时序和边界由定向自动化覆盖。源码测试、真实子进程夹具、本地应用验收、签名制品与公共市场发布是不同证据，不能互相替代；本页不宣称所有平台或全部故障场景已通过。
-
-![历史 SciForge 变更面板](/img/docs/guides/workspace-changes.jpg)
-*保留的历史界面截图：展示旧面板，不是 0.1.2 当前插件入口或验收证据。*
+插件只读取当前会话的文件变更记录，不写文件、不回滚、不保存检查点，也不发起网络请求。
 
 相关：[证据与可复现性](./evidence-and-reproducibility.md)、[Git 检查点](./git-checkpoints.md)、[权限与安全](../operations/security.md)、[插件许可证](../reference/plugin-licenses.md)。
