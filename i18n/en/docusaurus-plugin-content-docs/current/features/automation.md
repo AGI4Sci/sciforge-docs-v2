@@ -1,32 +1,32 @@
 ---
-title: Automation & scheduled tasks
-description: Use scheduled tasks to repeat a single agent instruction, or use Create Loop to organize multi-step flows.
+title: Automation and scheduled tasks
+description: Use scheduled tasks to repeat a single Agent instruction, or use Create Loop to organize multi-step flows.
 sidebar_position: 3
 ---
 
-# Automation & scheduled tasks
+# Automation and scheduled tasks
 
-First verify that the task completes correctly in a normal session, then turn it into an automation. Automation repeats mistakes, and it also amplifies unclear permissions and output paths.
+First verify in an ordinary session that the task completes correctly, then turn it into an automation. Define the output path and the operations that need confirmation up front, so that scheduled repeats do not overwrite files or submit twice.
 
-There are two entry points for automation: **Scheduled tasks** is a built-in scheduling capability of the app and is not a domain extension; **Create Loop** is a built-in plugin that handles multi-node flow orchestration.
+Automation has two entry points: **Scheduled tasks** is a built-in scheduling capability of the app, not a domain extension; **Create Loop** is a built-in flow tool for multi-node orchestration.
 
-## Which one to use
+## Choose which one
 
 | Need | Entry point |
 | --- | --- |
-| Run one AI instruction daily, once, at an interval, or manually | **Scheduled tasks** (this page) |
+| Run a single AI instruction daily, once, at an interval, or manually | **Scheduled tasks** (this page) |
 | Connect AI tasks, conditions, HTTP requests, approvals, and subflows | [Create Loop](./create-loop.md) |
 
 ## Create a scheduled task
 
 Open **Scheduled tasks** from the left, click **New task**, and configure the name, instruction, model, reasoning effort, run time, and workspace in order.
 
-![SciForge Scheduled tasks page](/img/docs/guides/scheduled-tasks.jpg)
-*Figure 1: A scheduled task keeps the task content, model, plan, and runtime environment in one configuration sheet.*
+![SciForge scheduled tasks page](/img/docs/guides/scheduled-tasks.jpg)
+*Figure 1: A scheduled task puts the task content, model, schedule, and runtime environment in a single configuration table.*
 
 An instruction suitable for validation:
 
-> Check the current workspace for newly appeared experiment logs and produce a summary of no more than three items. Do not modify the original logs; save the output to the pre-agreed reports directory.
+> Check the current workspace for newly appeared experiment logs and produce a summary of no more than three items. Do not modify the original logs; save the output to the prearranged reports directory.
 
 :::warning[Run conditions]
 
@@ -36,22 +36,22 @@ Scheduled tasks require SciForge to keep running and the computer to be awake at
 
 ## Create a Loop
 
-When you need multiple steps, open **Create Loop** from the top of the workbench. For full instructions, see [Create Loop (multi-step flows)](./create-loop.md); the shortest path is:
+When you need multiple steps, open **Create Loop** from the right toolbar or **More tools**. For full instructions, see [Create Loop (multi-step flows)](./create-loop.md); the shortest path is:
 
 1. Create a Loop and add AI task, condition, HTTP request, or manual approval nodes.
 2. Define the input, output, and failure handling for each node.
 3. Test a single node first, then run the whole flow manually.
-4. Only after validation, enable schedule triggers, webhooks, or agent hooks.
+4. Enable schedule triggers, Webhooks, or Agent hooks only after validation.
 
-When a manual approval node pauses, it depends on the current in-memory state of the app; restarting the app loses that paused run. For important flows, make node outputs repeatable and keep idempotency keys and run records.
+When a manual approval node pauses, it depends on the current app's in-memory state; restarting the app loses that paused run. For important flows, make node outputs repeatable and keep idempotency identifiers and run records.
 
 ## Automation acceptance
 
 - Workspace and output paths are explicit
-- Runtime, model, and Skill are pinned
-- The shortest task already succeeded in a normal session
-- Single nodes and the whole flow have each passed testing
+- Runtime, model, and Skill are fixed
+- The shortest task has already succeeded in an ordinary session
+- Individual nodes and the whole flow have each passed testing
 - External requests, writes, and credential use have approval boundaries
-- Recent results, errors, and recovery steps can be found
+- Recent results, errors, and recovery methods can be found
 
-When automation fails, don't start by increasing the retry count; first open the session and node results for the most recent run and determine whether the error will repeatedly cause external effects.
+When automation fails, do not start by increasing the retry count; first open the session and node results for the most recent run and determine whether the error will repeatedly produce external effects.

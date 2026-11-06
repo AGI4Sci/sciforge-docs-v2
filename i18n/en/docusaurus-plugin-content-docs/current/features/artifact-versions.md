@@ -1,51 +1,51 @@
 ---
 title: Artifact Versions
-description: Save immutable versions of individual artifacts such as figures and data, and compare or restore them at any time.
+description: Save immutable versions of individual artifacts such as charts and data, and compare or restore them at any time.
 sidebar_position: 40
 ---
 
 # Artifact Versions
 
-Artifact Versions gives each individual artifact in a workspace a stable identity and records every save as an immutable version. It answers the question “which revision of the same figure or dataset am I on, and can I get back to a specific version?” It sits after analysis output and before evidence assembly and delivery; research context is still recorded by [Research Checkpoints](./research-checkpoints.md), and claims and their source relationships are owned by [Evidence DAG](./evidence-dag.md).
+Artifact Versions gives each artifact in a workspace a stable identity and records every save as an immutable version. It answers the question "which revision of this chart or dataset am I on, and can I return to a specific one?" It sits after analysis produces output and before evidence organization and delivery; research context is still recorded by [Research Checkpoints](./research-checkpoints.md), and claim-to-source relationships are handled by [Evidence DAG](./evidence-dag.md).
 
 ## How to open it
 
-- Entry: the **Artifacts** area of the workbench research summary lists recent artifacts; select an item and view its versions in the **Research** panel on the right.
-- Target: a single artifact in the current workspace, such as a figure, dataset, log, or code file.
-- Prerequisite: an Agent or a production plugin has already committed the artifact as a version, and the session is bound to a workspace.
+- Entry: the **Artifacts** area of the workbench research summary lists recent artifacts; select a specific item, then view versions in the **Research** panel on the right.
+- Scope: a single artifact in the current workspace, such as a chart, dataset, log, or code file.
+- Prerequisite: an agent or production plugin has already committed the artifact as a version, and the session is bound to a workspace.
 
 ## What you can do
 
 | What you want to do | How to do it | Output |
 | --- | --- | --- |
-| Pin one output | Have the Agent or a production plugin such as the plotting extension commit a new version | An immutable version and the current pointer |
-| Ingest large files | Submit bytes through staged upload (begin → append → seal, with abort on failure) | Content-addressed snapshots |
+| Pin a produced output | Have the agent or a tool integrated with the artifact versioning service commit a new version | An immutable version and a current pointer |
+| Ingest large files | Submit bytes through staged upload (begin → append → seal, abort on failure) | A content-addressed snapshot |
 | Compare two versions | Select exact versions in the **Versions** area of the research dossier and compare them | Differences in content, metadata, and dependencies |
-| Return to an old version | Select a historical version and restore it as a new version | A new current version, with the old version kept |
-| Package for exchange | Select an exact version in the research dossier and export a Bundle; verify it before importing | A portable bundle and the verification result |
+| Return to an older version | Select a historical version and restore it as a new version | A new current version; the old version is retained |
+| Package for exchange | Select an exact version in the research dossier and export a Bundle; verify it before importing | A portable bundle and verification result |
 
 ## Typical workflow
 
-1. Generate a figure or dataset in a task and confirm the file is in the current workspace.
-2. Have the Agent commit the artifact, adding dependencies and access policy as needed.
+1. Generate a chart or dataset in a task and confirm that the file is in the current workspace.
+2. Have the agent commit the artifact; add dependencies and access policy if needed.
 3. Open the exact version in the **Research** panel and check the content digest and dependencies.
-4. After editing, commit again and compare the old and new versions; restore as a new version if needed.
+4. After changes, commit again and compare the old and new versions; restore as a new version if needed.
 5. Before delivery, select the exact version in the research dossier and export a Bundle, then verify and import it in the target workspace.
 
 ## Inputs, outputs, and permissions
 
-- Reads: artifact metadata, version history, and snapshot bytes for the current workspace; restricted versions are filtered by access policy.
+- Reads: artifact metadata, version history, and snapshot bytes in the current workspace; restricted versions are filtered by access policy.
 - Writes: the version index, content-addressed objects, and lifecycle events; restoring only adds a version and never rewrites history.
-- Approval or external effects: Bundle export writes a bundle file, and import installs version records; when export is triggered from the research dossier, the interface asks for confirmation first.
-- What it does not do: judge scientific conclusions, generate claims or source relationships, or fall back to “latest” when no exact version is given.
+- Approval or external effects: Bundle export writes a bundle file, and import installs version records; when export is triggered from the research dossier, the UI asks for confirmation first.
+- What it does not do: judge scientific conclusions, generate claim-to-source relationships, or fall back to "latest" when no exact version is specified.
 
 ## Known limitations
 
-- Feature status is **Partially available**: the entry is registered, but content appears only after a task has actually committed artifacts; an empty panel does not mean the feature is broken.
-- Snapshot bytes are stored content-addressed; reference-style versions revalidate the workspace file on read, and moves, content changes, or absence surface as source status.
-- Exporting a Bundle requires explicitly selecting a non-empty artifact or version; if any version in the closure is invisible or not exportable, the whole export fails; import rejects incomplete dependencies, non-linear history, duplicate sequence numbers, cyclic references, or corrupted objects.
-- Staged upload transfers in chunks with a 4 MiB limit per chunk; an unfinished, expired stage cannot be appended to further.
-- Each version carries an immutable access policy; read, compare, restore, and import all enforce the same policy, and a historical view never loosens access to a restricted version.
+- Content appears only if a task has actually committed artifacts. Scientific Figures maintains its own figure history and does not automatically commit it here; register an artifact version separately when you need to connect the two.
+- Snapshot bytes are stored by content address; reference-based versions re-verify workspace files on read, so moves, content changes, or missing files surface as source status.
+- Bundle export requires explicitly selecting a non-empty artifact or version; if any version in the closure is invisible or export-prohibited, the entire export fails; import rejects incomplete dependencies, non-linear history, duplicate sequence numbers, circular references, or corrupted objects.
+- Staged upload transfers data in chunks with a 4 MiB limit per chunk; an incomplete, expired stage cannot accept further appends.
+- Each version carries an immutable access policy; reads, comparisons, restores, and imports all enforce the same policy, and restricted versions are not loosened by the history UI.
 
 ## Related pages
 
@@ -55,4 +55,4 @@ Artifact Versions gives each individual artifact in a workspace a stable identit
 - [Git Checkpoints](./git-checkpoints.md): pin the Git state of the whole workspace rather than a single artifact.
 - [Workspaces and sessions](../workbench/workspaces-and-sessions.md): how a workspace scopes artifacts.
 
-> Implementation basis: `@sciforge/domain-artifact-versions` v1.1.2.
+> Implementation basis: `@sciforge/domain-artifact-versions` v1.4.0.

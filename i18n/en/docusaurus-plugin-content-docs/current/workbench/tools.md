@@ -1,32 +1,41 @@
 ---
 title: Workbench tools
-description: Learn what the Files, Terminal, Browser, Computer Use, Changes, and research panels do.
+description: Open tools from the right-side vertical toolbar and understand docked pages, session panels, and execution permissions.
 sidebar_position: 3
 ---
 
 # Workbench tools
 
-The entries in the toolbar are scoped to the current workspace and session. Opening a tool does not authorize the Agent to perform the external operations inside it.
+The current tool entry point is the workbench's **far-right vertical toolbar**, with panels expanding to its left. Entries appear according to installed extensions, the current session, and available capabilities; when space is tight, open **More tools**, or use **Customize toolbar** to adjust which supported entries appear and their order.
 
-| Tool | What it is good for | Key checks |
+This page reflects the current implementation as of 2026-11-06. What older text or images call the "top bar" is now on the right; for installed-version differences, see [Version and compatibility](/docs/reference/version-and-compatibility).
+
+| Tool | Best for | Key checks |
 | --- | --- | --- |
-| **Files and preview** | Browse directories and open text, spreadsheets, images, or scientific objects | Path, file version, and whether the file is raw data |
-| **Terminal** | Run commands and view logs and long-running task status | Working directory, parameters, return codes, and write and network impact |
-| **Browser** | Open local previews or research material | URL, sign-in state, downloads, and external submissions |
-| **Computer Use** | Operate desktop apps that need a graphical interface | Target app, system permissions, and confirmation of critical actions |
-| **Changes** | Review the file differences in the current session | Changes that existed before the task vs. new changes |
-| **Artifacts and Checkpoints** | Pin figures, reports, and phase state | Inputs, versions, and restore points |
-| **Evidence DAG / Dossier** | Review claims and sources and produce research deliverables | Counterevidence, limitations, and unverified items |
+| **Files & Preview** | Browsing directories, previewing text, spreadsheets, images, or scientific objects, and referencing task inputs | Workspace path, file version, and the difference between a reference and actually reading the contents |
+| **Terminal** | Running commands and checking logs and long-running task status | Working directory, parameters, return codes, and write and network impact |
+| **Browser** | Viewing local previews or research material | URL, sign-in state, downloads, and external submissions |
+| **Computer Use** | Operating desktop apps on supported backends | Runtime capability, backend, system permissions, and authorization for each action |
+| **[Change Inspector](../features/change-inspector.md)** | Having the Agent review this session's file changes | Requires the plugin to be installed; check overall workspace state separately with `git status --short` |
+| **Artifacts, Checkpoints & research panels** | Viewing phase results, evidence, and deliverables | Actual installation state, input sources, versions, and unverified items |
 
-## Principles for using tools
+An entry being present does not mean the backend is ready, nor that the Agent is authorized to perform external operations. The available scope of each extension is governed by its actual status and error messages.
 
-- Confirm the workspace location shown at the top first.
-- Terminal commands must state what they will read and write.
-- Browser downloads, account sign-ins, and form submissions count as external effects.
-- Actions in Computer Use such as sending, authorizing, deleting, and paying should be confirmed by the user.
-- Explain tool results back in the session; do not leave only a raw output snippet that cannot be located.
+## Docking and session panels
 
-![SciForge Computer Use settings page](/img/docs/guides/ai-assistants-computer-use.jpg)
-*Figure 1: Computer Use is available only when the Runtime, Backend, and macOS permissions all allow it.*
+Dockable extension pages can be moved to the left, right, bottom, or main area with the position control; multiple pages on the same edge switch via tabs. Moving a page organizes your workspace; it does not change project files or execution permissions.
 
-For permissions, see [Permissions and security](../operations/security.md).
+A session's right panel has its own layout: you can resize it, switch the bound content, split it where the panel supports it, and move forward and back through panel history. Clicking the toolbar acts on the currently focused panel; not all panels allow splitting. Confirm the current session and focused object before reviewing results.
+
+## Check the actual impact of tools
+
+- Verify the workspace path, especially after switching between multiple sessions or projects.
+- For terminal commands, check the input, output paths, network targets, and return codes.
+- Browser downloads, account sign-ins, and form submissions can have external effects.
+- Actions in Computer Use such as sending, authorizing, deleting, and paying should be authorized individually.
+- A panel preview is not task acceptance; explain tool results in the session and flag failures or incomplete parts.
+
+![SciForge Computer Use history settings page](/img/docs/guides/ai-assistants-computer-use.jpg)
+*Legacy interface: shows that the Runtime, Backend, and macOS permissions must each be satisfied; see this page for the current entry point.*
+
+For file inputs, see [Workspaces and sessions](./workspaces-and-sessions.md); for permissions, see [Configuring a read-only sandbox](../getting-started/read-only-sandbox.md) and [Permissions and security](../operations/security.md).

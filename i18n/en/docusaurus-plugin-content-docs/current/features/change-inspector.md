@@ -1,60 +1,42 @@
 ---
 title: Change Inspector
-description: Summarize which files the current session actually changed and review the differences line by line.
+description: Inspect file diffs from a real, current agent session with a standalone read-only plugin.
 sidebar_position: 43
 ---
 
 # Change Inspector
 
-Change Inspector reads the file changes reported by an Agent session, summarizes the change count and status per file, and renders a unified diff. It answers the question “the Agent says it finished — but which files actually changed, and what changed in them?” It only displays session changes read-only; it does not replace project-level Git state and is not responsible for saving checkpoints.
+The only production implementation of Change Inspector is the standalone DSH plugin `@sciforge/plugin-change-inspector` **0.1.2**. It reads the current real agent session authorized by the host, projects `file_change` records into bounded diff snapshots and paginated summaries, and returns results to the session that made the call. The old top **Changes** panel, static domain, and fallback have been removed.
 
-## How to open it
+## How to use it
 
-- Entry: **Changes** in the top toolbar; the right panel is titled **Changes** as well.
-- Target: file changes reported by the Agent thread in the current session.
-- Prerequisite: the session is bound to a workspace, and the task has already produced write operations.
+Install a compatible package from a trusted source, enable it, and grant tool and `agent-threads.read` permissions for that exact version; see [Extension Center](./extensions.md) and [Version & Compatibility](../reference/version-and-compatibility.md). In the current session where file changes have already occurred, ask the agent to:
 
-![SciForge Changes panel](/img/docs/guides/workspace-changes.jpg)
-*The Changes panel summarizes one session's edits by file and supports line-by-line diff review.*
+> Use Change Inspector to open a snapshot of the current session, list file changes and truncation status, page through the key diffs, then cross-check them against workspace files and Git status.
 
-## What you can do
+The plugin declares two read-only tools:
 
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| See which files changed | Open **Changes** and read the file list and change counts | A session-level file inventory |
-| View one status only | Use the status filter: All statuses, Completed, Running, or Failed | A filtered change list |
-| Locate a file by name | Enter a keyword in **Filter changed files** | Matching files |
-| Review line-level differences | Select a file to view its diff, and copy the diff if needed | A unified diff view |
-| Tell task edits from pre-existing state | Compare the workspace files against the Git state | A manual review conclusion |
+| Tool | What it returns |
+| --- | --- |
+| `open_session` | Current session identity, result identifier, and a bounded complete snapshot |
+| `list_changes` | Change summary, next-page cursor, revision, and truncation reason; 100 entries per page by default, up to 500 |
 
-## Typical workflow
+The host may additionally derive a session resource opener; it is not a third tool declared by the plugin. When selection parameters are omitted, the host's current session is used; an explicit session/runtime must match the current caller. Other sessions in the same workspace, other runtimes, or arbitrary session discovery are outside the authorization scope. After the plugin is disabled or its permission is revoked, calls fail and do not fall back to the old implementation.
 
-1. After a write-type task finishes, open **Changes** from the top toolbar.
-2. First confirm that the number and scope of changed files match expectations.
-3. Filter by status or file name to locate the key files and any failures.
-4. Select a file and check additions, deletions, and modifications line by line; copy the diff when you need to discuss it.
-5. If you find a problem, go back to the original session, reference the specific file, and fix it, then inspect the project-level Git state separately.
+## How to tell whether a record is complete
 
-## Inputs, outputs, and permissions
+- Extract only the `file_change` unified diff from tool records; panel screenshots or agent summaries cannot replace that record. An empty result does not prove the workspace was never written.
+- A snapshot holds at most 5,000 changes and 256 KiB after serialization; when the limit is exceeded, the contiguous newest suffix is kept. A single complete patch is capped at 64 KiB, and a single patch summary in pagination is capped at 1 KiB.
+- Check `patchBytes`, `patchTruncated`, `truncated`, and `truncationReasons`. Trailing whitespace and LF/CRLF line endings are preserved in untruncated raw patches; truncated output cannot be used for complete file reconstruction.
+- A cursor is bound to the session and revision. After subsequent edits or if the cursor is rejected, re-read from the first page without a cursor; read-only pagination itself should not change the revision.
 
-- Reads: change observations, file paths, task status, and diff content for the current session.
-- Writes: none; the panel does not modify workspace files.
-- Approval or external effects: there is no approval step, and the panel makes no external requests.
-- What it does not do: replace Git commit history, restore or undo changes, or stop the host's session recording when the panel is closed.
+## Permissions and verification boundaries
 
-## Known limitations
+The plugin does not write files, roll back changes, save checkpoints, or make network requests; its only data source is the host-authenticated real agent thread aggregate. Tool inputs cannot inject recorded sessions or fixtures.
 
-- The current implementation covers only changes reported by the session; an empty panel may mean there are no changes or nothing was reported, which does not prove the task wrote no files.
-- At most the newest 5,000 changes are shown; earlier changes do not appear in the list.
-- A running task may keep producing changes, so refresh or reopen the panel to check again.
-- It offers a session view, not a project-level historical diff; use Git Checkpoints or a separate Git inspection for a baseline, since cross-session aggregation is outside this panel.
-- When loading fails, the panel shows an error; reload before judging the change results.
+Existing local app acceptance for 0.1.2 covers a real two-turn trailing-whitespace difference, stable pagination, and partial rejection and failure recovery; other permission timings and boundaries are covered by targeted automation. Source tests, real subprocess fixtures, local app acceptance, signed artifacts, and public marketplace release are different forms of evidence and cannot substitute for one another; this page does not claim that all platforms or all failure scenarios have passed.
 
-## Related pages
+![Historical SciForge changes panel](/img/docs/guides/workspace-changes.jpg)
+*Retained historical UI screenshot: it shows the old panel, not the current 0.1.2 plugin entry point or acceptance evidence.*
 
-- [Evidence & Reproducibility](./evidence-and-reproducibility.md): the group overview and the recommended record chain.
-- [Git Checkpoints](./git-checkpoints.md): pin the Git state of the whole workspace at turn boundaries.
-- [Workspaces and sessions](../workbench/workspaces-and-sessions.md): where the Changes panel fits in the session flow.
-- [Permissions and security](../operations/security.md): workspace write and approval boundaries.
-
-> Implementation basis: `@sciforge/domain-change-inspector` v1.0.3.
+Related: [Evidence & Reproducibility](./evidence-and-reproducibility.md), [Git Checkpoints](./git-checkpoints.md), [Permissions & security](../operations/security.md), [Plugin licenses](../reference/plugin-licenses.md).

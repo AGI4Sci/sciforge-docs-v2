@@ -15,14 +15,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '端到端案例',
-      link: {type: 'generated-index', slug: '/category/end-to-end-cases'},
+      label: '工作台指南',
       items: [
-        'cases/overview',
-        'cases/virtual-cell-evidence-atlas',
-        'cases/virtual-cell-benchmark',
-        'cases/pasilla-collaboration',
-        'cases/scientific-figures-complex',
+        'workbench/workspaces-and-sessions',
+        'workbench/agent-workflows',
+        'workbench/tools',
       ],
     },
     {
@@ -32,22 +29,19 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
-          label: '研究资料与科学对象',
-          link: {type: 'generated-index', slug: '/category/research-sources', description: '预览科学文件、接入外部数据源、组织生物学对象，并用受治理的计算步骤处理数据。'},
+          label: '科研分析',
+          link: {type: 'generated-index', slug: '/category/research-sources', description: '查看科学文件、组织生物学对象，并分析数据。'},
           items: [
             'features/life-science-preview',
-            'features/dataset-api',
             'features/biology-room',
-            'features/scientific-compute',
           ],
         },
         {
           type: 'category',
           label: '分析与审阅',
-          link: {type: 'generated-index', slug: '/category/analysis-and-review', description: '生成可复跑图表、对图像做人工审改，并把批注锚定到具体位置。'},
+          link: {type: 'generated-index', slug: '/category/analysis-and-review', description: '从数据绘图，并为文字和资源添加批注。'},
           items: [
             'features/scientific-plotting',
-            'features/visual-review',
             'features/anchored-comments',
           ],
         },
@@ -97,16 +91,19 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '工作台指南',
+      label: '案例教程',
+      link: {type: 'generated-index', slug: '/category/end-to-end-cases'},
       items: [
-        'workbench/workspaces-and-sessions',
-        'workbench/agent-workflows',
-        'workbench/tools',
+        'cases/overview',
+        'cases/virtual-cell-evidence-atlas',
+        'cases/virtual-cell-benchmark',
+        'cases/pasilla-collaboration',
+        'cases/scientific-figures-complex',
       ],
     },
     {
       type: 'category',
-      label: '配置与运维',
+      label: '设置与安全',
       items: [
         'operations/security',
         'operations/remote-and-collaboration',
@@ -114,8 +111,10 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '参考手册',
+      label: '参考与排错',
       items: [
+        'reference/version-and-compatibility',
+        'reference/plugin-licenses',
         'reference/feature-status',
         'reference/troubleshooting',
       ],

@@ -6,7 +6,7 @@ sidebar_position: 42
 
 # 研究检查点（Research Checkpoints）
 
-Research Checkpoints 把已接受并完成的聊天回合自动记录为不可变的研究检查点，保存这一轮的研究叙事、修改原因、来源、声明文件、计算运行与 Git 引用，以及尚未追踪的操作。它解决“下一次从哪里继续、当时依据是什么”的问题；保存的是研究上下文与恢复位置，而不是 [Git Checkpoints](./git-checkpoints.md) 记录的工作区快照；产物字节和版本身份由 [Artifact Versions](./artifact-versions.md) 保存。
+Research Checkpoints 把已接受并完成的聊天回合自动记录为不可变的研究检查点，保存这一轮的研究摘要、修改原因、来源、文件与 Git 引用，并标出尚未追踪的操作。它解决“下一次从哪里继续、当时依据是什么”的问题；保存的是研究上下文与恢复位置，而不是 [Git Checkpoints](./git-checkpoints.md) 记录的工作区快照；产物字节和版本身份由 [Artifact Versions](./artifact-versions.md) 保存。
 
 ## 打开方式
 
@@ -30,7 +30,7 @@ Research Checkpoints 把已接受并完成的聊天回合自动记录为不可�
 1. 打开带工作区的会话，确认科研记录处于自动开启状态。
 2. 完成一轮研究，等待结果卡片显示记录已保存。
 3. 核对输入、输出与复现、溯源、控制、证据等状态。
-4. 对显示为未追踪的操作保持警惕，不要把普通终端活动当作受控执行。
+4. 检查未追踪的操作，补充实际命令、环境与输出，便于以后复查。
 5. 需要继续时在科研档案中选择历史记录，恢复为新版本。
 
 ## 输入、输出与权限
@@ -46,7 +46,7 @@ Research Checkpoints 把已接受并完成的聊天回合自动记录为不可�
 - 普通 Terminal、`exec_command`、IDE、文件监视器、Git diff 与事后哈希只算观察，相关输出保持未追踪或不完整。
 - 旧会话导入只保留聊天内容，记录会永久标记为 legacy / incomplete，并带有阻断性溯源断点。
 - 新检查点默认仅工作区可见且禁止导出；叙事、URL 与凭据样式的查询参数会脱敏，但这不是通用的内容防泄漏系统。
-- 提供方投递结果不明确时保持 pending 并 fail closed，不会自动归到某一轮。
+- 记录归属暂时无法确认时会显示待处理，不会自动归到某一轮。
 
 ## 相关页面
 
@@ -56,4 +56,4 @@ Research Checkpoints 把已接受并完成的聊天回合自动记录为不可�
 - [产物版本](./artifact-versions.md)：保存检查点引用的产物字节与版本。
 - [工作区与会话](../workbench/workspaces-and-sessions.md)：会话如何限定记录范围。
 
-> 实现依据：`@sciforge/domain-research-checkpoints` v1.0.4。
+> 实现依据：`@sciforge/domain-research-checkpoints` v1.0.5。

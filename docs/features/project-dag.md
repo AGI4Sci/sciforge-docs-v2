@@ -6,7 +6,7 @@ sidebar_position: 45
 
 # Project DAG
 
-Project DAG 把同一项目内多个会话的已提交 Evidence 快照，按目标、范围与策略编译为项目级不可变快照。它回答“整个项目目前知道什么、哪些结论仍待审查”，不读取原始聊天，也不接受未提交的来源图；会话内的主张与证据关系仍以 [Evidence DAG](./evidence-dag.md) 为唯一事实层。
+Project DAG 汇总同一项目内多个会话的证据，帮助你了解项目目前有哪些结论、哪些问题仍待审查。先在各会话的 [Evidence DAG](./evidence-dag.md) 保存证据，再在这里设定目标、更新项目图并追溯来源。
 
 ## 打开方式
 
@@ -45,8 +45,8 @@ Project DAG 把同一项目内多个会话的已提交 Evidence 快照，按目�
 - 当前实现范围只消费已提交的 Evidence 快照；上游提交只标记项目需要刷新，不会自动逐条编译。
 - Project 视图关闭时不会预先编译；需要新视图时要显式更新，并等待持久化回执。
 - 新快照提交后，旧快照上的排队、运行、已完成或失败审计会标记为过期，旧 Finding 不会覆盖新图。
-- 任一环节受访问策略限制时，溯源路径会脱敏并 fail closed，只保留不可逆哈希、存在性、等级与断点。
-- 审计是 fail-open 的只读侧链，审计失败不会把已提交的 Project 任务改成失败，也不能直接改图。
+- 无权查看的来源会隐藏具体内容，只显示有限的状态和缺口提示。
+- 审计用于检查已有项目图；审计失败不会撤销已经保存的图，也不会直接修改结论。
 
 ## 相关页面
 
@@ -56,4 +56,4 @@ Project DAG 把同一项目内多个会话的已提交 Evidence 快照，按目�
 - [工作区与会话](../workbench/workspaces-and-sessions.md)：多个会话如何共享一个项目范围。
 - [权限与安全](../operations/security.md)：访问策略与发布授权的边界。
 
-> 实现依据：`@sciforge/domain-project-dag` v1.0.7。
+> 实现依据：`@sciforge/domain-project-dag` v1.0.9。

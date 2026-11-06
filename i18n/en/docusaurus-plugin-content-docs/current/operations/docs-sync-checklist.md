@@ -1,68 +1,40 @@
 ---
-title: Documentation sync checklist
-description: After a new public snapshot is released, verify the domain list, version numbers, retired features, and public boundaries, then update the documentation site and wiki.
+title: Documentation maintenance checklist
+description: Maintain one user manual against the latest client, and check versions, links, and the public boundary.
 ---
 
-# Documentation sync checklist
+# Documentation maintenance checklist
 
-> A maintenance checklist; it does not appear in the site sidebar. Intended for documentation site maintainers and export tool maintainers.
+User tutorials are maintained only in `sciforge-docs-v2`. The client repository keeps the site entry points, install and development notes, and internal supplements; it no longer duplicates the full tutorials.
 
-Run this checklist in order after each new public snapshot of `AGI4Sci/SciForge` is released. The goal is not to “finish editing the docs,” but to keep the documentation site, the wiki, and the current snapshot's source code, interface, and domain list consistent, and to avoid writing non-public capabilities back onto public pages.
+## 1. Pin this round's version
 
-## 0. Record the baseline
+Record the date and commit of the latest client mainline first, then verify the interfaces, settings, package versions, and operations the change touches. Update [Version and compatibility](../reference/version-and-compatibility.md) and the repository README. Record the public source commit separately; do not wait for it to update before writing the manual.
 
-```bash
-git -C <public-snapshot> rev-parse HEAD
-git -C <public-snapshot> log --oneline -3
-```
+Read the current implementation, not just the old README, test names, or planning documents. If a behavior exists only as a test expectation and is not wired into any actual call, list it as an item to verify; do not write it up as an operating step.
 
-- Record the commit in the “feature baseline” section of this repository's `README.md` and in each wiki page footer (`_Last verified: YYYY-MM-DD · public snapshot <sha>_`).
-- If the new snapshot only changed the README, links, or non-feature files, state “feature code unchanged” in the PR description and do not edit feature pages along the way.
+## 2. Update content and navigation
 
-## 1. Verify the domain list and version numbers
+- Write "where to open it, how to operate it, what you get" first, then the limits that affect the operation.
+- Use the actual names shown in the interface. Do not repeat the mainline commit, permission terms, and verification notes on every page; link to the version page instead.
+- When a feature moves, adjust the overview, sidebar, and related links. Keep a short migration note at the old URL and take it out of the current feature navigation.
+- English site: update the same-path pages under `i18n/en/docusaurus-plugin-content-docs/current/`. When you add or remove a page or rename a sidebar category, also update `i18n/en/docusaurus-plugin-content-docs/current.json`.
+- Do not claim "all plugins are available" from a directory count. Describe built-in modules, standalone plugins, Skills, and MCP separately.
+- Keep the original date and version on screenshots and cases. Do not relabel them as a new-version demo unless re-recorded; add one sentence to outdated screens.
 
-```bash
-for f in packages/domains/*/package.json; do
-  node -p "const p=require('./$f'); p.name + ' ' + p.version"
-done
-```
+## 3. Check the public boundary
 
-- Compare page by page with the “Implementation basis: `@sciforge/domain-... vX.Y.Z`” note at the end of each `docs/features/*.md` page; version numbers must match exactly.
-- New domain: add the feature page, `sidebars.ts`, and the grouping table and count in `docs/features/overview.md`.
-- Removed domain: delete the page, the sidebar entry, the overview table row, and all internal links.
-- Counting rule: `content-space-mock-provider` is development-only and does not count toward the number of bundled domain extensions. The current public snapshot has **22**.
-- The page count is based on the plugin pages under `docs/features/` and excludes the four landing pages `overview`, `extensions`, `automation`, and `evidence-and-reproducibility`.
+The public site may describe user operations of the latest client. Internal deployment, database migration, VPN/SSH management, server-side adaptation, real account configuration, and private acceptance material stay in internal documents. General usage such as client sign-in, device connection, and team projects can be public.
 
-## 2. Check retired features
+For new images, first check for visible accounts, paths, tokens, and rights to the material. Keep already-reviewed images; do not bulk-restore old media from the private repository. Keep plugin licenses, original-author attribution, and third-party notices as they are; documentation updates do not change licenses or repository visibility.
 
-```bash
-git grep -n "<功能名或包名>" -- src packages/domains packages/workers | grep -v '\.test\.'
-```
+## 4. Keep entry points consistent
 
-- If only `*.test.ts`, worker packages, or historical documents still reference it, the UI entry point has retired: remove the corresponding section, screenshot, and entry description from the documentation site, `src/data/tour.json`, `README`, and the wiki.
-- Keep one sentence in the “Maturity and boundaries” section of `docs/features/overview.md` — “retired from the current product line” — and do not keep operational steps.
-- Also check `src/data/search-index.json`: it is generated by the build script, so rebuild after changing the body text; do not edit it by hand.
+The user-manual links on the public and private client home pages both point to https://agi4sci.github.io/sciforge-docs-v2/ . Old manual pages inside the repository keep a link to the matching site page. Internal supplements do not go into the public export.
 
-## 3. Recheck public boundaries
+Later source exports must keep the licenses, replacement assets, security test fixtures, and these entry points that the public repository has already reviewed; do not overwrite the public repository with the private repository's directories.
 
-```bash
-git grep -nE "remote-ssh|Remote SSH|VPN|Zulip" -- docs README.md
-```
-
-- Allowed: a one-sentence boundary note such as “this capability is not included in the open-source version.”
-- Not allowed: operational steps or screenshots for connection wizards, SSH target registration, VPN gateways, server deployment, or Zulip server adaptation.
-- Check the exclusion rules in the export tool `sciforge-open-source-tooling/scripts/public-source-export.mjs`: the excluded wiki pages and dead-link cleanup rules must match the current page set.
-- Do not change any repository visibility, publish a Release, or touch `SciForge-cloud` or `SciForge-Zulip`.
-
-## 4. Update the documentation site and wiki
-
-- Documentation site: open a PR in `AGI4Sci/sciforge-docs-v2`, one topic per page; merging into `main` deploys automatically.
-- English site: update the matching page under `i18n/en/docusaurus-plugin-content-docs/current/` at the same time; when adding or removing a page, also update `sidebars.ts` and `i18n/en/docusaurus-plugin-content-docs/current.json`.
-- Wiki: make changes in `docs/wiki/` of `SciForge_client`, then let the export tool sync them to the public repository; do not edit `docs/wiki/` in the public repository directly, because the next export will overwrite it.
-- Unified feature-page template: positioning → how to open it → what it can do → typical flow → inputs, outputs, and permissions → known limitations → related pages.
-- Entry names must come from the snapshot's `src/renderer/src/locales/zh/*.json` and `packages/domains/*/src/renderer/*messages.ts`; do not reuse wording from old screenshots.
-
-## 5. Build verification
+## 5. Build and check
 
 ```bash
 npm ci
@@ -70,24 +42,12 @@ npm run typecheck
 npm run build
 ```
 
-- `onBrokenLinks` is set to `throw`: any broken internal link fails the build, so a passing build means in-site links are reachable.
-- The search index is generated automatically before the build; confirm that `src/data/search-index.json` changed before committing.
-- If you changed a video chapter or narration script, also run `node scripts/check-tour.cjs`; if the final video has not been re-recorded, do not change only `tour-plan.cjs` and claim the video is updated.
+The build generates the search index and checks internal links. Also check whether retired features still appear on the home page, sidebar, search suggestions, and video chapter descriptions. A successful build only shows the docs can be built; the content still needs a page-by-page review.
 
-## 6. Deployment and live spot checks
+If the video is not re-recorded, keep the original file and chapter order, and note the applicable version on the guide page. When chapter data is involved, also run `node scripts/check-tour.cjs`.
 
-```bash
-gh run watch
-curl -sI https://agi4sci.github.io/sciforge-docs-v2/ | head -1
-curl -s https://agi4sci.github.io/sciforge-docs-v2/docs/features/overview | grep -o "<title>[^<]*"
-curl -s https://agi4sci.github.io/sciforge-docs-v2/docs/reference/feature-status | grep -o "<title>[^<]*"
-```
+## 6. Publish and spot-check
 
-- Spot-check three pages: home, features overview, and feature status (or the pages changed in this PR).
-- Confirm the deployment workflow succeeded and the live titles match the latest content; checking the local `build/` alone does not count as release verification.
+Review through a PR, and wait for the GitHub Pages deployment to succeed after merging. Spot-check the home page, the version page, the feature overview, and this round's key pages online, and confirm the new content and page links work.
 
-## 7. Wrap up
-
-- In the PR description, state: the snapshot commit, changed pages, verification commands and exit codes, and unfinished items.
-- List affected recording narration or visuals in a “needs re-recording” list; do not synthesize video inside a documentation PR.
-- If you find non-documentation files (such as `INSTALL.md` or `DEVELOPMENT`) that do not match the snapshot, open a separate issue or follow-up PR; do not mix them into the documentation sync PR.
+The PR should state the basis for the update, the main pages, the check results, and any screenshots that need to be retaken later. If something goes wrong, roll back with a new revert PR; do not deploy an earlier site configuration.

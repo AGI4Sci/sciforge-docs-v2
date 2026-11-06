@@ -14,11 +14,11 @@ const groups = ['科研工作流', '工作台', '连接与扩展'] as const;
 const capabilities = [
   {group: '科研工作流', name: '证据与可复现性', detail: '版本、检查点、Evidence DAG 与科研档案。', to: '/docs/features/evidence-and-reproducibility'},
   {group: '科研工作流', name: '自动化与定时任务', detail: '为重复工作设置计划，使用 Loop 组织多步流程。', to: '/docs/features/automation'},
-  {group: '科研工作流', name: '文献、分析与图表', detail: '按插件查找生命科学预览、数据集 API、科学绘图与图片审改。', to: '/docs/features/overview'},
+  {group: '科研工作流', name: '科学文件与图表', detail: '查看结构、序列和组学文件，从数据绘图并保存运行记录。', to: '/docs/features/overview'},
   {group: '工作台', name: '工作区与会话', detail: '打开项目、引用文件，保留连续任务的上下文。', to: '/docs/workbench/workspaces-and-sessions'},
   {group: '工作台', name: '与 Agent 协作', detail: '从明确目标，到计划、执行与结果检查。', to: '/docs/workbench/agent-workflows'},
   {group: '工作台', name: '工作台工具', detail: '了解预览、终端、变更与 Computer Use 的使用场景。', to: '/docs/workbench/tools'},
-  {group: '连接与扩展', name: 'Runtime 与模型', detail: '配置模型接入，选择 Codex 或 Claude Code。', to: '/docs/getting-started/runtime-and-models'},
+  {group: '连接与扩展', name: 'Runtime 与模型', detail: '连接模型，选择 Codex、Claude Code 或 DSH。', to: '/docs/getting-started/runtime-and-models'},
   {group: '连接与扩展', name: '远程资源与协作', detail: '切换远程工作区会话，理解云端协作与数据边界。', to: '/docs/operations/remote-and-collaboration'},
   {group: '连接与扩展', name: 'Skills、MCP 与扩展', detail: '接入专项方法、外部工具与签名扩展包。', to: '/docs/features/extensions'},
 ];

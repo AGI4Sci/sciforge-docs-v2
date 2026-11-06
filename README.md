@@ -1,6 +1,6 @@
 # SciForge 文档站 v2
 
-SciForge 中文与英文使用文档，基于 Docusaurus 3 构建并通过 GitHub Pages 发布。英文站位于 `/en/`，维护说明见 [README.en.md](./README.en.md)。本版本把「功能与扩展」重构为**按内置插件逐页介绍**：22 个内置领域扩展各有一页，覆盖入口、能力、典型流程、权限边界与已知限制。
+SciForge 中文与英文使用手册，发布于 https://agi4sci.github.io/sciforge-docs-v2/ 。英文站位于 `/en/`，维护说明见 [README.en.md](./README.en.md)。这里统一维护快速开始、工作台、科研分析、团队协作、插件和案例教程；客户端仓库里的 Wiki 入口链接到本站。
 
 ## 内容结构
 
@@ -8,8 +8,8 @@ SciForge 中文与英文使用文档，基于 Docusaurus 3 构建并通过 GitHu
 docs/
 ├── getting-started/    # 快速开始
 ├── cases/              # 端到端案例
-├── features/           # 功能与扩展（22 个插件页 + 4 个落地页）
-│   ├── overview.md     # 插件总览与选择指南
+├── features/           # 科研分析、证据、协作与扩展
+│   ├── overview.md     # 按任务选择功能
 │   ├── life-science-preview.md
 │   ├── dataset-api.md
 │   ├── ...
@@ -47,7 +47,7 @@ npm run build
 
 首页围绕案例、快速开始与按目标分类的功能手册组织；文档页支持本地全文搜索、截图放大、键盘操作和暗色模式。
 
-- 中文正文保存在 `docs/`；英文译文保存在 `i18n/en/docusaurus-plugin-content-docs/current/`，页面路径与中文一一对应。`npm start` 和 `npm run build` 前会自动生成双语文全文搜索索引。
+- 中文正文保存在 `docs/`；英文译文保存在 `i18n/en/docusaurus-plugin-content-docs/current/`，页面路径与中文一一对应。`npm start` 和 `npm run build` 前会自动生成双语全文搜索索引。
 - 功能页的统一模板：定位 → 打开方式 → 能做什么 → 典型流程 → 输入输出与权限 → 已知限制 → 相关页面。
 - 视频导览位于 `/guide`，支持章节跳转、中文字幕和文件下载。
 - 重录流程见 [制作说明](scripts/RECORDING.md)。录制完成后运行 `npm run video:prepare`，将通过校验的视频、字幕与时间线准备到站点中，再重新构建。
@@ -72,8 +72,8 @@ npm run build
 ## 迁移与维护
 
 - 本仓库由原文档仓库复制迁入，保留原 Git 历史与 MIT 作者署名（见 `LICENSE`），并非 GitHub 所有权转移。
-- 功能基线：公开客户端源码 [AGI4Sci/SciForge](https://github.com/AGI4Sci/SciForge)（2026-10-31 快照，功能代码 `6b16487d`；README 后续更新至 `553c6a8`）。开源范围之外的能力（如 Remote SSH 连接管理面板）不在本站描述。旧仓库和旧站保持不变；旧站跳转需原仓库维护者另行配置。
-- 同步流程：新快照发布后按[文档同步检查清单](./docs/operations/docs-sync-checklist.md)核对域清单、版本号、已退出功能与公开边界，再更新文档站与仓内 wiki。
+- 本轮按 2026-11-06 最新客户端主线 `3f6b0c3` 更新。公开源码、插件与案例版本见[版本与兼容性](./docs/reference/version-and-compatibility.md)。内部部署和 Remote SSH 管理留在私有文档。
+- 用户教程只在本仓维护；源码仓库保留入口和内部补充。更新流程见[文档同步检查清单](./docs/operations/docs-sync-checklist.md)。
 - 后续修改通过 Pull Request 审阅，合并到 `main` 后自动发布。
 - 回退：对出问题的后续提交使用 `git revert <commit>` 并走 Pull Request，合并后重新部署；不要直接部署迁移前版本，以免恢复旧域名配置。必要时可暂时继续使用原站。
 

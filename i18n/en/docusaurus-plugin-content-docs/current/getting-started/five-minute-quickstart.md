@@ -1,115 +1,81 @@
 ---
 title: Five-minute quickstart
-description: Open a local project with SciForge and let the Agent complete its first read-only analysis.
+description: Open a local project, analyze it read-only with Codex, and verify the file state before and after the task.
 sidebar_position: 1
 ---
 
 # Five-minute quickstart
 
-This guide walks you through opening a local project and having **Codex** analyze its top-level structure. The task uses Codex's **read-only sandbox** and compares Git status before and after. Claude Code's Plan mode works differently; see [Configure the read-only sandbox](./read-only-sandbox.md).
+Start by having the Agent examine a local project in read-only mode: open a workspace, confirm Codex's permissions, send a task, then compare the file state. When you are done, you should see a project overview and no changes to project files.
 
-:::tip[What you'll end up with]
+This page reflects the current implementation as of 2026-11-06; older screenshots are kept as historical illustrations. For install-version differences, see [versions and compatibility](/docs/reference/version-and-compatibility).
 
-The workspace opens correctly, the Runtime responds, the Agent gives you a project overview, and file state is unchanged before and after the task.
+## 1. Prepare a project and a model
 
-:::
+Start SciForge, prepare a clean Git project or a copy of a project, and configure working model access and Codex. For the first run you can start from a local workspace without signing in to the collaboration cloud.
 
-## Before you begin
+In the first-run wizard or **Settings → General**, choose **Model API** or **Coding Plan**. Then go to **Settings → AI assistant** and check whether Codex is detected. Settings is at the bottom of the expanded left sidebar; account and cloud status are in the same area.
 
-Prepare the following:
+![Model access historical onboarding](/img/docs/quickstart/quickstart-model-access.jpg)
+*Old interface: illustrates the two paths, Model API and Coding Plan.*
 
-- SciForge is installed and running
-- A clean Git workspace; for non-Git projects, make a copy first
-- A working model access method is configured
-- The Codex Runtime is installed and configured
+## 2. Record the file state and set read-only permissions
 
-Cloud collaboration and other team features require additional setup. For your first run, start with a local workspace.
-
-## Step 0: Record a project baseline
-
-If the project uses Git, run this in the project directory first:
+Run this in the project directory and save the output:
 
 ```bash
 git status --short
 ```
 
-Save the output. Ideally it is empty; if changes already exist, confirm they are unrelated to your walkthrough. For non-Git projects, work on a copy.
+If there are already modifications, record them clearly first; for a non-Git project, use a copy. Go to **Settings → AI assistant → Codex** and set **File access range** to **Can only read files**, keeping an appropriate tool approval policy. Wait for the setting to apply, finish any existing tasks, then reconnect or restart and start a new session.
 
-## Step 1: Complete model and Runtime configuration
+![File permissions historical settings](/img/docs/guides/ai-assistants.jpg)
+*Old interface: “Can edit workspace” in the figure allows writes; change it to “Can only read files” before starting this tutorial.*
 
-On first launch, SciForge walks you through choosing a **Model API** or a **Coding Plan**. Model access determines where requests get model capability; the Runtime determines which Agent executes tasks.
+For detailed steps, see [configure a read-only sandbox](./read-only-sandbox.md). Write the no-modification instruction into the prompt as well; if you see a request to widen permissions, stop and check, because this task needs no write access.
 
-![Model access options on SciForge first launch](/img/docs/quickstart/quickstart-model-access.jpg)
-*Figure 1: Model access options in the first-launch guide; Coding Plan and Model API are two independent paths.*
+## 3. Open a local workspace and start a new session
 
-Once you reach the workbench, open **Settings** from the bottom-left corner and confirm on the **AI assistant** page that the Codex command is recognized.
+In the Workspace location menu, choose Local workspace, open the project directory, and check the path and the project name on the left. Start a new session, and confirm in the bottom input area that the execution runtime is **Codex**.
 
-## Step 2: Set the read-only sandbox
+The left side of the current workbench is for project, session, and collaboration navigation; the **vertical toolbar on the far right** opens tools such as files, and panels dock beside it. If there are many tools, open **More tools**.
 
-Go to **Settings → AI assistant** and, in the **Codex** configuration section at the top of the page, change **File access range** to **Can only read files**. If the interface shows “Can edit workspace”, do not start this tutorial. Wait until the setting shows as applied, finish the current task, restart SciForge, and start a new session.
+![New session historical interface](/img/docs/quickstart/quickstart-new-session.jpg)
+*Old interface: shows a local project and a new session; the location of the current tool entry points is as described in the body text.*
 
-![File access range setting for the SciForge AI assistant](/img/docs/guides/ai-assistants.jpg)
-*Figure 2: The file access range lives in the Codex configuration section. The value in the screenshot is “Can edit workspace”; before following this tutorial, change it to “Can only read files” in the same place.*
+## 4. Send your first task
 
-Writing “do not modify files” in the prompt does not create technical isolation. If a request to widen permissions or call a write tool appears during execution, stop and review the task first; this analysis does not need those operations.
+Enter:
 
-## Step 3: Open a local workspace
+> Look at the current workspace, list only the top-level files and directories, and describe in one sentence what this project might be. Do not modify files or install dependencies.
 
-In the workspace location menu, select **Local workspace**, then open the project directory you prepared. Confirm that the project area on the left shows the correct directory name.
+You do not need to add attachments for this task. To point at an existing file, use the file panel's reference action or type `@`. Choosing files from outside your machine, dragging them in, or pasting images may import files into the workspace first, which changes the file baseline for the read-only check; save that for a later task. For the difference between the attachment tray and the labels on sent files, see [workspaces and sessions](../workbench/workspaces-and-sessions.md).
 
-After you start a new session, the input area appears at the bottom of the workbench.
+![First task historical prompt](/img/docs/quickstart/quickstart-first-task.jpg)
+*Old interface: shows the task text and the execution runtime.*
 
-![New session and local workspace in SciForge](/img/docs/quickstart/quickstart-new-session.jpg)
-*Figure 3: The current local workspace on the left and the input area at the bottom where you send your first task.*
+After sending, watch the tool calls, working directory, and execution results in the session. If the Runtime is not connected, check **Settings → AI assistant** and the model configuration first, then send again.
 
-## Step 4: Choose the execution Runtime
+![Read-only task historical execution](/img/docs/quickstart/quickstart-task-running.jpg)
+*Old interface: shows the execution state within the same session.*
 
-In the execution settings area at the bottom-right of the input box, confirm that it currently shows `codex`. This setting chooses who executes; the upstream model is still determined by the model access configuration.
+## 5. Verify the results and files
 
-If the current Runtime is not connected, go back to **Settings → AI assistant** and check the command and sign-in status.
-
-## Step 5: Send a read-only task
-
-Enter the complete prompt below:
-
-> Look at the current workspace, list only the top-level files and directories, and explain in one sentence what this project might be. Do not modify files.
-
-![Complete read-only prompt ready to send in SciForge](/img/docs/quickstart/quickstart-first-task.jpg)
-*Figure 4: The prompt, the current workspace, and the execution Runtime are all visible at once.*
-
-After you send it, the Agent reads the project structure and performs a read-only inspection.
-
-![Read-only task running in SciForge](/img/docs/quickstart/quickstart-task-running.jpg)
-*Figure 5: The same session enters the running state, with the original task text and execution status still visible.*
-
-## Step 6: Check the result and file state
-
-When the task finishes, the result should list the project's top-level contents and give one bounded judgment about the project.
-
-![Completed read-only analysis result in SciForge](/img/docs/quickstart/quickstart-task-result.jpg)
-*Figure 6: The final answer in the same session; the result stays consistent with the prompt you sent.*
-
-Run it again:
+The answer should list the top-level contents and give a grounded judgment about what the project is. Run again:
 
 ```bash
 git status --short
 ```
 
-Compare the output with the pre-task state. A read-only task should not add, delete, or modify project files. Git status does not list ignored files such as caches; for a complete check, also compare the file list and content hashes in the copy.
+Compare with the pre-task state and confirm that no project files were added, deleted, or modified. Git does not show ignored caches; when you need a strict check, also compare your copy's file list and content hashes. If you find changes, stop and investigate rather than restoring existing modifications outright.
 
-## What done looks like
+![Read-only analysis historical result](/img/docs/quickstart/quickstart-task-result.jpg)
+*Old interface: the sample answer does not represent the results for your current project.*
 
-- The workspace opens correctly
-- The current Runtime responds
-- Codex's file access range is set to “Can only read files”
-- The Agent can read and summarize the project's top-level structure
-- The interface shows the sent prompt, the execution, and the final result
-- Git status is identical before and after the task
+Once you confirm that the workspace is correct, Codex responds normally, read-only permissions are applied, and the file state matches the pre-task state, you have completed your first task.
 
-## Going further
+Next, you can continue with:
 
-After your first task, you can send:
+> Continue the read-only analysis. Explain what the main directories are for, the likely entry files, and a recommended way to start or test the project. List anything that cannot be confirmed from the source separately. Do not modify files or install dependencies.
 
-> Continue the read-only analysis. Explain what the main directories are for, the likely entry files, and the recommended way to start or test the project; list separately anything you cannot confirm from the source. Do not modify files or install dependencies.
-
-Next, read [Runtime and model access](./runtime-and-models.md) or continue to the [ECCITE-seq virtual cell case](../cases/virtual-cell-evidence-atlas.md).
+Continue reading: [Runtime and model access](./runtime-and-models.md), [working with the Agent](../workbench/agent-workflows.md).

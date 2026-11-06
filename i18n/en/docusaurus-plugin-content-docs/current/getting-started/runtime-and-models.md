@@ -1,61 +1,67 @@
 ---
 title: Runtime and model access
-description: Tell Model API, Coding Plan, Codex, Claude Code, and DeepSeek Harness apart, and complete the minimal configuration.
+description: Configure model access, choose Codex, Claude Code, or DeepSeek Harness, and complete a connection check.
 sidebar_position: 2
 ---
 
 # Runtime and model access
 
-SciForge separates configuration into two layers: where models come from, and who executes tasks.
+Configure the model service first, then choose the AI assistant that executes tasks. The former determines where model requests go; the latter plans work and calls tools.
 
-| Layer | What it determines | Where to set it |
+This page reflects the current implementation as of 2026-11-06; for install-version and feature differences, see [versions and compatibility](/docs/reference/version-and-compatibility).
+
+| Setting | Entry point | What to confirm |
 | --- | --- | --- |
-| Model access | Whether requests go through a Model API or a supported Coding Plan | First-launch guide or **Settings → General** |
-| AI assistant Runtime | Whether Codex, Claude Code, or DeepSeek Harness (DSH) plans and invokes tools | **Settings → AI assistant**, and the bottom-right of the input box |
+| Model access | First-run wizard or **Settings → General** | The Model API base URL, key, and model, or official sign-in for Coding Plan |
+| AI assistant | **Settings → AI assistant** | Installation, connection, and permissions for Codex, Claude Code, or DeepSeek Harness (DSH) |
+| Current session | Execution settings in the bottom input area | The Runtime, model, and available tiers for this run |
+
+Settings is at the bottom of the expanded left sidebar. Local accounts and SciForge cloud sign-in are managed separately, see [Identity & Access](../features/identity-access.md).
 
 ## Choose model access
 
-When you choose **Model API**, you provide a Base URL, an API key, and a model name; if the upstream protocol is uncertain, leave automatic detection on.
+With **Model API**, enter the Base URL, API Key, and model name provided by your service provider; if you are unsure about the protocol, use automatic detection. An existing key only means the field is configured; whether the upstream accepts it must be confirmed with an actual request.
 
-![SciForge Model API configuration](/img/docs/quickstart/quickstart-model-api.jpg)
-*Figure 1: The minimum fields for a Model API. The address, key, and model name in the screenshot illustrate the fields only; do not copy them.*
+![Model API historical settings](/img/docs/quickstart/quickstart-model-api.jpg)
+*Old interface: use it only to recognize the fields; enter your own service configuration.*
 
-When you choose **Coding Plan**, complete authorization through the official sign-in or device code shown in the interface. The current implementation supports the Coding Plan path for Codex; Claude Code requires Model API access. A failed connection does not silently switch to the Model API.
+With **Coding Plan**, complete official sign-in or device-code authorization in the interface. The Coding Plan path currently supports Codex; Claude Code uses model access. If sign-in or connection fails, fix the current access path according to the prompt, then retry.
 
-## Configure Codex, Claude Code, or DSH
+## Choose and connect a Runtime
 
-Configure each Runtime separately in **Settings → AI assistant**:
+In **Settings → AI assistant**, choose the execution runtime and check the detection result; if automatic detection fails, use **Choose local app** or enter the absolute path to the executable, then detect again.
 
-- **Codex**: selected by default; suited to general code, file, and tool tasks.
-- **Claude Code**: must be selected explicitly and configured with a Model API, and follows Claude Code's execution model.
-- **DeepSeek Harness (DSH)**: must be selected explicitly. SciForge checks the path you configured explicitly first, then PATH, then common install locations, and only falls back to the bundled DSH component if all of them fail; DSH's model and reasoning level take effect on the ACP session after connecting and are not changed here. DSH's native shell tools are off by default; once enabled, every execution still requires your individual approval.
+- **Codex**: uses the installed Codex app-server; check the model and permissions before starting a task.
+- **Claude Code**: configure model access and check its permission mode.
+- **DSH**: connects through a local ACP program; the model and reasoning tier take effect in the session after connecting. Check the program you specified, the system path, and common install locations first, and only try the component bundled with the app when none of them work.
 
-Typically keep the default command `codex` or `claude`. If automatic detection fails, enter the absolute path to the executable.
+DSH's **Shell command execution** is off by default; enable it only for a DSH you installed yourself, and each run still requires approval. Do not switch to full permissions just to make an error go away.
 
-![SciForge AI assistant settings](/img/docs/guides/ai-assistants.jpg)
-*Figure 2: The AI assistant page centralizes the command, the tool approval policy, and the file access range.*
+![AI assistant historical settings](/img/docs/guides/ai-assistants.jpg)
+*Old interface: shows execution runtime configuration, tool confirmations, and file scope.*
 
-Both Runtimes default to a **Can edit workspace** file access range. For your first read-only analysis, adjust Codex's range first; Claude's “Can only read files” maps to Plan mode and should not be treated as the same sandbox guarantee. For the steps, see [Configure the read-only sandbox](./read-only-sandbox.md).
+Codex and Claude Code can edit the workspace by default. For your first analysis, adjust permissions according to [configure a read-only sandbox](./read-only-sandbox.md) first. After switching execution runtimes, re-check the connection, sign-in, and permissions; existing sessions' mappings and configuration do not migrate automatically.
 
-When you want the Agent to operate desktop apps, continue on the settings page to check **Computer Use**'s Runtime access, Backend, and macOS permissions.
+When you need to operate desktop applications, also check **Computer Use**'s Runtime support, backend, and system permissions.
 
-![SciForge Computer Use settings](/img/docs/guides/ai-assistants-computer-use.jpg)
-*Figure 3: Computer Use requires the Runtime, the Backend, and system permissions to all be in place.*
+![Computer Use historical settings](/img/docs/guides/ai-assistants-computer-use.jpg)
+*Old interface: illustrates the configuration items that must be checked separately.*
 
-## Choose the executor for the current session
+## Run a minimal connection check
 
-Back in the workbench, check the current Runtime in the execution settings area at the bottom-right of the input box. Switching Runtime does not carry over another Runtime's sign-in state, configuration, or session mapping.
+Start a new session, confirm that the expected Runtime is selected in the input area, and send:
 
-:::warning[No silent fallback]
+> Reply only with “connected”. Do not read or modify files, and do not call external services.
 
-When the selected Runtime is unavailable, SciForge should show an error rather than switching to another Runtime automatically. Fix the current configuration, or switch explicitly yourself.
+After you receive a response, continue to the [five-minute quickstart](./five-minute-quickstart.md). If the selected Runtime is unavailable, fix it according to the error or switch deliberately; the app will not automatically pick another Runtime for you.
 
-:::
+## Troubleshoot DSH timeouts
 
-## Minimal verification
+DSH distinguishes between a timeout on a single connection request and a task that makes no progress for a long time:
 
-Start a new session and send:
+| Case | Meaning and handling |
+| --- | --- |
+| Initialization, create, or resume session requests time out | The default single wait is 15 seconds. Check the local program, the connection, and any explicit error; extending the wait will not solve long-running tasks |
+| A task produces no session updates for a long time | By default, the turn stops after 10 minutes of continuous silence; long tasks that keep receiving updates for the current session can exceed 10 minutes. Review the existing results before deciding whether to continue the same session |
 
-> Reply only with “connection successful”. Do not read or modify files, and do not call external services.
-
-Once you receive a clear response, continue to the [Five-minute quickstart](./five-minute-quickstart.md).
+For technical troubleshooting: the former's configuration name is `requestTimeoutMs`; the latter, although named `promptTimeoutMs`, means the idle limit and has the error code `runtime_prompt_idle_timeout`. After a timeout, the original session identifier can be recovered, but you should still check existing files and external actions before continuing the task.

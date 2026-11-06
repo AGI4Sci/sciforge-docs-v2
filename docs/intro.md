@@ -1,44 +1,46 @@
 ---
-title: SciForge 使用文档
-description: 从第一次安全任务开始，逐步掌握 SciForge 的科研工作台、证据链、自动化与扩展能力。
+title: SciForge 使用手册
+description: 从打开项目、交给 AI 一项任务，到检查结果、保存记录和团队协作。
 sidebar_position: 1
 slug: /intro
 ---
 
-# SciForge 使用文档
+# SciForge 使用手册
 
-SciForge 是面向科研任务的智能工作台。它让 **Codex**、**Claude Code** 或 **DeepSeek Harness (DSH)** 在明确的工作区、工具与权限边界内执行任务，并把文件、命令、图表、证据和人工审查保留在同一条可继续的工作流中。
+你可以在 SciForge 中打开项目，让 AI 阅读资料、修改文件、运行分析和制作图表，再检查结果、提出修改意见。任务中的文件、对话和运行记录可以继续查看，也能用于后续协作。
 
-:::info[内容基线]
+第一次使用，先读[五分钟快速开始](./getting-started/five-minute-quickstart.md)。已有具体问题时，按下面的大纲查找即可，不需要从头读完整本手册。
 
-本站以 [AGI4Sci/SciForge](https://github.com/AGI4Sci/SciForge) 公开源码、生成的能力目录和真实界面为依据。历史 Wiki、设计稿或一次 Agent 回答不会单独被当作已发布功能。
+## 手册分为六部分
 
-:::
+| 部分 | 什么时候读 | 主要内容 |
+| --- | --- | --- |
+| **快速开始** | 第一次打开 SciForge | 连接模型、选择执行者，打开项目，完成一个简单任务；设置只读或允许修改文件。 |
+| **工作台指南** | 想知道某个按钮在哪里、文件怎么交给 AI | 工作区与会话、添加附件、文件预览、面板布局、终端和浏览器，以及如何说明任务和检查结果。 |
+| **功能与扩展** | 要完成某一类科研工作 | 科学文件预览、绘图与批注、版本与研究记录、团队协作、笔记、定时任务和插件。 |
+| **案例教程** | 想看完整任务怎么做 | 从输入数据到运行分析、修改结果和交付；包括科研绘图、多人 RNA-seq 协作与虚拟细胞案例。 |
+| **设置与安全** | 要调整文件访问、工具权限或连接服务 | 文件和网络访问、操作确认，以及远程资源和团队协作的使用条件。 |
+| **参考与排错** | 遇到错误、版本不符，或要查安装要求 | 故障排查、版本与兼容性、功能限制和插件许可证。 |
 
-## 推荐阅读顺序
+## 按你的目标找页面
 
-| 顺序 | 文档集 | 你将完成什么 |
-| ---: | --- | --- |
-| 1 | [五分钟快速开始](./getting-started/five-minute-quickstart.md) | 在只读沙箱中完成第一次本地任务 |
-| 2 | [端到端案例](./cases/overview.md) | 理解 SciForge 如何连接科研问题、执行、证据与交付 |
-| 3 | [功能与扩展](./features/overview.md) | 按插件浏览 22 个内置领域扩展，并了解 Skill、MCP 与扩展市场 |
-| 4 | [权限与安全](./operations/security.md) | 选择合适的沙箱、审批和文件访问范围 |
-| 5 | [功能状态](./reference/feature-status.md) | 核对已验证、部分可用和实验性能力 |
+- **先让 AI 读一份项目**：[五分钟快速开始](./getting-started/five-minute-quickstart.md)。
+- **把文件交给 AI、继续上次的对话**：[工作区与会话](./workbench/workspaces-and-sessions.md)。
+- **打开序列、分子结构或组学文件**：[生命科学预览](./features/life-science-preview.md)。
+- **从数据画图，再逐步修改**：[Scientific Figures](./features/scientific-plotting.md)。
+- **查看改了哪些文件、保存阶段结果**：[证据与复现](./features/evidence-and-reproducibility.md)。
+- **邀请成员、分配任务和审阅交付**：[团队协作](./features/collaboration.md)。
+- **安装插件或连接外部工具**：[扩展与市场](./features/extensions.md)。
+- **界面和教程不一样**：[版本与兼容性](./reference/version-and-compatibility.md)。
 
-## 先理解四个对象
+## 先认识几个名称
 
-| 对象 | 作用 |
-| --- | --- |
-| **工作区** | 指向本地或远程项目目录，决定文件、Git 和终端上下文 |
-| **会话** | 保存围绕一个目标的消息、执行过程和结果 |
-| **Runtime** | 由 Codex、Claude Code 或 DSH 负责规划、调用工具和处理文件 |
-| **科研记录** | 用产物版本、Checkpoint、Evidence DAG 和 Research Dossier 固定结果与依据 |
+**工作区**就是你打开的项目目录。AI 处理哪些文件、终端从哪里运行，都与它有关。
 
-## 文档如何标注能力
+**会话**是一段围绕具体任务的对话。一个项目可以有多个会话；不同目标分开讨论，之后更容易继续。
 
-- **已验证**：在当前源码和真实界面中完成过对应路径。
-- **部分可用**：主要入口存在，但仍有平台、数据或操作限制。
-- **实验性**：适合作为集成或研究路线，不应写成开箱即用功能。
-- **未发布**：只存在于设计、研究稿或待实现计划中。
+**Runtime（执行者）**是实际处理任务的程序。你可以选择 Codex、Claude Code 或 DSH，再按相应说明连接模型和工具，见[Runtime 与模型](./getting-started/runtime-and-models.md)。
 
-第一次使用时，请直接进入 [五分钟快速开始](./getting-started/five-minute-quickstart.md)。
+**研究记录**用于保存任务的阶段结果及其依据。等完成第一次任务后，再按需要了解检查点、证据图和科研档案。
+
+本手册按 2026-11-06 的客户端更新。部分案例使用早期界面，保留原有版本说明；具体差异见[版本与兼容性](./reference/version-and-compatibility.md)。
