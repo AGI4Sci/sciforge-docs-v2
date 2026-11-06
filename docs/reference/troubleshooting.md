@@ -15,8 +15,8 @@ sidebar_position: 2
 | 应用界面 | SciForge 是否正常启动，当前工作区是否正确 |
 | Runtime | 当前选中 Codex、Claude Code 还是 DSH，命令能否找到，登录是否有效 |
 | 模型接入 | 模型 API 或 Coding Plan 是否配置完整 |
-| 权限与工具 | 文件访问范围、审批、Computer Use Backend 与系统权限 |
-| 外部服务 | Cloud、MCP、Worker 或 Provider 是否可达；远程工作区会话是否仍处于已附着状态 |
+| 权限与工具 | 文件访问范围、操作确认、Computer Use 运行状态与系统权限 |
+| 外部服务 | 云端、模型和外部工具是否连接正常；远程工作区是否仍连接 |
 
 ## Runtime 显示未连接
 

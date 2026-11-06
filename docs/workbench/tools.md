@@ -8,18 +8,16 @@ sidebar_position: 3
 
 当前工具入口位于工作台**最右侧纵向工具栏**，面板在它左侧展开。根据已安装扩展、当前会话和可用能力显示入口；空间不足时打开 **更多工具**，也可使用 **自定义工具栏**调整受支持入口的显示和顺序。
 
-本页按 2026-11-06 当前实现整理。旧文案或图片中的“顶部栏”现位于右侧，安装版本差异见[版本与兼容性](/docs/reference/version-and-compatibility)。
-
 | 工具 | 适合做什么 | 主要检查点 |
 | --- | --- | --- |
 | **文件与预览** | 浏览目录，预览文本、表格、图片或科学对象，引用任务输入 | 工作区路径、文件版本、引用与实际内容读取的区别 |
 | **终端** | 运行命令，查看日志和长任务状态 | 工作目录、参数、返回码、写入和网络影响 |
 | **浏览器** | 查看本地预览或研究资料 | URL、登录状态、下载与外部提交 |
-| **Computer Use** | 在已支持的后端操作桌面应用 | Runtime 能力、后端、系统权限和具体动作授权 |
+| **Computer Use** | 使用 Codex 或 Claude Code 操作浏览器与 Electron 内嵌页面 | 运行状态、系统权限和具体动作授权 |
 | **[Change Inspector](../features/change-inspector.md)** | 让 Agent 核对本次会话的文件改动 | 需要安装插件；工作区整体状态另用 `git status --short` 检查 |
 | **产物、Checkpoint 与科研面板** | 查看阶段结果、证据和交付内容 | 实际安装状态、输入来源、版本和未验证项 |
 
-入口存在不代表后端已就绪，也不代表已授权 Agent 执行外部操作。各扩展的可用范围以实际状态和错误提示为准。
+工具无法打开时，按提示检查连接、插件和权限设置。
 
 ## 停靠与会话面板
 
@@ -35,7 +33,7 @@ sidebar_position: 3
 - Computer Use 的发送、授权、删除与付款等动作应单独核对授权。
 - 面板预览不是任务验收；工具结果应在会话中解释，并标明失败或未完成部分。
 
-![SciForge Computer Use 历史设置页](/img/docs/guides/ai-assistants-computer-use.jpg)
-*旧版界面：说明 Runtime、Backend 与 macOS 权限需分别满足；当前入口见本页说明。*
+![SciForge Computer Use 设置页](/img/docs/guides/ai-assistants-computer-use.jpg)
+*启用电脑操作后，检查运行状态与 macOS 系统权限。*
 
 文件输入见[工作区与会话](./workspaces-and-sessions.md)，权限说明见[配置只读沙箱](../getting-started/read-only-sandbox.md)与[权限与安全](../operations/security.md)。

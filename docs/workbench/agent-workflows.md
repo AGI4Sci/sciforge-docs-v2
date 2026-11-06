@@ -8,8 +8,6 @@ sidebar_position: 2
 
 写清目标、允许范围、交付物和停止条件，让 Agent 的每一步都能检查。
 
-本文按 2026-11-06 当前实现整理；安装版本差异见[版本与兼容性](/docs/reference/version-and-compatibility)。
-
 ## 一个可执行任务的四部分
 
 | 部分 | 要回答的问题 | 示例 |
@@ -39,7 +37,7 @@ sidebar_position: 2
 3. **执行与验证**：切换到合适权限，完成写入并审查差异。
 
 ![SciForge 中的只读任务执行](/img/docs/quickstart/quickstart-task-running.jpg)
-*旧版界面：展示任务原文与执行状态。*
+*展示任务原文与执行状态。*
 
 ## 核对输入文件
 
