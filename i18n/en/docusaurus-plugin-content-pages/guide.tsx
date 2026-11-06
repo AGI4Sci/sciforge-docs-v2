@@ -95,6 +95,7 @@ export default function Guide() {
         <div><span className={styles.eyebrow}>SCIFORGE FIELD GUIDE / WATCH & PRACTICE</span><h1>From a research question<br />to an inspectable result.</h1></div>
         <div className={styles.introduction}><p>Follow two virtual-cell cases to learn the workbench, evidence, and extensions.<br />{' '}Watch the flow first, then return to the handbook to practice.</p><div className={styles.facts}><span><b>{time(tour.duration)}</b> minute tour</span><span><b>{String(chapters.length).padStart(2, '0')}</b> chapters</span><span><b>Chinese</b> narration and captions</span></div></div>
       </header>
+      <p>This video was recorded with an earlier interface. For the current tool locations and feature changes, see the <Link to="/docs/reference/version-and-compatibility">version notes</Link>; the old Dataset API and Scientific Compute entry points shown in the video have been retired.</p>
       <div className={styles.watchToolbar}><span><i aria-hidden="true" />Documentation and real-interface walkthrough</span><button type="button" onClick={() => setCinema(!cinema)} aria-pressed={cinema} aria-controls="guide-player-layout"><span aria-hidden="true">▣</span>{cinema ? 'Exit wide view' : 'Wide view'}</button></div>
       <div id="guide-player-layout" className={styles.playerGrid}>
         <div>

@@ -14,11 +14,11 @@ const groups = ['Research workflow', 'Workbench', 'Connections & extensions'] as
 const capabilities = [
   {group: 'Research workflow', name: 'Evidence & Reproducibility', detail: 'Versions, checkpoints, the Evidence DAG, and research dossiers.', to: '/docs/features/evidence-and-reproducibility'},
   {group: 'Research workflow', name: 'Automation & scheduled tasks', detail: 'Schedule recurring work and use Loops to organize multi-step flows.', to: '/docs/features/automation'},
-  {group: 'Research workflow', name: 'Literature, analysis & figures', detail: 'Find Life Science Preview, Dataset API, Scientific Figures, and Visual Review by plugin.', to: '/docs/features/overview'},
+  {group: 'Research workflow', name: 'Scientific files & figures', detail: 'View structure, sequence, and omics files, plot from data, and keep run records.', to: '/docs/features/overview'},
   {group: 'Workbench', name: 'Workspaces & sessions', detail: 'Open projects, reference files, and keep context across continuous tasks.', to: '/docs/workbench/workspaces-and-sessions'},
   {group: 'Workbench', name: 'Working with Agents', detail: 'From a clear objective to a plan, execution, and result review.', to: '/docs/workbench/agent-workflows'},
   {group: 'Workbench', name: 'Workbench tools', detail: 'Understand preview, terminal, changes, and Computer Use in context.', to: '/docs/workbench/tools'},
-  {group: 'Connections & extensions', name: 'Runtime & models', detail: 'Configure model access and choose Codex or Claude Code.', to: '/docs/getting-started/runtime-and-models'},
+  {group: 'Connections & extensions', name: 'Runtime & models', detail: 'Connect a model and choose Codex, Claude Code, or DSH.', to: '/docs/getting-started/runtime-and-models'},
   {group: 'Connections & extensions', name: 'Remote resources & collaboration', detail: 'Switch remote workspace sessions and understand cloud collaboration and data boundaries.', to: '/docs/operations/remote-and-collaboration'},
   {group: 'Connections & extensions', name: 'Skills, MCP & extensions', detail: 'Add specialized methods, external tools, and signed extension packages.', to: '/docs/features/extensions'},
 ];
