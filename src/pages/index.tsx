@@ -71,9 +71,10 @@ function CaseStudy({item}: {item: (typeof cases)[number]}): ReactNode {
   const image = useBaseUrl(item.image);
   return (
     <article className={styles.case}>
-      <Link className={styles.caseImage} to={item.to} aria-label={`阅读${item.title}案例`}>
-        <img src={image} alt={item.alt} loading="lazy" width={item.width} height={item.height} />
-      </Link>
+      <figure className={styles.caseImage}>
+        <img data-sf-preview src={image} alt={item.alt} title="点击或按 Enter 放大图片" loading="lazy" width={item.width} height={item.height} />
+        <figcaption>点击放大 ↗</figcaption>
+      </figure>
       <div className={styles.caseCopy}>
         <p className={styles.caseLabel}>{item.label}</p>
         <Heading as="h3"><Link to={item.to}>{item.title} <Arrow /></Link></Heading>
