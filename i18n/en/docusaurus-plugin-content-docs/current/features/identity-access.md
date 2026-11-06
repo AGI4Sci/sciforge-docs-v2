@@ -1,57 +1,55 @@
 ---
 title: Identity & Access
-description: Manage local attribution and cloud identity separately, with clear boundaries for sign-in, device authorization, and revocation.
+description: Manage the local account, cloud sign-in, device connection, and usage summary from the bottom of the sidebar.
 sidebar_position: 60
 ---
 
 # Identity & Access
 
-Identity & Access answers “who is acting now, and is this device authorized?” It does not participate in specific research analysis, but it determines whether external capabilities such as Collaboration and Content Space can act on behalf of the current user.
+Expand the workbench's left sidebar and look at the bottom for the **local account, cloud status, and usage summary**. Click the account row to open the account panel; click the cloud row to open the same panel positioned at **SciForge Cloud**. Settings sits below it.
 
-## How to open it
+This page reflects the implementation as of 2026-11-06. For differences between the installed version and the public source, see [Version & Compatibility](../reference/version-and-compatibility.md).
 
-- Entry: the **Account** area at the top of the workbench. It opens the Identity panel, which is divided into “Local account” and “SciForge Cloud.”
-- Target: the current installation, current local account, current Desktop device, and cloud sign-in session.
-- Prerequisite: local features do not require sign-in. Cloud sign-in requires the SciForge Cloud address provided by your administrator, an account, and a working system browser.
+## A local account is an attribution marker
 
-## What you can do
+Local features do not require sign-in. You can create a local account, confirm its display name, choose an account or rename it, and sign out of the account. A local account provides no security authentication and **does not isolate workspaces, chats, settings, API keys, or tool data**. On a shared computer, switching the display name is no substitute for operating-system account isolation.
 
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| Mark the local user | Create or select a local account, and rename it if needed | A local attribution marker that is restored automatically after a restart |
-| Sign in to the cloud | In “SciForge Cloud,” click **Browser sign-in** and complete OIDC sign-in in the system browser | The current cloud user and sign-in session |
-| Authorize this device | After signing in, click **Connect this device** to complete Desktop device registration | An active device that can access cloud capabilities |
-| End or transfer authorization | Use **Sign out** or **Disconnect this device** | Local features remain, while cloud and cross-user permissions are revoked immediately |
+The delete button on an account row first shows a confirmation area. Once confirmed, it deletes that local account and its attribution data on this machine, and this cannot be undone. When you delete the current account, the system selects the earliest-created remaining account; after the last account is deleted, no account is selected.
 
-## Typical workflow
+**Delete account** here is local identity management. It is not cloud account cancellation, project deletion, or workspace file cleanup. Signing out of a local account, signing out of the cloud, and disconnecting a device each do something different, so check the button name and its target before acting.
 
-1. Open Account at the top and create or select a local account. It is used only for local attribution and does not need to match your cloud name.
-2. Click Browser sign-in and complete account authentication in the system browser. Do not paste your password or token back into SciForge.
-3. After returning, click Connect this device and confirm that the panel shows both signed-in status and “This device is connected.”
-4. When you leave, change machines, or lose a device, sign out first. Disconnect the device only when you are sure it will no longer be used.
+## Sign in to the cloud and connect a device
 
-## Inputs, outputs, and permissions
+1. Create or choose a local account first. Until one is selected, "Browser sign-in" is unavailable.
+2. Under **SciForge Cloud**, click **Browser sign-in** and complete authentication in the system browser. You do not need to paste a password or token into a session.
+3. After returning, check the cloud identity. If no device is connected yet, click **Connect this device**.
+4. Collaboration features that depend on cloud identity can continue only when the identity is valid and the device is active.
 
-- Reads: the local account list, current cloud user, device connection status, and session validity.
-- Writes: local account selection and display name, OIDC sign-in sessions, and device registration and revocation. Project content is never written.
-- Approval or external effects: browser sign-in and device registration change cloud account state. Signing out and disconnecting a device immediately affect features that depend on cloud identity, so they require user confirmation.
-- Credentials: OIDC refresh material, the device signing private key, and Agent authorization are stored only in platform private storage (macOS Keychain, Windows DPAPI, Linux libsecret/KWallet). If secure storage is unavailable, the operation fails closed.
-- What it does not do: treat a local account as security authentication, isolate local data, fill in passwords on your behalf, or expose tokens to the interface or other domain packages.
+The local account, the model provider sign-in, and the SciForge cloud sign-in are separate configurations. Cloud features depend on the current app configuration and service availability; they do not require you to set up any old collection of domain packages first.
 
-## Known limitations
+| Panel state or action | Meaning and what to do |
+| --- | --- |
+| Not signed in to the cloud | Local features still work; cloud projects need sign-in |
+| This device is not connected | Being signed in is not a device connection; connect the device from the interface |
+| Connecting this device | Wait for the device registration result and avoid repeating the action |
+| This device is connected | The device is active; a valid cloud identity and project permission are still required |
+| This device is disconnected / connection error | Cloud permissions cannot be used as if connected normally; check the error and recover as prompted |
+| Sign in again | Completes cloud authentication again; it does not automatically accept project invitations or tasks |
+| Sign out | Clears the current cloud sign-in session; do not treat it as having revoked the device registration |
+| Disconnect this device | Revokes this device's cloud access; local features are kept |
 
-- A local account is only an attribution marker. Workspaces, settings, and API keys on the same installation are not isolated when you switch local accounts.
-- Completing sign-in does not mean the device is registered. Cross-user permissions require both a cloud-authenticated identity (`cloud-authenticated` Principal) and an ACTIVE device. Device registration is more like a lease that must stay valid rather than a one-time permanent authorization.
-- If the device is revoked, a refresh is unconfirmed, or the OIDC user changes, the cloud-authenticated identity immediately falls back to local selection, and capabilities that depend on it, such as Collaboration, stop.
-- Signing out usually keeps the device registration. To revoke this device's ability to access the cloud, choose **Disconnect this device**.
-- If platform secure storage is missing or insecure, SciForge refuses to save credentials. There are no environment variables, plaintext files, or other fallback paths.
-- The email address, display name, or membership of an external account is not treated as SciForge identity. Binding an external account must be explicit and revocable.
+When a device is revoked, the identity changes, or device validity cannot be confirmed, cloud authentication rights are withdrawn. Do not use a cached display name to decide you are still authorized. If sign-in or connection fails, retry as the panel suggests and keep the original task and drafts.
 
-## Related pages
+## Reading the usage summary
 
-- [Collaboration](./collaboration.md): cloud sign-in and an active device are prerequisites for multi-user collaboration.
-- [Content Space](./content-space.md): Provider connections bind to the current identity, and switching accounts invalidates old bindings.
-- [Permissions and security](../operations/security.md): general rules for approvals, credentials, and data boundaries.
-- [Remote resources and collaboration](../operations/remote-and-collaboration.md): the differences between remote workspaces, Cloud sign-in, and device registration.
+The bottom of the sidebar shows token and cost summaries for **today** and the **last 7 days**, read from the daily usage the Runtime has recorded. It is not a cloud account balance or a provider bill, and switching local accounts does not prove the usage data is isolated.
 
-> Implementation basis: `@sciforge/domain-identity-access` v5.0.2.
+Loading, no data, and load failure each show their own message. No data does not mean no model requests were made. Cost depends on the metering and pricing information available; settlement is still governed by the provider's own records.
+
+## Credentials and recovery boundaries
+
+Cloud sign-in material and device keys are managed by the platform's secure storage. When secure storage is unavailable, do not fall back to plaintext files or put credentials into chats, requirements, or delivery files.
+
+When the local identity database is unavailable, other local features still work. The recovery entry asks you to type a confirmation text, first creates and verifies a backup, and then resets the local identity data. It is not a reset tool for the whole app's data.
+
+Related pages: [Collaboration](./collaboration.md), [Runtime & models](../getting-started/runtime-and-models.md), [Permissions & security](../operations/security.md).

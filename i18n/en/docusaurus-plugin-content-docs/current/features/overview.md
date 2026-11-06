@@ -1,94 +1,43 @@
 ---
 title: Features & Extensions overview
-description: Browse SciForge bundled domain extensions plugin by plugin — from sources and analysis to evidence and collaboration, one page each.
+description: Choose workbench, research analysis, evidence, collaboration, and extension capabilities by the task you want to do.
 sidebar_position: 1
 ---
 
 # Features & Extensions overview
 
-SciForge ships **22 bundled domain extensions** with the installer. Each one owns its capabilities, UI entry points, and permission boundaries as an independent plugin, and all of them are listed together in the Extension Center. This chapter devotes one page to each plugin, describing its entry points, what it can do, what it produces, and its current limitations.
+Pick the task you want to do from the table below. Built-in features open directly; standalone plugins must be installed; Skills provide working methods; MCP connects external tools. For version information, see [Version & Compatibility](../reference/version-and-compatibility.md).
 
-:::info[What "plugin" means on this page]
-It refers to bundled domain extensions compiled with the app that need no separate download (trusted compile-time). Locally installed packages, Agent Skills, and MCP Servers in the Extension Center are three other kinds of object; see [Skills, MCP, and Extensions](./extensions.md).
-:::
+## Start from your task
 
-![SciForge Extension Center](/img/docs/guides/extensions-center.png)
-*The Extension Center shows bundled domain extensions, locally installed packages, and Skills separately, and labels each with its source, version, and status.*
-
-## Find plugins by research stage
-
-### Research sources and scientific objects
-
-| Plugin | What it solves | Main entry point |
+| What you want to do | Where to read | Current form and conditions |
 | --- | --- | --- |
-| [Life Science Preview](./life-science-preview.md) | View sequence, structure, omics, spectral, and imaging files directly in the workspace, without converting them to text first | File preview |
-| [Dataset API](./dataset-api.md) | Register public biological databases and object storage, pull and organize data on a plan, and retain provenance | Session result card, Create Loop resource panel |
-| [Biology Room](./biology-room.md) | Organize biological experiments, samples, and run records into workspace objects you can keep working with | Workspace file preview, capability invocation |
-| [Scientific Compute](./scientific-compute.md) | Run governed compute steps through a deterministic local Provider | Capability invocation |
+| Open a project, continue a session, view or edit files | [Workbench](../workbench/workspaces-and-sessions.md) | Local workspace, sessions, and file preview for supported formats. Files cannot be edited directly when they are truncated, read-only, or have no write-back channel. |
+| Connect models and executors | [Runtime & models](../getting-started/runtime-and-models.md) | Codex, Claude Code, and DSH are configured separately. Model access and tool permissions are not the same thing. |
+| View sequences, structures, omics, imaging, and spectra | [Life Science Preview](./life-science-preview.md) | A preview submodule of the built-in Biology Workbench. |
+| Organize biological objects and experiment records | [Biology Room](./biology-room.md) | Another role of the same Biology Workbench package, not an extra marketplace plugin. |
+| Plot from data and code, revise, and accept candidates | [Scientific Figures](./scientific-plotting.md) | Standalone plugin. Needs a compatible host, Python, and the required dependencies. |
+| Add anchored comments to text or resources | [Anchored Comments](./anchored-comments.md) | Standalone plugin. Real capture and external feedback each have their own permission requirements. |
+| Check what the agent actually changed | [Change Inspector](./change-inspector.md) | Plugin you must install. Lets the agent list this session's file differences, and tells you when output is too long. |
+| Save artifacts and research evidence | [Evidence & reproducibility](./evidence-and-reproducibility.md) | Saves file versions, research stages, and the source of conclusions. Figure records must be linked separately. |
+| Run repeated tasks | [Automation](./automation.md), [Create Loop](./create-loop.md) | Needs the app running and the matching executor. Multi-step flows and single scheduled instructions are configured separately. |
+| Sign in, connect a device, join a project, and deliver tasks | [Account](./identity-access.md), [Collaboration](./collaboration.md) | Local accounts and cloud identity are separate. Team actions also need an available service and role authorization. |
+| Use Content Space and notes | [Content Space](./content-space.md), [SiYuan Notes](./siyuan.md) | You configure the matching service. Server deployment tutorials are not included. |
+| Add plugins, working methods, or external tools | [Extensions & marketplace](./extensions.md) | Compatible signed packages, Skills, and MCP are each configured separately. An empty marketplace does not mean built-in features were uninstalled. |
 
-### Analysis and review
+## Evidence and tool reference
 
-| Plugin | What it solves | Main entry point |
-| --- | --- | --- |
-| [Scientific Figures](./scientific-plotting.md) | Select files, plot through chat, link Python code and runs, and compare and formally accept candidates | "Scientific Figures" in the right sidebar (local MVP) |
-| [Visual Review](./visual-review.md) | Review images and charts by hand and route feedback explicitly back to the Agent | Right panel |
-| [Anchored Comments](./anchored-comments.md) | Anchor comments to files, text positions, or selections so people and the Agent share them | Top toolbar, global overlay |
+- [Artifact Versions](./artifact-versions.md), [Git Checkpoints](./git-checkpoints.md), [Research Checkpoints](./research-checkpoints.md): fix the state of files or research stages.
+- [Evidence DAG](./evidence-dag.md), [Project DAG](./project-dag.md), [Research Dossier](./research-dossier.md): organize evidence, project goals, and deliverables.
+- [Terminal](./terminal.md), [Browser Preview](./browser-preview.md), [Computer Use](./computer-use.md): use external execution capabilities according to the runtime environment and permissions.
+- [Plugin license terms](../reference/plugin-licenses.md): check licenses, host dependencies, and the current installation boundary.
 
-### Evidence & Reproducibility
+## Migrations and retirements
 
-| Plugin | What it solves | Main entry point |
-| --- | --- | --- |
-| [Artifact Versions](./artifact-versions.md) | Save immutable versions of a single artifact, compare differences, and restore as a new version | Research dossier panel (research summary) |
-| [Git Checkpoints](./git-checkpoints.md) | Pin the Git state of a workspace at a given stage so you can return to a known baseline | Right panel, top toolbar |
-| [Research Checkpoints](./research-checkpoints.md) | Save the context and resume point of a research stage so the next session has a footing | Session result card |
-| [Change Inspector](./change-inspector.md) | Summarize which files a session actually changed, instead of going by the Agent's summary alone | Right panel, top toolbar |
-| [Evidence DAG](./evidence-dag.md) | Connect claims from a session to sources, methods, figures, and limitations | Right panel |
-| [Project DAG](./project-dag.md) | Aggregate project-level goals, claims, review status, and decisions across sessions | Right panel |
-| [Research Dossier](./research-dossier.md) | Turn research questions, inputs, methods, results, and limitations into an external-facing deliverable | Right panel |
+Dataset API and Scientific Compute have left the current product line. Their old addresses keep a [data-acquisition migration note](./dataset-api.md) and a [compute migration note](./scientific-compute.md). The old [Visual Review](./visual-review.md) is also no longer listed as a standalone installable plugin. Do not restore removed entry points or install old directories based on old screenshots.
 
-### Agent and workbench tools
+Historical material on Paper Radar and OpenContent does not represent current capabilities. Remote SSH connection and management belong to internal supplements, and the public manual does not provide VPN, SSH target registration, or internal deployment steps. The local mock Provider is for development and testing only.
 
-| Plugin | What it solves | Main entry point |
-| --- | --- | --- |
-| [Terminal](./terminal.md) | Run commands in a controlled workspace and keep the commands and output | Bottom panel, top toolbar |
-| [Browser Preview](./browser-preview.md) | Open web pages inside the app and let the Agent operate them under explicit approval | Right panel |
-| [Computer Use](./computer-use.md) | Let supported Runtimes operate desktop apps through a local Backend | MCP, system permissions |
+## How to tell whether you can use something
 
-### Automation
-
-| Plugin | What it solves | Main entry point |
-| --- | --- | --- |
-| [Create Loop](./create-loop.md) | Chain AI tasks, conditions, HTTP, approvals, and subflows in a multi-node flow | Top toolbar, right panel |
-
-### Collaboration and content
-
-| Plugin | What it solves | Main entry point |
-| --- | --- | --- |
-| [Identity & Access](./identity-access.md) | Manage local accounts, OIDC sign-in, device registration, and credential boundaries | Top account entry point |
-| [Collaboration](./collaboration.md) | Let several people divide work in a project, claim tasks, review, and deliver results | Main workspace |
-| [Content Space](./content-space.md) | Upload, download, and open native documents in a Provider content space | Right panel |
-| [SiYuan Notes](./siyuan.md) | Connect your own remote SiYuan service as a full-page editor and archive task summaries automatically | Main workspace |
-
-## How to choose
-
-- **Start with sources**: if a file will not open or you cannot read its format, start with [Life Science Preview](./life-science-preview.md).
-- **Get data first**: if you need a public database or object storage, register the source with [Dataset API](./dataset-api.md), then have the Agent work from that source.
-- **Plot something**: use [Scientific Figures](./scientific-plotting.md) to generate, modify, and accept candidates through chat, with code and run records linked and saved inside the plugin. [Visual Review](./visual-review.md) and [Artifact Versions](./artifact-versions.md) are separate capabilities; check each one's scope before use.
-- **Deliver**: solidify the work in the order "Change Inspector → checkpoints → Evidence DAG → research dossier"; see [Evidence & Reproducibility](./evidence-and-reproducibility.md).
-- **Repeat a run**: use [Scheduled tasks](./automation.md) for a single instruction and [Create Loop](./create-loop.md) for multiple steps.
-- **Work as a team**: confirm [Identity & Access](./identity-access.md) first, then go to [Collaboration](./collaboration.md).
-- **Extend model capabilities**: Skills, MCP, and locally installed packages do not change the plugin list; see [Skills, MCP, and Extensions](./extensions.md).
-
-## Maturity and boundaries
-
-- Each plugin's maturity follows [Feature status and limitations](../reference/feature-status.md); page text describes only the current implementation scope and does not present source registration as verified completion.
-- **Paper Radar** and **OpenContent** have left the current product line; related entry points in older docs and screenshots no longer represent available features.
-- The **Remote SSH** connection manager (registering labs, VPNs, and SSH targets) is not included in the open-source client; the open-source workspace location picker only switches between local workspaces and attached remote sessions.
-- Content Space currently uses a user-supplied **SiYuan** service as its main Provider; the local mock Provider is for testing only and is not a user feature.
-- Whether something can be installed from the Extension Marketplace depends on the app's current index; entries that are not listed or are blocked state the reason, which does not affect bundled plugins.
-
-## Relation to other chapters
-
-- How the workbench organizes workspaces, sessions, and approvals: see [Workbench guides](../workbench/workspaces-and-sessions.md).
-- Runtimes, models, and security boundaries: see [Runtime and models](../getting-started/runtime-and-models.md) and [Permissions and security](../operations/security.md).
-- How these plugins fit together in a complete research task: see [End-to-end cases](../cases/virtual-cell-evidence-atlas.md).
+Check the current client version, plugin source, and host dependencies first, then see [Feature status](../reference/feature-status.md). A page describing an implementation does not mean every platform has a release package. Historical screenshots and cases keep their own date, platform, and acceptance version. This round did not re-run GUI verification for every feature; source checks and actual acceptance are recorded separately.

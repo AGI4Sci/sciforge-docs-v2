@@ -1,56 +1,38 @@
 ---
 title: Anchored Comments
-description: Anchor comments to specific content and hand them to the Agent as explicit context.
+description: Select a piece of text, leave a comment, and come back to discuss and check it in place.
 sidebar_position: 22
 ---
 
 # Anchored Comments
 
-Anchored Comments answers the question "which spot exactly do I mean?" It binds feedback to a specific file, text selection, or UI region, saves the screenshot evidence from that moment, and gives people and the Agent one shared comment thread. Use it to leave traceable feedback while reading, checking a chart, or trying out the interface.
+Select a piece of text in a research record to leave a question, a suggested change, or review feedback on it. The comment keeps the original text and its position, so you can check back later.
 
-## Opening it
+## Add a comment
 
-- Entry point: **Comment on anything** in the top toolbar; after you enter comment mode, point at registered research content or a UI element, and the **Comments** overlay opens once the comment is saved.
-- Applies to: visual targets that the Host has registered and that are not marked sensitive; these can be research content in a file, a text selection, or a UI region.
-- Prerequisite: the workbench and the target content open normally; submitting product feedback requires a configured HTTPS feedback gateway.
+1. In [Extensions & marketplace](./extensions.md), install and enable a compatible Anchored Comments plugin.
+2. Open **Research record**, and drag to select text within a single entry.
+3. Click **Add comment**, and check the original text and target shown in the panel.
+4. Write your feedback and click **Save**.
 
-## What it can do
+**Discuss selection** opens a chat draft that carries the selected text. To save it as a comment, use **Add comment**. If the panel already holds unsaved content, a new selection asks whether to keep or replace the draft.
 
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| Comment on specific content | Open **Comment on anything**, click the target, fill in the comment, and **Save comment** | A comment with an anchor and a screenshot |
-| Distinguish purpose | Choose **Research content** or **SciForge feedback** in the editor | A research comment or product feedback |
-| Manage follow-ups | Mark resolved, reopen, or delete in **Comments** | Comment status |
-| Give the Agent context | Tick comments and click **Attach N comments to the next message** | Explicit context for the next message |
-| Submit a product issue | Click **Submit feedback** on a product feedback comment and confirm the public content | A GitHub Issue |
+## View, edit, and delete
 
-## Typical workflow
+You can ask the agent to list or read the comments in the current workspace, and to update an existing thread. The panel is mainly for creating new comments; to edit existing content, use the plugin's tools.
 
-1. Open the page or research content you want to discuss and turn on **Comment on anything** in the top toolbar.
-2. Point at the target region and click; the editor shows the comment target. Choose **Research content**, then write what you want the Agent to understand or change.
-3. Click **Save comment**. The plugin saves the anchor, target description, and screenshot evidence, and creates a thread in **Comments**.
-4. Tick the comments you want the Agent to see and click **Attach N comments to the next message**; only the ticked comments go into the next message.
-5. Follow up status in **Comments**; mark a comment resolved once the issue is settled, and delete comments that were created by mistake or are stale (confirmation required).
+Deleting a comment requires confirmation. Comments are stored in the workspace and do not change the commented source file. After you switch projects, select the content you want to comment on again.
 
-## Inputs, outputs, and permissions
+## Screenshots and feedback
 
-- Read: labels, positions, and accessible names of registered targets, host-provided screenshots, and existing comment threads.
-- Write: comment threads, anchors, screenshot evidence, and status; deleting a comment writes back to local storage and requires confirmation.
-- Approval or external effects: **Submit feedback** is an external write and requires confirmation; it publicly uploads the comment, the ticked screenshots, and the environment or logs to a GitHub Issue, and unticked content should not be included.
-- What it will not do: traverse the app DOM, choose redaction regions itself, automatically send unticked comments to the Agent, or submit product feedback automatically.
+A screenshot is a separate action; saving text does not take one automatically. The plugin can save a screenshot of the current app view only when the host provides that feature and allows capture. Before capturing, check for accounts, tokens, or other sensitive information.
 
-## Known limitations
+Submitting feedback to an external service also needs separate confirmation. If no feedback service is configured, comments can only be saved and discussed locally.
 
-- Only visual targets registered by the host can be commented on; unregistered or sensitive regions are rejected with a notice that the region cannot be commented on.
-- Screenshot capture and redaction are the host's responsibility; the plugin stores only the immutable evidence the host returns.
-- Product feedback depends on a configured HTTPS feedback gateway; without one, no Issue can be created.
-- At most 8 comments can be attached at once; each thread carries only its 6 most recent messages, and anything beyond that does not enter the context.
+## Tips
 
-## Related pages
+- After the original text changes, re-check the quotation and its position.
+- Comments belong to the current workspace. Before sharing a project, check the comments and screenshots for content you do not want to share.
+- The current plugin version is **0.2.1**. For installation requirements and version notes, see [Version & Compatibility](../reference/version-and-compatibility.md).
 
-- [Visual Review](./visual-review.md): region-by-region review of an image with candidate confirmation.
-- [Agent workflows](../workbench/agent-workflows.md): how attached comments enter the next message.
-- [Permissions and security](../operations/security.md): external writes, public uploads, and confirmation boundaries.
-- [Feature status and limitations](../reference/feature-status.md): the current definition of capability status.
-
-> Implementation basis: `@sciforge/domain-anchored-comments` v1.0.2.
+Related: [Agent workflows](../workbench/agent-workflows.md), [Plugin license terms](../reference/plugin-licenses.md).
