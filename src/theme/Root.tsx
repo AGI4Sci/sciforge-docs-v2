@@ -22,6 +22,10 @@ function ImagePreview(): ReactNode {
   useEffect(() => {
     const enhance = () => {
       if (dialogRef.current?.open && !triggerRef.current?.isConnected) close();
+      document.querySelectorAll<HTMLTableElement>('.theme-doc-markdown table').forEach((table) => {
+        table.tabIndex = 0;
+        if (!table.hasAttribute('aria-label')) table.setAttribute('aria-label', '表格，可横向滚动查看');
+      });
       document.querySelectorAll<HTMLImageElement>(imageSelector).forEach((img) => {
         if (img.closest('a, button') || img.classList.contains('sf-zoomable-image')) return;
         img.classList.add('sf-zoomable-image');

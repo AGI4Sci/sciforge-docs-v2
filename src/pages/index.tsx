@@ -1,86 +1,168 @@
-import {useState, type ReactNode} from 'react';
+import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-const previews = [
-  {name: '跨尺度证据', image: '/img/docs/cases/virtual-cell-evidence-atlas/04-cross-scale-evidence-preview.jpg', caption: '在同一个工作台，连接扰动、转录响应与蛋白响应。'},
-  {name: '产物与文件', image: '/img/docs/cases/virtual-cell-evidence-atlas/03-artifact-tree.jpg', caption: '从图表回到真实文件、生成脚本与任务上下文。'},
-  {name: '研究报告', image: '/img/docs/cases/virtual-cell-evidence-atlas/05-final-report-preview.jpg', caption: '交付结果，也保留数据基线、质量检查和限制。'},
+const tasks = [
+  {title: '打开项目', description: '选择工作区，新建会话，把项目文件交给助手。', to: '/docs/workbench/workspaces-and-sessions'},
+  {title: '预览科学文件', description: '查看分子结构、序列与组学文件，找到需要的信息。', to: '/docs/features/life-science-preview'},
+  {title: '绘制科研图表', description: '准备数据、运行绘图代码，查看并保存图件版本。', to: '/docs/features/scientific-plotting'},
+  {title: '检查文件变更', description: '对照修改前后内容，逐项检查助手做了什么。', to: '/docs/features/change-inspector'},
+  {title: '与团队协作', description: '分配任务、评审交付，让成员接着已采纳的结果工作。', to: '/docs/features/collaboration'},
+  {title: '添加工具与扩展', description: '按任务需要，连接外部工具或添加专项技能。', to: '/docs/features/extensions'},
 ];
-const groups = ['科研工作流', '工作台', '连接与扩展'] as const;
-const capabilities = [
-  {group: '科研工作流', name: '证据与可复现性', detail: '版本、检查点、Evidence DAG 与科研档案。', to: '/docs/features/evidence-and-reproducibility'},
-  {group: '科研工作流', name: '自动化与定时任务', detail: '为重复工作设置计划，使用 Loop 组织多步流程。', to: '/docs/features/automation'},
-  {group: '科研工作流', name: '科学文件与图表', detail: '查看结构、序列和组学文件，从数据绘图并保存运行记录。', to: '/docs/features/overview'},
-  {group: '工作台', name: '工作区与会话', detail: '打开项目、引用文件，保留连续任务的上下文。', to: '/docs/workbench/workspaces-and-sessions'},
-  {group: '工作台', name: '与 Agent 协作', detail: '从明确目标，到计划、执行与结果检查。', to: '/docs/workbench/agent-workflows'},
-  {group: '工作台', name: '工作台工具', detail: '了解预览、终端、变更与 Computer Use 的使用场景。', to: '/docs/workbench/tools'},
-  {group: '连接与扩展', name: 'Runtime 与模型', detail: '连接模型，选择 Codex、Claude Code 或 DSH。', to: '/docs/getting-started/runtime-and-models'},
-  {group: '连接与扩展', name: '远程资源与协作', detail: '切换远程工作区会话，理解云端协作与数据边界。', to: '/docs/operations/remote-and-collaboration'},
-  {group: '连接与扩展', name: 'Skills、MCP 与扩展', detail: '接入专项方法、外部工具与签名扩展包。', to: '/docs/features/extensions'},
+
+const steps = [
+  {title: '准备项目与模型', description: '准备一个本地项目，按说明连接模型，确认助手可用。', to: '/docs/getting-started/runtime-and-models', link: '连接模型与助手'},
+  {title: '打开项目，发送任务', description: '设置只读权限，新建会话，让助手先介绍项目内容。', to: '/docs/getting-started/five-minute-quickstart', link: '跟随快速开始'},
+  {title: '查看回答，核对文件', description: '检查任务结果，并对照任务前后的文件状态，完成第一次使用。', to: '/docs/features/change-inspector', link: '了解如何检查变更'},
 ];
-function Arrow({diagonal = false}: {diagonal?: boolean}) { return <span aria-hidden="true">{diagonal ? '↗' : '→'}</span>; }
-function ProductPreview() {
-  const [active, setActive] = useState(0);
-  const prefix = useBaseUrl('/');
-  return <div className={styles.preview}>
-    <div className={styles.previewTop}><span className={styles.liveDot} />SciForge 工作台<span className={styles.previewMeta}>真实界面 / 案例产物</span></div>
-    <div aria-label="工作台预览" className={styles.previewTabs}>
-      {previews.map((item, index) => <button key={item.name} type="button" aria-pressed={active === index} aria-controls="preview-panel" onClick={() => setActive(index)}>{item.name}</button>)}
-    </div>
-    <div id="preview-panel" className={styles.previewPanel}>
-      <img key={active} data-sf-preview title="点击或按 Enter 放大工作台截图" src={prefix + previews[active].image.slice(1)} alt={`SciForge 工作台：${previews[active].name}`} fetchPriority="high" width="1600" height="1000" />
-    </div>
-    <p className={styles.previewCaption}><span>0{active + 1}</span>{previews[active].caption}</p>
-  </div>;
+
+const cases = [
+  {
+    title: '科研图件：复杂数据与复现',
+    label: '合成数据绘图案例',
+    description: '从多文件清洗到四面板图，学习处理缺失值、保存运行记录与恢复失败任务。',
+    to: '/docs/cases/scientific-figures-complex',
+    image: '/img/docs/scientific-figures/complex/01-longitudinal-app.png',
+    alt: 'SciForge 会话与科研图件面板中的纵向数据四面板图',
+    width: 3046,
+    height: 2044,
+  },
+  {
+    title: 'Pasilla RNA-seq 三人协作',
+    label: '真实数据摘录 · 协作演示',
+    description: '用公开计数数据的摘录，跟随三位成员完成需求确认、交付、返修和下游接力。',
+    to: '/docs/cases/pasilla-collaboration',
+    image: '/img/docs/collaboration/report-preview.png',
+    alt: '协作成员在 SciForge 中预览 Pasilla 数据的描述性比较报告',
+    width: 1280,
+    height: 840,
+  },
+  {
+    title: 'ECCITE-seq 跨尺度证据图',
+    label: '案例产物浏览',
+    description: '查看扰动、转录与蛋白响应的图表和报告，了解如何检查不同数据之间的关系。',
+    to: '/docs/cases/virtual-cell-evidence-atlas',
+    image: '/img/docs/cases/virtual-cell-evidence-atlas/04-cross-scale-evidence-preview.jpg',
+    alt: 'SciForge 中打开的 ECCITE-seq 跨尺度证据图',
+    width: 1171,
+    height: 768,
+  },
+  {
+    title: '虚拟细胞扰动预测评测',
+    label: '实验性流程 · 需自备模型',
+    description: '为已有模型准备评测数据、检查输出并记录结果。完整演示仍待验证，可先阅读流程。',
+    to: '/docs/cases/virtual-cell-benchmark',
+    image: '/img/docs/guides/workspace-files.jpg',
+    alt: 'SciForge 工作区文件面板，用于检查评测输入；非已完成的评测运行',
+    width: 1171,
+    height: 768,
+  },
+];
+
+function Arrow(): ReactNode {
+  return <span aria-hidden="true">→</span>;
 }
+
+function CaseStudy({item}: {item: (typeof cases)[number]}): ReactNode {
+  const image = useBaseUrl(item.image);
+  return (
+    <article className={styles.case}>
+      <Link className={styles.caseImage} to={item.to} aria-label={`阅读${item.title}案例`}>
+        <img src={image} alt={item.alt} loading="lazy" width={item.width} height={item.height} />
+      </Link>
+      <div className={styles.caseCopy}>
+        <p className={styles.caseLabel}>{item.label}</p>
+        <Heading as="h3"><Link to={item.to}>{item.title} <Arrow /></Link></Heading>
+        <p>{item.description}</p>
+      </div>
+    </article>
+  );
+}
+
 export default function Home(): ReactNode {
-  const [group, setGroup] = useState<(typeof groups)[number]>('科研工作流');
-  const atlasImage = useBaseUrl('/img/docs/cases/virtual-cell-evidence-atlas/06-layer-coverage-preview.jpg');
-  const workspaceImage = useBaseUrl('/img/docs/guides/workspace-files.jpg');
-  return <Layout title="科研，从这里开始" description="SciForge 使用手册。通过虚拟细胞案例学习工作区、Agent、图表、证据与可复现研究，按目标找到工具与扩展。">
-    <main className={styles.home}>
-      <section className={styles.hero}><div className={styles.container}>
-        <div className={styles.heroGrid}>
-          <div className={styles.heroCopy}>
-            <span className={styles.eyebrow}><span /> SCIFORGE / FIELD GUIDE</span>
-            <Heading as="h1">让每一步科研，<br /><em>都有据可循。</em></Heading>
-            <p>从一个问题、一份数据开始。<br />在 SciForge 中组织 Agent、分析与图表，<br />把研究过程沉淀为可检查、可复跑的成果。</p>
-            <div className={styles.actions}><Link className={styles.primaryLink} to="/docs/cases/overview">从案例开始 <Arrow /></Link><Link className={styles.textLink} to="/docs/getting-started/five-minute-quickstart">五分钟快速上手 <Arrow /></Link></div>
-            <Link className={styles.videoLink} to="/guide"><span className={styles.playIcon}>▶</span> 观看分章节视频导览 <Arrow diagonal /></Link>
-            <div className={styles.heroFoot}><span>本地与远程工作区</span><span>Codex / Claude Code / DSH</span></div>
-          </div><ProductPreview />
-        </div>
-        <div className={styles.workflow} aria-label="研究工作流"><span className={styles.workflowLabel}>一条完整的研究路径</span>{['准备工作区', '与 Agent 分析', '审查图表与证据', '固化研究交付'].map((label, i) => <span key={label}><small>0{i + 1}</small>{label}{i < 3 && <b aria-hidden="true">→</b>}</span>)}</div>
-      </div></section>
-      <section id="cases" className={styles.section}><div className={styles.container}>
-        <div className={styles.sectionHeader}><div><span className={styles.eyebrow}>01 / END-TO-END CASES</span><Heading as="h2">先从一个完整案例开始</Heading><p>围绕虚拟细胞，串起输入、分析、检查与交付。</p></div><Link className={styles.textLink} to="/docs/cases/overview">案例阅读指南 <Arrow /></Link></div>
-        <div className={styles.caseGrid}>
-          <article className={styles.mainCase}>
-            <div className={styles.caseCopy}><div className={styles.caseMeta}><span>CASE STUDY 01</span><span className={styles.status}>产物浏览已验证</span></div><Heading as="h3">ECCITE-seq<br />跨尺度虚拟细胞证据图</Heading><p>从 CRISPR 扰动出发，检查转录、蛋白和细胞适应性之间的证据关系。让每一张图，都能回到它的数据与方法。</p><div className={styles.tags}><span>质量审计</span><span>多模态响应</span><span>研究档案</span></div><Link className={styles.caseLink} to="/docs/cases/virtual-cell-evidence-atlas">阅读案例 <Arrow /></Link></div>
-            <Link to="/docs/cases/virtual-cell-evidence-atlas" className={styles.caseVisual} aria-label="阅读 ECCITE-seq 证据案例"><img src={atlasImage} alt="SciForge 中查看六层数据覆盖及案例工作区" loading="lazy" width="1600" height="1000" /><span>工作区、任务与图表，一起保留在画面中。</span></Link>
-          </article>
-          <article className={styles.secondCase}><div className={styles.caseMeta}><span>CASE STUDY 02</span><span className={styles.experimental}>实验性路线</span></div><Heading as="h3">虚拟细胞<br />扰动预测评测</Heading><p>接入已有模型，固定数据协议与运行环境。从小样本预检，到预测、失败分析与复跑。</p><div className={styles.protocol}><span>01 协议与输入</span><span>02 预测与验证</span><span>03 分层分析与复跑</span></div><img src={workspaceImage} alt="SciForge 工作区文件面板，评测输入的检查入口" loading="lazy" width="1600" height="1000" /><small>模型来自用户接入；完整演示仍待验证。</small><Link className={styles.caseLink} to="/docs/cases/virtual-cell-benchmark">查看评测流程 <Arrow /></Link></article>
-        </div>
-      </div></section>
-      <section id="start" className={`${styles.section} ${styles.startSection}`}><div className={`${styles.container} ${styles.startGrid}`}>
-        <div><span className={styles.eyebrow}>02 / FIRST STEPS</span><Heading as="h2">第一次使用？<br />从一个小任务开始。</Heading><p>准备一个本地项目，用只读分析熟悉<br />工作区、执行过程与结果检查。</p><Link className={styles.primaryLink} to="/docs/getting-started/five-minute-quickstart">打开快速开始 <Arrow /></Link></div>
-        <div className={styles.startSteps}>{[
-          ['01', '连接你的模型与 Runtime', '理解模型接入与执行者，确认运行时可用。', '/docs/getting-started/runtime-and-models'],
-          ['02', '确认只读范围与项目基线', '检查 Codex 访问范围，保存 Git 状态；非 Git 项目先使用副本。', '/docs/getting-started/read-only-sandbox'],
-          ['03', '发送任务，核对过程与结果', '运行一次小范围分析，并比较执行前后的文件状态。', '/docs/getting-started/five-minute-quickstart'],
-        ].map(([num, title, desc, to]) => <Link to={to} key={num} className={styles.step}><span>{num}</span><div><h3>{title}</h3><p>{desc}</p></div><Arrow /></Link>)}</div>
-      </div></section>
-      <section id="capabilities" className={styles.section}><div className={styles.container}>
-        <div className={styles.sectionHeader}><div><span className={styles.eyebrow}>03 / TOOLBOX</span><Heading as="h2">按你想做的事，找到工具</Heading><p>从常用工作台，到科研流程，再到专项扩展。</p></div><Link className={styles.textLink} to="/docs/features/overview">完整功能手册 <Arrow /></Link></div>
-        <div aria-label="功能分类" className={styles.toolTabs}>{groups.map((item) => <button type="button" key={item} aria-pressed={group === item} aria-controls="tool-panel" onClick={() => setGroup(item)}>{item}</button>)}</div>
-        <div id="tool-panel" className={styles.toolGrid}>{capabilities.filter((item) => item.group === group).map((item, i) => <Link to={item.to} key={item.name} className={styles.tool}><span className={styles.toolMark}>0{i + 1} /</span><h3>{item.name}</h3><p>{item.detail}</p><span className={styles.toolRead}>阅读指南 <Arrow /></span></Link>)}</div>
-        <div className={styles.referenceBar}><span>使用前，了解当前能力与边界。</span><Link to="/docs/reference/feature-status">功能状态 <Arrow diagonal /></Link><Link to="/docs/operations/security">权限与安全 <Arrow diagonal /></Link><Link to="/docs/reference/troubleshooting">故障排查 <Arrow diagonal /></Link></div>
-      </div></section>
-      <section className={styles.closing}><div className={styles.container}><span className={styles.eyebrow}>YOUR NEXT EXPERIMENT</span><Heading as="h2">把下一次研究，<br />放进可复查的工作流。</Heading><div><Link className={styles.closingButton} to="/docs/getting-started/five-minute-quickstart">开始第一个任务 <Arrow /></Link><Link to="/guide">观看完整导览 <Arrow /></Link></div><p>从清楚的输入，到有依据的结论。</p></div></section>
-    </main>
-  </Layout>;
+  const heroImage = useBaseUrl('/img/docs/quickstart/quickstart-task-result.jpg');
+  return (
+    <Layout title="SciForge 使用手册" description="从打开项目到分析数据、绘制图表和团队协作，按步骤完成你的任务。">
+      <main className={styles.home}>
+        <section className={styles.hero} aria-labelledby="home-title">
+          <div className={`${styles.container} ${styles.heroGrid}`}>
+            <div className={styles.heroCopy}>
+              <Heading as="h1" id="home-title">SciForge 使用手册</Heading>
+              <p>从打开项目到分析数据、绘制图表和团队协作，按步骤完成你的任务。</p>
+              <div className={styles.actions}>
+                <Link className={styles.primaryLink} to="/docs/getting-started/five-minute-quickstart">开始使用 <Arrow /></Link>
+                <Link className={styles.secondaryLink} to="/docs/features/overview">查找功能 <Arrow /></Link>
+              </div>
+              <Link className={styles.videoLink} to="/guide"><span aria-hidden="true">▷</span> 观看视频导览</Link>
+            </div>
+            <figure className={styles.preview}>
+              <img data-sf-preview src={heroImage} alt="SciForge 工作台：在本地项目会话中查看第一次只读分析的结果" title="点击或按 Enter 放大工作台截图" loading="eager" fetchPriority="high" width="1171" height="768" />
+              <figcaption>在工作台中查看任务结果 <span>点击图片放大 ↗</span></figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section className={`${styles.section} ${styles.taskSection}`} aria-labelledby="tasks-title">
+          <div className={styles.container}>
+            <div className={styles.sectionHeader}>
+              <Heading as="h2" id="tasks-title">你想做什么？</Heading>
+              <Link className={styles.textLink} to="/docs/features/overview">查看全部功能 <Arrow /></Link>
+            </div>
+            <div className={styles.taskGrid}>
+              {tasks.map((task) => (
+                <Link key={task.title} to={task.to} className={styles.task}>
+                  <Heading as="h3">{task.title} <Arrow /></Heading>
+                  <p>{task.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section} aria-labelledby="start-title">
+          <div className={styles.container}>
+            <div className={styles.sectionHeader}>
+              <div><Heading as="h2" id="start-title">第一次使用，从这里开始</Heading><p>用一个小任务，熟悉项目、会话和结果检查。</p></div>
+              <Link className={styles.textLink} to="/docs/getting-started/five-minute-quickstart">五分钟快速开始 <Arrow /></Link>
+            </div>
+            <ol className={styles.steps}>
+              {steps.map((step, index) => (
+                <li key={step.title}>
+                  <span className={styles.stepNumber} aria-hidden="true">0{index + 1}</span>
+                  <Heading as="h3">{step.title}</Heading>
+                  <p>{step.description}</p>
+                  <Link className={styles.textLink} to={step.to}>{step.link} <Arrow /></Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section id="cases" className={`${styles.section} ${styles.caseSection}`} aria-labelledby="cases-title">
+          <div className={styles.container}>
+            <div className={styles.sectionHeader}>
+              <div><Heading as="h2" id="cases-title">跟着案例学习</Heading><p>结合实际界面，看看数据、图表和协作任务怎样开展。</p></div>
+              <Link className={styles.textLink} to="/docs/cases/overview">案例阅读指南 <Arrow /></Link>
+            </div>
+            <div className={styles.caseGrid}>{cases.map((item) => <CaseStudy key={item.to} item={item} />)}</div>
+          </div>
+        </section>
+
+        <section className={`${styles.section} ${styles.helpSection}`} aria-labelledby="help-title">
+          <div className={`${styles.container} ${styles.helpGrid}`}>
+            <div><Heading as="h2" id="help-title">需要帮助？</Heading><p>遇到问题时，从这些说明继续。</p></div>
+            <ul className={styles.helpLinks}>
+              <li><Link to="/docs/reference/troubleshooting">排查常见问题 <Arrow /></Link></li>
+              <li><Link to="/docs/getting-started/runtime-and-models">检查模型与助手连接 <Arrow /></Link></li>
+              <li><Link to="/docs/operations/security">了解文件权限与安全设置 <Arrow /></Link></li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </Layout>
+  );
 }
