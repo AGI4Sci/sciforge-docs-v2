@@ -1,6 +1,27 @@
 /* SciForge blue: derived from the app accent, with contrast-safe reading colors. */
 :root {
-  --sf-brand: #0088ff;
+  --sf-gray-0: #ffffff;
+  --sf-gray-50: #f7f9fc;
+  --sf-gray-100: #eef2f6;
+  --sf-gray-200: #dbe4ef;
+  --sf-gray-300: #b8c5d6;
+  --sf-gray-400: #8a9bb0;
+  --sf-gray-500: #5f6f84;
+  --sf-gray-600: #43536a;
+  --sf-gray-700: #2a3b51;
+  --sf-gray-800: #17263c;
+  --sf-gray-900: #0f1724;
+  --sf-blue-50: #edf5ff;
+  --sf-blue-100: #d5eaff;
+  --sf-blue-200: #abd5ff;
+  --sf-blue-300: #67b3ff;
+  --sf-blue-400: #339cff;
+  --sf-blue-500: #0088ff;
+  --sf-blue-600: #0069cc;
+  --sf-blue-700: #004a8f;
+  --sf-blue-800: #1b3049;
+  --sf-blue-900: #102844;
+  --sf-brand: var(--sf-blue-500);
   --sf-on-accent: #ffffff;
   --sf-inverse-bg: #102844;
   --sf-inverse-text: #eff6ff;
@@ -8,14 +29,15 @@
   --sf-inverse-border: #294769;
   --sf-inverse-accent: #abd5ff;
   --sf-shadow-rgb: 15 23 42;
-  --sf-surface: #f7f9fc;
-  --sf-paper: #ffffff;
-  --sf-ink: #17263c;
-  --sf-muted: #5f6f84;
-  --sf-line: #dbe4ef;
-  --sf-accent: #0069cc;
+  --sf-neutral: var(--sf-gray-100);
+  --sf-surface: var(--sf-gray-50);
+  --sf-paper: var(--sf-gray-0);
+  --sf-ink: var(--sf-gray-800);
+  --sf-muted: var(--sf-gray-500);
+  --sf-line: var(--sf-gray-200);
+  --sf-accent: var(--sf-blue-600);
   --sf-highlight: #d5eaff;
-  --sf-tint: #edf5ff;
+  --sf-tint: var(--sf-blue-50);
   --ifm-color-primary: #0069cc;
   --ifm-color-primary-dark: #005eb8;
   --ifm-color-primary-darker: #0059ad;
@@ -43,7 +65,7 @@
   --ifm-menu-color: var(--sf-muted);
   --ifm-menu-color-active: var(--sf-accent);
   --ifm-menu-color-background-active: var(--sf-tint);
-  --ifm-menu-color-background-hover: var(--sf-tint);
+  --ifm-menu-color-background-hover: var(--sf-neutral);
   --ifm-toc-border-color: var(--sf-line);
   --ifm-color-emphasis-300: var(--sf-line);
   --ifm-hr-background-color: var(--sf-line);
@@ -52,7 +74,7 @@
   --ifm-link-color: var(--sf-accent);
   --ifm-link-hover-color: var(--sf-ink);
   --ifm-table-border-color: var(--sf-line);
-  --ifm-table-head-background: var(--sf-tint);
+  --ifm-table-head-background: var(--sf-neutral);
   --ifm-table-stripe-background: rgb(15 23 42 / 2%);
   --doc-sidebar-width: 292px;
   --docusaurus-highlighted-code-line-bg: rgb(0 136 255 / 9%);
@@ -61,14 +83,15 @@
 [data-theme='dark'] {
   --sf-brand: #339cff;
   --sf-on-accent: #102640;
-  --sf-surface: #0f1724;
+  --sf-neutral: #1c293b;
+  --sf-surface: var(--sf-gray-900);
   --sf-paper: #172334;
   --sf-ink: #edf4ff;
   --sf-muted: #a3b3c8;
-  --sf-line: #2a3b51;
-  --sf-accent: #67b3ff;
+  --sf-line: var(--sf-gray-700);
+  --sf-accent: var(--sf-blue-300);
   --sf-highlight: #b8ddff;
-  --sf-tint: #1b3049;
+  --sf-tint: var(--sf-blue-800);
   --ifm-color-primary: #67b3ff;
   --ifm-color-primary-dark: #45a2ff;
   --ifm-color-primary-darker: #349aff;
@@ -128,23 +151,23 @@ body { letter-spacing: 0.005em; -webkit-font-smoothing: antialiased; }
 .theme-doc-markdown blockquote { border-left: 3px solid var(--sf-accent); border-radius: 0 5px 5px 0; background: var(--sf-tint); color: var(--sf-ink); margin: 28px 0; padding: 22px 27px; font-size: 17px; }
 .theme-doc-markdown blockquote p:last-child { margin-bottom: 0; }
 
-.theme-doc-markdown img { display: block; height: auto; width: auto; max-width: 100%; margin: 34px auto 13px; border: 1px solid var(--sf-line); border-radius: 8px; background: var(--sf-paper); box-shadow: 0 10px 28px rgb(15 23 42 / 7%); }
+.theme-doc-markdown img { display: block; height: auto; width: auto; max-width: 100%; margin: 28px auto 13px; border: 0; border-radius: 8px; background: var(--sf-paper); box-shadow: 0 10px 28px rgb(15 23 42 / 7%); }
 .theme-doc-markdown img.sf-zoomable-image { cursor: zoom-in; transition: border-color 160ms ease, box-shadow 160ms ease; }
 .theme-doc-markdown img.sf-zoomable-image:hover { border-color: var(--sf-accent); box-shadow: 0 12px 32px rgb(15 23 42 / 12%); }
 .theme-doc-markdown p:has(> img.sf-zoomable-image)::after { content: '点击图片，放大查看 ↗'; display: block; margin-top: 7px; color: var(--sf-accent); font-size: 14px; text-align: right; letter-spacing: 0.025em; }
-.theme-doc-markdown img + em, .theme-doc-markdown figcaption { display: block; margin: 10px 0 4px; padding-left: 12px; border-left: 2px solid var(--sf-line); color: var(--sf-muted); font-size: 14px; font-style: normal; line-height: 1.8; }
+.theme-doc-markdown img + em, .theme-doc-markdown figcaption { display: block; margin: 10px 0 4px; padding-left: 12px; border-left: 0; color: var(--sf-muted); font-size: 14px; font-style: normal; line-height: 1.8; }
 
-.theme-doc-markdown table { width: 100%; max-width: 100%; margin: 28px 0; border: 1px solid var(--sf-line); border-radius: 6px; border-collapse: separate; border-spacing: 0; font-size: 16px; line-height: 1.75; }
+.theme-doc-markdown table { width: 100%; max-width: 100%; margin: 28px 0; border: 0; border-radius: 6px; border-collapse: separate; border-spacing: 0; font-size: 16px; line-height: 1.75; }
 .theme-doc-markdown th, .theme-doc-markdown td { min-width: 110px; border: 0; border-bottom: 1px solid var(--sf-line); padding: 13px 15px; text-align: left; vertical-align: top; }
 .theme-doc-markdown th { color: var(--sf-ink); font-weight: 700; }
 .theme-doc-markdown tr:last-child td { border-bottom: 0; }
 .theme-doc-markdown tbody tr:hover { background: var(--sf-tint); }
-.theme-doc-markdown code { border: 1px solid var(--sf-line); border-radius: 4px; padding: 2px 5px; background: var(--sf-tint); color: var(--sf-ink); overflow-wrap: anywhere; }
+.theme-doc-markdown code { border: 0; border-radius: 4px; padding: 2px 5px; background: var(--sf-tint); color: var(--sf-ink); overflow-wrap: anywhere; }
 .theme-code-block { margin: 26px 0 !important; border: 1px solid var(--sf-line); border-radius: 6px !important; box-shadow: none !important; font-size: 14px; }
 .theme-code-block pre { padding: 23px 25px; line-height: 1.8; }
 .theme-code-block pre code { border: 0; border-radius: 0; padding: 0; background: none; color: inherit; font-size: inherit; }
 
-.theme-admonition { border: 1px solid var(--sf-line); border-left: 3px solid var(--ifm-alert-border-color); border-radius: 5px; box-shadow: none; margin: 28px 0; padding: 20px 24px; font-size: 15px; line-height: 1.8; }
+.theme-admonition { border: 0; border-left: 3px solid var(--ifm-alert-border-color); border-radius: 5px; box-shadow: none; margin: 28px 0; padding: 20px 24px; font-size: 15px; line-height: 1.8; }
 .theme-admonition h5 { font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; }
 .theme-admonition p:last-child { margin-bottom: 0; }
 .theme-admonition-tip { --ifm-alert-background-color: var(--sf-tint); --ifm-alert-border-color: var(--sf-accent); --ifm-alert-foreground-color: var(--sf-ink); }
@@ -154,10 +177,10 @@ body { letter-spacing: 0.005em; -webkit-font-smoothing: antialiased; }
 .table-of-contents__link { display: block; padding: 6px 0; color: var(--sf-muted); transition: color 120ms ease; }
 .table-of-contents__link--active, .table-of-contents__link:hover { color: var(--sf-accent); }
 .table-of-contents__link--active { font-weight: 700; }
-.theme-doc-toc-mobile { border: 1px solid var(--sf-line); border-radius: 5px; background: var(--sf-paper); margin: 0 0 30px; font-size: 14px; }
+.theme-doc-toc-mobile { border: 0; border-radius: 5px; background: var(--sf-paper); margin: 0 0 30px; font-size: 14px; }
 .theme-doc-footer { margin-top: 44px; font-size: 14px; }
 .pagination-nav { gap: 20px; margin-top: 40px; }
-.pagination-nav__link { border: 1px solid var(--sf-line); border-radius: 5px; background: var(--sf-paper); padding: 20px; box-shadow: none; transition: border-color 160ms ease, background-color 160ms ease; }
+.pagination-nav__link { border: 0; border-radius: 5px; background: var(--sf-paper); padding: 20px; box-shadow: 0 2px 12px rgb(var(--sf-shadow-rgb) / 4%); transition: border-color 160ms ease, background-color 160ms ease; }
 .pagination-nav__link:hover { border-color: var(--sf-accent); background: var(--sf-tint); }
 .pagination-nav__sublabel { margin-bottom: 7px; color: var(--sf-muted); font-size: 14px; }
 .pagination-nav__label { color: var(--sf-ink); font-size: 16px; font-weight: 650; }
