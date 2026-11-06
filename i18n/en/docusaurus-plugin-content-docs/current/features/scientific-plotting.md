@@ -9,7 +9,7 @@ sidebar_position: 20
 **Select files → tell the AI how to draw → review the result → accept when satisfied.** Scientific Figures ties a text request, Python code, an actual run, and image versions together. To revise an image, just keep typing the change; you do not need to box, arrow, or pin anything on the image.
 
 :::info Current version
-This page was updated from real local acceptance of `@sciforge/plugin-scientific-plotting` **0.4.0-mvp.10** (2026-11-05). It was verified on macOS arm64, the DSH Runtime, and Python + Matplotlib; it describes the capabilities of the locally signed MVP and does not mean this version has been released to all users in the public marketplace. R execution is not implemented yet.
+The current source is `@sciforge/plugin-scientific-plotting` **0.4.0-mvp.11**, which supports the native DSH panel and the SciForge adapter entry. The 2026-11-05 case and screenshots kept in this page come from **0.4.0-mvp.10** and from earlier versions where explicitly marked; they have not been re-accepted as mvp.11. The accepted environment is macOS arm64, the DSH Runtime, and Python + Matplotlib. For public marketplace availability, see the actual release record, and for the compatibility baseline see [Version & Compatibility](../reference/version-and-compatibility.md). R/MATLAB execution is not implemented yet.
 :::
 
 For the actual steps and screenshots of multi-file cleaning, four-panel figures, missing-value matrices, and failure recovery, see [Complex scientific figure case](../cases/scientific-figures-complex.md).
@@ -18,9 +18,11 @@ For the actual steps and screenshots of multi-file cleaning, four-panel figures,
 
 1. In **Extensions → Marketplace**, find the Scientific Figures package compatible with your SciForge version, check the publisher and permissions, approve the installation, and enable it. If it is not listed, the maintainer must supply a signed package and its installation source.
 2. Open a writable local workspace and a **DSH session** whose model is configured.
-3. Select **Scientific Figures** from the plugin picker in the right sidebar. The default **Figure** page contains file input, text input, and image preview.
+3. In SciForge, select **Scientific Figures** from the plugin picker in the right sidebar. In native DSH, use the **Figures** panel in the session input area, or type `/scientific-figures`. The default **Figure** page contains file input, text input, and image preview.
 
-The machine needs a working Python and Matplotlib. The plugin does not install dependencies automatically; if Python is unavailable, Matplotlib is missing, or a run fails, fix the specific error in the run log first.
+The machine needs a working Python and Matplotlib. In the plugin configuration, point `pythonCommand` to an interpreter you have confirmed works; the default `python3` does not mean Matplotlib is installed. The plugin does not install dependencies automatically. Before running, you can ask the Agent to query `status` to check the configuration; a successful configuration check still needs an actual run to confirm the environment works.
+
+Native DSH requires `>=0.2.1-rc.4 <0.3.0` and Node >=22. The SciForge adapter entry currently runs only on macOS environments that pass the isolation check; installing the plugin successfully does not remove the execution limits on Windows and Linux. The package contains the native Canvas component for this platform, so a different platform, architecture, or Linux libc needs a matching build.
 
 ## Starting from data and code
 
@@ -99,7 +101,7 @@ You can also expand **All versions and sources** to go from a specific figure to
 
 ## Case: modify a line chart and formally accept it
 
-This is a **real application acceptance case from 2026-11-05**; the data uses demo values and does not represent a research conclusion. It verified "chat request → freeze code → actual Python → candidate figure → formal approval → restart recovery."
+This is a **real application acceptance case from 2026-11-05, kept in the 0.4.0-mvp.10 page**; the data uses demo values and does not represent a research conclusion. It verified "chat request → freeze code → actual Python → candidate figure → formal approval → restart recovery."
 
 ### 1. Prepare data and the request
 
@@ -145,7 +147,9 @@ Click **Request acceptance** in the panel, and the session triggers the host's f
 
 - Implemented: Python + Matplotlib, saving PNG and CSV/TSV/JSON/TXT artifacts, code snapshots, dependency pin files, paginated history, interrupted-submission recovery, figure linking, and formal acceptance. R keeps the executor boundary, but execution is not implemented.
 - Inputs are workspace files. After a successful plot you must refresh manually; local dependencies and the model service are yours to configure.
-- On-image boxing, arrows, circling, and pin annotations are no longer provided. Other separate extensions such as Visual Review are unaffected by this page's changes.
+- On-image boxing, arrows, circling, and pin annotations are no longer provided. The old standalone [Visual Review](./visual-review.md) has also been retired.
+- Records are saved in `.scientific-figures/` in the current workspace. They do not depend on Artifact Versions or Evidence DAG, and do not automatically register versions or evidence with them. Organize linked records separately when needed.
+- The first session limits the writable scope of the workspace; switching directories does not widen permissions. Running is refused in a read-only environment, when isolation is unavailable, or when the workspace is in the system temporary directory.
 - Local Python has write isolation, but that is not the same as prohibiting global reads or network access. Model requests are also subject to the data policy of the model service you use, so do not claim "data never leaves the machine." Only execute trusted code.
 - This case covers a representative local path and does not promise pixel-identical reproduction on every platform, Runtime, or environment.
 

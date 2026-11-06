@@ -10,7 +10,7 @@ Browser Preview runs a native Chromium page in the right panel for viewing local
 
 ## How to open it
 
-- Entry: **Browser** in the top toolbar, or **Native browser** in the right panel.
+- Entry: **Browser** in the right toolbar (expand **More tools** if it is not shown), or **Native browser** in the right panel.
 - Target: one browser page instance in the current session; one instance corresponds to one page.
 - Prerequisite: the SciForge desktop window. Opening a localhost development site in an ordinary browser cannot host the native view, and an explicit unavailable message appears.
 - Input box context: when a message contains an HTTP(S) link, that URL is attached for the Agent. It first attempts a read-only fetch, then hands off to the browser panel when it encounters sign-in or script-rendered content.

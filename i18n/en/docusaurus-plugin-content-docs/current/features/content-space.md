@@ -1,22 +1,22 @@
 ---
 title: Content Space
-description: Access external Provider containers and files through one entry point, with authorization limited to the current operation.
+description: Connect external content services, and see the notebook and shared-file entry points currently supported.
 sidebar_position: 62
 ---
 
 # Content Space
 
-Content Space brings containers, regular files, and native documents from different external services into a single access model. It does not store content itself or make permission decisions for Providers. Users see a unified container and file entry point, while actual reads and writes still happen in the external service.
+Content Space provides a single entry point to external content services. The current SiYuan connection can list notebooks; whether you can go on to browse, read, write, or transfer depends on what the connected service actually supports. Content stays in the original service.
 
 ## How to open it
 
-- Entry: **Content Space** in the right panel. The **Cloud Drive** section of the full Collaboration page also reuses the same Content Space capabilities.
+- Entry: **Content Space** in the right panel. **Shared files** on the full Collaboration page uses the same entry point. Shared files currently has no direct upload button.
 - Target: containers, regular files, and Provider-native documents from connected Providers. Currently, only SiYuan notebooks can be listed.
 - Prerequisite: install and connect a Provider that declares the relevant operation family. Connection usually requires the service address and account/token; Content Space does not read credentials. OpenContent has been retired; the only Provider currently available to users is SiYuan, and it declares notebook discovery only.
 
 ## What you can do
 
-The table below lists the capabilities allowed by the Content Space contract. Because no Provider currently serves file transfer or native documents to Content Space, these operations are rejected by contract rather than returning empty results or false success.
+You can currently choose SiYuan notebooks. The other operations in the table below need separate support from the service provider and must not be treated as currently available features; in particular, you cannot upload files directly through the Shared files entry.
 
 | What you want to do | How to do it | Output |
 | --- | --- | --- |
@@ -30,8 +30,8 @@ The table below lists the capabilities allowed by the Content Space contract. Be
 
 1. Install and connect the Provider first. The connection binds the current user to a specific Provider instance and cannot be copied for use by another user.
 2. Open Content Space and select a Provider and container. SiYuan currently lists only notebooks that are not closed; selecting one returns a read-only container reference.
-3. Confirm the target path, scope of impact, and current account permissions before starting a read or write.
-4. Confirm uploads, downloads, and member changes as prompted by the interface. Destructive operations require fresh confirmation every time. If the binding is invalid or the Provider refuses, reconnect rather than retrying repeatedly.
+3. To read or write SiYuan documents, go to the [SiYuan Notes](./siyuan.md) page, or have the Agent use SiYuan's search, read, and write capabilities.
+4. When the interface says an operation is not yet supported, use the original service's own entry point. If the connection is no longer valid, reconnect first.
 
 ## Inputs, outputs, and permissions
 
@@ -42,7 +42,7 @@ The table below lists the capabilities allowed by the Content Space contract. Be
 
 ## Known limitations
 
-- **OpenContent has been retired**: space and member management, upload and download, and native documents are no longer served by an OpenContent Provider. The capabilities remain registered, but they fail closed when no Provider is available.
+- **OpenContent has been retired**: space and member management, upload and download, and native documents are no longer served by an OpenContent Provider. When no service supports an operation, the interface says it is unavailable.
 - The current SiYuan Provider declares notebook discovery only; other operations return `blocked_by_contract`. The local mock Provider is for testing only and is not a user feature.
 - The readiness level is evidence only and does not guarantee that a given call will be allowed. Every call also checks the current identity, authorization, audience, platform, transfer limits, and binding status.
 - Immutable artifact references (`ArtifactReference`) require proof of immutable retention and exact-version reads. Issuance is blocked when those conditions are not currently met.
@@ -51,7 +51,7 @@ The table below lists the capabilities allowed by the Content Space contract. Be
 ## Related pages
 
 - [SiYuan Notes](./siyuan.md): the currently installed Content Space Provider and its capability boundaries.
-- [Collaboration](./collaboration.md): the relationship between the Cloud Drive section and delivery files.
+- [Collaboration](./collaboration.md): the relationship between Shared files and task delivery files.
 - [Permissions and security](../operations/security.md): general rules for external writes and per-operation confirmation.
 - [Feature status and limitations](../reference/feature-status.md): how current capability status is defined.
 

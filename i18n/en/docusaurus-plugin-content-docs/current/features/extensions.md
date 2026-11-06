@@ -1,70 +1,67 @@
 ---
 title: Skills, MCP, and Extensions
-description: Distinguish bundled domains, locally signed extensions, Agent Skills, and MCP Servers, and enable them safely.
+description: See where capabilities come from in the Extension Center, manage extensions and Skills, and check MCP and desktop-control permissions.
 sidebar_position: 4
 ---
 
 # Skills, MCP, and Extensions
 
-An “extension” in SciForge is not a single mechanism. Understanding the object types keeps documentation methods, external tools, and in-app panels from being confused with one another.
+When you need to add tools or a specialized method, first work out what you are installing, then check its source and permissions. Extensions provide app panels and tools, Skills provide task methods, and MCP connects external tools or data.
 
-## Extension Center
+This page reflects the implementation as of 2026-11-06. For installed versions and available capabilities, see [Version & Compatibility](../reference/version-and-compatibility.md).
 
-Open **Extensions** in the left sidebar to view bundled domain extensions, locally installed packages, and Skills. Extension details should show the source, publisher, version, status, and contributions.
+## Open the Extension Center
 
-![SciForge Extension Center page](/img/docs/guides/extensions-center.png)
-*Figure 1: Extension Center distinguishes bundled from locally installed extensions and shows contributions such as panels, toolbar actions, previews, and Agent capabilities.*
+Open **Extensions** from the left sidebar to see built-in and installed extensions, the marketplace, and Skills. Expand the sidebar first if you need the full navigation.
 
-Local extensions accept only official SciForge-signed packages. Installation verifies the complete file set, Ed25519 signature, publisher identity, and Host API. Workspace content never installs or executes extensions automatically.
+Extension details show the publisher, version, source, status, permissions, and the features it contributes. After installing or enabling, related entries may appear in the left navigation, the vertical toolbar on the far right, or file preview. When there are many toolbar entries, use **More tools**; supported entries can be adjusted through **Customize toolbar**.
 
-## Extension Marketplace
+![The Extension Center in an earlier version](/img/docs/guides/extensions-center.png)
+*Old interface: for understanding extension sources and feature details; the current layout follows the body text.*
 
-The Marketplace page in Extension Center uses the index bundled with the app, and a deployment can point it to a remote index. The installation chain performs permission confirmation, download, size and SHA-256 verification, publisher signature verification, staged unpacking, and atomic replacement in order. If any step fails, the existing installation is left intact.
+## Install and manage extensions
 
-- Before installation, the plugin's declared capabilities are listed and the user must confirm before continuing.
-- Installed plugins can be disabled, enabled, or uninstalled. After uninstall, the corresponding capabilities are removed from the host immediately.
-- Entries that are not published or are blocked state the reason, such as undeclared tools, capabilities that conflict with a built-in plugin, or a failed build.
-- Whether a Marketplace entry can be installed depends on the current in-app index. This does not change the bundled domain extensions listed in this chapter.
+In the marketplace, pick an entry and read the description, publisher, permissions, and installation status before confirming the install. Whether it can be installed depends on the current index and app compatibility; a blocked entry shows the reason.
 
-## Agent Skill
+Ordinary local installation uses an official signed package, and checks the signature, file contents, and Host API compatibility. Development sources are labeled separately and must not be treated as official signed installs. Files in a workspace never become enabled extensions automatically.
 
-Skills are specialized methods and workflows for Codex or Claude Code, usually consisting of `SKILL.md` plus supporting scripts and reference materials. Before enabling one, read:
+Installed extensions can be enabled, disabled, uninstalled, or rolled back with the operations the interface offers; built-in extensions are managed with the app version. If it says a restart is needed, or the extension is invalid or failed to load, handle that prompt first, then check the feature's entry point.
 
-- The Skill's trigger conditions and scope
-- Whether it runs scripts, accesses the network, or writes files
-- Required software, data, and credentials
-- How results are verified
+Extension pages that support docking can be placed on the left, right, bottom, or in the main area, and used together with the session. Changing position does not widen the extension's permissions.
 
-![SciForge Skills management page](/img/docs/guides/skills-center.png)
-*Figure 2: The Skills page is used to view, create, and manage project-level or global Skills.*
+## Use a Skill
 
-Recognition of a Skill does not mean its scripts have been executed automatically. Installation, dependencies, and scripts from third-party Skills still require independent review.
+A Skill usually contains method notes plus supporting scripts and material. Before enabling it, check:
 
-## MCP Server
+- What tasks it suits, and when it triggers.
+- Whether it runs scripts, accesses the network, or writes files.
+- What software, data, and credentials it needs.
+- What check shows the result is reliable.
 
-An MCP Server provides external tools or data to the Agent. When configuring one, record at least:
+![The Skills management page in an earlier version](/img/docs/guides/skills-center.png)
+*Old interface: shows what project-level and global Skill management is for.*
 
-- The source and version of the service
-- The launch command or service address
-- The environment variables used and the credential scope
-- Whether tools read local files, write to external systems, or send data
-- Whether failures are retried, and how duplicate writes are avoided
+Once a Skill is discovered, its scripts still run under the task's permissions. Dependency installs and external actions of a third-party Skill need separate checks; "enabled" is not a substitute for authorization.
 
-Writes, sends, uploads, or deletes in external systems should not be authorized automatically just because MCP is connected.
+## Connect an MCP Server
 
-## Computer Use Backend
+When configuring MCP, check the service source, version, launch method or address, the credential scope, and what data the tools will read or send. Test the connection with low-impact operations first, then move to tasks that write.
 
-Computer Use lets supported Runtimes operate desktop apps. It also requires a local Backend, screen recording, and Accessibility permissions. Limit the target apps and task scope, and require user confirmation before key actions such as signing in, authorizing, paying, sending, or deleting.
+Before sending, uploading, deleting, or modifying anything in an external system, confirm the target and the user's authorization. A successful connection only shows that the service can be called; the task result still needs checking. Avoid writing keys directly into prompts, project requirements, or delivery content.
 
-![SciForge Computer Use configuration](/img/docs/guides/ai-assistants-computer-use.jpg)
-*Figure 3: The Settings page shows Runtime access, Backend status, and macOS permissions separately.*
+## Use Computer Use
 
-## Troubleshooting order
+Desktop control needs Runtime support, an available backend, and system permissions. Check the backend status in settings; on macOS, also check the Screen Recording and Accessibility permissions. Limit the target app and the task scope, and check each action such as sign-in, authorization, payment, sending, or deleting.
 
-1. Confirm that the extension or Skill status is not “Restart required” or “Invalid.”
-2. Start a new session so the Runtime rediscovers available capabilities.
-3. Check the target workspace, Skill directory, and MCP configuration.
-4. Look for explicit errors in tool calls; do not rely on silent fallbacks.
-5. For local extensions, verify the signature, Host API, and version.
+![Computer Use configuration in an earlier version](/img/docs/guides/ai-assistants-computer-use.jpg)
+*Old interface: shows that the Runtime, Backend, and system permissions each need checking.*
 
-Related page: [Permissions and security](../operations/security.md).
+## When you cannot find a feature
+
+1. Check the status and error messages of the extension, Skill, or MCP.
+2. Check whether the current workspace, permissions, and Runtime support the capability you need.
+3. Start a new session so capabilities are discovered again; if a restart is needed, follow the interface prompt.
+4. If a tool entry has disappeared, check **More tools** and the toolbar customization settings.
+5. If a local extension fails to install, check the publisher, signature, and version compatibility; do not force-load it by turning off permission checks.
+
+Related pages: [Workbench tools](../workbench/tools.md), [Permissions & security](../operations/security.md).

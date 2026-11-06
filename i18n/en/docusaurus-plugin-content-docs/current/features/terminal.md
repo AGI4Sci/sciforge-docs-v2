@@ -6,11 +6,11 @@ sidebar_position: 50
 
 # Terminal
 
-Terminal puts the command-line environment for the current workspace in the bottom panel. It is suited to running scripts, checking logs, and confirming the status of long-running tasks. You type commands in the panel yourself; when the Agent runs commands in a session, it follows the Runtime's approval and sandbox policies. These are not the same authorization chain.
+Terminal puts the command-line environment for the current workspace in the bottom panel. It is suited to running scripts, checking logs, and confirming the status of long-running tasks. You type commands in the panel yourself; when the Agent runs commands in a session, it follows the Runtime's approval and sandbox policies. The permission settings for the two apply separately.
 
 ## How to open it
 
-- Entry: **Terminal** in the top toolbar, or **Terminal** in the bottom panel.
+- Entry: **Terminal** in the right toolbar (expand **More tools** if it is not shown), or **Terminal** in the bottom panel.
 - Target: the current workspace. The terminal process uses the workspace root as its initial working directory.
 - Prerequisite: a workspace is open, and the local or remote Workspace Host can start a system shell.
 - Tabs: a workspace can have multiple tabs (up to 8), with support for renaming, closing other tabs, closing all tabs, and restarting the process.

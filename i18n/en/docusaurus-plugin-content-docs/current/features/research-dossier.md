@@ -6,13 +6,13 @@ sidebar_position: 46
 
 # Research Dossier
 
-The research dossier is the reading- and delivery-oriented view of research: it opens one exact artifact version or compute run, then combines the read-only records contributed by each domain into a research narrative, key artifacts, reproduction status, and limitations. It stores no records itself and holds no current pointer, and it never substitutes the latest version for the exact record requested; the research process is recorded by [Research Checkpoints](./research-checkpoints.md), and evidence relationships are still maintained by [Evidence DAG](./evidence-dag.md).
+The research dossier puts the research summary, sources, key artifacts, versions, and limitations together, for review and delivery. After opening a research record, read the results and the limitations that need attention first, then expand versions and technical details as needed. Process records come from [Research Checkpoints](./research-checkpoints.md), and evidence relationships are in [Evidence DAG](./evidence-dag.md).
 
 ## How to open it
 
-- Entry: **Research** in the top toolbar; the right panel is titled **Research** as well; **Open research dossier** on a session result card binds to the exact version.
-- Target: an exact artifact version or compute run, not a vague “latest result”.
-- Prerequisite: a research checkpoint, an exact artifact version, or a compute run record already exists, and the session is bound to a workspace.
+- Entry: **Research** in the right toolbar (expand **More tools** if it is not shown); the right panel is titled **Research** as well; **Open research dossier** on a session result card binds to the exact version.
+- By default it shows the current research stage. To see history, open a specific artifact version or research record. References to the old Scientific Compute may still appear, but that compute service has been retired.
+- Prerequisite: the session is bound to a workspace. Once there are research checkpoints or artifact versions, you can view the detailed records.
 
 ![SciForge research dossier panel](/img/docs/guides/research-dossier.jpg)
 *The research dossier brings the research narrative, version position, trust summary, and the limitations to consider onto one reading surface.*
@@ -45,9 +45,9 @@ The research dossier is the reading- and delivery-oriented view of research: it 
 
 ## Known limitations
 
-- Feature status is **Partially available**: the entry is registered, but content quality depends on whether the task produced checkpoints, artifact versions, and evidence records.
+- What you see depends on the checkpoints, artifact versions, and evidence the task has saved. If there are no records yet, finish and save a round of the task first.
 - The dossier itself stores no records; when an owning domain is unavailable, only the corresponding block degrades, and the rest of the verified content remains readable.
-- An exact-identity or digest mismatch fails closed and is never replaced with the source, the current version, or the latest version.
+- If the requested version is missing or fails verification, an error is shown; another version is never opened quietly.
 - Imported legacy sessions are permanently marked legacy / incomplete and keep a blocking provenance breakpoint.
 - Empty blocks and inapplicable compute, evidence, or review blocks are omitted; return to the Evidence DAG when you need the full relationship graph.
 
@@ -59,4 +59,4 @@ The research dossier is the reading- and delivery-oriented view of research: it 
 - [Evidence DAG](./evidence-dag.md): the complete in-session evidence relationships behind the dossier.
 - [Feature status and limitations](../reference/feature-status.md): how the Partially available status is judged.
 
-> Implementation basis: `@sciforge/domain-research-dossier` v1.0.3.
+> Implementation basis: `@sciforge/domain-research-dossier` v1.6.0.

@@ -6,7 +6,7 @@ sidebar_position: 45
 
 # Project DAG
 
-Project DAG compiles the committed Evidence snapshots of several sessions in the same project into a project-level immutable snapshot by goal, scope, and policy. It answers “what does the whole project know so far, and which conclusions still need review?” It does not read raw chat and does not accept uncommitted source graphs; claims and evidence relationships inside a session remain the single source of truth in [Evidence DAG](./evidence-dag.md).
+Project DAG combines the evidence from several sessions in the same project, to help you see which conclusions the project has so far and which questions still need review. First save evidence in each session's [Evidence DAG](./evidence-dag.md), then set a goal here, update the project graph, and trace sources.
 
 ## How to open it
 
@@ -45,8 +45,8 @@ Project DAG compiles the committed Evidence snapshots of several sessions in the
 - The current implementation consumes only committed Evidence snapshots; an upstream commit merely marks the project as needing a refresh and does not compile each item automatically.
 - When the Project view is closed, nothing is precompiled; to get a new view, update explicitly and wait for the persistence receipt.
 - After a new snapshot is committed, audits that are queued, running, completed, or failed on the old snapshot are marked stale, and old Findings never overwrite the new graph.
-- When any link is restricted by the access policy, the provenance path is redacted and fails closed, keeping only irreversible hashes, existence, level, and breakpoints.
-- The audit is a fail-open, read-only sidecar; an audit failure does not turn a committed Project task into a failure and cannot modify the graph directly.
+- Sources you are not allowed to view have their content hidden, and only limited status and gap hints are shown.
+- The audit checks an existing project graph; an audit failure does not undo a graph that was already saved, and it does not modify conclusions directly.
 
 ## Related pages
 
@@ -56,4 +56,4 @@ Project DAG compiles the committed Evidence snapshots of several sessions in the
 - [Workspaces and sessions](../workbench/workspaces-and-sessions.md): how several sessions share one project scope.
 - [Permissions and security](../operations/security.md): the boundary between access policy and publication authorization.
 
-> Implementation basis: `@sciforge/domain-project-dag` v1.0.7.
+> Implementation basis: `@sciforge/domain-project-dag` v1.0.9.

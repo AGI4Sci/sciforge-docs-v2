@@ -6,11 +6,11 @@ sidebar_position: 30
 
 # Create Loop (multi-step workflows)
 
-Create Loop breaks a task into multiple inspectable steps. It sits above session execution: AI nodes generate or decide, condition and data-processing nodes control the path, HTTP nodes connect external systems, subflows reuse another Loop, and human approvals determine whether key actions proceed. The feature status table lists this plugin as **Verified**.
+Create Loop breaks a task into multiple inspectable steps. It sits above session execution: AI nodes generate or decide, condition and data-processing nodes control the path, HTTP nodes connect external systems, subflows reuse another Loop, and human approvals determine whether key actions proceed. Before using it, confirm that the models, network, and tools the chosen nodes need are available, and run the whole flow through in your current environment.
 
 ## How to open it
 
-- Entry: **Create Loop** at the top of the workbench. Edit nodes on the canvas; the right panel shows settings for the current Loop.
+- Entry: **Create Loop** in the right toolbar (expand **More tools** if it is not shown). Edit nodes on the canvas; the right panel shows settings for the current Loop.
 - Target: one Loop in the current workspace. Definitions and run records are stored in local domain state.
 - Prerequisite: AI nodes need an available Runtime and model, HTTP nodes need network access, and schedules and local webhooks are triggered by the app process, so the app must remain running. A Loop can be started with manual **Run once**, a schedule, a webhook, or an Agent hook.
 
@@ -26,7 +26,7 @@ Create Loop breaks a task into multiple inspectable steps. It sits above session
 
 ## Typical workflow
 
-1. Open **Create Loop** at the top, name it, and confirm the working directory. AI, image, and code nodes all use that directory.
+1. Open **Create Loop** from the right toolbar or **More tools**, name it, and confirm the working directory. AI, image, and code nodes all use that directory.
 2. Add trigger and task nodes and connect them in execution order. Write clear input references, error handling, and timeouts for each node.
 3. Use **Test node** with mock upstream input to validate a single node first. The current Loop is saved before testing.
 4. Click **Run once** and check each node's input, output, timing, and errors in the **Run log**, **Run history**, and **Audit report**.

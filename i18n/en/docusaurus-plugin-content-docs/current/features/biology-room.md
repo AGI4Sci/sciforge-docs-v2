@@ -6,6 +6,8 @@ sidebar_position: 12
 
 # Biology Room
 
+Biology Room is the room submodule of the built-in `@sciforge/domain-biology-workbench` **1.1.3**. It shares one domain package with Life Science Preview, ships with the app, and needs no marketplace install or plugin enablement; there is no runtime-plugin takeover path. For how versions are quoted, see [Version & Compatibility](../reference/version-and-compatibility.md).
+
 Biology Room is a workspace object for biological samples or experimental material: it puts the sequences, structures, genome tracks, and annotations needed for viewing, annotating, and handoff into a single versioned room. It has no separate rendering panel today, so file contents still appear in file preview; the room manages assets, selections, view state, and history.
 
 ## Opening it
@@ -42,7 +44,7 @@ Biology Room is a workspace object for biological samples or experimental materi
 ## Known limitations
 
 - Narrower support than Life Science Preview: no FASTQ, GTF, omics matrices, imaging, or spectra; gzip covers only FASTA, GFF, BED, and VCF.
-- A room holds at most 128 assets, 2,000 annotations, and 100 MB of assets in total; a single unindexed asset is capped at 25 MB.
+- A room holds at most 128 assets, 2,000 annotations, and 100 MiB of assets in total; a single unindexed asset is capped at 25 MiB.
 - Rooms have no standalone interface; creation, changes, and restoration all happen through the Agent in a session.
 - After a refresh, missing or unreadable assets are marked explicitly, and annotations that lost their anchor are marked orphaned and need human confirmation before you handle them.
 - Applying changes validates the revision number and rejects stale ones; history is stored by revision and may be truncated.
@@ -51,8 +53,8 @@ Biology Room is a workspace object for biological samples or experimental materi
 ## Related pages
 
 - [Life Science Preview](./life-science-preview.md): dedicated views for sequences, structures, and genome files in a room.
-- [Dataset API](./dataset-api.md): prepare input data with provenance and validation for a room.
+- [Dataset API migration note](./dataset-api.md): the old data-ingestion capability is retired; after obtaining data, save its source and validation records separately.
 - [Workspaces and sessions](../workbench/workspaces-and-sessions.md): workspace location, file paths, and recovery boundaries.
 - [Evidence & Reproducibility](./evidence-and-reproducibility.md): fold room changes into the larger research record chain.
 
-> Implementation basis: `@sciforge/domain-biology-room` v1.0.3.
+> Current version: built-in Biology Workbench 1.1.3. The old room directory and revision format stay compatible; for what selection saving covers in the molecular preview, see [Life Science Preview](./life-science-preview.md).

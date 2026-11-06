@@ -6,11 +6,11 @@ sidebar_position: 44
 
 # Evidence DAG
 
-Evidence DAG is the evidence compiler inside a session: it extracts claims, sources, runs, artifacts, and relationships from the visible runtime trace, and compiles them into an immutable evidence snapshot on an explicit update or at a formal boundary. It answers “what supports or refutes this conclusion?” It sits after a single analysis and before project-level aggregation and external delivery; cross-session aggregation is handled by [Project DAG](./project-dag.md).
+Evidence DAG helps you check what a conclusion rests on: in the graph, see the sources, computation steps, figures, and limitations that support or refute it. After you finish an analysis, click Update to save the evidence relationships as they stand at that point. To combine several sessions, use [Project DAG](./project-dag.md).
 
 ## How to open it
 
-- Entry: the **Evidence DAG** panel on the right; resource navigation from a Claim, an evidence snapshot, or a similar item opens the corresponding session.
+- Entry: in the Research panel, click **View evidence graph**. When the standalone evidence panel is open, switch from the default **Research record** to **Evidence graph**.
 - Target: committed evidence snapshots in the current Runtime and session.
 - Prerequisite: the task has produced a compilable trace, and the Evidence service and text-reasoning configuration are available.
 
@@ -18,7 +18,7 @@ Evidence DAG is the evidence compiler inside a session: it extracts claims, sour
 
 | What you want to do | How to do it | Output |
 | --- | --- | --- |
-| Leave a reviewable trace | Run the task normally; tool results declare `evidenceLineage` | Runtime trace increments |
+| Leave a reviewable trace | Keep sources, computation records, and artifact references during analysis | Runtime trace increments |
 | Generate a new snapshot | Click **Update** and wait for queueing and commit to finish | An immutable Evidence snapshot |
 | Inspect claims and evidence | Select a node in the graph to view its sources, runs, artifacts, and relationships | The in-session evidence graph |
 | Check provenance breakpoints | Review provenance coverage, breakpoints, and limitation notes | A list of evidence gaps |
@@ -27,10 +27,10 @@ Evidence DAG is the evidence compiler inside a session: it extracts claims, sour
 
 ## Typical workflow
 
-1. Complete a round of analysis and make sure tool results carry structured lineage and exact artifact references.
+1. Complete a round of analysis and confirm that key conclusions have sources, computation records, and matching artifacts.
 2. Click **Update** and confirm the status moves from queued to running and then to committed.
 3. Check the full chain from claim to source, run, code, environment, and artifact version.
-4. Manually confirm breakpoints such as a missing source, an unverified version, or a missing approval; do not paper over them with prose explanations.
+4. Go through the prompts about a missing source, an unverified version, or a missing approval one by one; add the real records, then update.
 5. When you need a cross-session, project-level view, move on to the Project DAG.
 
 ## Inputs, outputs, and permissions
@@ -42,7 +42,7 @@ Evidence DAG is the evidence compiler inside a session: it extracts claims, sour
 
 ## Known limitations
 
-- Feature status is **Partially available**: the entry is registered, but the graph only becomes meaningful once a task actually produces claims, sources, and artifact records; an empty panel is not a failure.
+- The graph may be empty if the task has not yet saved claims, sources, or artifact records; check the records first, then update.
 - Only nodes and edges in committed snapshots are audit-eligible; pending failures are shown separately and never make the committed graph unusable.
 - Promoting a claim to L4 requires a stable run record, verifiable inputs, exact software, parameters, environment, and logs or artifacts; stochastic runs must also supply a random seed.
 - Missing fields become named provenance breakpoints and are never filled in by inference; the built-in audit currently performs deterministic L0 structural checks.
@@ -56,4 +56,4 @@ Evidence DAG is the evidence compiler inside a session: it extracts claims, sour
 - [Artifact Versions](./artifact-versions.md): the immutable artifact versions that evidence references.
 - [Virtual cell evidence atlas case](../cases/virtual-cell-evidence-atlas.md): how evidence is organized in a complete task.
 
-> Implementation basis: `@sciforge/domain-evidence-dag` v1.1.5.
+> Implementation basis: `@sciforge/domain-evidence-dag` v2.13.0.
