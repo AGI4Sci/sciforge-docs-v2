@@ -12,11 +12,11 @@ sidebar_position: 1
 
 | 想完成什么 | 阅读入口 | 当前形态与条件 |
 | --- | --- | --- |
-| 打开项目、继续会话、查看或编辑文件 | [工作台](../workbench/workspaces-and-sessions.md) | 本地工作区、会话与适用格式的文件预览；截断、只读或没有写回通道时不能直接编辑。 |
+| 打开项目、继续会话、查看或编辑文件 | [工作台](../workbench/workspaces-and-sessions.md) | 本地工作区、会话与适用格式的文件预览；内容过长或文件不支持编辑时，页面会显示原因。 |
 | 连接模型与执行者 | [Runtime 与模型](../getting-started/runtime-and-models.md) | Codex、Claude Code、DSH 分别配置；模型接入与工具权限不是同一件事。 |
-| 查看序列、结构、组学、影像和光谱 | [生命科学预览](./life-science-preview.md) | 内置 Biology Workbench 的预览子模块。 |
-| 组织生物学对象与实验记录 | [Biology Room](./biology-room.md) | 同一 Biology Workbench 包的另一职责，不是额外市场插件。 |
-| 从数据和代码绘图、修改与接受候选 | [Scientific Figures](./scientific-plotting.md) | 独立插件；需要兼容宿主、Python 和所需依赖。 |
+| 查看序列、结构、组学、影像和光谱 | [生命科学预览](./life-science-preview.md) | 随应用提供，无需单独安装。 |
+| 组织生物学对象与实验记录 | [Biology Room](./biology-room.md) | 随应用提供，用于整理相关文件和注释。 |
+| 从数据和代码绘图、修改与接受候选 | [Scientific Figures](./scientific-plotting.md) | 需要安装兼容插件，并准备 Python 和所需依赖。 |
 | 对文字或资源添加锚定批注 | [Anchored Comments](./anchored-comments.md) | 独立插件；真实捕获与外部反馈分别有权限要求。 |
 | 检查 Agent 实际修改 | [Change Inspector](./change-inspector.md) | 需安装插件；让 Agent 列出本次会话的文件差异，超出长度时会提示。 |
 | 保存产物与研究依据 | [证据与复现](./evidence-and-reproducibility.md) | 保存文件版本、研究阶段和结论来源；图件记录需另行关联。 |
@@ -30,7 +30,7 @@ sidebar_position: 1
 - [产物版本](./artifact-versions.md)、[Git 检查点](./git-checkpoints.md)、[研究检查点](./research-checkpoints.md)：固定文件或阶段状态。
 - [Evidence DAG](./evidence-dag.md)、[Project DAG](./project-dag.md)、[科研档案](./research-dossier.md)：组织证据、项目目标和交付。
 - [终端](./terminal.md)、[浏览器预览](./browser-preview.md)、[电脑操作](./computer-use.md)：按运行环境和权限使用外部执行能力。
-- [插件协议与许可证](../reference/plugin-licenses.md)：查看许可证、宿主依赖及当前安装边界。
+- [插件协议与许可证](../reference/plugin-licenses.md)：查看许可证和安装要求。
 
 Remote SSH 的连接与管理属于内部补充，公开手册不提供 VPN、SSH 目标登记或内部部署步骤。
 

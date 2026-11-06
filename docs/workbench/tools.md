@@ -13,7 +13,7 @@ sidebar_position: 3
 | **文件与预览** | 浏览目录，预览文本、表格、图片或科学对象，引用任务输入 | 工作区路径、文件版本、引用与实际内容读取的区别 |
 | **终端** | 运行命令，查看日志和长任务状态 | 工作目录、参数、返回码、写入和网络影响 |
 | **浏览器** | 查看本地预览或研究资料 | URL、登录状态、下载与外部提交 |
-| **Computer Use** | 在已支持的后端操作桌面应用 | Runtime 能力、后端、系统权限和具体动作授权 |
+| **Computer Use** | 使用 Codex 或 Claude Code 操作浏览器与 Electron 内嵌页面 | 运行状态、系统权限和具体动作授权 |
 | **[Change Inspector](../features/change-inspector.md)** | 让 Agent 核对本次会话的文件改动 | 需要安装插件；工作区整体状态另用 `git status --short` 检查 |
 | **产物、Checkpoint 与科研面板** | 查看阶段结果、证据和交付内容 | 实际安装状态、输入来源、版本和未验证项 |
 
@@ -34,6 +34,6 @@ sidebar_position: 3
 - 面板预览不是任务验收；工具结果应在会话中解释，并标明失败或未完成部分。
 
 ![SciForge Computer Use 设置页](/img/docs/guides/ai-assistants-computer-use.jpg)
-*说明 Runtime、Backend 与 macOS 权限需分别满足。*
+*启用电脑操作后，检查运行状态与 macOS 系统权限。*
 
 文件输入见[工作区与会话](./workspaces-and-sessions.md)，权限说明见[配置只读沙箱](../getting-started/read-only-sandbox.md)与[权限与安全](../operations/security.md)。

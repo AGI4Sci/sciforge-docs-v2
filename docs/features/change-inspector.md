@@ -1,37 +1,31 @@
 ---
 title: 变更检查（Change Inspector）
-description: 用独立只读插件检查当前真实 Agent 会话的文件差异。
+description: 检查当前任务记录了哪些文件改动，并逐项核对实际内容。
 sidebar_position: 43
 ---
 
 # 变更检查（Change Inspector）
 
-Change Inspector 用于查看当前会话修改了哪些文件。安装插件后，让 Agent 列出改动并检查差异。
+Change Inspector 帮你检查当前任务修改了哪些文件，以及每个文件改了什么。安装并启用插件后，可以直接让 Agent 列出改动，再逐项核对。
 
 ## 使用方式
 
-从可信来源安装兼容包、启用并授予该精确版本的工具与 `agent-threads.read` 权限，参见[扩展中心](./extensions.md)及[版本与兼容性](../reference/version-and-compatibility.md)。在已产生文件改动的当前会话中，让 Agent：
+从可信来源安装兼容包，启用插件并授予所需权限，参见[扩展中心](./extensions.md)及[版本与兼容性](../reference/version-and-compatibility.md)。在已产生文件改动的当前会话中，可以这样要求 Agent：
 
-> 使用 Change Inspector 打开当前会话快照，列出文件变更和截断状态；分页核对关键 diff，再与工作区文件及 Git 状态交叉检查。
+> 检查这次任务修改了哪些文件，逐项说明改动。如果内容太长，请分批展示，并告诉我还有哪些内容没显示。
 
-插件声明两个只读工具：
+先看文件清单，确认改动范围符合任务要求，再检查重要文件的具体内容。如果还有遗漏的内容，让 Agent 继续分批展示；需要核对完整内容时，直接分批读取实际文件。
 
-| 工具 | 返回内容 |
-| --- | --- |
-| `open_session` | 当前会话身份、结果标识与有界完整快照 |
-| `list_changes` | 变更摘要、下一页 cursor、revision 与截断原因；默认每页 100 条，最多 500 条 |
+## 使用提示
 
-插件只检查发起调用的当前会话，不能读取同工作区的其他会话或其他 Runtime 的记录。停用插件或撤销权限后，需要重新启用或授权才能继续使用。
+- 检查结果只包含当前会话已经记录的文件改动，不包含同一工作区其他会话的记录。
+- 手动编辑或其他工具产生的改动可能没有出现在记录中。需要确认这些改动时，应检查实际文件，必要时对照 Git 状态。空列表不代表工作区从未被修改。
+- 文件或改动较多时，展示内容可能不完整。先确认哪些内容尚未显示，再继续分批检查；不要仅凭部分差异重建整个文件。
+- 审查期间如果又发生编辑，应刷新文件改动列表，重新核对受影响的文件。
+- 停用插件或撤销权限后，需要重新启用或授权才能继续检查。
 
-## 如何判断记录是否完整
+## 检查后的处理
 
-- 只提取工具记录中的 `file_change` unified diff；面板截图或 Agent 总结不能代替该记录。空结果不证明工作区从未被写入。
-- 快照最多 5,000 条变更、序列化后 256 KiB；超限保留连续的最新后缀。单条完整 patch 上限 64 KiB，分页中的单条 patch 摘要上限 1 KiB。
-- 检查 `patchBytes`、`patchTruncated`、`truncated` 与 `truncationReasons`。尾部空格、LF/CRLF 保留在未截断的原始 patch 中；被截断的输出不能用于完整文件重建。
-- cursor 绑定会话与 revision。发生后续编辑或 cursor 被拒绝时，从不带 cursor 的第一页重新读取；只读分页本身不应改变 revision。
+变更检查只读取记录，不会修改文件、回滚或保存检查点，也不会发起网络请求。发现问题后，可以让 Agent 修改对应文件，再重新检查。需要恢复工作区状态时，参见 [Git 检查点](./git-checkpoints.md)。
 
-## 权限与数据
-
-插件只读取当前会话的文件变更记录，不写文件、不回滚、不保存检查点，也不发起网络请求。
-
-相关：[证据与可复现性](./evidence-and-reproducibility.md)、[Git 检查点](./git-checkpoints.md)、[权限与安全](../operations/security.md)、[插件许可证](../reference/plugin-licenses.md)。
+相关：[证据与可复现性](./evidence-and-reproducibility.md)、[权限与安全](../operations/security.md)、[插件许可证](../reference/plugin-licenses.md)。
