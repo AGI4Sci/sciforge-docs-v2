@@ -11,7 +11,7 @@ SciForge 是面向科研任务的智能工作台。它让 **Codex**、**Claude C
 
 :::info[内容基线]
 
-本站以 [AGI4Sci/SciForge](https://github.com/AGI4Sci/SciForge) 公开源码、生成的能力目录和真实界面为依据。历史 Wiki、设计稿或一次 Agent 回答不会单独被当作已发布功能。
+本手册按 **2026-11-06 的最新客户端**更新。界面或按钮与教程不同时，请先查看[版本与兼容性](./reference/version-and-compatibility.md)。
 
 :::
 
@@ -21,7 +21,7 @@ SciForge 是面向科研任务的智能工作台。它让 **Codex**、**Claude C
 | ---: | --- | --- |
 | 1 | [五分钟快速开始](./getting-started/five-minute-quickstart.md) | 在只读沙箱中完成第一次本地任务 |
 | 2 | [端到端案例](./cases/overview.md) | 理解 SciForge 如何连接科研问题、执行、证据与交付 |
-| 3 | [功能与扩展](./features/overview.md) | 按插件浏览 22 个内置领域扩展，并了解 Skill、MCP 与扩展市场 |
+| 3 | [功能与扩展](./features/overview.md) | 按任务查找内置模块、独立插件，以及 Skill、MCP 与插件市场 |
 | 4 | [权限与安全](./operations/security.md) | 选择合适的沙箱、审批和文件访问范围 |
 | 5 | [功能状态](./reference/feature-status.md) | 核对已验证、部分可用和实验性能力 |
 
@@ -36,9 +36,9 @@ SciForge 是面向科研任务的智能工作台。它让 **Codex**、**Claude C
 
 ## 文档如何标注能力
 
-- **已验证**：在当前源码和真实界面中完成过对应路径。
+- **已验证**：已在注明的版本和平台完成实际操作。
 - **部分可用**：主要入口存在，但仍有平台、数据或操作限制。
 - **实验性**：适合作为集成或研究路线，不应写成开箱即用功能。
-- **未发布**：只存在于设计、研究稿或待实现计划中。
+- **未发布**：尚无对应公开发行包，可能已有实现。
 
 第一次使用时，请直接进入 [五分钟快速开始](./getting-started/five-minute-quickstart.md)。
