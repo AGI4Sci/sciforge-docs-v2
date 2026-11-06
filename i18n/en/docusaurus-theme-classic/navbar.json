@@ -1,0 +1,34 @@
+{
+  "title": {
+    "message": "SciForge / Handbook",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "SciForge",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.使用文档": {
+    "message": "Documentation",
+    "description": "Navbar item with label 使用文档"
+  },
+  "item.label.案例教程": {
+    "message": "Case studies",
+    "description": "Navbar item with label 案例教程"
+  },
+  "item.label.功能手册": {
+    "message": "Feature guide",
+    "description": "Navbar item with label 功能手册"
+  },
+  "item.label.视频导览": {
+    "message": "Video tour",
+    "description": "Navbar item with label 视频导览"
+  },
+  "item.label.客户端源码": {
+    "message": "Client source",
+    "description": "Navbar item with label 客户端源码"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

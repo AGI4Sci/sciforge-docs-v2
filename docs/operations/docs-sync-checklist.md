@@ -57,6 +57,7 @@ git grep -nE "remote-ssh|Remote SSH|VPN|Zulip" -- docs README.md
 ## 4. 更新文档站与 wiki
 
 - 文档站：在 `AGI4Sci/sciforge-docs-v2` 开 PR，一页一主题，合并到 `main` 后自动部署。
+- 英文站：同步更新 `i18n/en/docusaurus-plugin-content-docs/current/` 下的同路径页面；新增或删除页面时，同时更新 `sidebars.ts` 与 `i18n/en/docusaurus-plugin-content-docs/current.json`。
 - wiki：修改落在 `SciForge_client` 的 `docs/wiki/`，再由导出工具同步到公开仓；不要直接改公开仓的 `docs/wiki/`（下次导出会覆盖）。
 - 功能页统一模板：定位 → 打开方式 → 能做什么 → 典型流程 → 输入输出与权限 → 已知限制 → 相关页面。
 - 入口名称必须取自快照的 `src/renderer/src/locales/zh/*.json` 与 `packages/domains/*/src/renderer/*messages.ts`，不要沿用旧截图里的文案。

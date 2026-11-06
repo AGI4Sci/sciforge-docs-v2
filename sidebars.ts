@@ -6,7 +6,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '快速开始',
-      link: {type: 'generated-index', slug: '/category/快速开始'},
+      link: {type: 'generated-index', slug: '/category/getting-started'},
       items: [
         'getting-started/five-minute-quickstart',
         'getting-started/runtime-and-models',
@@ -16,7 +16,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '端到端案例',
-      link: {type: 'generated-index', slug: '/category/端到端案例'},
+      link: {type: 'generated-index', slug: '/category/end-to-end-cases'},
       items: [
         'cases/overview',
         'cases/virtual-cell-evidence-atlas',
@@ -33,7 +33,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: '研究资料与科学对象',
-          link: {type: 'generated-index', slug: '/category/研究资料与科学对象', description: '预览科学文件、接入外部数据源、组织生物学对象，并用受治理的计算步骤处理数据。'},
+          link: {type: 'generated-index', slug: '/category/research-sources', description: '预览科学文件、接入外部数据源、组织生物学对象，并用受治理的计算步骤处理数据。'},
           items: [
             'features/life-science-preview',
             'features/dataset-api',
@@ -44,7 +44,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: '分析与审阅',
-          link: {type: 'generated-index', slug: '/category/分析与审阅', description: '生成可复跑图表、对图像做人工审改，并把批注锚定到具体位置。'},
+          link: {type: 'generated-index', slug: '/category/analysis-and-review', description: '生成可复跑图表、对图像做人工审改，并把批注锚定到具体位置。'},
           items: [
             'features/scientific-plotting',
             'features/visual-review',
@@ -68,7 +68,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Agent 与工作台工具',
-          link: {type: 'generated-index', slug: '/category/agent-与工作台工具', description: '终端、浏览器与桌面操作：让 Agent 在明确边界内执行。'},
+          link: {type: 'generated-index', slug: '/category/agent-and-workbench-tools', description: '终端、浏览器与桌面操作：让 Agent 在明确边界内执行。'},
           items: [
             'features/terminal',
             'features/browser-preview',
@@ -84,7 +84,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: '协作与内容',
-          link: {type: 'generated-index', slug: '/category/协作与内容', description: '身份与登录、团队协作、内容空间与思源笔记。'},
+          link: {type: 'generated-index', slug: '/category/collaboration-and-content', description: '身份与登录、团队协作、内容空间与思源笔记。'},
           items: [
             'features/identity-access',
             'features/collaboration',
