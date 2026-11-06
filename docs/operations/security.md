@@ -39,10 +39,10 @@ sidebar_position: 1
 
 ## Computer Use
 
-Computer Use 可能操作其他桌面应用，因此同时受 SciForge 设置、Backend 状态和 macOS 屏幕录制/辅助功能权限约束。
+Computer Use 可操作受支持的网页和应用内嵌页面。使用前，在 SciForge 设置中检查运行状态；macOS 用户还需检查屏幕录制和辅助功能权限。
 
 ![SciForge Computer Use 权限状态](/img/docs/guides/ai-assistants-computer-use.jpg)
-*图 1：启用前同时核对允许的 Runtime、Backend 和操作系统权限。*
+*图 1：启用前，检查所选执行者、运行状态和系统权限。*
 
 以下动作应在执行当下由用户确认：账号登录或授权、发送消息、上传数据、购买或付款、删除外部内容、提交正式评测结果。
 
