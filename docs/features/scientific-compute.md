@@ -1,9 +1,16 @@
 ---
-title: 科学计算（Scientific Compute）
-description: 已退役能力的迁移说明与真实计算记录建议。
+title: 运行分析与计算
+description: 使用自行配置的 Python、R 或集群环境运行分析，保存输入、依赖与实际输出。
 sidebar_position: 13
 ---
 
-# 科学计算（Scientific Compute）
+# 运行分析与计算
 
-旧科学计算功能已退役。运行计算请使用自己配置的 Python、R 或集群环境；绘图可使用 [Scientific Figures](./scientific-plotting.md)。
+运行分析前，先准备并验证自己配置的 Python、R 或集群环境。需要 Agent 执行时，在会话中说明使用的环境、输入文件、分析步骤和输出位置；可用操作取决于执行环境与权限。
+
+1. 确认输入文件的位置、格式与版本，保留原始数据和来源记录。
+2. 准备脚本及所需依赖，记录解释器、软件包版本、运行参数；集群任务还应记录提交命令与资源要求。
+3. 实际执行分析，检查运行状态、退出码和日志；失败时保留错误信息，修正后重新运行。
+4. 核对输出文件、统计结果与预期是否一致，保存输入、代码、依赖和输出之间的对应关系。没有实际运行记录时，不应把预期结果写成已完成的计算。
+
+从数据和 Python 代码绘图、修改并接受候选图，可使用 [Scientific Figures](./scientific-plotting.md)；该插件需要单独安装及配置所需依赖，当前支持 Python + Matplotlib。跨任务的来源与计算记录见[证据与可复现性](./evidence-and-reproducibility.md)。

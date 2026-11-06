@@ -32,11 +32,7 @@ sidebar_position: 1
 - [终端](./terminal.md)、[浏览器预览](./browser-preview.md)、[电脑操作](./computer-use.md)：按运行环境和权限使用外部执行能力。
 - [插件协议与许可证](../reference/plugin-licenses.md)：查看许可证、宿主依赖及当前安装边界。
 
-## 迁移与退役
-
-Dataset API、Scientific Compute 已退出当前产品线，旧地址保留[数据获取迁移说明](./dataset-api.md)和[计算迁移说明](./scientific-compute.md)。旧 [Visual Review](./visual-review.md) 也不再作为当前独立可安装插件列出。不要根据旧截图恢复已删除的入口或安装旧目录。
-
-Paper Radar、OpenContent 的历史材料不代表当前能力。Remote SSH 的连接与管理属于内部补充，公开手册不提供 VPN、SSH 目标登记或内部部署步骤。本地 mock Provider 只用于开发测试。
+Remote SSH 的连接与管理属于内部补充，公开手册不提供 VPN、SSH 目标登记或内部部署步骤。
 
 ## 如何判断能否使用
 

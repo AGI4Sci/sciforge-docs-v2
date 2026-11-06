@@ -14,8 +14,8 @@ sidebar_position: 1
 
 首次引导或 **设置 → 通用** 可选择 **模型 API** 或 **Coding Plan**。进入 **设置 → AI 助手**，检查 Codex 能否被识别。设置在展开的左侧边栏底部；账户与云端状态也在这一区域。
 
-![模型接入历史引导](/img/docs/quickstart/quickstart-model-access.jpg)
-*旧版界面：说明模型 API 与 Coding Plan 两条路径。*
+![模型接入引导](/img/docs/quickstart/quickstart-model-access.jpg)
+*说明模型 API 与 Coding Plan 两条路径。*
 
 ## 2. 记录文件状态，配置只读权限
 
@@ -27,8 +27,8 @@ git status --short
 
 已有修改时先记录清楚；非 Git 项目使用副本。进入 **设置 → AI 助手 → Codex**，将 **文件访问范围**设为 **只能读取文件**，保留适当的工具确认策略。等待设置应用，结束现有任务后重新连接或重启，并新建会话。
 
-![文件权限历史设置](/img/docs/guides/ai-assistants.jpg)
-*旧版界面：图中“可修改工作目录”允许写入，开始本教程前改为“只能读取文件”。*
+![文件权限设置](/img/docs/guides/ai-assistants.jpg)
+*图中“可修改工作目录”允许写入，开始本教程前改为“只能读取文件”。*
 
 详细步骤见[配置只读沙箱](./read-only-sandbox.md)。提示词也要写清不修改文件；遇到扩大权限的请求先停止核对，这次任务无需写入权限。
 
@@ -38,8 +38,8 @@ git status --short
 
 当前工作台左侧用于项目、会话与协作导航；**最右侧纵向工具栏**打开文件等工具，面板在旁边停靠。工具较多时可打开 **更多工具**。
 
-![新会话历史界面](/img/docs/quickstart/quickstart-new-session.jpg)
-*旧版界面：展示本地项目与新会话，当前工具入口位置以正文为准。*
+![新会话界面](/img/docs/quickstart/quickstart-new-session.jpg)
+*展示本地项目与新会话。*
 
 ## 4. 发送第一次任务
 
@@ -49,13 +49,13 @@ git status --short
 
 本次无需添加附件。如果要指定已有文件，可用文件面板的引用操作或输入 `@`。从本机外部选文件、拖入或粘贴图片可能先向工作区导入文件，会改变只读检查的文件基线；留到后续任务再尝试。附件托盘与已发送文件标签的区别见[工作区与会话](../workbench/workspaces-and-sessions.md)。
 
-![首次任务历史提示词](/img/docs/quickstart/quickstart-first-task.jpg)
-*旧版界面：展示任务文字与执行者。*
+![首次任务提示词](/img/docs/quickstart/quickstart-first-task.jpg)
+*展示任务文字与执行者。*
 
 发送后查看会话里的工具调用、工作目录和执行结果。Runtime 未连接时先检查 **设置 → AI 助手**与模型配置，再重新发送。
 
-![只读任务历史执行过程](/img/docs/quickstart/quickstart-task-running.jpg)
-*旧版界面：展示同一会话中的执行状态。*
+![只读任务执行过程](/img/docs/quickstart/quickstart-task-running.jpg)
+*展示同一会话中的执行状态。*
 
 ## 5. 核对结果与文件
 
@@ -67,7 +67,7 @@ git status --short
 
 与任务前比较，确认没有新增、删除或修改项目文件。Git 不显示被忽略的缓存；需要严格检查时，额外比较副本的文件清单与内容哈希。发现变化就先停下核对，不要直接还原原有修改。
 
-![只读分析历史结果](/img/docs/quickstart/quickstart-task-result.jpg)
+![只读分析结果](/img/docs/quickstart/quickstart-task-result.jpg)
 *在会话中查看分析结果。*
 
 确认工作区正确、Codex 正常响应、只读权限已应用，且文件状态与任务前一致，就完成了第一次任务。

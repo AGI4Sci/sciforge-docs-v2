@@ -14,8 +14,8 @@ sidebar_position: 4
 
 扩展详情提供发布者、版本、来源、状态、权限和贡献的功能。安装或启用后，相关入口可能出现在左侧导航、最右侧纵向工具栏或文件预览中。工具栏入口较多时使用 **更多工具**；支持的入口可通过 **自定义工具栏**调整。
 
-![扩展中心历史界面](/img/docs/guides/extensions-center.png)
-*旧版界面：用于认识扩展来源与功能详情，当前布局以正文为准。*
+![扩展中心界面](/img/docs/guides/extensions-center.png)
+*用于认识扩展来源与功能详情。*
 
 ## 安装与管理扩展
 
@@ -36,8 +36,8 @@ Skill 通常包含方法说明和配套脚本、资料。启用前先检查：
 - 需要哪些软件、数据和凭据。
 - 用什么检查证明结果可靠。
 
-![Skills 历史管理界面](/img/docs/guides/skills-center.png)
-*旧版界面：展示项目级与全局 Skill 的管理用途。*
+![Skills 管理界面](/img/docs/guides/skills-center.png)
+*展示项目级与全局 Skill 的管理用途。*
 
 Skill 被发现后，脚本仍需按任务权限执行。第三方 Skill 的依赖安装与外部操作要单独检查，不能用“已启用”代替授权。
 
@@ -51,8 +51,8 @@ Skill 被发现后，脚本仍需按任务权限执行。第三方 Skill 的依�
 
 桌面操作需要 Runtime 支持、可用后端与系统权限。按设置检查后端状态；在 macOS 上还需检查屏幕录制和辅助功能权限。限定目标应用与任务范围，遇到登录、授权、付款、发送或删除等动作时逐项核对。
 
-![Computer Use 历史配置](/img/docs/guides/ai-assistants-computer-use.jpg)
-*旧版界面：说明 Runtime、Backend 与系统权限需分别检查。*
+![Computer Use 配置](/img/docs/guides/ai-assistants-computer-use.jpg)
+*说明 Runtime、Backend 与系统权限需分别检查。*
 
 ## 找不到功能时
 

@@ -20,8 +20,8 @@ sidebar_position: 2
 
 使用 **模型 API** 时，填写服务商提供的 Base URL、API Key 与模型名称；协议不确定时使用自动探测。已有密钥只说明字段已配置，上游是否接受要通过实际请求确认。
 
-![模型 API 历史设置](/img/docs/quickstart/quickstart-model-api.jpg)
-*旧版界面：仅用于认识字段，请填写自己的服务配置。*
+![模型 API 设置](/img/docs/quickstart/quickstart-model-api.jpg)
+*仅用于认识字段，请填写自己的服务配置。*
 
 使用 **Coding Plan** 时，按界面完成官方登录或设备码授权。当前支持 Codex 的 Coding Plan 路径；Claude Code 使用模型 API。登录或连接失败时，根据提示修复当前接入，再重试。
 
@@ -35,15 +35,15 @@ sidebar_position: 2
 
 DSH 的 **Shell 命令执行**默认关闭；仅对用户安装的 DSH 开启，且每次执行仍需批准。不要为了消除报错直接改成完整权限。
 
-![AI 助手历史设置](/img/docs/guides/ai-assistants.jpg)
-*旧版界面：展示执行者配置、工具确认和文件范围。*
+![AI 助手设置](/img/docs/guides/ai-assistants.jpg)
+*展示执行者配置、工具确认和文件范围。*
 
 Codex 与 Claude Code 默认可修改工作目录。第一次分析请先按[配置只读沙箱](./read-only-sandbox.md)调整权限。切换执行者后重新核对连接、登录与权限，已有会话的映射和配置不会自动迁移。
 
 需要操作桌面应用时，再检查 **Computer Use** 的 Runtime 支持、后端与系统权限。
 
-![Computer Use 历史设置](/img/docs/guides/ai-assistants-computer-use.jpg)
-*旧版界面：用于说明需要分别检查的配置项。*
+![Computer Use 设置](/img/docs/guides/ai-assistants-computer-use.jpg)
+*用于说明需要分别检查的配置项。*
 
 ## 做一次最小连接检查
 

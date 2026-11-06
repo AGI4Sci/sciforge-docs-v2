@@ -24,8 +24,8 @@ sidebar_position: 1
 3. 核对工作区路径与侧边栏项目名称，再创建会话。
 4. 新目标使用新会话；继续同一目标时沿用原会话。
 
-![SciForge 新建会话历史界面](/img/docs/quickstart/quickstart-new-session.jpg)
-*旧版界面：用于说明项目与会话关系；工具栏及账户入口的位置以本文当前布局为准。*
+![SciForge 新建会话界面](/img/docs/quickstart/quickstart-new-session.jpg)
+*用于说明项目与会话关系。*
 
 ## 加入文件：选择、拖放、粘贴或引用
 
@@ -43,8 +43,8 @@ sidebar_position: 1
 
 当前工作台在存在工作区时优先将图片也保存为工作区引用。不要把“添加文件”理解为把整个目录同步到云端，或保证模型已经理解文件内容。只读演示应直接引用已有文件，避免额外导入造成文件变更。
 
-![SciForge 工作区文件历史面板](/img/docs/guides/workspace-files.jpg)
-*旧版界面：展示目录与预览的用途；当前入口在最右侧纵向工具栏。*
+![SciForge 工作区文件面板](/img/docs/guides/workspace-files.jpg)
+*展示目录与预览的用途；当前入口在最右侧纵向工具栏。*
 
 ## 管理会话与审查变更
 

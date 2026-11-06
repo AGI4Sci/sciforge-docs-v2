@@ -84,7 +84,7 @@ export default function Guide() {
         <div><span className={styles.eyebrow}>SCIFORGE FIELD GUIDE / 观看与实践</span><h1>从研究问题，<br />到可检查的成果。</h1></div>
         <div className={styles.introduction}><p>跟着两个虚拟细胞案例，认识工作台、证据与扩展。<br />先看流程，再回到手册动手实践。</p><div className={styles.facts}><span><b>{time(tour.duration)}</b>分钟导览</span><span><b>{String(chapters.length).padStart(2, '0')}</b>个章节</span><span><b>中文</b>旁白与字幕</span></div></div>
       </header>
-      <p>这段视频使用早期界面录制。当前工具位置和功能变化请看<Link to="/docs/reference/version-and-compatibility">版本说明</Link>；视频中的旧数据集 API 和科学计算入口已退役。</p>
+      <p>操作位置请参考对应文字教程。</p>
       <div className={styles.watchToolbar}><span><i aria-hidden="true" />文档与真实界面讲解</span><button type="button" onClick={() => setCinema(!cinema)} aria-pressed={cinema} aria-controls="guide-player-layout"><span aria-hidden="true">▣</span>{cinema ? '收起宽屏' : '宽屏观看'}</button></div>
       <div id="guide-player-layout" className={styles.playerGrid}>
         <div>

@@ -37,7 +37,7 @@ sidebar_position: 2
 3. **执行与验证**：切换到合适权限，完成写入并审查差异。
 
 ![SciForge 中的只读任务执行](/img/docs/quickstart/quickstart-task-running.jpg)
-*旧版界面：展示任务原文与执行状态。*
+*展示任务原文与执行状态。*
 
 ## 核对输入文件
 

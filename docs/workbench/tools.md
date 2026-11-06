@@ -33,7 +33,7 @@ sidebar_position: 3
 - Computer Use 的发送、授权、删除与付款等动作应单独核对授权。
 - 面板预览不是任务验收；工具结果应在会话中解释，并标明失败或未完成部分。
 
-![SciForge Computer Use 历史设置页](/img/docs/guides/ai-assistants-computer-use.jpg)
-*旧版界面：说明 Runtime、Backend 与 macOS 权限需分别满足；当前入口见本页说明。*
+![SciForge Computer Use 设置页](/img/docs/guides/ai-assistants-computer-use.jpg)
+*说明 Runtime、Backend 与 macOS 权限需分别满足。*
 
 文件输入见[工作区与会话](./workspaces-and-sessions.md)，权限说明见[配置只读沙箱](../getting-started/read-only-sandbox.md)与[权限与安全](../operations/security.md)。

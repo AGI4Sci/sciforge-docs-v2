@@ -59,7 +59,7 @@ sidebar_position: 10
 ## 相关页面
 
 - [Biology Room](./biology-room.md)：把多个序列、结构与注释组织成可回溯的房间。
-- [数据集 API 迁移说明](./dataset-api.md)：旧数据接入服务已退役，数据需通过提供方客户端或自己的环境获取并保留来源。
+- [获取与整理数据](./dataset-api.md)：下载数据并记录来源、日期、版本、许可证与校验结果。
 - [工作台工具](../workbench/tools.md)：文件、终端、浏览器等入口的分工。
 - [功能状态与限制](../reference/feature-status.md)：查看各能力的当前口径。
 
