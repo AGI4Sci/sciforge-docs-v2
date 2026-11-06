@@ -6,6 +6,8 @@ sidebar_position: 12
 
 # Biology Room
 
+Biology Room 是内置 `@sciforge/domain-biology-workbench` **1.1.3** 的房间子模块，与生命科学预览共用一个域包，随应用提供，无需市场安装或插件启用；没有运行时插件接管路径。版本口径见[版本与兼容性](../reference/version-and-compatibility.md)。
+
 Biology Room 是面向生物学样本或实验资料的工作区对象：把一次查看、标注和交接所需的序列、结构、基因组轨道与注释放在同一个版本化房间里。它当前没有独立渲染面板，文件内容仍由文件预览呈现；房间负责组织资产、选区、视图状态与历史。
 
 ## 打开方式
@@ -42,7 +44,7 @@ Biology Room 是面向生物学样本或实验资料的工作区对象：把一�
 ## 已知限制
 
 - 支持范围窄于生命科学预览：不包含 FASTQ、GTF、组学矩阵、影像与光谱；gzip 只覆盖 FASTA、GFF、BED、VCF。
-- 房间最多 128 个资产、2,000 条注释、100 MB 总资产；未建索引的单资产上限 25 MB。
+- 房间最多 128 个资产、2,000 条注释、100 MiB 总资产；未建索引的单资产上限 25 MiB。
 - 房间没有独立界面；创建、变更和恢复都经会话中的 Agent 操作完成。
 - 刷新后缺失或读取失败的资产会显式标记，失去锚点的注释会被标记为孤儿，需要人工确认后再处理。
 - 应用变更会校验修订号，过期会被拒绝；历史按修订号保存且可能截断。
@@ -51,8 +53,8 @@ Biology Room 是面向生物学样本或实验资料的工作区对象：把一�
 ## 相关页面
 
 - [生命科学预览](./life-science-preview.md)：查看房间内序列、结构与基因组文件的专用视图。
-- [数据集 API](./dataset-api.md)：为房间准备带来源和校验的输入数据。
+- [数据集 API 迁移说明](./dataset-api.md)：旧数据接入能力已退役，获取数据后应独立保存来源与校验记录。
 - [工作区与会话](../workbench/workspaces-and-sessions.md)：工作区位置、文件路径与恢复边界。
 - [证据与可复现性](./evidence-and-reproducibility.md)：把房间变更纳入更大的科研记录链。
 
-> 实现依据：`@sciforge/domain-biology-room` v1.0.3。
+> 当前版本：内置 Biology Workbench 1.1.3。旧房间目录与修订格式保持兼容；分子预览中的选区保存边界见[生命科学预览](./life-science-preview.md)。

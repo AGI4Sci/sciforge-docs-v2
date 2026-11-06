@@ -8,17 +8,17 @@ sidebar_position: 2
 
 科研任务完成后，一段看似正确的总结并不等于可复现交付。SciForge 使用几类互补对象记录“发生了什么、得到了什么、依据是什么、下一次从哪里继续”。
 
-本组由 7 个独立插件组成，每个插件负责一类记录；本页只讲它们如何串联：
+这些记录由内置功能和可选插件共同提供，不能把本组 7 个页面都当作独立插件。当前分工如下，版本见[版本与兼容性](../reference/version-and-compatibility.md)：
 
-| 插件 | 负责的记录 |
+| 记录功能 | 用途与提供方式 |
 | --- | --- |
-| [产物版本](./artifact-versions.md) | 单个产物的不可变版本、比较与恢复 |
-| [Git 检查点](./git-checkpoints.md) | 工作区某一阶段的 Git 快照 |
-| [研究检查点](./research-checkpoints.md) | 一次科研阶段的上下文与恢复位置 |
-| [变更检查](./change-inspector.md) | 一次会话真正改动的文件清单 |
-| [Evidence DAG](./evidence-dag.md) | 会话内主张与来源、方法、图表、限制的关系 |
-| [Project DAG](./project-dag.md) | 跨会话的项目级目标、主张与审查状态 |
-| [科研档案](./research-dossier.md) | 面向他人的最终研究交付 |
+| [产物版本](./artifact-versions.md) | 内置；记录单个产物的不可变版本、比较与恢复 |
+| [Git 检查点](./git-checkpoints.md) | 内置功能；另有尚待完整接入的独立插件，固定某一阶段的 Git 状态 |
+| [研究检查点](./research-checkpoints.md) | 内置功能；另有尚待完整接入的独立插件，保存科研阶段上下文与恢复位置 |
+| [变更检查](./change-inspector.md) | 独立生产插件；读取当前会话文件变更 |
+| [Evidence DAG](./evidence-dag.md) | 内置主张与证据关系；另有尚未完成应用集成的可选后端插件 |
+| [Project DAG](./project-dag.md) | 内置项目级目标与审查记录；另有尚待应用接入的后端插件制品 |
+| [科研档案](./research-dossier.md) | 内置；整理面向他人的研究交付 |
 
 ## 选择正确的记录对象
 
@@ -61,6 +61,14 @@ sidebar_position: 2
 - 反证、warning 和缺失数据是否仍然可见？
 - 复跑所需的代码 commit、环境、参数和随机种子是否齐全？
 - Checkpoint 是否对应已经核对的 Git 状态？
+
+## 使用前确认
+
+先确认功能已在当前应用中提供；可选插件还需要安装、启用和对应版本授权。源码里有包、测试通过或生成了安装制品，都不代表已在公共市场发布。当前 7 个独立插件及许可证见[插件许可证](../reference/plugin-licenses.md)。
+
+可选 Evidence DAG 1.0.0 目前验证的是后端切片，宿主跨进程接入仍未交付，不能按完整应用插件使用。内置 Evidence 仍承担当前图件验收中的证据记录；不要让内置功能和可选插件同时写入同一份证据目录。测试中的合成数据与本地样例不代表真实科研结论或市场发布验收。
+
+[科研图件](./scientific-plotting.md)独立保存代码、输入、环境、运行与图片历史，不会自动向 Artifact Versions 或 Evidence DAG 登记。将图件纳入交付时，应明确关联实际输入、运行与输出，重新核对后再形成主张。
 
 ## 数据边界
 

@@ -39,7 +39,7 @@ sidebar_position: 2
 
 1. 立即停止任务。
 2. 比较任务前后的 `git status --short`。
-3. 打开 **变更** 面板核对文件。
+3. 让已安装并授权的 [Change Inspector](../features/change-inspector.md) 检查当前会话变更，并对照实际文件。
 4. 确认执行者、设置是否已应用，以及是否批准了扩大权限；Claude Plan 模式不等于 Codex 只读沙箱。
 5. 检查测试、解释器、MCP、远程工具或 Computer Use 是否进行了写入。被 Git 忽略的文件需要另外核对。
 6. 不要自动删除任务前已经存在的用户改动。
@@ -48,7 +48,7 @@ sidebar_position: 2
 
 - 核对扩展名、文件版本和工作区引用。
 - 大文件不要直接粘贴进提示词。
-- 检查对应预览、Domain 或 Worker 是否可用。
+- 在文件预览中确认格式是否受支持；查看是否有大小限制或读取错误。
 - 二进制格式未被当前 Provider 支持时，应明确降级或停止，不应猜测内容。
 
 ## Evidence DAG 或 Dossier 为空

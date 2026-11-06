@@ -32,22 +32,19 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
-          label: '研究资料与科学对象',
-          link: {type: 'generated-index', slug: '/category/研究资料与科学对象', description: '预览科学文件、接入外部数据源、组织生物学对象，并用受治理的计算步骤处理数据。'},
+          label: '科研分析',
+          link: {type: 'generated-index', slug: '/category/研究资料与科学对象', description: '查看科学文件、组织生物学对象，并分析数据。'},
           items: [
             'features/life-science-preview',
-            'features/dataset-api',
             'features/biology-room',
-            'features/scientific-compute',
           ],
         },
         {
           type: 'category',
           label: '分析与审阅',
-          link: {type: 'generated-index', slug: '/category/分析与审阅', description: '生成可复跑图表、对图像做人工审改，并把批注锚定到具体位置。'},
+          link: {type: 'generated-index', slug: '/category/分析与审阅', description: '从数据绘图，并为文字和资源添加批注。'},
           items: [
             'features/scientific-plotting',
-            'features/visual-review',
             'features/anchored-comments',
           ],
         },
@@ -116,6 +113,8 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: '参考手册',
       items: [
+        'reference/version-and-compatibility',
+        'reference/plugin-licenses',
         'reference/feature-status',
         'reference/troubleshooting',
       ],

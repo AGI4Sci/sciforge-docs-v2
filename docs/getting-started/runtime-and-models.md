@@ -1,61 +1,67 @@
 ---
 title: Runtime 与模型接入
-description: 区分模型 API、Coding Plan、Codex、Claude Code 与 DeepSeek Harness，并完成最小配置。
+description: 配置模型接入，选择 Codex、Claude Code 或 DeepSeek Harness，并完成连接检查。
 sidebar_position: 2
 ---
 
 # Runtime 与模型接入
 
-SciForge 把“模型从哪里来”和“谁来执行任务”分成两层配置。
+先配置模型服务，再选择执行任务的 AI 助手。前者决定模型请求发到哪里，后者负责规划和调用工具。
 
-| 层 | 决定什么 | 用户入口 |
+本页按 2026-11-06 当前实现整理；安装版本与功能差异见[版本与兼容性](/docs/reference/version-and-compatibility)。
+
+| 配置 | 入口 | 要确认的内容 |
 | --- | --- | --- |
-| 模型接入 | 请求通过模型 API 还是受支持的 Coding Plan | 首次启动引导或 **设置 → 通用** |
-| AI 助手 Runtime | 由 Codex、Claude Code 或 DeepSeek Harness (DSH) 规划并调用工具 | **设置 → AI 助手**，以及输入框右下角 |
+| 模型接入 | 首次引导或 **设置 → 通用** | 模型 API 的地址、密钥和模型，或 Coding Plan 的官方登录 |
+| AI 助手 | **设置 → AI 助手** | Codex、Claude Code 或 DeepSeek Harness（DSH）的安装、连接与权限 |
+| 当前会话 | 底部输入区的执行设置 | 本次使用的 Runtime、模型和可用档位 |
+
+设置在展开的左侧边栏底部。本地账户与 SciForge 云端登录另行管理，见[身份与登录](../features/identity-access.md)。
 
 ## 选择模型接入
 
-选择 **模型 API** 时，需要提供 Base URL、API Key 和模型名称；上游协议不确定时可以保留自动探测。
+使用 **模型 API** 时，填写服务商提供的 Base URL、API Key 与模型名称；协议不确定时使用自动探测。已有密钥只说明字段已配置，上游是否接受要通过实际请求确认。
 
-![SciForge 模型 API 配置](/img/docs/quickstart/quickstart-model-api.jpg)
-*图 1：模型 API 的最小配置项。截图中的地址、密钥和模型名仅用于说明字段，不应照抄。*
+![模型 API 历史设置](/img/docs/quickstart/quickstart-model-api.jpg)
+*旧版界面：仅用于认识字段，请填写自己的服务配置。*
 
-选择 **Coding Plan** 时，按界面使用官方登录或设备码完成授权。当前实现支持 Codex 的 Coding Plan 路径；Claude Code 需要使用模型 API 接入。连接失败不会静默切换到模型 API。
+使用 **Coding Plan** 时，按界面完成官方登录或设备码授权。当前支持 Codex 的 Coding Plan 路径；Claude Code 使用模型 API。登录或连接失败时，根据提示修复当前接入，再重试。
 
-## 配置 Codex、Claude Code 或 DSH
+## 选择并连接 Runtime
 
-在 **设置 → AI 助手** 中分别配置各 Runtime：
+在 **设置 → AI 助手** 选择执行者，检查检测结果；自动检测失败时使用 **选择本地程序**或填写可执行文件绝对路径，再重新检测。
 
-- **Codex**：默认选择，适合通用代码、文件和工具任务。
-- **Claude Code**：需要显式选择，并配置模型 API，沿用 Claude Code 的执行方式。
-- **DeepSeek Harness (DSH)**：需要显式选择。SciForge 按顺序查找你显式配置的路径、PATH 与常见安装位置，仅在这些都失败时才使用随包携带的 DSH 组件；DSH 的模型与推理档位在连接后由 ACP 会话生效，不在这里修改。DSH 的原生 shell 工具默认关闭，开启后每次执行仍需你逐条批准。
+- **Codex**：使用已安装的 Codex app-server，检查模型与权限后开始任务。
+- **Claude Code**：配置模型 API，并检查其权限模式。
+- **DSH**：通过本地 ACP 程序连接，模型与推理档位在连接后的会话中生效。先检查用户指定程序、系统路径和常见安装位置，均不可用时才尝试随应用提供的组件。
 
-通常保留默认命令 `codex` 或 `claude`。自动探测失败时，再填写可执行文件的绝对路径。
+DSH 的 **Shell 命令执行**默认关闭；仅对用户安装的 DSH 开启，且每次执行仍需批准。不要为了消除报错直接改成完整权限。
 
-![SciForge AI 助手设置](/img/docs/guides/ai-assistants.jpg)
-*图 2：AI 助手页面集中配置命令、工具确认策略和文件访问范围。*
+![AI 助手历史设置](/img/docs/guides/ai-assistants.jpg)
+*旧版界面：展示执行者配置、工具确认和文件范围。*
 
-两个 Runtime 的默认文件访问范围都是**可修改工作目录**。第一次只读分析请先调整 Codex 的范围；Claude 的“只能读取文件”对应 Plan 模式，不能当作同一种沙箱保证。配置步骤见 [配置只读沙箱](./read-only-sandbox.md)。
+Codex 与 Claude Code 默认可修改工作目录。第一次分析请先按[配置只读沙箱](./read-only-sandbox.md)调整权限。切换执行者后重新核对连接、登录与权限，已有会话的映射和配置不会自动迁移。
 
-需要让 Agent 操作桌面应用时，继续在设置页面检查 **Computer Use** 的 Runtime 接入、Backend 和 macOS 权限。
+需要操作桌面应用时，再检查 **Computer Use** 的 Runtime 支持、后端与系统权限。
 
-![SciForge Computer Use 设置](/img/docs/guides/ai-assistants-computer-use.jpg)
-*图 3：Computer Use 需要同时满足 Runtime、Backend 与系统权限条件。*
+![Computer Use 历史设置](/img/docs/guides/ai-assistants-computer-use.jpg)
+*旧版界面：用于说明需要分别检查的配置项。*
 
-## 为当前会话选择执行者
+## 做一次最小连接检查
 
-回到工作台，在输入框右下角的执行设置区域查看当前 Runtime。切换 Runtime 不会自动迁移另一个 Runtime 的登录状态、配置或会话映射。
-
-:::warning[不会静默回退]
-
-选中的 Runtime 不可用时，SciForge 应显示错误，而不是自动改用另一个 Runtime。请修复当前配置或由你主动切换。
-
-:::
-
-## 最小验证
-
-新建会话并发送：
+新建会话，确认输入区选中了预期 Runtime，发送：
 
 > 只回答“连接成功”，不要读取或修改文件，也不要调用外部服务。
 
-收到明确响应后，再进入 [五分钟快速开始](./five-minute-quickstart.md)。
+收到响应后再进入[五分钟快速开始](./five-minute-quickstart.md)。选中的 Runtime 不可用时，按错误提示修复或主动切换；应用不会自动替你改选其他 Runtime。
+
+## 排查 DSH 超时
+
+DSH 区分单次连接请求超时和任务长时间没有进展：
+
+| 情况 | 含义与处理 |
+| --- | --- |
+| 初始化、创建或恢复会话等请求超时 | 默认单次等待 15 秒。检查本地程序、连接与明确错误，不能靠延长它解决长任务 |
+| 任务长时间没有任何会话更新 | 默认连续静默 10 分钟后停止本轮；持续收到当前会话更新的长任务可以超过 10 分钟。查看已有结果，再决定是否继续原会话 |
+
+技术排查时，前者配置名为 `requestTimeoutMs`；后者虽然名为 `promptTimeoutMs`，含义是静默时限，错误码为 `runtime_prompt_idle_timeout`。超时后原会话标识可恢复，但仍应先核对已有文件和外部操作，再继续任务。
