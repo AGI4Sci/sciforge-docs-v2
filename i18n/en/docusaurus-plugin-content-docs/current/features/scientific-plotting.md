@@ -8,7 +8,7 @@ sidebar_position: 20
 
 **Select files → tell the AI how to draw → review the result → accept when satisfied.** Scientific Figures ties a text request, Python code, an actual run, and image versions together. To revise an image, just keep typing the change; you do not need to box, arrow, or pin anything on the image.
 
-:::info Current version
+:::info[Current version]
 The current source is `@sciforge/plugin-scientific-plotting` **0.4.0-mvp.11**, which supports the native DSH panel and the SciForge adapter entry. The 2026-11-05 case and screenshots kept in this page come from **0.4.0-mvp.10** and from earlier versions where explicitly marked; they have not been re-accepted as mvp.11. The accepted environment is macOS arm64, the DSH Runtime, and Python + Matplotlib. For public marketplace availability, see the actual release record, and for the compatibility baseline see [Version & Compatibility](../reference/version-and-compatibility.md). R/MATLAB execution is not implemented yet.
 :::
 

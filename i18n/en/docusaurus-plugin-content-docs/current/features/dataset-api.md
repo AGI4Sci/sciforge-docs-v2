@@ -6,7 +6,7 @@ sidebar_position: 11
 
 # Dataset API
 
-:::info Migration note
+:::info[Migration note]
 In the [current source baseline](../reference/version-and-compatibility.md), the old `dataset-api` domain is retired. The built-in API described in earlier versions of this page is no longer provided. This page keeps its original URL so old links and historical records can still find it.
 :::
 

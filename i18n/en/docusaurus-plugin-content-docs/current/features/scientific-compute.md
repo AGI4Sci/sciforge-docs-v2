@@ -6,7 +6,7 @@ sidebar_position: 13
 
 # Scientific Compute
 
-:::info Migration note
+:::info[Migration note]
 In the [current source baseline](../reference/version-and-compatibility.md), the old `scientific-compute` domain is retired. It no longer provides a callable built-in capability or a standalone plugin. This page keeps its original URL so old links and historical records can still find it.
 :::
 

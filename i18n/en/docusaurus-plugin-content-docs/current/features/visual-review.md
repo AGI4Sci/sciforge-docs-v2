@@ -6,7 +6,7 @@ sidebar_position: 21
 
 # Visual Review
 
-:::info Migration note
+:::info[Migration note]
 In the [current source baseline](../reference/version-and-compatibility.md), the standalone `visual-review` plugin and the old static domain have both been removed. This page keeps its original URL so old links and historical records can still find it. The old toolbar entries and panel operations are no longer current steps.
 :::
 
