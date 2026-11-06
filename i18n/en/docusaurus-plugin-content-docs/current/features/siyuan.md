@@ -31,25 +31,25 @@ SiYuan Notes connects a user-provided remote SiYuan service to the workbench as 
 3. Read or edit in the editor. Do not place sensitive content that should not leave the local machine into a remote service.
 4. After an Agent task completes normally, check whether a corresponding record appears under `SciForge 工作总结`. If the service is temporarily unreachable, records queue and retry.
 
-## Inputs, outputs, and permissions
+## Where things are saved, and what actions affect
 
-- Reads: the SiYuan service address, notebook list, and document content. The API token saved in the page's settings is used first; otherwise the environment variable is used.
-- Writes: documents in SiYuan. Automatic archiving writes to a fixed notebook, while Agent writes follow the requested title, notebook, and path.
-- Approval or external effects: archiving is an automatic external write after a successful task and does not prompt each time. Note content is sent to the configured SiYuan service, and the API token is used to authenticate to that service; confirm the service address and access scope before use.
-- What it does not do: start or bundle the SiYuan kernel, provide a local private mode, save to another location when the service is unreachable, and a token entered on the page is kept in the app's encrypted storage, not in the page's local configuration.
+- Content you read and edit comes from the connected SiYuan service. The API token saved in the page's settings is used first; otherwise the environment variable is used. A token entered on the page is kept in the app's encrypted storage.
+- Automatic archiving saves to a fixed notebook in SiYuan; when you ask the Agent to write a document, state the title, notebook, and path.
+- Archiving after a successful task is sent to the configured SiYuan service automatically, without asking each time. Before use, confirm the service address, the range of notes it can access, and which content is suitable to send to that service.
+- When the service is unreachable, pending archives stay on this machine waiting to be retried; the official notes still need to be written to the SiYuan service successfully.
 
 ## Known limitations
 
 - Server mode only: you must provide an accessible SiYuan service, and the address must be HTTP/HTTPS.
-- The Content Space Provider currently declares notebook discovery only. You cannot upload or download files or perform native document operations through Content Space.
+- Content Space currently lists only the notebooks that are open in SiYuan; to read, edit, and search documents, use the SiYuan page or the Agent's tools. Content Space cannot upload or download files.
 - Automatic archiving covers only successful top-level Agent turns. Intermediate progress, failures, cancellations, and continuous sub-turns are not archived, and it does not produce a second AI summary or claim that the task is verified.
-- Archiving writes to the fixed notebook `SciForge 工作总结` and the `/SciForge` path; the notebook is created if it does not exist. Retries of the same turn use a durable receipt to avoid duplicates.
+- Archiving writes to the fixed notebook `SciForge 工作总结` and the `/SciForge` path; the notebook is created if it does not exist. Before retrying the same task turn, it checks whether the matching task note already exists, to avoid creating duplicates.
 - SciForge does not ship the SiYuan kernel; using it on this machine also means deploying the service yourself.
 - When the service is unreachable or a write result is uncertain, pending records are kept locally and retried on the next task or at startup. Unconfirmed writes are not repeated blindly.
 
 ## Related pages
 
-- [Content Space](./content-space.md): how SiYuan connects as a Provider and its capability boundaries.
+- [Content Space](./content-space.md): choose a SiYuan notebook from the connected service.
 - [Collaboration](./collaboration.md): collaborative delivery and post-task local archiving are two different paths.
 - [Permissions and security](../operations/security.md): external service addresses, tokens, and data boundaries.
 - [Feature status and limitations](../reference/feature-status.md): the capability scope of the first version.

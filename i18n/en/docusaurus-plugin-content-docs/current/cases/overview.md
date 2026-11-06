@@ -13,7 +13,7 @@ Each case organizes inputs, agent execution, human review, evidence, and deliver
 | [ECCITE-seq cross-scale virtual cell evidence atlas](./virtual-cell-evidence-atlas.md) | Launch primary case | Artifact browsing verified; a full agent rerun still needs continuous evidence capture | Perturbation review table, versioned figures, evidence relationships, research dossier |
 | [Virtual cell perturbation prediction benchmark](./virtual-cell-benchmark.md) | Advanced integration case | Experimental | Prediction files, contract checks, stratified metrics, failure analysis, rerun records |
 | [Pasilla RNA-seq three-person collaboration](./pasilla-collaboration.md) | Team collaboration primer | Learn requirements, delivery, rework, adoption, and closure through real screenshots | Two versions of the upstream report, member notes, downstream report, and adoption record |
-| [Scientific figures complex case](./scientific-figures-complex.md) | Plotting and reproducibility stress test | Synthetic research data runs in the real application, with numbers and snapshots checked independently | Multi-file cleaning, four-panel figure, matrix heatmap, failure recovery, and history |
+| [Scientific figures case](./scientific-figures-complex.md) | Data preparation and plotting examples | Uses synthetic data to demonstrate the features, run in the application | Four-panel figure, matrix heatmap, data comparison, failure recovery, and version records |
 
 ## How the cases divide the work
 

@@ -8,8 +8,6 @@ sidebar_position: 61
 
 The owner writes clear requirements and confirms the division of work. Members accept tasks, execute them in their own SciForge, review drafts, and submit. Finally the owner adopts the result. Tasks that hand off to one another use the files already adopted upstream.
 
-This page reflects the interface as of 2026-11-06. For differences in installed versions, see [Version & Compatibility](../reference/version-and-compatibility.md).
-
 ## Open a collaboration project
 
 1. Expand the left sidebar and complete [cloud sign-in and device connection](./identity-access.md) in the account area at the bottom.
@@ -38,8 +36,8 @@ Once a project is selected, there are five tabs at the top:
 
 For example: "B counts the total samples and submits a report; C continues the comparison using the report B had adopted. The report must include the method, validation results, and limitations." Also provide inputs the members can actually read.
 
-![The Requirements page from an earlier version](/img/docs/collaboration/requirements-ready.png)
-*Historical demo screenshot (kept when checked on 2026-11-06; capture date not recorded): shows work modules and dependencies. For current navigation, follow the five tabs on this page.*
+![The Requirements page](/img/docs/collaboration/requirements-ready.png)
+*Dependencies between tasks.*
 
 ## 2. Check assignments and blocking reasons
 
@@ -63,7 +61,7 @@ Go by the buttons actually available; an assignment that has expired or been han
 
 When a task needs more information, the designated member answers in the task details. If a request involves actions such as modifying files, writing to external systems, or deleting, first read the specific action, its scope of impact, the request version, and its validity period, write a decision note, then click **Approve this action** or **Decline this action**.
 
-Only the designated member can decide, and an expired request must wait to be refreshed. After submitting a decision, check the receipt and later task progress; whether the action completed depends on what actually ran. An ordinary discussion message does not replace action approval.
+Only the designated member can decide, and an expired request must wait to be refreshed. After submitting a decision, check the confirmation and later task progress; whether the action completed depends on what actually ran. An ordinary discussion message does not replace action approval.
 
 ## 5. Members review the draft and submit
 
@@ -77,11 +75,11 @@ While submitting, wait for a clear result from device verification, signing, and
 
 One delivery can hold at most 20 files, no more than 200 MiB in total; each attached file is at most 100 MiB. Required files may also have task-specific format and size requirements, so follow the submission window's prompts.
 
-![A member delivery draft from an earlier version](/img/docs/collaboration/delivery-draft.png)
-*Historical demo screenshot (kept when checked on 2026-11-06; capture date not recorded): shows how the result note, required files, and extra material relate.*
+![A member delivery draft](/img/docs/collaboration/delivery-draft.png)
+*The result note, required files, and extra material in a delivery draft.*
 
-![The submission process from an earlier version](/img/docs/collaboration/delivery-submitting.png)
-*Historical demo screenshot (kept when checked on 2026-11-06; capture date not recorded): the upload stage still waits for the final submission receipt.*
+![The submission process](/img/docs/collaboration/delivery-submitting.png)
+*Delivery files uploading and the submission progress.*
 
 ## 6. The owner reviews and hands off downstream
 
@@ -89,11 +87,11 @@ On the board, open a task pending confirmation, preview this version's files, an
 
 History keeps older snapshots, so check the current version when reviewing. Only after the upstream is adopted can a downstream task continue to assignment; downstream execution uses the files of the adopted version.
 
-![The owner's revision screen from an earlier version](/img/docs/collaboration/revision-request.png)
-*Historical demo screenshot (kept when checked on 2026-11-06; capture date not recorded): a formal revision uses "Request revision"; discussion is for communication.*
+![The owner's revision screen](/img/docs/collaboration/revision-request.png)
+*The owner writing revision requirements.*
 
-![Delivery version history from an earlier version](/img/docs/collaboration/delivery-history.png)
-*Historical demo screenshot (kept when checked on 2026-11-06; capture date not recorded): a new delivery keeps the record of the previous version.*
+![Delivery version history](/img/docs/collaboration/delivery-history.png)
+*Delivery version history.*
 
 ## 7. View shared files and close out
 
@@ -101,8 +99,8 @@ History keeps older snapshots, so check the current version when reviewing. Only
 
 After all modules are adopted, the owner checks the results and limitations, then uses the **Close project** entry to confirm completion and waits for signing and the server result.
 
-![The completed project from an earlier version](/img/docs/collaboration/project-completed.png)
-*Historical demo screenshot (kept when checked on 2026-11-06; capture date not recorded): shows how module adoption relates to project close-out; it is not an acceptance record for the current release package.*
+![The completed project](/img/docs/collaboration/project-completed.png)
+*After all tasks are adopted, the owner confirms close-out.*
 
 ## Board status at a glance
 

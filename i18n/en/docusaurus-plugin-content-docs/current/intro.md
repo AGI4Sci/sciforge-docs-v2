@@ -35,12 +35,9 @@ If this is your first time, start with the [five-minute quickstart](./getting-st
 
 ## A few names to start with
 
-A **workspace** is the project directory you open. Which files the AI works on and where the Terminal runs both depend on it.
-
-A **session** is a conversation centered on a specific task. One project can have many sessions; keeping different goals in separate sessions makes them easier to pick up later.
-
-The **Runtime (execution runtime)** is the program that actually handles tasks. You can choose Codex, Claude Code, or DSH, then connect models and tools according to the instructions for each, see [Runtime and model access](./getting-started/runtime-and-models.md).
-
-**Research records** hold a task's intermediate results and the basis for them. Once you have completed your first task, look into checkpoints, the Evidence DAG, and research dossiers as needed.
-
-This manual reflects the client update of 2026-11-06. Some case studies use earlier interfaces and keep their original version notes; see [versions and compatibility](./reference/version-and-compatibility.md) for the specifics.
+| Name | Meaning |
+| --- | --- |
+| Workspace | The project directory you open, which holds the files a task uses. |
+| Session | A conversation around one task, which you can come back to and continue at any time. |
+| Runtime (execution runtime) | The program that handles tasks; you can choose Codex, Claude Code, or DSH. For configuration, see [Runtime and model access](./getting-started/runtime-and-models.md). |
+| Research records | Keep intermediate results, the run process, and the basis for conclusions, so you can look them up and continue later. |

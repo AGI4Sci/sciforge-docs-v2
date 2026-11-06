@@ -1,42 +1,31 @@
 ---
 title: Change Inspector
-description: Inspect file diffs from a real, current agent session with a standalone read-only plugin.
+description: Check which file changes the current task recorded, and verify the actual content item by item.
 sidebar_position: 43
 ---
 
 # Change Inspector
 
-The only production implementation of Change Inspector is the standalone DSH plugin `@sciforge/plugin-change-inspector` **0.1.2**. It reads the current real agent session authorized by the host, projects `file_change` records into bounded diff snapshots and paginated summaries, and returns results to the session that made the call. The old top **Changes** panel, static domain, and fallback have been removed.
+Change Inspector helps you check which files the current task changed and what changed in each one. After you install and enable the plugin, you can ask the Agent directly to list the changes, then verify them item by item.
 
 ## How to use it
 
-Install a compatible package from a trusted source, enable it, and grant tool and `agent-threads.read` permissions for that exact version; see [Extension Center](./extensions.md) and [Version & Compatibility](../reference/version-and-compatibility.md). In the current session where file changes have already occurred, ask the agent to:
+Install a compatible package from a trusted source, enable the plugin, and grant the permissions it needs; see [Extension Center](./extensions.md) and [Version & Compatibility](../reference/version-and-compatibility.md). In the current session, where file changes have already occurred, you can ask the Agent:
 
-> Use Change Inspector to open a snapshot of the current session, list file changes and truncation status, page through the key diffs, then cross-check them against workspace files and Git status.
+> Check which files this task changed, and explain each change. If the content is too long, show it in batches and tell me what is not yet shown.
 
-The plugin declares two read-only tools:
+Look at the file list first to confirm the scope of the changes matches the task, then check the specific content of the important files. If anything is still missing, have the Agent keep showing it in batches; when you need to verify the full content, read the actual files in batches directly.
 
-| Tool | What it returns |
-| --- | --- |
-| `open_session` | Current session identity, result identifier, and a bounded complete snapshot |
-| `list_changes` | Change summary, next-page cursor, revision, and truncation reason; 100 entries per page by default, up to 500 |
+## Tips
 
-The host may additionally derive a session resource opener; it is not a third tool declared by the plugin. When selection parameters are omitted, the host's current session is used; an explicit session/runtime must match the current caller. Other sessions in the same workspace, other runtimes, or arbitrary session discovery are outside the authorization scope. After the plugin is disabled or its permission is revoked, calls fail and do not fall back to the old implementation.
+- The results contain only file changes already recorded in the current session, not the records of other sessions in the same workspace.
+- Changes made by manual edits or other tools may not appear in the records. When you need to confirm those changes, check the actual files and, if needed, compare with the Git status. An empty list does not mean the workspace was never modified.
+- When there are many files or changes, what is shown may be incomplete. First confirm what has not yet been shown, then keep checking in batches; do not rebuild a whole file from partial diffs alone.
+- If more edits happen during the review, refresh the file change list and re-check the affected files.
+- After you disable the plugin or revoke its permissions, you must enable it again or re-authorize it to continue checking.
 
-## How to tell whether a record is complete
+## After checking
 
-- Extract only the `file_change` unified diff from tool records; panel screenshots or agent summaries cannot replace that record. An empty result does not prove the workspace was never written.
-- A snapshot holds at most 5,000 changes and 256 KiB after serialization; when the limit is exceeded, the contiguous newest suffix is kept. A single complete patch is capped at 64 KiB, and a single patch summary in pagination is capped at 1 KiB.
-- Check `patchBytes`, `patchTruncated`, `truncated`, and `truncationReasons`. Trailing whitespace and LF/CRLF line endings are preserved in untruncated raw patches; truncated output cannot be used for complete file reconstruction.
-- A cursor is bound to the session and revision. After subsequent edits or if the cursor is rejected, re-read from the first page without a cursor; read-only pagination itself should not change the revision.
+Change Inspector only reads records; it does not modify files, roll back, save checkpoints, or make network requests. When you find a problem, have the Agent change the file in question and then check again. To restore the workspace state, see [Git Checkpoints](./git-checkpoints.md).
 
-## Permissions and verification boundaries
-
-The plugin does not write files, roll back changes, save checkpoints, or make network requests; its only data source is the host-authenticated real agent thread aggregate. Tool inputs cannot inject recorded sessions or fixtures.
-
-Existing local app acceptance for 0.1.2 covers a real two-turn trailing-whitespace difference, stable pagination, and partial rejection and failure recovery; other permission timings and boundaries are covered by targeted automation. Source tests, real subprocess fixtures, local app acceptance, signed artifacts, and public marketplace release are different forms of evidence and cannot substitute for one another; this page does not claim that all platforms or all failure scenarios have passed.
-
-![Historical SciForge changes panel](/img/docs/guides/workspace-changes.jpg)
-*Retained historical UI screenshot: it shows the old panel, not the current 0.1.2 plugin entry point or acceptance evidence.*
-
-Related: [Evidence & Reproducibility](./evidence-and-reproducibility.md), [Git Checkpoints](./git-checkpoints.md), [Permissions & security](../operations/security.md), [Plugin licenses](../reference/plugin-licenses.md).
+Related: [Evidence & Reproducibility](./evidence-and-reproducibility.md), [Permissions & security](../operations/security.md), [Plugin license terms](../reference/plugin-licenses.md).

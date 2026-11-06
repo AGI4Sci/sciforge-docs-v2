@@ -12,11 +12,11 @@ Pick the task you want to do from the table below. Built-in features open direct
 
 | What you want to do | Where to read | Current form and conditions |
 | --- | --- | --- |
-| Open a project, continue a session, view or edit files | [Workbench](../workbench/workspaces-and-sessions.md) | Local workspace, sessions, and file preview for supported formats. Files cannot be edited directly when they are truncated, read-only, or have no write-back channel. |
+| Open a project, continue a session, view or edit files | [Workbench](../workbench/workspaces-and-sessions.md) | Local workspace, sessions, and file preview for supported formats. When content is too long or a file does not support editing, the page shows the reason. |
 | Connect models and executors | [Runtime & models](../getting-started/runtime-and-models.md) | Codex, Claude Code, and DSH are configured separately. Model access and tool permissions are not the same thing. |
-| View sequences, structures, omics, imaging, and spectra | [Life Science Preview](./life-science-preview.md) | A preview submodule of the built-in Biology Workbench. |
-| Organize biological objects and experiment records | [Biology Room](./biology-room.md) | Another role of the same Biology Workbench package, not an extra marketplace plugin. |
-| Plot from data and code, revise, and accept candidates | [Scientific Figures](./scientific-plotting.md) | Standalone plugin. Needs a compatible host, Python, and the required dependencies. |
+| View sequences, structures, omics, imaging, and spectra | [Life Science Preview](./life-science-preview.md) | Ships with the app; no separate install needed. |
+| Organize biological objects and experiment records | [Biology Room](./biology-room.md) | Ships with the app; used to organize related files and annotations. |
+| Plot from data and code, revise, and accept candidates | [Scientific Figures](./scientific-plotting.md) | Needs a compatible plugin installed, plus Python and the required dependencies. |
 | Add anchored comments to text or resources | [Anchored Comments](./anchored-comments.md) | Standalone plugin. Real capture and external feedback each have their own permission requirements. |
 | Check what the agent actually changed | [Change Inspector](./change-inspector.md) | Plugin you must install. Lets the agent list this session's file differences, and tells you when output is too long. |
 | Save artifacts and research evidence | [Evidence & reproducibility](./evidence-and-reproducibility.md) | Saves file versions, research stages, and the source of conclusions. Figure records must be linked separately. |
@@ -30,14 +30,10 @@ Pick the task you want to do from the table below. Built-in features open direct
 - [Artifact Versions](./artifact-versions.md), [Git Checkpoints](./git-checkpoints.md), [Research Checkpoints](./research-checkpoints.md): fix the state of files or research stages.
 - [Evidence DAG](./evidence-dag.md), [Project DAG](./project-dag.md), [Research Dossier](./research-dossier.md): organize evidence, project goals, and deliverables.
 - [Terminal](./terminal.md), [Browser Preview](./browser-preview.md), [Computer Use](./computer-use.md): use external execution capabilities according to the runtime environment and permissions.
-- [Plugin license terms](../reference/plugin-licenses.md): check licenses, host dependencies, and the current installation boundary.
+- [Plugin license terms](../reference/plugin-licenses.md): check licenses and installation requirements.
 
-## Migrations and retirements
-
-Dataset API and Scientific Compute have left the current product line. Their old addresses keep a [data-acquisition migration note](./dataset-api.md) and a [compute migration note](./scientific-compute.md). The old [Visual Review](./visual-review.md) is also no longer listed as a standalone installable plugin. Do not restore removed entry points or install old directories based on old screenshots.
-
-Historical material on Paper Radar and OpenContent does not represent current capabilities. Remote SSH connection and management belong to internal supplements, and the public manual does not provide VPN, SSH target registration, or internal deployment steps. The local mock Provider is for development and testing only.
+Remote SSH connection and management belong to internal supplements, and the public manual does not provide VPN, SSH target registration, or internal deployment steps.
 
 ## How to tell whether you can use something
 
-Check the current client version, plugin source, and host dependencies first, then see [Feature status](../reference/feature-status.md). A page describing an implementation does not mean every platform has a release package. Historical screenshots and cases keep their own date, platform, and acceptance version. This round did not re-run GUI verification for every feature; source checks and actual acceptance are recorded separately.
+For installation requirements and current limits, see [Feature status](../reference/feature-status.md).

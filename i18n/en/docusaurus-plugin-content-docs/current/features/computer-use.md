@@ -1,61 +1,43 @@
 ---
 title: Computer Use
-description: Let supported Runtimes safely operate graphical interfaces through the local Backend.
+description: Enable Computer Use so Codex or Claude Code can operate browser and in-app embedded pages within the scope you authorize.
 sidebar_position: 52
 ---
 
 # Computer Use
 
-Computer Use lets supported Runtimes operate graphical interfaces on the desktop through a local Backend, turning observation, clicks, and input into governed MCP tools. It is suited to steps that must go through a UI and have no stable API. Every state-changing action requires a confirmed invocation.
+Computer Use lets the Agent observe a page and click, type, press keys, or scroll step by step, which suits tasks that must be done through an interface. It currently supports **Codex and Claude Code only**, and its scope is browser pages and the embedded pages of Electron apps, such as Browser Preview; it cannot be used to operate arbitrary desktop applications.
 
-## How to open it
+## Enable and check
 
-- Entry: **Settings → AI assistant → Computer use**. Turn on the main switch and select the Runtimes allowed to use it.
-- Target: the graphical interface target bound to and authorized for the current session. The current implementation uses a browser CDP backend to handle browser pages and Electron embedded pages.
-- Prerequisite: the local Computer Use Backend is running. On macOS, screen recording and Accessibility permissions are also required.
-- Connection: SciForge starts a managed MCP Server and provides bounded tools to Codex/Claude Code. No manual MCP command configuration is needed.
+1. Open **Settings → AI assistant → Computer use**, turn on the main switch, and choose Codex or Claude Code for this use.
+2. Check the run status on the settings page; if it is unavailable, handle the page's prompt first.
+3. In macOS System Settings, grant the Screen Recording and Accessibility permissions, then return to the app and confirm the status.
+4. Open the target page, and in the session state the task, the allowed actions, the stopping conditions, and the forbidden actions.
 
 ![SciForge Computer Use settings](/img/docs/guides/ai-assistants-computer-use.jpg)
-*Figure 1: The Computer Use entry, Backend status, and system permissions on the Settings page.*
+*Figure 1: Enable Computer Use on the settings page, and check its run status and system permissions.*
 
-## What you can do
+## Run a task
 
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| Check availability | View Backend and system permission status on the Settings page | An available or unavailable status, with no silent fallback |
-| Observe the target | Have the Agent read the current target and interactive elements first | A bounded page or target observation |
-| Perform one action | Click, type, press a key, or scroll under explicit instructions | A structured action result and page version |
-| Stop or release | Stop the current task or release the session | In-flight actions canceled and bindings cleaned up |
+1. First have the Agent observe the current page, and check the page identity and the target content.
+2. Carry out actions step by step. Every call that changes state needs your confirmation; check the specific action before allowing it, because a confirmation does not authorize later actions of the same kind.
+3. Before signing in, authorizing, sending, uploading, buying, paying, deleting, or submitting a formal result, confirm the target of the action and its consequences.
+4. When done, stop the task or release the session, and go back to the page to check the actual result.
 
-## Typical workflow
+## What actions affect, and tips
 
-1. Enable Computer Use in Settings and select only the Runtimes this task needs.
-2. Check Backend status and confirm in macOS System Settings that screen recording and Accessibility are authorized.
-3. In the session, state the target page, the outcome you want, the stop conditions, and prohibited actions.
-4. Have the Agent observe first, then perform actions step by step. Every state-changing call requires your confirmation.
-5. Release the session when done and verify the result in the UI. Do not treat a successful tool return as confirmation of the business result.
-
-## Inputs, outputs, and permissions
-
-- Reads: structured observations of the current target, interactive elements, and bounded screenshots. Read-only queries do not require confirmation.
-- Writes: UI actions such as clicks, typing, key presses, and scrolling. Every change must be bound to one trusted, confirmed invocation.
-- Approval or external effects: actions such as signing in, authorizing, sending, uploading, purchasing or paying, deleting, and submitting official results must be confirmed by the user at execution time. A confirmation covers only that call and does not automatically authorize later actions of the same kind.
-- Data boundary: screens and observation results may contain account details, patient information, or unpublished data and should be treated as sensitive. Do not ask the Agent to fill in passwords, verification codes, or payment information.
-- What it does not do: bypass system permissions, keep operating after the turn ends, promise automation for arbitrary desktop apps, or switch to another backend when the Backend is unavailable.
-
-## Known limitations
-
-- The current execution backend is browser CDP, so targets are limited to browser pages and Electron embedded pages (for example, Browser Preview). It is not a general automation tool for arbitrary desktop apps.
-- It requires the local Backend and a supported Runtime connection. When the Backend is unavailable, it reports an explicit error and does not silently degrade.
-- Only Codex and Claude Code are supported. Other Runtimes do not receive this tool set.
-- Screenshots and observation results are treated as untrusted and potentially sensitive by default. Redact them before export.
-- Bindings for the turn are reclaimed when the session ends. Computer Use is not intended for unattended, long-running automation.
+- Observation reads the page content, interactive elements, and screenshots; read-only queries need no confirmation.
+- Clicking, typing, key presses, and scrolling act directly on the target page and may submit something or change the page state.
+- Pages and screenshots may contain accounts, patient information, or unpublished data; check and redact before sharing or exporting. Do not have the Agent fill in passwords, verification codes, or payment information.
+- When the run status is unavailable or system permissions are insufficient, fix the problem before continuing the task.
+- When the session ends, the current operating connection is released. Computer Use is not suited to unattended, long-running automation.
 
 ## Related pages
 
-- [Permissions and security](../operations/security.md): Computer Use system permissions and confirmation of key actions.
-- [Skills, MCP, and Extensions](./extensions.md): the differences between MCP, Skills, and plugins.
-- [Browser Preview](./browser-preview.md): the main source of pages that Computer Use currently operates.
-- [Workbench tools](../workbench/tools.md): how tools divide responsibilities and how to use them.
+- [Permissions & security](../operations/security.md): system permissions and confirmation of key actions.
+- [Skills, MCP, and Extensions](./extensions.md): tool connections and extension management.
+- [Browser Preview](./browser-preview.md): the main page entry that can currently be operated.
+- [Workbench tools](../workbench/tools.md): how the tools divide the work, and usage principles.
 
 > Implementation basis: `@sciforge/domain-computer-use` v1.0.1.

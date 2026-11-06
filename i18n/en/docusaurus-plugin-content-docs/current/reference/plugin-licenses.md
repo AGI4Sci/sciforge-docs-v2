@@ -20,7 +20,7 @@ The table below lists the versions and licenses of the 7 current plugin packages
 ## Source, installers, and npm publication
 
 - **Source license**: The entries above are each package's license declaration; using and redistributing the package still requires retaining the applicable LICENSE, copyright, and NOTICE. The repository root license cannot be used to override plugins or third-party components that carry their own license declarations.
-- **Installer contents**: Which code, native components, and license files an actual artifact contains must be checked against that version's package contents. A file existing in the source directory does not mean it is necessarily included in the build; this page does not certify any installer it has not inspected.
+- **Installer contents**: When redistributing, check the actual package contents, and keep the LICENSE, copyright, and NOTICE files in the package.
 - **npm `private: true`**: This field prevents ordinary npm publication. It does not mean the source is confidential, commercially proprietary, or barred from use under the existing license, and it does not mean the package cannot be distributed as a signed installer. Leaving the field unset also does not prove that the package has been published.
 - **Release status**: Version, license, installation authorization, and Marketplace availability are separate matters; rely on the specific release record and a trusted installation source.
 

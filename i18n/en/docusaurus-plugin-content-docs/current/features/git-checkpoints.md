@@ -1,58 +1,41 @@
 ---
 title: Git Checkpoints
-description: Pin Git state at task-turn boundaries and automatically leave a rescue snapshot before restoring.
+description: Automatically save Git checkpoints at the start and end of a task, and leave a rescue snapshot before restoring.
 sidebar_position: 41
 ---
 
 # Git Checkpoints
 
-Git Checkpoints record Git snapshots of the workspace before and after task turns, pinning down "what state the code was in before this turn started and after it finished." It owns only checkpoint metadata and restore policy; actual repository operations run through the generic version control capability. Research context itself is recorded by [Research Checkpoints](./research-checkpoints.md).
+Git Checkpoints automatically saves the workspace's Git state at the start and end of a task turn, so you can check what this turn changed and, when needed, restore an earlier state. For the research summary, sources, and where to continue the research, see [Research Checkpoints](./research-checkpoints.md).
 
-## How to open it
+## Opening it
 
-- Entry: **Git Checkpoints** in the right toolbar (expand **More tools** if it is not visible); the right panel is also titled **Git Checkpoints**.
-- Scope: the local Git workspace bound to the current session.
-- Prerequisite: the workspace is a Git repository and a version control provider is available; non-Git workspaces do not produce checkpoints.
+- Entry: **Git Checkpoints** in the right toolbar (expand **More tools** if it is not shown); the right panel is titled **Git Checkpoints** as well.
+- Target: the local Git workspace bound to the current session.
+- Prerequisite: the workspace is a Git repository and Git features are available; a non-Git workspace produces no checkpoints.
 
-## What you can do
+## View and restore
 
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| View turn checkpoints | Open the panel and view records before and after turns in chronological order | A checkpoint list and stages |
-| Review the scope of changes | Select a checkpoint and view the workspace patch and change summary | A diff preview |
-| Restore a known state | Select the target checkpoint, click **Restore**, and confirm | A workspace back at that snapshot |
-| Avoid losing state during restore | No extra action is needed; the system captures it automatically before restoring | A rescue checkpoint ID |
-| Refresh the current list | Click the refresh icon to reload | The latest checkpoint list |
+1. Start a task in a Git workspace, and the system automatically saves a checkpoint from before the start; you do not need to save one by hand or keep the panel open.
+2. After the task turn finishes or ends, open the panel or click the refresh icon, and check the records from before the start and after the end.
+3. Select a checkpoint, read the file differences and the change summary, and confirm it matches the state you want to restore.
+4. When you need to restore, click **Restore** and confirm. The system first saves a rescue checkpoint; if saving fails, the restore is aborted.
+5. After restoring, check the actual workspace files and the Git status. To see the file changes the current task recorded, you can use [Change Inspector](./change-inspector.md).
 
-## Typical workflow
+## Confirm before restoring
 
-1. Start a task in a Git workspace; the system records a pre-turn checkpoint.
-2. After the turn completes or ends, refresh the panel and confirm that a post-turn checkpoint appears.
-3. Select the target checkpoint, review the patch preview first, and then decide whether to restore.
-4. To restore, click **Restore** and confirm, then wait for the system to create a rescue checkpoint first.
-5. After the restore completes, re-check the workspace state and have [Change Inspector](./change-inspector.md) inspect the file changes in the current session.
+Restoring rewrites workspace files, so first confirm the target checkpoint, and check whether there are changes you still need to keep. The rescue checkpoint saves the state from before the restore, so you can get back the work that this restore overwrote.
 
-## Inputs, outputs, and permissions
+The panel offers a list, a diff preview, refresh, and restore, with no button to create a checkpoint by hand. The diff preview may show only part of the content; when a preview is incomplete, check the actual files and the Git diff further before restoring.
 
-- Reads: workspace Git state, snapshot metadata, patches, and change summaries.
-- Writes: checkpoint metadata is written to the app data directory; restoring rewrites workspace files.
-- Approval or external effects: restoring is destructive and requires explicit confirmation; if rescue checkpoint creation fails, the restore is aborted.
-- What it does not do: run Git commands directly or bypass version control provider policy, or fabricate checkpoints in non-Git workspaces.
+## What is saved
 
-## Known limitations
-
-- The current implementation covers turn-boundary checkpoints in local Git workspaces; the panel provides listing, preview, refresh, and restore.
-- The panel has no button for creating checkpoints manually; checkpoints are triggered by the turn lifecycle and do not depend on the panel staying open or on a manual save.
-- A version control provider may truncate the patch preview, in which case only part of the diff is visible.
-- Restoring is a workspace-level rollback, not a read-only comparison; the rescue checkpoint is a protection point captured automatically before the restore.
-- It does not store research questions, sources, or resume locations, so it cannot replace a Research Checkpoint.
+A Git checkpoint saves the workspace's Git state, which suits reviewing code and file changes. The research question, sources, and next-step plan still need to be recorded through research checkpoints; versions of a single figure or data file can be saved separately as [Artifact Versions](./artifact-versions.md).
 
 ## Related pages
 
 - [Evidence & Reproducibility](./evidence-and-reproducibility.md): the group overview and the recommended record chain.
 - [Research Checkpoints](./research-checkpoints.md): save research context and the resume location.
-- [Artifact Versions](./artifact-versions.md): pin a single artifact instead of the whole workspace.
-- [Change Inspector](./change-inspector.md): check which files a session actually changed.
-- [Workspaces and sessions](../workbench/workspaces-and-sessions.md): how workspaces, sessions, and Git state relate.
-
-> Implementation basis: `@sciforge/domain-git-checkpoints` v1.0.3.
+- [Artifact Versions](./artifact-versions.md): save versions of a single artifact.
+- [Change Inspector](./change-inspector.md): check which file changes a session recorded.
+- [Workspaces and sessions](../workbench/workspaces-and-sessions.md): how the workspace, sessions, and Git state relate.

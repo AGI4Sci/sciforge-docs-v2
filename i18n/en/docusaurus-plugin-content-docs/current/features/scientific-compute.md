@@ -1,17 +1,16 @@
 ---
-title: Scientific Compute
-description: Migration note for the retired capability, and how to keep records of real computation.
+title: Running analysis and computation
+description: Run analysis in a Python, R, or cluster environment you configured, and keep the inputs, dependencies, and actual outputs.
 sidebar_position: 13
 ---
 
-# Scientific Compute
+# Running analysis and computation
 
-:::info[Migration note]
-In the [current source baseline](../reference/version-and-compatibility.md), the old `scientific-compute` domain is retired. It no longer provides a callable built-in capability or a standalone plugin. This page keeps its original URL so old links and historical records can still find it.
-:::
+Before running an analysis, prepare and verify the Python, R, or cluster environment you configured yourself. When you want the Agent to execute, state in the session the environment to use, the input files, the analysis steps, and the output location; which operations are available depends on the execution environment and permissions.
 
-The old page described a local, deterministic fixture job loop used to test the event trail of submission, monitoring, blocking, and recovery. It never represented real cluster scheduling or real scientific results. Do not keep looking for the status query, the four-scenario baseline run, or the job-monitoring entry point it described.
+1. Confirm the location, format, and version of the input files, and keep the raw data and source records.
+2. Prepare the scripts and the dependencies they need, and record the interpreter, package versions, and run parameters; for cluster jobs, also record the submit command and resource requests.
+3. Actually run the analysis, and check the run status, exit code, and logs; on failure, keep the error message, fix it, and run again.
+4. Check that the output files and statistical results match expectations, and save how the inputs, code, dependencies, and outputs correspond. Without an actual run record, do not write an expected result up as a completed computation.
 
-For real computation, use the [workbench terminal](../workbench/tools.md) and your own compute environment. For remote files and where execution happens, see [Remote & collaboration](../operations/remote-and-collaboration.md). Keep the actual commands, an input summary, software versions, parameters, exit status, and output files, and organize them as described in [Evidence & reproducibility](./evidence-and-reproducibility.md).
-
-Python + Matplotlib figures can use the standalone [Scientific Figures plugin](./scientific-plotting.md). Its code and input snapshots and run receipts are not a general job scheduler. The current baseline should not be read as a promise of built-in Slurm, PBS, or Kubernetes scheduling.
+To plot from data and Python code, revise, and accept candidate figures, use [Scientific Figures](./scientific-plotting.md); that plugin must be installed separately with its dependencies configured, and currently supports Python + Matplotlib. For cross-task source and computation records, see [Evidence & reproducibility](./evidence-and-reproducibility.md).

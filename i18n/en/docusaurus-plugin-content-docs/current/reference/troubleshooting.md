@@ -15,8 +15,8 @@ First determine which layer the problem is in, so you do not change models, the 
 | App interface | Whether SciForge started correctly and the current workspace is the right one |
 | Runtime | Whether Codex, Claude Code, or DSH is currently selected, whether the command can be found, and whether sign-in is valid |
 | Model access | Whether the Model API or Coding Plan is fully configured |
-| Permissions and tools | File access range, approvals, the Computer Use Backend, and system permissions |
-| External services | Whether Cloud, MCP, Worker, or Provider is reachable; whether a remote workspace session is still attached |
+| Permissions and tools | File access range, operation confirmations, Computer Use run status, and system permissions |
+| External services | Whether the cloud, models, and external tools are connected properly; whether the remote workspace is still connected |
 
 ## Runtime shows as disconnected
 

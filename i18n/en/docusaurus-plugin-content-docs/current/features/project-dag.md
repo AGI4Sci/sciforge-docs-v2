@@ -6,54 +6,37 @@ sidebar_position: 45
 
 # Project DAG
 
-Project DAG combines the evidence from several sessions in the same project, to help you see which conclusions the project has so far and which questions still need review. First save evidence in each session's [Evidence DAG](./evidence-dag.md), then set a goal here, update the project graph, and trace sources.
+Project DAG combines the evidence from several sessions in the same project, to help you see which conclusions the project has so far and which questions still need review. First update and save the evidence graph in each session's [Evidence DAG](./evidence-dag.md), then come back to the project graph and click **Update now**. After a session saves new evidence, the project graph still has to be updated manually.
 
-## How to open it
+## Opening it
 
-- Entry: the **Project DAG** panel on the right; resource navigation from a project, Goal, or Snapshot opens the corresponding view.
-- Target: the project that corresponds to the current workspace, along with its committed Evidence snapshots.
-- Prerequisite: the project has at least one committed Evidence snapshot, and both the Evidence and Project services are available.
+- Entry: the **Project DAG** panel on the right; you can also open the matching view from a project, goal, or historical snapshot.
+- Target: the project that corresponds to the current workspace, and the evidence graphs each session has saved.
+- Prerequisite: the project has at least one saved session evidence graph, and the evidence-graph and project-graph features are available.
 
-## What you can do
+## Update and review the project graph
 
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| View the project-wide graph | Open the panel and read the latest committed Project snapshot | Project-level claims, findings, and review status |
-| Set a project goal | Fill in the title and description under **Project goal** and click **Save goal** | A new Goal version |
-| Aggregate new evidence | Click **Update now** and wait for the task to commit | A new Project snapshot and receipt |
-| See what needs attention | Review the attention count, audit status, and review package | A to-do list |
-| Return to session evidence | Click **Open Evidence DAG for session** | The evidence graph of that session |
-| View claim provenance | Select a Claim to see the strongest provenance path, sources, L0–L4, and breakpoints | Cross-layer provenance details and related decisions |
+1. Finish the analysis in each session, save the sources and results, and update Evidence DAG for each. Wait until each session's evidence graph has finished saving.
+2. Open the Project DAG, fill in the title and description under **Project goal**, and click **Save goal**.
+3. Click **Update now**, wait for queueing, execution, and saving to all finish, then check this project graph. Only saving session evidence or closing the panel does not generate a new project graph automatically.
+4. See how many items need attention, and the matching audit status and review package. Select an important conclusion and check which sources it rests on, whether it can be traced back to the original records, whether it can be rerun under the original conditions, and what evidence is still missing.
+5. When you need to check details, open the matching session's Evidence DAG. After adding sources or results, first save the session evidence graph, then update the project graph manually.
 
-## Typical workflow
+## When reviewing
 
-1. Complete analyses in several sessions and commit a snapshot in the Evidence DAG for each.
-2. Open the Project DAG, fill in the project goal, and save it.
-3. Click **Update now** and confirm that the receipt moves through queued and running to committed.
-4. Review the attention items and key Claims, jumping back to the source session to verify when needed.
-5. For restricted sources, read only the redacted paths and breakpoints; do not try to bypass the access policy.
+- Confirm you are reviewing the graph from this update. After a new graph is saved, the old graph's audit results are marked stale, and you should recheck against the current graph.
+- The audit checks a project graph that is already saved. An audit failure does not undo a graph that was saved, and it does not modify conclusions directly.
+- Sources you are not allowed to view have their content hidden, and only limited status and gap hints are shown. When reviewing, note which parts could not be checked.
+- The project graph uses the evidence graphs each session has saved; analysis results that are not yet saved need to be organized in the session first.
 
-## Inputs, outputs, and permissions
+## Saving and sharing
 
-- Reads: committed Evidence snapshots, project graphs, Claims, audit records, and decision records.
-- Writes: project update tasks, Goal versions, and immutable Project snapshots; audits write only to a separate sidecar.
-- Approval or external effects: panel operations are limited to local project records; any publication or external delivery still requires Runtime authorization, which project policy cannot replace.
-- What it does not do: read raw chat, accept uncommitted source graphs, modify the graph directly from the audit page, or cache the content of Evidence snapshots.
-
-## Known limitations
-
-- The current implementation consumes only committed Evidence snapshots; an upstream commit merely marks the project as needing a refresh and does not compile each item automatically.
-- When the Project view is closed, nothing is precompiled; to get a new view, update explicitly and wait for the persistence receipt.
-- After a new snapshot is committed, audits that are queued, running, completed, or failed on the old snapshot are marked stale, and old Findings never overwrite the new graph.
-- Sources you are not allowed to view have their content hidden, and only limited status and gap hints are shown.
-- The audit checks an existing project graph; an audit failure does not undo a graph that was already saved, and it does not modify conclusions directly.
+Saving a goal and updating the project graph adds project records, so you can review them later. Operations in the panel act on the local project records; publishing or sending content out still needs authorization as the app requires. Before sharing, check source permissions, and state the unverified conclusions and the evidence gaps.
 
 ## Related pages
 
 - [Evidence & Reproducibility](./evidence-and-reproducibility.md): the group overview and the recommended record chain.
-- [Evidence DAG](./evidence-dag.md): the only evidence source for the project graph.
-- [Research Dossier](./research-dossier.md): turn project results into an external deliverable.
+- [Evidence DAG](./evidence-dag.md): save the session evidence the project graph needs.
+- [Research Dossier](./research-dossier.md): turn research results into a readable deliverable.
 - [Workspaces and sessions](../workbench/workspaces-and-sessions.md): how several sessions share one project scope.
-- [Permissions and security](../operations/security.md): the boundary between access policy and publication authorization.
-
-> Implementation basis: `@sciforge/domain-project-dag` v1.0.9.
+- [Permissions & security](../operations/security.md): access permissions and publication authorization.

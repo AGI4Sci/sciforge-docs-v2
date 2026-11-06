@@ -1,17 +1,16 @@
 ---
-title: Dataset API
-description: Migration note for the retired Dataset API, and how to record where your data came from.
+title: Acquiring and organizing data
+description: Obtain data with the provider's client or your own scripts, and keep records of source, version, license, and verification.
 sidebar_position: 11
 ---
 
-# Dataset API
+# Acquiring and organizing data
 
-:::info[Migration note]
-In the [current source baseline](../reference/version-and-compatibility.md), the old `dataset-api` domain is retired. The built-in API described in earlier versions of this page is no longer provided. This page keeps its original URL so old links and historical records can still find it.
-:::
+Use a client the data provider supports, or run a download script in an environment you have configured. First confirm access rights, terms of use, and the storage space you need; manage credentials as described in [Permissions & security](../operations/security.md).
 
-The old data-source catalog, UI-registered endpoints, S3 object browsing, preparation plans, checkpoint recovery, and validate-and-publish flow are no longer available operations. Do not assume old `.sciforge/datasets` records were migrated automatically or can still be executed. Keep the original files and source material, and check them one by one.
+1. Confirm the data source URL, the data version, and the license, and record the access or download date.
+2. Download with the provider's client or a script, and keep the commands, download parameters, and results actually used.
+3. Check the file size and SHA-256; when the provider publishes checksums, compare against them one by one and record the verification result.
+4. When organizing files, keep the original data. Save cleaning, filtering, or format conversions as separate results, and record how inputs, processing scripts, and outputs correspond.
 
-To obtain data, use the data provider's supported client, or your own scripts and environment. Record the source URL, access time, data version, license, download parameters, file size, and SHA-256. Manage credentials as described in [Permissions & security](../operations/security.md). The old page's rule that retries had to go through the Dataset API does not apply to a retired capability.
-
-Supported downloaded files can be viewed in [Life Science Preview](./life-science-preview.md), and [Biology Room](./biology-room.md) can organize the sequence, structure, and genome assets it supports. Data acquisition, cleaning, and scientific conclusions still each need real execution and source records; see [Evidence & reproducibility](./evidence-and-reproducibility.md). These two built-in biology features do not replace the old Dataset API's data ingestion and publishing service.
+Supported downloaded files can be viewed in [Life Science Preview](./life-science-preview.md), and [Biology Room](./biology-room.md) can organize the sequence, structure, and genome assets it supports. Previewing and organizing assets do not replace downloading, integrity checks, or analysis. Data acquisition, cleaning, and scientific conclusions each need real execution and source records; see [Evidence & reproducibility](./evidence-and-reproducibility.md).

@@ -51,7 +51,7 @@ virtual-cell-benchmark/
 │   └── split-manifest.json
 ├── data/
 │   ├── inputs/
-│   └── sealed-reference/       # 仅路径 A
+│   └── sealed-reference/       # Path A only
 ├── models/
 │   ├── baseline/
 │   └── external-adapter/
@@ -59,7 +59,7 @@ virtual-cell-benchmark/
 │   ├── validate_inputs.py
 │   ├── run_prediction.py
 │   ├── validate_prediction.py
-│   ├── evaluate_offline.py     # 仅路径 A
+│   ├── evaluate_offline.py     # Path A only
 │   └── analyze_failures.py
 └── runs/<run-id>/
     ├── run-manifest.json

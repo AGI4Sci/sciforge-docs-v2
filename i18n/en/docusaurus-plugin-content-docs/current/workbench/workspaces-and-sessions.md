@@ -8,8 +8,6 @@ sidebar_position: 1
 
 A workspace determines where the Agent reads files, inspects Git, and runs commands; a session stores the messages, executions, and results around one goal. The same workspace can have multiple sessions.
 
-This page reflects the current implementation as of 2026-11-06; for differences between installed versions and the public source, see [Version and compatibility](/docs/reference/version-and-compatibility).
-
 ## Get to know the current layout
 
 - **Left sidebar**: Organizes workspaces, sessions, and navigation contributed by extensions. Expand it to view collaborative projects, My Work, and the Inbox; local account, cloud status, usage summary, and Settings sit at the bottom.
@@ -26,8 +24,8 @@ When the sidebar is collapsed, the full account summary and project tree are hid
 3. Verify the workspace path and the project name in the sidebar, then create a session.
 4. Use a new session for a new goal; continue the existing session for the same goal.
 
-![SciForge new-session history interface](/img/docs/quickstart/quickstart-new-session.jpg)
-*Legacy interface: illustrates the relationship between projects and sessions; for toolbar and account entry locations, use the current layout described on this page.*
+![SciForge new-session interface](/img/docs/quickstart/quickstart-new-session.jpg)
+*Illustrates the relationship between projects and sessions.*
 
 ## Add files: choose, drag, paste, or reference
 
@@ -37,25 +35,23 @@ Open the **Files** panel from the far-right toolbar to browse, preview, and refe
 
 Before sending, the **attachment tray** above the input box lists the objects to send with their type, path, and known size. You can preview references that support preview or remove entries you do not need to send this time. After sending, the **sent file chips** below your message keep the file name and known size; click one to preview the corresponding workspace file. It is not a pending list you can keep editing.
 
-| Input form | Current handling | Boundary to understand |
-| --- | --- | --- |
-| Files already in the workspace | Keeps a workspace-relative path reference | File contents are not fully embedded in the model prompt just because an attachment chip appears; the Agent calls tools to read them as needed |
-| Supported files selected or pasted from outside the workspace | Imports them into the workspace's session attachment directory, then treats them as path references | Importing writes to the workspace; removing a pending entry does not delete the imported file |
-| Supported model image attachment paths | Handles images through the Runtime's attachment capability; the exact input depends on the Runtime, model, and image-processing configuration | Unlike workspace path references, this may involve embedded images or image conversion; a file chip does not prove that the model read the original image directly |
+When using attachments, check in this order:
 
-The current workbench prefers to save images as workspace references when a workspace exists. Do not read "Attach file" as syncing an entire directory to the cloud or guaranteeing that the model has understood the file's contents. A read-only demo should reference existing files directly to avoid file changes caused by extra imports.
+1. Before sending, check the file names, paths, and sizes in the attachment tray, and remove entries chosen by mistake or not needed.
+2. After sending, use the file chips under the message to check what was sent; when you need the Agent to analyze content, explicitly ask it to read the matching file first, then explain what it found.
+3. When you reference a file already in the workspace, the Agent reads it as needed. A file chip only shows the file was added to the message; do not conclude from it that the content has been read or understood.
+4. Files selected or pasted from outside the workspace are imported into the workspace's session attachment directory. **Removing a tray entry does not delete the file that was already imported**; to clean up, check in the Files panel and then delete.
 
-![SciForge workspace file history panel](/img/docs/guides/workspace-files.jpg)
-*Legacy interface: shows the purpose of directory browsing and preview; the current entry point is in the far-right vertical toolbar.*
+Whether an image can be used for analysis depends on the model you use and its image support; after sending, check what was read. A read-only demo can reference existing workspace files directly, to avoid extra files from importing.
+
+![SciForge workspace Files panel](/img/docs/guides/workspace-files.jpg)
+*Shows the purpose of directory browsing and preview; the current entry point is in the far-right vertical toolbar.*
 
 ## Manage sessions and review changes
 
 Click a session to continue its goal, use search to find history, archive sessions you are not using for now, and restore them as needed. Save important results to the workspace or a research record before deleting. Do not mix unrelated research goals in one session.
 
 After modifying files, ask the Agent to use the [Change Inspector](../features/change-inspector.md) to review this session's changes, then run `git status --short` to inspect the entire workspace. Closing a panel or switching sessions does not undo file modifications.
-
-![SciForge change history panel](/img/docs/guides/workspace-changes.jpg)
-*Legacy interface: the old panel has been removed; this image is kept only as a diff-reading example.*
 
 A clear session opening:
 

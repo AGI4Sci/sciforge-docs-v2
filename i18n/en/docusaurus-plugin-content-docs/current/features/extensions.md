@@ -8,22 +8,20 @@ sidebar_position: 4
 
 When you need to add tools or a specialized method, first work out what you are installing, then check its source and permissions. Extensions provide app panels and tools, Skills provide task methods, and MCP connects external tools or data.
 
-This page reflects the implementation as of 2026-11-06. For installed versions and available capabilities, see [Version & Compatibility](../reference/version-and-compatibility.md).
-
 ## Open the Extension Center
 
 Open **Extensions** from the left sidebar to see built-in and installed extensions, the marketplace, and Skills. Expand the sidebar first if you need the full navigation.
 
 Extension details show the publisher, version, source, status, permissions, and the features it contributes. After installing or enabling, related entries may appear in the left navigation, the vertical toolbar on the far right, or file preview. When there are many toolbar entries, use **More tools**; supported entries can be adjusted through **Customize toolbar**.
 
-![The Extension Center in an earlier version](/img/docs/guides/extensions-center.png)
-*Old interface: for understanding extension sources and feature details; the current layout follows the body text.*
+![The Extension Center](/img/docs/guides/extensions-center.png)
+*For understanding extension sources and feature details.*
 
 ## Install and manage extensions
 
 In the marketplace, pick an entry and read the description, publisher, permissions, and installation status before confirming the install. Whether it can be installed depends on the current index and app compatibility; a blocked entry shows the reason.
 
-Ordinary local installation uses an official signed package, and checks the signature, file contents, and Host API compatibility. Development sources are labeled separately and must not be treated as official signed installs. Files in a workspace never become enabled extensions automatically.
+Ordinary local installation uses an official signed package, and checks the signature, file contents, and compatibility with the app version. Development sources are labeled separately and must not be treated as official signed installs. Files in a workspace never become enabled extensions automatically.
 
 Installed extensions can be enabled, disabled, uninstalled, or rolled back with the operations the interface offers; built-in extensions are managed with the app version. If it says a restart is needed, or the extension is invalid or failed to load, handle that prompt first, then check the feature's entry point.
 
@@ -38,8 +36,8 @@ A Skill usually contains method notes plus supporting scripts and material. Befo
 - What software, data, and credentials it needs.
 - What check shows the result is reliable.
 
-![The Skills management page in an earlier version](/img/docs/guides/skills-center.png)
-*Old interface: shows what project-level and global Skill management is for.*
+![The Skills management page](/img/docs/guides/skills-center.png)
+*Shows what project-level and global Skill management is for.*
 
 Once a Skill is discovered, its scripts still run under the task's permissions. Dependency installs and external actions of a third-party Skill need separate checks; "enabled" is not a substitute for authorization.
 
@@ -51,10 +49,10 @@ Before sending, uploading, deleting, or modifying anything in an external system
 
 ## Use Computer Use
 
-Desktop control needs Runtime support, an available backend, and system permissions. Check the backend status in settings; on macOS, also check the Screen Recording and Accessibility permissions. Limit the target app and the task scope, and check each action such as sign-in, authorization, payment, sending, or deleting.
+Computer Use currently supports Codex and Claude Code, and can operate browsers and the embedded pages of Electron apps. First enable it in settings and check the run status; on macOS, also check the Screen Recording and Accessibility permissions. Limit the target page and the task scope, and check each action such as sign-in, authorization, payment, sending, or deleting.
 
-![Computer Use configuration in an earlier version](/img/docs/guides/ai-assistants-computer-use.jpg)
-*Old interface: shows that the Runtime, Backend, and system permissions each need checking.*
+![Computer Use configuration](/img/docs/guides/ai-assistants-computer-use.jpg)
+*After enabling Computer Use, check the run status and system permissions.*
 
 ## When you cannot find a feature
 

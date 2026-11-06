@@ -43,7 +43,7 @@ When you need multiple steps, open **Create Loop** from the right toolbar or **M
 3. Test a single node first, then run the whole flow manually.
 4. Enable schedule triggers, Webhooks, or Agent hooks only after validation.
 
-When a manual approval node pauses, it depends on the current app's in-memory state; restarting the app loses that paused run. For important flows, make node outputs repeatable and keep idempotency identifiers and run records.
+**Restarting the app loses a run that was paused at a manual approval node.** For important flows, save each step's input, output, and result; before rerunning, check whether a file, request, or submission has already completed, to avoid writing or submitting twice.
 
 ## Automation acceptance
 

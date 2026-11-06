@@ -8,8 +8,6 @@ sidebar_position: 60
 
 Expand the workbench's left sidebar and look at the bottom for the **local account, cloud status, and usage summary**. Click the account row to open the account panel; click the cloud row to open the same panel positioned at **SciForge Cloud**. Settings sits below it.
 
-This page reflects the implementation as of 2026-11-06. For differences between the installed version and the public source, see [Version & Compatibility](../reference/version-and-compatibility.md).
-
 ## A local account is an attribution marker
 
 Local features do not require sign-in. You can create a local account, confirm its display name, choose an account or rename it, and sign out of the account. A local account provides no security authentication and **does not isolate workspaces, chats, settings, API keys, or tool data**. On a shared computer, switching the display name is no substitute for operating-system account isolation.
@@ -25,7 +23,7 @@ The delete button on an account row first shows a confirmation area. Once confir
 3. After returning, check the cloud identity. If no device is connected yet, click **Connect this device**.
 4. Collaboration features that depend on cloud identity can continue only when the identity is valid and the device is active.
 
-The local account, the model provider sign-in, and the SciForge cloud sign-in are separate configurations. Cloud features depend on the current app configuration and service availability; they do not require you to set up any old collection of domain packages first.
+The local account, the model provider sign-in, and the SciForge cloud sign-in are separate configurations. Cloud features depend on the current app configuration and service availability.
 
 | Panel state or action | Meaning and what to do |
 | --- | --- |
@@ -42,9 +40,9 @@ When a device is revoked, the identity changes, or device validity cannot be con
 
 ## Reading the usage summary
 
-The bottom of the sidebar shows token and cost summaries for **today** and the **last 7 days**, read from the daily usage the Runtime has recorded. It is not a cloud account balance or a provider bill, and switching local accounts does not prove the usage data is isolated.
+The bottom of the sidebar shows token and cost summaries for **today** and the **last 7 days** recorded on this machine; for the actual charges, check the model provider's bill.
 
-Loading, no data, and load failure each show their own message. No data does not mean no model requests were made. Cost depends on the metering and pricing information available; settlement is still governed by the provider's own records.
+Loading, no data, and load failure each show their own message. No data does not mean no model requests were made.
 
 ## Credentials and recovery boundaries
 

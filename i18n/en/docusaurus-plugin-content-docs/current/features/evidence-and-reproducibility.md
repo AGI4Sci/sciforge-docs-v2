@@ -1,77 +1,77 @@
 ---
 title: Evidence & Reproducibility
-description: Use artifact versions, Checkpoints, Evidence DAG, and Research Dossier to pin down the research process and its results.
+description: Use artifact versions, checkpoints, Evidence DAG, and Research Dossier to pin down the research process and results.
 sidebar_position: 2
 ---
 
 # Evidence & Reproducibility
 
-After a research task is complete, a summary that looks correct is not the same as a reproducible deliverable. SciForge uses several complementary objects to record "what happened, what was produced, what it was based on, and where to continue next time."
+SciForge keeps a research task's inputs, process, and results through artifact versions, run records, and source links, so you can recheck them and continue the research.
 
-These records come from built-in features and optional plugins together, so not all seven pages in this group describe standalone plugins. The current breakdown is below; for versions, see [Version & Compatibility](../reference/version-and-compatibility.md):
+Choose a recording method as you need. Artifact versions, checkpoints, the evidence graph, and the research dossier use built-in entry points in the app; Change Inspector needs a plugin installed and enabled. For version requirements, see [Version & Compatibility](../reference/version-and-compatibility.md).
 
-| Recording feature | Purpose and availability |
+| Recording feature | Purpose and how it is provided |
 | --- | --- |
-| [Artifact Versions](./artifact-versions.md) | Built in; records immutable versions of a single artifact, comparison, and restore |
-| [Git Checkpoints](./git-checkpoints.md) | Built-in feature; a separate plugin still awaiting full integration pins the Git state at a given stage |
-| [Research Checkpoints](./research-checkpoints.md) | Built-in feature; a separate plugin still awaiting full integration saves research-stage context and the resume location |
-| [Change Inspector](./change-inspector.md) | Standalone production plugin; reads file changes in the current session |
-| [Evidence DAG](./evidence-dag.md) | Built-in claim and evidence relationships; an optional backend plugin is not yet integrated into the app |
-| [Project DAG](./project-dag.md) | Built-in project-level goals and review records; a backend plugin artifact is still awaiting app integration |
-| [Research Dossier](./research-dossier.md) | Built in; organizes research deliverables for other people |
+| [Artifact Versions](./artifact-versions.md) | Save independent versions of a single artifact; compare and restore earlier results |
+| [Git Checkpoints](./git-checkpoints.md) | Automatically save the Git workspace state at the start and end of a task |
+| [Research Checkpoints](./research-checkpoints.md) | Automatically save the research summary, sources, and file references of completed turns |
+| [Change Inspector](./change-inspector.md) | Use a plugin to check the file changes already recorded in the current session |
+| [Evidence DAG](./evidence-dag.md) | Save and check the conclusions and evidence relationships in the current session |
+| [Project DAG](./project-dag.md) | Manually combine the evidence graphs each session has saved, to check project progress |
+| [Research Dossier](./research-dossier.md) | Read a selected research record, check versions and limitations, and prepare delivery |
 
 ## Choose the right record object
 
 | Object | Problem it solves | Typical content |
 | --- | --- | --- |
 | **Session** | How did the task progress? | Messages, tool calls, commands, approvals, and the final response |
-| [**Artifact Version**](./artifact-versions.md) | How did a chart or file change over time? | Artifact path, version, inputs, and generation details |
+| [**Artifact Version**](./artifact-versions.md) | How did a figure or file evolve? | Artifact path, version, inputs, and generation details |
 | [**Git Checkpoint**](./git-checkpoints.md) | What stage are the workspace files at? | Git status and stage-level code snapshots |
-| [**Research Checkpoint**](./research-checkpoints.md) | How do I resume a research stage? | Research context, key artifacts, and resume location |
+| [**Research Checkpoint**](./research-checkpoints.md) | How do I continue a research stage? | Research context, key artifacts, and resume location |
 | [**Evidence DAG**](./evidence-dag.md) | What supports or refutes a claim? | Claims, sources, methods, artifacts, limitations, and relationships |
 | [**Research Dossier**](./research-dossier.md) | How does someone else read the final deliverable? | Research question, inputs, methods, results, credibility, and limitations |
 
-## Build an auditable chain
+## Build a checkable chain
 
 Recommended order:
 
-1. At the start of the task, record the workspace, input versions, and objective.
-2. After key computations, save the commands, parameters, and artifacts.
-3. Create artifact versions for charts or reports.
-4. Connect key claims to inputs, methods, and charts.
-5. Manually check counterevidence, missing data, and inference boundaries.
-6. Save a Checkpoint and generate a Research Dossier.
+1. At the start of the task, record the workspace, input versions, and objective; a Git workspace automatically saves a checkpoint from before the task started.
+2. After the analysis, save the actual sources, commands, parameters, result files, and figures, and save independent versions of the artifacts you want to keep.
+3. Wait for this round's research record to be saved, then open the research dossier to check the summary, references, and selected versions. Confirm the summary record and the actual files separately.
+4. In Evidence DAG, click **Update**, wait for the evidence graph to finish saving, then check item by item the relationship between conclusions and sources, counter-evidence, and missing information.
+5. When you need a cross-session summary, first confirm each session's evidence graph is saved, then click **Update now** in Project DAG; after it finishes, review the current project graph.
+6. In the research dossier, check the selected record and its limitations, and before delivery verify the related files, versions, and sharing permissions.
 
 ![SciForge research dossier panel](/img/docs/guides/research-dossier.jpg)
-*Figure 1: The research dossier shows the research narrative, current version, credibility summary, and limitations that need attention.*
+*Figure 1: The research dossier shows the research narrative, selected versions, a credibility summary, and the limitations that need attention together.*
 
-## Have the agent leave a complete record
+## Have the Agent leave a complete record
 
-You can add the following to a task:
+You can add this to a task:
 
-> After completing the analysis, put the research question, input files, methods used, key parameters, results, and limitations into the research dossier. Every key conclusion should trace back to its source, derived table, or figure; mark anything you cannot confirm as unverified.
+> After the analysis, organize the research question, input files, methods used, key parameters, results, and limitations into the research dossier. Every key conclusion should trace back to its source, derived table, or figure; mark anything you cannot confirm as unverified.
 
-Do not just ask for "generate an Evidence DAG." First clarify which claims are worth reviewing, which data can directly support them, and which interpretations are still candidate hypotheses.
+Do not only ask it to "generate an Evidence DAG". First make clear which claims deserve review, which data can directly support them, and which explanations are still candidate hypotheses.
 
 ## Manual review checklist
 
-- Can every key number be traced back to an input file and a computation step?
-- Do the charts come from verified derived tables rather than hand-edited intermediate files?
+- Can every key number be traced back to the input files and the computation steps?
+- Do the figures come from verified derived tables, not intermediate files edited by hand?
 - Does the conclusion confuse correlation, prediction, and causation?
-- Are counterevidence, warnings, and missing data still visible?
-- Are the code commit, environment, parameters, and random seed needed to rerun all present?
-- Does the Checkpoint correspond to a Git state that has been verified?
+- Are counter-evidence, warnings, and missing data still visible?
+- Are the code commit, environment, parameters, and random seed needed for a rerun complete?
+- Does each checkpoint correspond to a Git state you have already checked?
 
-## Before you use these features
+## Before you rely on it
 
-First confirm that the feature is available in the current app; optional plugins also require installation, activation, and a license for the corresponding version. A package in the source, passing tests, or a generated installer does not mean it has been published in the public marketplace. The current seven standalone plugins and their licenses are listed in [Plugin licenses](../reference/plugin-licenses.md).
+A standalone plugin must be installed and enabled first. For installation requirements, see the [plugin list](../reference/plugin-licenses.md).
 
-Optional Evidence DAG 1.0.0 currently verifies the backend slice only; host cross-process integration has not been delivered, so it cannot be used as a complete app plugin. Built-in Evidence still handles evidence recording for current figure acceptance; do not let the built-in feature and the optional plugin write to the same evidence directory at the same time. Synthetic data in tests and local samples do not represent real research conclusions or marketplace release acceptance.
+For the evidence graph, use the built-in entry point in the app. The optional standalone Evidence DAG plugin cannot yet be used fully in the app; for the availability and licenses of optional plugins, see the [plugin list](../reference/plugin-licenses.md).
 
-[Scientific Figures](./scientific-plotting.md) independently saves code, inputs, environment, runs, and figure history, and does not automatically register with Artifact Versions or Evidence DAG. When including figures in a deliverable, explicitly link the actual inputs, runs, and outputs, and re-verify them before forming claims.
+[Scientific Figures](./scientific-plotting.md) saves its own code, inputs, environment, runs, and image history, and does not register them with Artifact Versions or Evidence DAG automatically. When you include a figure in a deliverable, link the actual inputs, runs, and outputs explicitly, and recheck them before forming a claim.
 
-## Data boundaries
+## Data boundary
 
-Evidence DAG and Research Dossier show meaningful content only when the current workspace and session already contain the corresponding data. An empty panel does not indicate a malfunction; first have the task generate explicit claims, sources, and artifact records.
+Evidence DAG and Research Dossier show meaningful content only when the current workspace and session already have the matching data. An empty panel does not mean the feature is broken; first have the task produce clear claims, sources, and artifact records.
 
-Case: [ECCITE-seq cross-scale virtual cell evidence atlas](../cases/virtual-cell-evidence-atlas.md).
+Case: [ECCITE-seq cross-scale virtual cell evidence graph](../cases/virtual-cell-evidence-atlas.md).

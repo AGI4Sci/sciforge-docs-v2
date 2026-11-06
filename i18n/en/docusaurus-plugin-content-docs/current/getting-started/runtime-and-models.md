@@ -8,8 +8,6 @@ sidebar_position: 2
 
 Configure the model service first, then choose the AI assistant that executes tasks. The former determines where model requests go; the latter plans work and calls tools.
 
-This page reflects the current implementation as of 2026-11-06; for install-version and feature differences, see [versions and compatibility](/docs/reference/version-and-compatibility).
-
 | Setting | Entry point | What to confirm |
 | --- | --- | --- |
 | Model access | First-run wizard or **Settings → General** | The Model API base URL, key, and model, or official sign-in for Coding Plan |
@@ -22,8 +20,8 @@ Settings is at the bottom of the expanded left sidebar. Local accounts and SciFo
 
 With **Model API**, enter the Base URL, API Key, and model name provided by your service provider; if you are unsure about the protocol, use automatic detection. An existing key only means the field is configured; whether the upstream accepts it must be confirmed with an actual request.
 
-![Model API historical settings](/img/docs/quickstart/quickstart-model-api.jpg)
-*Old interface: use it only to recognize the fields; enter your own service configuration.*
+![Model API settings](/img/docs/quickstart/quickstart-model-api.jpg)
+*Use it only to recognize the fields; enter your own service configuration.*
 
 With **Coding Plan**, complete official sign-in or device-code authorization in the interface. The Coding Plan path currently supports Codex; Claude Code uses model access. If sign-in or connection fails, fix the current access path according to the prompt, then retry.
 
@@ -37,15 +35,15 @@ In **Settings → AI assistant**, choose the execution runtime and check the det
 
 DSH's **Shell command execution** is off by default; enable it only for a DSH you installed yourself, and each run still requires approval. Do not switch to full permissions just to make an error go away.
 
-![AI assistant historical settings](/img/docs/guides/ai-assistants.jpg)
-*Old interface: shows execution runtime configuration, tool confirmations, and file scope.*
+![AI assistant settings](/img/docs/guides/ai-assistants.jpg)
+*Shows execution runtime configuration, tool confirmations, and file scope.*
 
 Codex and Claude Code can edit the workspace by default. For your first analysis, adjust permissions according to [configure a read-only sandbox](./read-only-sandbox.md) first. After switching execution runtimes, re-check the connection, sign-in, and permissions; existing sessions' mappings and configuration do not migrate automatically.
 
 When you need to operate desktop applications, also check **Computer Use**'s Runtime support, backend, and system permissions.
 
-![Computer Use historical settings](/img/docs/guides/ai-assistants-computer-use.jpg)
-*Old interface: illustrates the configuration items that must be checked separately.*
+![Computer Use settings](/img/docs/guides/ai-assistants-computer-use.jpg)
+*Illustrates the configuration items that must be checked separately.*
 
 ## Run a minimal connection check
 

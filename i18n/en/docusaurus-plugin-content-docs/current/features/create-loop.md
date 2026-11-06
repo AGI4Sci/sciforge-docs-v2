@@ -11,7 +11,7 @@ Create Loop breaks a task into multiple inspectable steps. It sits above session
 ## How to open it
 
 - Entry: **Create Loop** in the right toolbar (expand **More tools** if it is not shown). Edit nodes on the canvas; the right panel shows settings for the current Loop.
-- Target: one Loop in the current workspace. Definitions and run records are stored in local domain state.
+- Target: one Loop in the current workspace. Definitions and run records are stored on this machine.
 - Prerequisite: AI nodes need an available Runtime and model, HTTP nodes need network access, and schedules and local webhooks are triggered by the app process, so the app must remain running. A Loop can be started with manual **Run once**, a schedule, a webhook, or an Agent hook.
 
 ## What you can do
@@ -35,18 +35,18 @@ Create Loop breaks a task into multiple inspectable steps. It sits above session
 ![SciForge Create Loop canvas](/img/docs/guides/create-loop.jpg)
 *Figure 1: The Create Loop canvas connects multiple processing nodes into a runnable flow. Select a node to inspect its parameters on the right.*
 
-## Inputs, outputs, and permissions
+## Where things are saved, and what actions affect
 
-- Reads: workspace files, upstream node output, Loop definitions, run history, and approval status.
-- Writes: Loop definitions are stored in local domain state; nodes can write to the workspace; each run saves a run Manifest and per-node receipts and provides an audit report.
-- Approval or external effects: starting an entire flow, stopping a run, and handling approvals are governed as external writes and require confirmation. HTTP and AI nodes make real requests and incur costs.
-- What it does not do: write raw Secret values to run records, restore paused approvals after the app restarts, or approve on a person's behalf.
+- Loop definitions and run history are saved on this machine. The run log and audit report show each step's input, output, and result; for important flows, also save the results you need to keep to an agreed location.
+- Nodes may read or write workspace files, and may use the output of upstream nodes. Before running, check the working directory and output paths; before a rerun, check existing files and submissions that already completed, to avoid repeating operations.
+- Starting a whole flow, stopping a run, and handling approvals all need confirmation. HTTP and AI nodes send real requests and may incur costs; **Test node** also performs real operations.
+- Raw Secret values are not written to run records. Manual approval needs you to choose approve or reject; after the app restarts, a run paused at that point cannot be resumed.
 
 ## Known limitations
 
-- **Human approval pause state is held in memory, and an app restart loses that run.** Important flows should make nodes repeatable and keep idempotency keys.
+- **Restarting the app loses a run that was paused at a manual approval.** Before rerunning, look at the inputs, outputs, and results each step saved, and confirm which operations have already completed, to avoid writing or submitting twice.
 - Schedules and webhooks depend on the app process. They do not fire while the app is closed.
-- Secret variables store only the slot and fingerprint. When a Secret is required and no safe replay resolution is available, execution blocks rather than continuing with an empty value.
+- A step that needs a Secret must be able to obtain the credentials it needs when rerun; if they are unavailable, execution stops, and you must restore the configuration first.
 - A single-node test proves only that node, not the whole flow. Tests also execute the node logic for real.
 - When randomness is not fixed, rerun differences are marked as indeterminate and cannot be treated directly as a reproduction failure.
 

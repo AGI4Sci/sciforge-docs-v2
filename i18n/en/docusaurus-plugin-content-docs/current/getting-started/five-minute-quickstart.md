@@ -8,16 +8,14 @@ sidebar_position: 1
 
 Start by having the Agent examine a local project in read-only mode: open a workspace, confirm Codex's permissions, send a task, then compare the file state. When you are done, you should see a project overview and no changes to project files.
 
-This page reflects the current implementation as of 2026-11-06; older screenshots are kept as historical illustrations. For install-version differences, see [versions and compatibility](/docs/reference/version-and-compatibility).
-
 ## 1. Prepare a project and a model
 
 Start SciForge, prepare a clean Git project or a copy of a project, and configure working model access and Codex. For the first run you can start from a local workspace without signing in to the collaboration cloud.
 
 In the first-run wizard or **Settings → General**, choose **Model API** or **Coding Plan**. Then go to **Settings → AI assistant** and check whether Codex is detected. Settings is at the bottom of the expanded left sidebar; account and cloud status are in the same area.
 
-![Model access historical onboarding](/img/docs/quickstart/quickstart-model-access.jpg)
-*Old interface: illustrates the two paths, Model API and Coding Plan.*
+![Model access onboarding](/img/docs/quickstart/quickstart-model-access.jpg)
+*Illustrates the two paths, Model API and Coding Plan.*
 
 ## 2. Record the file state and set read-only permissions
 
@@ -29,8 +27,8 @@ git status --short
 
 If there are already modifications, record them clearly first; for a non-Git project, use a copy. Go to **Settings → AI assistant → Codex** and set **File access range** to **Can only read files**, keeping an appropriate tool approval policy. Wait for the setting to apply, finish any existing tasks, then reconnect or restart and start a new session.
 
-![File permissions historical settings](/img/docs/guides/ai-assistants.jpg)
-*Old interface: “Can edit workspace” in the figure allows writes; change it to “Can only read files” before starting this tutorial.*
+![File permission settings](/img/docs/guides/ai-assistants.jpg)
+*“Can edit workspace” in the figure allows writes; change it to “Can only read files” before starting this tutorial.*
 
 For detailed steps, see [configure a read-only sandbox](./read-only-sandbox.md). Write the no-modification instruction into the prompt as well; if you see a request to widen permissions, stop and check, because this task needs no write access.
 
@@ -40,8 +38,8 @@ In the Workspace location menu, choose Local workspace, open the project directo
 
 The left side of the current workbench is for project, session, and collaboration navigation; the **vertical toolbar on the far right** opens tools such as files, and panels dock beside it. If there are many tools, open **More tools**.
 
-![New session historical interface](/img/docs/quickstart/quickstart-new-session.jpg)
-*Old interface: shows a local project and a new session; the location of the current tool entry points is as described in the body text.*
+![New session interface](/img/docs/quickstart/quickstart-new-session.jpg)
+*Shows a local project and a new session.*
 
 ## 4. Send your first task
 
@@ -51,13 +49,13 @@ Enter:
 
 You do not need to add attachments for this task. To point at an existing file, use the file panel's reference action or type `@`. Choosing files from outside your machine, dragging them in, or pasting images may import files into the workspace first, which changes the file baseline for the read-only check; save that for a later task. For the difference between the attachment tray and the labels on sent files, see [workspaces and sessions](../workbench/workspaces-and-sessions.md).
 
-![First task historical prompt](/img/docs/quickstart/quickstart-first-task.jpg)
-*Old interface: shows the task text and the execution runtime.*
+![First task prompt](/img/docs/quickstart/quickstart-first-task.jpg)
+*Shows the task text and the execution runtime.*
 
 After sending, watch the tool calls, working directory, and execution results in the session. If the Runtime is not connected, check **Settings → AI assistant** and the model configuration first, then send again.
 
-![Read-only task historical execution](/img/docs/quickstart/quickstart-task-running.jpg)
-*Old interface: shows the execution state within the same session.*
+![Read-only task execution](/img/docs/quickstart/quickstart-task-running.jpg)
+*Shows the execution state within the same session.*
 
 ## 5. Verify the results and files
 
@@ -69,8 +67,8 @@ git status --short
 
 Compare with the pre-task state and confirm that no project files were added, deleted, or modified. Git does not show ignored caches; when you need a strict check, also compare your copy's file list and content hashes. If you find changes, stop and investigate rather than restoring existing modifications outright.
 
-![Read-only analysis historical result](/img/docs/quickstart/quickstart-task-result.jpg)
-*Old interface: the sample answer does not represent the results for your current project.*
+![Read-only analysis result](/img/docs/quickstart/quickstart-task-result.jpg)
+*Viewing the analysis result in the session.*
 
 Once you confirm that the workspace is correct, Codex responds normally, read-only permissions are applied, and the file state matches the pre-task state, you have completed your first task.
 

@@ -6,9 +6,9 @@ sidebar_position: 12
 
 # Biology Room
 
-Biology Room is the room submodule of the built-in `@sciforge/domain-biology-workbench` **1.1.3**. It shares one domain package with Life Science Preview, ships with the app, and needs no marketplace install or plugin enablement; there is no runtime-plugin takeover path. For how versions are quoted, see [Version & Compatibility](../reference/version-and-compatibility.md).
+Biology Room ships with SciForge and needs no separate plugin. It organizes the sequences, structures, genome tracks, and annotations from biological samples or experimental material into one traceable room, for viewing, annotating, and handoff.
 
-Biology Room is a workspace object for biological samples or experimental material: it puts the sequences, structures, genome tracks, and annotations needed for viewing, annotating, and handoff into a single versioned room. It has no separate rendering panel today, so file contents still appear in file preview; the room manages assets, selections, view state, and history.
+In a session, have the Agent create or open a room, then view the files in it through file preview. A room stores asset references, selections, view state, and history, and has no separate panel today.
 
 ## Opening it
 
@@ -53,8 +53,8 @@ Biology Room is a workspace object for biological samples or experimental materi
 ## Related pages
 
 - [Life Science Preview](./life-science-preview.md): dedicated views for sequences, structures, and genome files in a room.
-- [Dataset API migration note](./dataset-api.md): the old data-ingestion capability is retired; after obtaining data, save its source and validation records separately.
+- [Acquiring and organizing data](./dataset-api.md): download data and record its source, date, version, license, and verification results.
 - [Workspaces and sessions](../workbench/workspaces-and-sessions.md): workspace location, file paths, and recovery boundaries.
 - [Evidence & Reproducibility](./evidence-and-reproducibility.md): fold room changes into the larger research record chain.
 
-> Current version: built-in Biology Workbench 1.1.3. The old room directory and revision format stay compatible; for what selection saving covers in the molecular preview, see [Life Science Preview](./life-science-preview.md).
+> Current version: built-in Biology Workbench 1.1.3. For what selection saving covers in the molecular preview, see [Life Science Preview](./life-science-preview.md).

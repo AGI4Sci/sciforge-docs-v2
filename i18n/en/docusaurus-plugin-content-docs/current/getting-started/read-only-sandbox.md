@@ -8,8 +8,6 @@ sidebar_position: 3
 
 “Do not modify files” in a prompt is a task requirement; you also need to configure execution permissions. This page uses the **Codex read-only sandbox** as the getting-started path; the file-scope option of the same name in Claude Code corresponds to **Plan mode**, and the two isolate work differently.
 
-This article reflects the current implementation as of 2026-11-06; for install-version differences, see [versions and compatibility](/docs/reference/version-and-compatibility).
-
 ## Where the setting lives
 
 1. Expand the left sidebar and open **Settings** from the bottom.
@@ -22,7 +20,7 @@ This article reflects the current implementation as of 2026-11-06; for install-v
 The **Access** shortcut at the top of the page jumps to the Computer Use configuration; the file access range is in each Runtime's own configuration section.
 
 ![File access range in the SciForge AI assistant settings](/img/docs/guides/ai-assistants.jpg)
-*Old interface: the value shown allows workspace changes; select “Can only read files” for read-only tasks.*
+*The value shown allows workspace changes; select “Can only read files” for read-only tasks.*
 
 | Runtime | What “Can only read files” actually means | Boundaries |
 | --- | --- | --- |
@@ -66,12 +64,9 @@ Comparing Git status detects changes but does not replace execution isolation; i
 If the output changes:
 
 1. Stop any further tasks immediately.
-2. Open the **Changes** panel from the vertical toolbar on the far right of the workbench or from **More tools** to check the files.
+2. Have the Agent list the changes, and check the file differences with `git diff`.
 3. Do not automatically delete or restore existing modifications.
 4. Determine whether the changes come from the task, from tool caches, or already existed before the task.
-
-![SciForge Changes panel](/img/docs/guides/workspace-changes.jpg)
-*Old interface: the Changes panel helps review diffs, but Git status still needs an independent check.*
 
 ## When to switch to workspace write
 

@@ -32,13 +32,13 @@ Browser Preview runs a native Chromium page in the right panel for viewing local
 4. Observe the page again after an action to confirm submission results, downloads, or navigation instead of relying only on the Agent's summary.
 5. Close the panel when the task is done. When you reopen it, verify that sign-in, URL, and page are still in the expected state.
 
-## Inputs, outputs, and permissions
+## What actions affect, and where things are saved
 
-- Reads: page body, title, URL, interactive targets, and controlled screenshots. Password, payment/CAPTCHA fields, and explicitly sensitive regions are excluded. Reading by URL makes a network request from the local machine and does not trigger an additional approval.
-- Writes: the Agent can fill forms, select options, scroll, hover, click, press keys, and drag. These actions apply directly to the native page.
-- Approval or external effects: navigation, Back, Forward, and Reload are external writes and require confirmation. Clicks, key presses, and drags are governed as destructive actions, but the capability layer does not prompt for extra confirmation; they may submit forms, trigger downloads, or change external state. Whether a Runtime approval also appears depends on its settings.
-- Downloads and sign-in: permission requests, popups, and downloads initiated by the page itself are denied. Downloads initiated by the Agent do not prompt for extra confirmation at the capability layer and can write to the workspace Downloads directory, or to the app's private directory when no workspace is available. Sign-in state persists across panel closure, so the same workspace shares that browser identity.
-- What it does not do: import external browser profiles or credentials, accept caller-provided selectors or scripts, expose cross-origin iframe content or closed shadow roots, or guarantee that URL validation prevents DNS rebinding or all network egress.
+- When reading a page, the Agent can get the body text, title, URL, interactive targets, and screenshots; password and payment/CAPTCHA fields and regions marked sensitive are excluded. Reading by URL accesses that address from this machine and does not ask for extra confirmation.
+- Filling forms, selecting options, clicking, pressing keys, and dragging act directly on the page. For example, pressing Enter may submit a form, clicking a link may start a download, and dragging a file may trigger an upload. Before starting, confirm these actions are within what the task allows, and ask the Agent to stop before important actions such as sending, paying, or deleting.
+- The Agent's navigation, Back, Forward, and Reload need confirmation. The browser tool itself does not pop up a confirmation for each click, key press, or drag; whether the AI assistant you use asks separately depends on its settings.
+- Permission requests, popups, and downloads started by the page itself are denied. Downloads started by the Agent are not confirmed again by the browser tool; files are saved to the workspace Downloads directory, or to the app's private directory when no workspace is available. After downloading, check the file and where it was saved.
+- Sign-in state is kept after you close the panel, and the same workspace shares that browser identity. Check the current account before switching tasks. The configuration and credentials of an external browser are not imported automatically.
 
 ## Known limitations
 

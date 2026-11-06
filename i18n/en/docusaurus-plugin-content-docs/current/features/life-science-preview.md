@@ -6,13 +6,13 @@ sidebar_position: 10
 
 # Life Science Preview
 
-Life Science Preview is a preview submodule of the built-in `@sciforge/domain-biology-workbench` **1.1.3**. It shares one domain package with Biology Room, ships with the app, and needs no marketplace install or plugin enablement. It routes common scientific files to 6 preview slots and 5 kinds of viewer; the companion-index slot only transports. The old standalone life-science-preview plugin and domain package have been removed, while the preview slots and wire identifiers stay compatible. For how versions are quoted, see [Version & Compatibility](../reference/version-and-compatibility.md).
+Life Science Preview ships with SciForge and lets you open scientific files such as sequences and molecular structures directly, with no separate plugin needed.
 
 ## Opening it
 
 - Entry point: file preview in the file panel; open a supported local or remote workspace file.
 - Applies to: workspace files. The view is chosen from the extension and the preview manifest.
-- Prerequisite: the file is in the current workspace. For a remote workspace, the remote Workspace Host reads it, and the interface does not require downloading the whole file to this machine first.
+- Prerequisite: the file is in the current workspace. For a file in a remote workspace, it is read from the remote side, and previewing does not require downloading the whole file to this machine first.
 
 ## What it can do
 
@@ -29,9 +29,9 @@ Life Science Preview is a preview submodule of the built-in `@sciforge/domain-bi
 
 ## Molecular selection and what gets saved
 
-A molecular selection can express multiple chains, residues, atoms, and ligands. The Inspector offers chain, ligand, and clear actions. A selection sent back by the host is synced to Mol*, including the latest selection during asynchronous initialization. The source file stays read-only.
+In the selection panel of the molecular preview, choose a chain or ligand, and the 3D view highlights the matching part; click Clear to remove the highlight. A selection can include multiple chains, residues, atoms, or ligands, and selecting does not modify the source file.
 
-After changes, reopen the file and check the selection. For now there is no commitment that every click in the 3D viewport is saved automatically, or that rapid successive selections are kept in order. A highlight in the viewport does not by itself mean the selection was saved.
+After changing a selection, reopen the file and confirm the selection was saved. Check especially when you make several selections in quick succession; before reopening, do not judge from the current highlight alone that the selection has been saved.
 
 ## Typical workflow
 
@@ -41,12 +41,12 @@ After changes, reopen the file and check the selection. For now there is no comm
 4. In a remote workspace, first confirm that reading happens on the remote side. Do not have the agent copy a whole large file just for the preview.
 5. Treat preview results only as session context. Key conclusions should still go back to the original file and the computation records.
 
-## Inputs, outputs, and permissions
+## What previewing and exporting affect
 
-- Reads: preview summaries read the beginning of the file, up to 2,000,000 bytes of text and 4 MiB of binary. Anything beyond that is marked as truncated, and the Workspace Host that owns the data does the reading.
-- Writes: the preview itself does not modify the source file. Export only copies the source file, in the same format, to a new workspace path.
-- Approval or external effects: opening and reading need no approval. Exporting a copy needs confirmation and writes to a new workspace path.
-- What it does not do: it does not convert formats, repair damaged files, treat a preview summary as complete data, or upload workspace files.
+- A preview summary reads only the beginning of the file, up to 2,000,000 bytes of text and 4 MiB of binary. Anything beyond that is marked as truncated, and the summary must not be treated as complete data.
+- Previewing does not modify the source file. Exporting copies the source file, in the same format, to a new workspace path, which suits keeping a copy.
+- Opening and reading need no confirmation; exporting a copy needs confirmation, so check the target path before running it.
+- Previewing and exporting do not convert formats, repair damaged files, or upload workspace files; when you need those, arrange a separate task.
 
 ## Known limitations
 
@@ -59,7 +59,7 @@ After changes, reopen the file and check the selection. For now there is no comm
 ## Related pages
 
 - [Biology Room](./biology-room.md): organize multiple sequences, structures, and annotations into a traceable room.
-- [Dataset API migration note](./dataset-api.md): the old data-ingestion service is retired; obtain data through the provider's client or your own environment and keep the source records.
+- [Acquiring and organizing data](./dataset-api.md): download data and record its source, date, version, license, and verification results.
 - [Workbench tools](../workbench/tools.md): how files, the terminal, the browser, and other entry points divide the work.
 - [Feature status & limits](../reference/feature-status.md): see the current position on each capability.
 

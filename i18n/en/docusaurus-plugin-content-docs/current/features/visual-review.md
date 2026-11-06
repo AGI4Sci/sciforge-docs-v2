@@ -1,17 +1,18 @@
 ---
-title: Visual Review
-description: Migration note for the old image-review entry point, and how to review figures now.
+title: View and revise figures
+description: Describe figure changes in words, then compare and accept the candidate after it actually runs.
 sidebar_position: 21
 ---
 
-# Visual Review
+# View and revise figures
 
-:::info[Migration note]
-In the [current source baseline](../reference/version-and-compatibility.md), the standalone `visual-review` plugin and the old static domain have both been removed. This page keeps its original URL so old links and historical records can still find it. The old toolbar entries and panel operations are no longer current steps.
-:::
+Use the standalone [Scientific Figures](./scientific-plotting.md) plugin to generate figures from data and Python + Matplotlib code. Install a compatible plugin and prepare the environment it needs first, then state the plotting or revision request in words.
 
-Do not treat the following from earlier versions as still available: box selection, arrows, circles, pins, review packages, split or overlay comparison, visual-spec recognition, and "accept and replace". The existence of old review data also does not mean the current implementation migrates or reads it automatically. Keep the original files and records, and check the recovery path separately.
+1. Choose the data and code in the workspace, and say what to change, for example "keep the data, make the line blue, and shorten the title". With only an image, the exact data cannot be recovered.
+2. Have the Agent save a new code version and actually run it, check the run status and the output, and generate a candidate figure once it succeeds.
+3. Compare the current version and the candidate under **Current figure / After change**; when there are several candidates, switch among them in the **Candidates** drop-down.
+4. When satisfied, click **Request acceptance**, then go to the session, check the figure, and click **Allow** to make the candidate the current figure; to keep revising, state the next request.
 
-The current [Scientific Figures](./scientific-plotting.md) is managed by the standalone Scientific Figures plugin. You describe the change in words as a Python + Matplotlib request, it runs the code to produce a candidate, and you accept it through the host's formal approval. It keeps its own immutable code, input, run, and image versions, and accepting updates the current-figure pointer. It has no on-image annotation interface, and it is not the old Visual Review's general source-image replacement service.
+The plugin keeps immutable code, input, run, and image versions; accepting a candidate updates the current figure, while the original figure and the run records are kept. After a figure changes, a candidate may need to be regenerated. It has no on-image boxes, arrows, or pins for annotation, and it does not register records with artifact versions or evidence relationships automatically.
 
-To leave feedback on specific text or a registered task view, use the standalone [Anchored Comments](./anchored-comments.md). Screenshots depend on host authorization and a capture service. Saving a comment does not mean the image was changed, a candidate was accepted, or an artifact version was registered. For cross-artifact source and delivery records, see [Evidence & reproducibility](./evidence-and-reproducibility.md).
+To leave feedback on specific text, use the standalone [Anchored Comments](./anchored-comments.md). When you need a screenshot, enable that feature first. A comment only records feedback; changing the image still requires running the plot again and accepting the candidate. For organizing and delivering results, see [Evidence & reproducibility](./evidence-and-reproducibility.md).

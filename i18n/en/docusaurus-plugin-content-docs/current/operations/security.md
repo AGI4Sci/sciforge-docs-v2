@@ -39,10 +39,10 @@ The absence of an approval dialog does not mean an operation is read-only. Manua
 
 ## Computer Use
 
-Computer Use may operate other desktop apps, so it is constrained at the same time by SciForge settings, backend status, and macOS Screen Recording/Accessibility permissions.
+Computer Use can operate supported web pages and in-app embedded pages. Before using it, check the run status in SciForge settings; macOS users also need to check the Screen Recording and Accessibility permissions.
 
 ![SciForge Computer Use permission status](/img/docs/guides/ai-assistants-computer-use.jpg)
-*Figure 1: Before enabling it, check the allowed Runtime, Backend, and operating-system permissions together.*
+*Figure 1: Before enabling it, check the chosen executor, the run status, and the system permissions.*
 
 The following actions should be confirmed by the user at the moment they are performed: account sign-in or authorization, sending messages, uploading data, purchasing or paying, deleting external content, and submitting formal evaluation results.
 
