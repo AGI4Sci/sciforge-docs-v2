@@ -23,17 +23,17 @@ const steps = [
 const cases = [
   {
     title: '科研图件：复杂数据与复现',
-    label: '合成数据绘图案例',
-    description: '从多文件清洗到四面板图，学习处理缺失值、保存运行记录与恢复失败任务。',
+    caption: '合成数据的四面板图 · 点击放大 ↗',
+    description: '从合成数据的多文件清洗到四面板图，学习处理缺失值、保存运行记录与恢复失败任务。',
     to: '/docs/cases/scientific-figures-complex',
-    image: '/img/docs/scientific-figures/complex/01-longitudinal-app.png',
-    alt: 'SciForge 会话与科研图件面板中的纵向数据四面板图',
-    width: 3046,
-    height: 2044,
+    image: '/img/docs/scientific-figures/complex/01-longitudinal-figure.png',
+    alt: '合成纵向数据的实际运行输出：均值误差条、个体轨迹、终点分布与有效样本量',
+    width: 2160,
+    height: 1620,
   },
   {
     title: 'Pasilla RNA-seq 三人协作',
-    label: '真实数据摘录 · 协作演示',
+    caption: '描述性比较报告预览 · 点击放大 ↗',
     description: '用公开计数数据的摘录，跟随三位成员完成需求确认、交付、返修和下游接力。',
     to: '/docs/cases/pasilla-collaboration',
     image: '/img/docs/collaboration/report-preview.png',
@@ -43,8 +43,8 @@ const cases = [
   },
   {
     title: 'ECCITE-seq 跨尺度证据图',
-    label: '案例产物浏览',
-    description: '查看扰动、转录与蛋白响应的图表和报告，了解如何检查不同数据之间的关系。',
+    caption: '已有案例产物的图表预览 · 点击放大 ↗',
+    description: '浏览已有案例产物中的扰动、转录与蛋白响应图表和报告，了解如何检查不同数据之间的关系。',
     to: '/docs/cases/virtual-cell-evidence-atlas',
     image: '/img/docs/cases/virtual-cell-evidence-atlas/04-cross-scale-evidence-preview.jpg',
     alt: 'SciForge 中打开的 ECCITE-seq 跨尺度证据图',
@@ -53,8 +53,8 @@ const cases = [
   },
   {
     title: '虚拟细胞扰动预测评测',
-    label: '实验性流程 · 需自备模型',
-    description: '为已有模型准备评测数据、检查输出并记录结果。完整演示仍待验证，可先阅读流程。',
+    caption: '评测输入检查的工作区示意 · 点击放大 ↗',
+    description: '实验性流程，需自备模型：准备评测数据、检查输出并记录结果。完整演示仍待验证，可先阅读流程。',
     to: '/docs/cases/virtual-cell-benchmark',
     image: '/img/docs/guides/workspace-files.jpg',
     alt: 'SciForge 工作区文件面板，用于检查评测输入；非已完成的评测运行',
@@ -73,10 +73,9 @@ function CaseStudy({item}: {item: (typeof cases)[number]}): ReactNode {
     <article className={styles.case}>
       <figure className={styles.caseImage}>
         <img data-sf-preview src={image} alt={item.alt} title="点击或按 Enter 放大图片" loading="lazy" width={item.width} height={item.height} />
-        <figcaption>点击放大 ↗</figcaption>
+        <figcaption>{item.caption}</figcaption>
       </figure>
       <div className={styles.caseCopy}>
-        <p className={styles.caseLabel}>{item.label}</p>
         <Heading as="h3"><Link to={item.to}>{item.title} <Arrow /></Link></Heading>
         <p>{item.description}</p>
       </div>
@@ -102,7 +101,7 @@ export default function Home(): ReactNode {
             </div>
             <figure className={styles.preview}>
               <img data-sf-preview src={heroImage} alt="SciForge 工作台：在本地项目会话中查看第一次只读分析的结果" title="点击或按 Enter 放大工作台截图" loading="eager" fetchPriority="high" width="1171" height="768" />
-              <figcaption>在工作台中查看任务结果 <span>点击图片放大 ↗</span></figcaption>
+              <figcaption>工作台中的首次任务结果 · 点击放大 ↗</figcaption>
             </figure>
           </div>
         </section>
@@ -124,7 +123,7 @@ export default function Home(): ReactNode {
           </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="start-title">
+        <section className={`${styles.section} ${styles.startSection}`} aria-labelledby="start-title">
           <div className={styles.container}>
             <div className={styles.sectionHeader}>
               <div><Heading as="h2" id="start-title">第一次使用，从这里开始</Heading><p>用一个小任务，熟悉项目、会话和结果检查。</p></div>
