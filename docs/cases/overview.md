@@ -13,7 +13,7 @@ sidebar_position: 1
 | [ECCITE-seq 跨尺度虚拟细胞证据图](./virtual-cell-evidence-atlas.md) | 首发主案例 | 产物浏览已验证；完整 Agent 重跑仍需补齐连续取证 | 扰动审阅表、版本化图表、证据关系、科研档案 |
 | [虚拟细胞扰动预测评测](./virtual-cell-benchmark.md) | 进阶集成案例 | 实验性 | 预测文件、契约检查、分层指标、失败分析、复跑记录 |
 | [Pasilla RNA-seq 三人协作](./pasilla-collaboration.md) | 团队协作入门 | 通过真实截图学习需求、交付、返修、采纳与结项 | 两版上游报告、成员说明、下游报告及采纳记录 |
-| [科研图件复杂案例](./scientific-figures-complex.md) | 绘图与复现压力测试 | 合成研究数据在真实应用运行，数值与快照独立核查 | 多文件清洗、四面板图、矩阵热图、失败恢复及历史记录 |
+| [科研图件案例](./scientific-figures-complex.md) | 数据整理与绘图示例 | 使用合成数据展示功能，已在应用中运行 | 四面板图、矩阵热图、数据比较、失败恢复与版本记录 |
 
 ## 案例的分工
 
