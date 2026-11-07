@@ -6,7 +6,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '快速开始',
-      link: {type: 'generated-index', slug: '/category/快速开始'},
+      link: {type: 'generated-index', slug: '/category/getting-started'},
       items: [
         'getting-started/five-minute-quickstart',
         'getting-started/runtime-and-models',
@@ -30,7 +30,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: '科研分析',
-          link: {type: 'generated-index', slug: '/category/研究资料与科学对象', description: '查看科学文件、组织生物学对象，并分析数据。'},
+          link: {type: 'generated-index', slug: '/category/research-sources', description: '查看科学文件、组织生物学对象，并分析数据。'},
           items: [
             'features/life-science-preview',
             'features/biology-room',
@@ -39,7 +39,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: '分析与审阅',
-          link: {type: 'generated-index', slug: '/category/分析与审阅', description: '从数据绘图，并为文字和资源添加批注。'},
+          link: {type: 'generated-index', slug: '/category/analysis-and-review', description: '从数据绘图，并为文字和资源添加批注。'},
           items: [
             'features/scientific-plotting',
             'features/anchored-comments',
@@ -62,7 +62,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Agent 与工作台工具',
-          link: {type: 'generated-index', slug: '/category/agent-与工作台工具', description: '终端、浏览器与桌面操作：让 Agent 在明确边界内执行。'},
+          link: {type: 'generated-index', slug: '/category/agent-and-workbench-tools', description: '终端、浏览器与桌面操作：让 Agent 在明确边界内执行。'},
           items: [
             'features/terminal',
             'features/browser-preview',
@@ -78,7 +78,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: '协作与内容',
-          link: {type: 'generated-index', slug: '/category/协作与内容', description: '身份与登录、团队协作、内容空间与思源笔记。'},
+          link: {type: 'generated-index', slug: '/category/collaboration-and-content', description: '身份与登录、团队协作、内容空间与思源笔记。'},
           items: [
             'features/identity-access',
             'features/collaboration',
@@ -92,7 +92,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '案例教程',
-      link: {type: 'generated-index', slug: '/category/端到端案例'},
+      link: {type: 'generated-index', slug: '/category/end-to-end-cases'},
       items: [
         'cases/overview',
         'cases/virtual-cell-evidence-atlas',

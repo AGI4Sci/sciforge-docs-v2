@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'SciForge 使用文档',
-  tagline: '从科研问题到可复查证据',
+  title: 'SciForge',
+  tagline: 'From research questions to reviewable evidence',
   favicon: 'img/brand/sciforge-icon.svg',
 
   future: {
@@ -20,11 +20,16 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    locales: ['zh-Hans', 'en'],
     localeConfigs: {
       'zh-Hans': {
         label: '简体中文',
         htmlLang: 'zh-CN',
+      },
+      en: {
+        label: 'English',
+        htmlLang: 'en',
+        direction: 'ltr',
       },
     },
   },
@@ -52,7 +57,7 @@ const config: Config = {
       {
         name: 'keywords',
         content:
-          'SciForge, 科研智能体, Codex, Claude Code, 虚拟细胞, 可复现研究',
+          'SciForge, research agent, Codex, Claude Code, virtual cell, reproducible research, 科研智能体',
       },
     ],
     colorMode: {
@@ -88,6 +93,7 @@ const config: Config = {
           position: 'left',
         },
         {type: 'custom-docSearch', position: 'right'},
+        {type: 'localeDropdown', position: 'right'},
         {
           href: 'https://github.com/AGI4Sci/SciForge',
           label: '客户端源码',
@@ -128,7 +134,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} SciForge Documentation.`,
+      copyright: 'Copyright © SciForge Documentation.',
     },
     prism: {
       theme: prismThemes.github,

@@ -1,6 +1,6 @@
 # SciForge 文档站 v2
 
-SciForge 中文使用手册，发布于 https://agi4sci.github.io/sciforge-docs-v2/ 。这里统一维护快速开始、工作台、科研分析、团队协作、插件和案例教程；客户端仓库里的 Wiki 入口链接到本站。
+SciForge 中文与英文使用手册，发布于 https://agi4sci.github.io/sciforge-docs-v2/ 。英文站位于 `/en/`，维护说明见 [README.en.md](./README.en.md)。这里统一维护快速开始、工作台、科研分析、团队协作、插件和案例教程；客户端仓库里的 Wiki 入口链接到本站。
 
 ## 内容结构
 
@@ -30,7 +30,7 @@ npm install
 npm start
 ```
 
-默认开发地址为 `http://localhost:3000/sciforge-docs-v2/`。
+默认开发地址为 `http://localhost:3000/sciforge-docs-v2/`，英文站为 `http://localhost:3000/sciforge-docs-v2/en/`。
 
 ## 构建检查
 
@@ -47,7 +47,7 @@ npm run build
 
 首页围绕案例、快速开始与按目标分类的功能手册组织；文档页支持本地全文搜索、截图放大、键盘操作和暗色模式。
 
-- 正文保存在 `docs/`。`npm start` 和 `npm run build` 前会自动生成全文搜索索引。
+- 中文正文保存在 `docs/`；英文译文保存在 `i18n/en/docusaurus-plugin-content-docs/current/`，页面路径与中文一一对应。`npm start` 和 `npm run build` 前会自动生成双语全文搜索索引。
 - 功能页的统一模板：定位 → 打开方式 → 能做什么 → 典型流程 → 输入输出与权限 → 已知限制 → 相关页面。
 - 视频导览位于 `/guide`，支持章节跳转、中文字幕和文件下载。
 - 重录流程见 [制作说明](scripts/RECORDING.md)。录制完成后运行 `npm run video:prepare`，将通过校验的视频、字幕与时间线准备到站点中，再重新构建。

@@ -1,0 +1,384 @@
+1
+00:00:00,500 --> 00:00:05,750
+Welcome to SciForge. This tour goes from a research question to
+inputs, execution, and checkable deliverables.
+
+2
+00:00:05,750 --> 00:00:10,907
+These are the new docs with real interface screenshots: a feature
+walkthrough, not a continuous experiment recording.
+
+3
+00:00:12,033 --> 00:00:17,073
+The home page shows each case's goal, key outputs, and
+verification status, so you can judge if it fits your task.
+
+4
+00:00:17,073 --> 00:00:22,107
+On the left: cross-scale data to evidence review. On the right: the
+external model benchmark, kept marked experimental.
+
+5
+00:00:23,233 --> 00:00:27,470
+Features are grouped as research workflow, workbench, and
+connections and extensions, so you can start from your goal.
+
+6
+00:00:27,470 --> 00:00:30,654
+Switch to the workbench to learn sessions,
+Agent collaboration, and tools.
+
+7
+00:00:30,654 --> 00:00:33,964
+Connections and extensions covers the runtime, remote
+resources, and specialized capabilities.
+
+8
+00:00:35,100 --> 00:00:40,107
+Start with the two virtual cell cases to see a task go from data to
+evidence and report, then look up features as needed.
+
+9
+00:00:40,107 --> 00:00:44,897
+Case one reviews existing outputs. Case two is external
+model benchmarking, still an experimental flow.
+
+10
+00:00:46,033 --> 00:00:50,853
+Model access provides the model; the runtime handles files
+and tools. This read-only tutorial uses Codex.
+
+11
+00:00:50,853 --> 00:00:55,779
+In Settings at lower left, open AI assistant, find the Codex
+section, and check the command and sign-in status.
+
+12
+00:00:56,900 --> 00:01:02,290
+In the Codex section, change "can modify the working directory" to
+"read files only", then restart and start a new session.
+
+13
+00:01:02,290 --> 00:01:06,523
+Claude's plan mode is not equivalent to this sandbox. Saying "do
+not modify files" does not guarantee isolation.
+
+14
+00:01:07,633 --> 00:01:12,638
+Use a clean Git workspace, run the status command on the page and
+save the output; for a non-Git project, copy it first.
+
+15
+00:01:12,638 --> 00:01:16,122
+Then open the local project, confirm the
+directory and session, and send the task.
+
+16
+00:01:17,233 --> 00:01:22,417
+Paste the full read-only prompt into the input box. The task only
+looks at top-level files and judges what the project is.
+
+17
+00:01:22,417 --> 00:01:26,795
+A stated scope, expected output, and prohibitions help you
+judge whether the result really met the request.
+
+18
+00:01:27,900 --> 00:01:33,414
+Watch file reads, tool calls, and command results. For an approval
+request, check the actual action and target path.
+
+19
+00:01:33,414 --> 00:01:37,638
+These screenshots show one read-only session, so you can
+compare the three stages: send, run, finish.
+
+20
+00:01:38,767 --> 00:01:44,352
+Check the answer and compare Git status again. It skips ignored files;
+for strict acceptance, compare file lists and hashes.
+
+21
+00:01:44,352 --> 00:01:49,383
+If something changed unexpectedly, stop, keep the scene, and use the
+sandbox and troubleshooting pages to find the cause.
+
+22
+00:01:50,500 --> 00:01:54,675
+Case one covers the evidence relationships among transcription,
+protein, pathways, and cell fitness after a perturbation.
+
+23
+00:01:54,675 --> 00:01:59,829
+This real output is opened in the current dev build. Browsing is
+verified; a full rerun still needs step-by-step checks.
+
+24
+00:02:00,967 --> 00:02:06,598
+Take stock in the Files panel: source data, rebuild scripts, derived tables,
+figures, report. Each stage needs clear inputs and outputs.
+
+25
+00:02:06,598 --> 00:02:11,464
+Before writing, check the plan and output directory, and
+record code version, input hashes, and environment.
+
+26
+00:02:12,567 --> 00:02:17,758
+The full prompt starts with a file inventory, then a plan,
+quality checks, a review table, figures, and a dossier.
+
+27
+00:02:17,758 --> 00:02:22,322
+It also requires keeping controls and missing data, stating
+evidence limits, and listing external actions to confirm.
+
+28
+00:02:23,433 --> 00:02:28,741
+The inventory and quality report are stage-one deliverables. Check controls
+were not lost and "not measured" is not read as "no response".
+
+29
+00:02:28,741 --> 00:02:33,421
+The figure keeps each layer's coverage and missing status. Never fill
+missing values with zeros; warnings go in the report.
+
+30
+00:02:34,567 --> 00:02:39,274
+Link perturbations, target annotations, pathways, and responses in a
+review table, with source and transformation per row.
+
+31
+00:02:39,274 --> 00:02:44,734
+With only a ready-made derived table, limit the scope to reviewing
+derived results, not redoing the raw-data analysis.
+
+32
+00:02:45,900 --> 00:02:51,346
+Figures come from audited derived tables, recording input, script,
+parameters, and version, so result paths stay visible.
+
+33
+00:02:51,346 --> 00:02:55,745
+If transcription and protein disagree in direction, keep the
+result and check the time scale and panel coverage.
+
+34
+00:02:56,900 --> 00:03:00,419
+Cross-layer agreement helps form hypotheses, but one figure
+cannot support a causal conclusion by itself.
+
+35
+00:03:00,419 --> 00:03:04,855
+In the report, separate supported claims, candidate
+explanations, and claims the data still cannot support.
+
+36
+00:03:05,967 --> 00:03:11,152
+Finally, check file changes, link each key claim to data, method,
+figure, and limits, and save versions and a checkpoint.
+
+37
+00:03:11,152 --> 00:03:16,111
+The dossier should hold results, warnings, failed paths, and
+rerun steps, so another researcher can keep checking.
+
+38
+00:03:17,233 --> 00:03:22,465
+Case two is for researchers with an external prediction model.
+SciForge organizes protocol and runs; the model predicts.
+
+39
+00:03:22,465 --> 00:03:27,438
+It is marked experimental: full model runs and continuous verification
+are unfinished. This shows the flow and requirements.
+
+40
+00:03:28,567 --> 00:03:34,188
+Offline: open the reference answer only after predictions are sealed,
+then score locally. Official: pre-check with current tools.
+
+41
+00:03:34,188 --> 00:03:38,694
+Do not mix the truth and scoring claims of the two paths; a
+passed pre-check is not an upload or an official score.
+
+42
+00:03:39,833 --> 00:03:44,873
+Before the first prediction, fix the data split, metrics, aggregation
+rules, stopping conditions, and what the model may see.
+
+43
+00:03:44,873 --> 00:03:49,866
+Record code, weights, environment, device, and seed for every run, so
+reruns never silently swap the model or preprocessing.
+
+44
+00:03:50,967 --> 00:03:55,484
+First check the smallest slice: shape, gene order, background
+labels, cells per condition, and value types.
+
+45
+00:03:55,484 --> 00:04:00,595
+Exact requirements follow the official data package and CLI docs.
+If any hard check fails, skip the full prediction.
+
+46
+00:04:01,700 --> 00:04:06,148
+After prediction, hash the files and keep the command, return
+code, logs, and outputs in a separate run directory.
+
+47
+00:04:06,148 --> 00:04:10,793
+The offline reference is for scoring only after sealing. A
+rerun makes a new record and keeps its differences.
+
+48
+00:04:11,900 --> 00:04:16,349
+Split the result into contract checks, metric components,
+performance by background and perturbation, and interpretation.
+
+49
+00:04:16,349 --> 00:04:20,906
+Keep failure conditions and limits, don't turn one total score into a
+mechanism claim, then add the records to the dossier.
+
+50
+00:04:22,033 --> 00:04:27,048
+The workspace holds project files; the session holds the goal and
+execution trail. Confirm project name and directory first.
+
+51
+00:04:27,048 --> 00:04:31,324
+Open outputs and reference paths from the Files panel, so questions
+can go back to real inputs and generating scripts.
+
+52
+00:04:32,433 --> 00:04:36,624
+A task for the Agent states at least the goal, input scope,
+deliverables, permissions, and stopping conditions.
+
+53
+00:04:36,624 --> 00:04:41,729
+For complex tasks: check, plan, then execute and verify. If
+incomplete, name the missing evidence and acceptance criteria.
+
+54
+00:04:42,833 --> 00:04:47,347
+Check tool calls, terminal output, and return codes, then open the
+Changes panel for additions, edits, and deletions.
+
+55
+00:04:47,347 --> 00:04:51,412
+A task delivers actual files plus the evidence you checked,
+and the final answer should help you find them.
+
+56
+00:04:52,567 --> 00:04:57,653
+A file version pins an artifact, a checkpoint pins a stage, and the
+evidence graph links claims to supporting data and methods.
+
+57
+00:04:57,653 --> 00:05:01,428
+The dossier turns these records into a readable research
+narrative; each object has its own job.
+
+58
+00:05:02,567 --> 00:05:06,980
+A dossier keeps the question, inputs, methods, results,
+credibility, limitations, and how to rerun.
+
+59
+00:05:06,980 --> 00:05:11,520
+In review, follow a conclusion to its figure, then script, data,
+and run record, and confirm the chain has no gaps.
+
+60
+00:05:12,633 --> 00:05:16,607
+For a task that repeats regularly, set its frequency,
+workspace, inputs, and notification policy.
+
+61
+00:05:16,607 --> 00:05:20,485
+Verify the smallest task by hand once, then check the
+scheduled run's output, logs, and failure records.
+
+62
+00:05:21,633 --> 00:05:25,647
+When steps have dependencies and branches, use the flow canvas
+to organize nodes, conditions, and human checks.
+
+63
+00:05:25,647 --> 00:05:30,060
+Define recovery paths and stop conditions for failing nodes;
+automated runs keep the task's original permissions.
+
+64
+00:05:31,167 --> 00:05:36,764
+The Extension Center shows each extension's source, version, and status.
+Find the capability, then verify it with a minimal task.
+
+65
+00:05:36,764 --> 00:05:40,691
+"Enabled" only describes configuration; for a specific
+task, still check the actual run result.
+
+66
+00:05:41,833 --> 00:05:47,676
+Skills give specialized methods; MCP connects external tools and
+data; GUI tools handle steps that must operate an app.
+
+67
+00:05:47,676 --> 00:05:52,529
+Before use, understand scripts, dependencies, credentials, and
+external effects; prefer clear, checkable tools.
+
+68
+00:05:53,633 --> 00:05:58,617
+For a lab server or remote compute, set up an SSH
+workspace through the remote resources wizard.
+
+69
+00:05:58,617 --> 00:06:03,296
+Confirm the remote path and environment, keep the same inputs, outputs,
+and run records, and check recovery after disconnects.
+
+70
+00:06:04,433 --> 00:06:09,206
+The cloud collaboration page connects to and shows projects; what
+you can use depends on the service and permissions.
+
+71
+00:06:09,206 --> 00:06:13,643
+Before inviting members, syncing files, or uploading data, confirm
+the target project, data content, and access scope.
+
+72
+00:06:14,767 --> 00:06:19,224
+Read-only analysis and write tasks use different file scopes. When
+approving, check the command, path, and external target.
+
+73
+00:06:19,224 --> 00:06:23,684
+Keep credentials out of screenshots and logs; also check license,
+de-identification, and sharing rules for research data.
+
+74
+00:06:24,833 --> 00:06:29,838
+When something fails, check in order: workspace, runtime and model,
+tools and permissions, external services, artifacts.
+
+75
+00:06:29,838 --> 00:06:34,476
+When reporting a problem, include version, platform, reproduction
+steps, a redacted log, and expected versus actual results.
+
+76
+00:06:35,633 --> 00:06:40,046
+Now run the read-only task yourself from the five-minute
+quickstart, then pick a case close to your research goal.
+
+77
+00:06:40,046 --> 00:06:44,459
+Keep checking feature status and limits, and make every
+analysis a deliverable you can open, check, and rerun.

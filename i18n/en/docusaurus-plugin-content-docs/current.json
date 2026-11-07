@@ -1,0 +1,70 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.快速开始": {
+    "message": "Getting started",
+    "description": "The label for category '快速开始' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.功能与扩展": {
+    "message": "Features & Extensions",
+    "description": "The label for category '功能与扩展' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.分析与审阅": {
+    "message": "Analysis & review",
+    "description": "The label for category '分析与审阅' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.分析与审阅.link.generated-index.description": {
+    "message": "Plot from data, and add comments to text and assets.",
+    "description": "The generated-index page description for category '分析与审阅' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.证据与可复现": {
+    "message": "Evidence & Reproducibility",
+    "description": "The label for category '证据与可复现' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Agent 与工作台工具": {
+    "message": "Agent & workbench tools",
+    "description": "The label for category 'Agent 与工作台工具' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Agent 与工作台工具.link.generated-index.description": {
+    "message": "Terminal, browser, and desktop control: let the Agent act within explicit boundaries.",
+    "description": "The generated-index page description for category 'Agent 与工作台工具' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.自动化": {
+    "message": "Automation",
+    "description": "The label for category '自动化' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.协作与内容": {
+    "message": "Collaboration & content",
+    "description": "The label for category '协作与内容' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.协作与内容.link.generated-index.description": {
+    "message": "Identity and sign-in, team collaboration, Content Space, and SiYuan Notes.",
+    "description": "The generated-index page description for category '协作与内容' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.工作台指南": {
+    "message": "Workbench guides",
+    "description": "The label for category '工作台指南' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.科研分析": {
+    "message": "Research analysis",
+    "description": "The label for category '科研分析' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.科研分析.link.generated-index.description": {
+    "message": "View scientific files, organize biological objects, and analyze data.",
+    "description": "The generated-index page description for category '科研分析' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.案例教程": {
+    "message": "Case tutorials",
+    "description": "The label for category '案例教程' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.设置与安全": {
+    "message": "Settings & security",
+    "description": "The label for category '设置与安全' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.参考与排错": {
+    "message": "Reference & troubleshooting",
+    "description": "The label for category '参考与排错' in sidebar 'docsSidebar'"
+  }
+}

@@ -1,6 +1,8 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ReactNode} from 'react';
+import {useAlternatePageUtils} from '@docusaurus/theme-common/internal';
 import {useLocation} from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 type Preview = {src: string; alt: string; caption: string};
 const imageSelector = '.theme-doc-markdown img, img[data-sf-preview]';
@@ -8,6 +10,8 @@ const dialogId = 'sf-image-preview';
 
 /** Enhance rendered guides without changing MDX content or linked images. */
 function ImagePreview(): ReactNode {
+  const {i18n: {currentLocale}} = useDocusaurusContext();
+  const en = currentLocale === 'en';
   const [preview, setPreview] = useState<Preview | null>(null);
   const [originalSize, setOriginalSize] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -25,7 +29,7 @@ function ImagePreview(): ReactNode {
       if (dialogRef.current?.open && !triggerRef.current?.isConnected) close();
       document.querySelectorAll<HTMLTableElement>('.theme-doc-markdown table').forEach((table) => {
         table.tabIndex = 0;
-        if (!table.hasAttribute('aria-label')) table.setAttribute('aria-label', '表格，可横向滚动查看');
+        if (!table.hasAttribute('aria-label')) table.setAttribute('aria-label', en ? 'Table; scroll horizontally to view' : '表格，可横向滚动查看');
       });
       document.querySelectorAll<HTMLImageElement>(imageSelector).forEach((img) => {
         if (img.closest('a, button') || img.classList.contains('sf-zoomable-image')) return;
@@ -34,7 +38,7 @@ function ImagePreview(): ReactNode {
         img.setAttribute('role', 'button');
         img.setAttribute('aria-haspopup', 'dialog');
         img.setAttribute('aria-controls', dialogId);
-        img.setAttribute('aria-label', `${img.alt || '文档图片'}，放大查看`);
+        img.setAttribute('aria-label', en ? `Enlarge ${img.alt || 'documentation image'}` : `${img.alt || '文档图片'}，放大查看`);
       });
     };
     const open = (target: EventTarget | null) => {
@@ -87,23 +91,43 @@ function ImagePreview(): ReactNode {
       {preview && <>
         <div className="sf-image-dialog__toolbar">
           <div className="sf-image-dialog__heading">
-            <span className="sf-image-dialog__eyebrow">SciForge / 图片预览</span>
-            <span id="sf-image-preview-title" className="sf-image-dialog__title">{preview.alt || '文档图片'}</span>
+            <span className="sf-image-dialog__eyebrow">{en ? 'SciForge / Image preview' : 'SciForge / 图片预览'}</span>
+            <span id="sf-image-preview-title" className="sf-image-dialog__title">{preview.alt || (en ? 'Documentation image' : '文档图片')}</span>
           </div>
           <div className="sf-image-dialog__actions">
-            <button type="button" aria-pressed={originalSize} onClick={() => setOriginalSize((value) => !value)}>{originalSize ? '适应窗口' : '原始尺寸'}</button>
-            <button type="button" className="sf-image-dialog__close" aria-label="关闭图片预览" onClick={close} autoFocus>×</button>
+            <button type="button" aria-pressed={originalSize} onClick={() => setOriginalSize((value) => !value)}>{originalSize ? (en ? 'Fit to window' : '适应窗口') : (en ? 'Original size' : '原始尺寸')}</button>
+            <button type="button" className="sf-image-dialog__close" aria-label={en ? 'Close image preview' : '关闭图片预览'} onClick={close} autoFocus>×</button>
           </div>
         </div>
-        <div className={`sf-image-dialog__canvas${originalSize ? ' sf-image-dialog__canvas--original' : ''}`} tabIndex={originalSize ? 0 : undefined} aria-label={originalSize ? '原始尺寸图片，可滚动查看' : undefined}>
+        <div className={`sf-image-dialog__canvas${originalSize ? ' sf-image-dialog__canvas--original' : ''}`} tabIndex={originalSize ? 0 : undefined} aria-label={originalSize ? (en ? 'Image at original size; scroll to view' : '原始尺寸图片，可滚动查看') : undefined}>
           <img src={preview.src} alt={preview.alt} />
         </div>
         <p id="sf-image-preview-caption" className="sf-image-dialog__caption">
-          <span>{preview.caption || preview.alt || 'SciForge 文档配图'}</span><span>按 Esc 关闭</span>
+          <span>{preview.caption || preview.alt || (en ? 'SciForge documentation image' : 'SciForge 文档配图')}</span><span>{en ? 'Press Esc to close' : '按 Esc 关闭'}</span>
         </p>
       </>}
     </dialog>
   );
+}
+
+function MobileLanguageSwitch(): ReactNode {
+  const {i18n: {currentLocale}} = useDocusaurusContext();
+  const {createUrl} = useAlternatePageUtils();
+  const en = currentLocale === 'en';
+  const href = createUrl({locale: en ? 'zh-Hans' : 'en', fullyQualified: false});
+  useEffect(() => {
+    const target = document.querySelector('.navbar__items--right');
+    if (!target) return;
+    const link = document.createElement('a');
+    link.className = 'sf-mobile-language';
+    link.href = href;
+    link.lang = en ? 'zh-CN' : 'en';
+    link.textContent = en ? '中文' : 'EN';
+    link.setAttribute('aria-label', en ? 'Switch to Simplified Chinese' : 'Switch to English');
+    target.append(link);
+    return () => link.remove();
+  }, [en, href]);
+  return null;
 }
 
 export default function Root({children}: {children: ReactNode}): ReactNode {
@@ -112,5 +136,5 @@ export default function Root({children}: {children: ReactNode}): ReactNode {
     : pathname.includes('/docs/features/') ? 'feature'
     : /\/docs\/(getting-started|workbench)\//.test(pathname) ? 'tutorial'
     : pathname.includes('/docs/') ? 'reference' : 'page';
-  return <div className="sf-site" data-reading-kind={kind}>{children}<ImagePreview /></div>;
+  return <div className="sf-site" data-reading-kind={kind}>{children}<MobileLanguageSwitch /><ImagePreview /></div>;
 }
