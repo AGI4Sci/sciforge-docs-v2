@@ -6,7 +6,7 @@ sidebar_position: 41
 
 # Git 检查点（Git Checkpoints）
 
-Git Checkpoints 在任务回合开始和结束时自动保存工作区的 Git 状态，方便检查这一轮改了什么，并在需要时恢复到之前的状态。研究摘要、来源和继续研究的位置见 [Research Checkpoints](./research-checkpoints.md)。
+Git Checkpoints 在每轮任务开始和结束时自动保存工作区的 Git 状态，方便检查这一轮改了什么，并在需要时恢复到之前的状态。研究摘要、来源和继续研究的位置见 [Research Checkpoints](./research-checkpoints.md)。
 
 ## 打开方式
 
@@ -17,7 +17,7 @@ Git Checkpoints 在任务回合开始和结束时自动保存工作区的 Git �
 ## 查看与恢复
 
 1. 在 Git 工作区中开始任务，系统自动保存开始前的检查点，无需手动保存或一直打开面板。
-2. 完成或结束任务回合后，打开面板或点击刷新图标，检查开始前和结束后的记录。
+2. 一轮任务完成或结束后，打开面板或点击刷新图标，检查开始前和结束后的记录。
 3. 选择检查点，阅读文件差异和改动摘要，确认它对应想要恢复的状态。
 4. 需要恢复时点击 **恢复** 并确认。系统会先保存救援检查点；保存失败时，恢复会中止。
 5. 恢复完成后检查实际工作区文件和 Git 状态。需要了解当前任务记录的文件改动时，可使用 [Change Inspector](./change-inspector.md)。
