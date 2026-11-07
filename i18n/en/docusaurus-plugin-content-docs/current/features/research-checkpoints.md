@@ -26,7 +26,7 @@ Research Checkpoints automatically saves the chat turns that were accepted and c
 
 A checkpoint saves the summary and the references. The actual file contents and artifact versions must be saved and checked separately, see [Artifact Versions](./artifact-versions.md); for the Git state of the whole workspace, see [Git Checkpoints](./git-checkpoints.md). Having only a research summary does not mean all the result files were kept.
 
-Saving a record reads this round's conversation, the tool results, the workspace file changes, and the related artifact, computation, and Git records, and adds a checkpoint version. Existing versions are kept. When a record's ownership cannot yet be confirmed, it shows as pending, and you should check it before continuing.
+Saving adds a checkpoint version based on this turn's conversation, tool results, workspace file changes, and related artifact, computation, and Git records. Existing versions are kept. If the system cannot yet determine where a record should be linked, it is marked pending; check it before continuing.
 
 ## Manage automatic recording
 

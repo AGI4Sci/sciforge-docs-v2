@@ -6,7 +6,7 @@ sidebar_position: 22
 
 # Anchored Comments
 
-Select a piece of text in a research record to leave a question, a suggested change, or review feedback on it. The comment keeps the original text and its position, so you can check back later.
+Select a piece of text in a research record to leave a question, a suggested change, or review feedback on it. The comment keeps the selected text and the research-record entry it belongs to, so you can check back later.
 
 ## Add a comment
 

@@ -1,6 +1,6 @@
 ---
 title: Evidence DAG
-description: Connect claims in a session to their sources, methods, artifacts, and limitations.
+description: See which sources, analysis steps, and result files support a session's conclusions, and what limitations remain.
 sidebar_position: 44
 ---
 
@@ -26,7 +26,7 @@ Evidence DAG helps you check what a conclusion rests on: in the graph, see the s
 
 - Click **Audit** to check the structure of the saved evidence graph and see the gap hints. For now it only checks the graph's structure (L0); you still have to judge whether a conclusion has a scientific basis.
 - Select a Conclusion node and click **Download rerun spec** to download the configuration notes needed to rerun the analysis. Before rerunning, also confirm that the input files, software, parameters, environment, and related result files are available; downloading the spec does not run the analysis.
-- To check whether an analysis can be rerun under its original conditions, verify that the input files, software versions, parameters, environment, run records, logs, and result files are complete and verifiable. If the analysis involves randomness, also record the random seed; this is also required to reach the L4 reproducibility level.
+- To check whether an analysis can be rerun under its original conditions, verify that the input files, software versions, parameters, environment, run records, logs, and result files are complete and verifiable. If the analysis involves randomness, reaching the L4 reproducibility level also requires recording the random seed. A random seed alone is not enough: the files and records listed above must also be complete and verifiable.
 
 ## Tips
 

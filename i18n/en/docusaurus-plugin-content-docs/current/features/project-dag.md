@@ -19,7 +19,7 @@ Project DAG combines the evidence from several sessions in the same project, to 
 1. Finish the analysis in each session, save the sources and results, and update Evidence DAG for each. Wait until each session's evidence graph has finished saving.
 2. Open the Project DAG, fill in the title and description under **Project goal**, and click **Save goal**.
 3. Click **Update now**, wait for queueing, execution, and saving to all finish, then check this project graph. Only saving session evidence or closing the panel does not generate a new project graph automatically.
-4. See how many items need attention, and the matching audit status and review package. Select an important conclusion and check which sources it rests on, whether it can be traced back to the original records, whether it can be rerun under the original conditions, and what evidence is still missing.
+4. Review the items that need attention, the audit status, and the materials provided for review. Select important conclusions and check each one: What does it say? Which sources support it? Can it be traced to the original records? Can the analysis be rerun under its original conditions? What evidence is still missing?
 5. When you need to check details, open the matching session's Evidence DAG. After adding sources or results, first save the session evidence graph, then update the project graph manually.
 
 ## When reviewing
