@@ -21,7 +21,7 @@ sidebar_position: 2
 使用 **模型 API** 时，填写服务商提供的 Base URL、API Key 与模型名称；协议不确定时使用自动探测。已有密钥只说明字段已配置，上游是否接受要通过实际请求确认。
 
 ![模型 API 设置](/img/docs/quickstart/quickstart-model-api.jpg)
-*仅用于认识字段，请填写自己的服务配置。*
+*配置字段示意，请填写实际服务信息。*
 
 使用 **Coding Plan** 时，按界面完成官方登录或设备码授权。当前支持 Codex 的 Coding Plan 路径；Claude Code 使用模型 API。登录或连接失败时，根据提示修复当前接入，再重试。
 

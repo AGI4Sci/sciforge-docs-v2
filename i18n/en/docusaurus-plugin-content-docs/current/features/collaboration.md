@@ -1,12 +1,12 @@
 ---
 title: Collaboration guide
-description: Starting from requirements and task assignment, complete member acceptance, human review, delivery adoption, and project close-out.
+description: Starting from requirements and task assignment, complete member task acceptance, human review, deliverable acceptance, and project close-out.
 sidebar_position: 61
 ---
 
 # Collaboration guide
 
-The owner writes clear requirements and confirms the division of work. Members accept tasks, execute them in their own SciForge, review drafts, and submit. Finally the owner adopts the result. Tasks that hand off to one another use the files already adopted upstream.
+The owner writes clear requirements and confirms the division of work. Members accept tasks, execute them in their own SciForge, review drafts, and submit. Finally the owner accepts the deliverable. Tasks that hand off to one another use the upstream files already accepted by the owner.
 
 ## Open a collaboration project
 
@@ -20,7 +20,7 @@ Once a project is selected, there are five tabs at the top:
 
 | Tab | Purpose |
 | --- | --- |
-| **Board** | See tasks and the progress of acceptance, assignment, review, and adoption |
+| **Board** | See tasks and the progress of task acceptance, assignment, review, and deliverable acceptance |
 | **Members** | See project members; invite or manage members according to your current role |
 | **Requirements** | Edit goals, inputs, work modules, and acceptance criteria, and confirm requirements |
 | **Shared files** | See shared material, sealed task deliveries, and project results |
@@ -34,7 +34,7 @@ Once a project is selected, there are five tabs at the top:
 4. Check each module's goal, inputs, outputs, dependencies, and acceptance criteria. When all are correct, click **Confirm requirements**.
 5. Invite members under **Members**. Invitees enter from the inbox or the project invitation prompt, read the requirements, and accept the invitation.
 
-For example: "B counts the total samples and submits a report; C continues the comparison using the report B had adopted. The report must include the method, validation results, and limitations." Also provide inputs the members can actually read.
+For example: "B counts the total samples and submits a report; C continues the comparison using the report submitted by B and accepted by the owner. The report must include the method, validation results, and limitations." Also provide inputs the members can actually read.
 
 ![The Requirements page](/img/docs/collaboration/requirements-ready.png)
 *Dependencies between tasks.*
@@ -43,7 +43,7 @@ For example: "B counts the total samples and submits a report; C continues the c
 
 On the board, the owner opens a task and checks the executor and upstream dependencies. Depending on the task's current state, choose a member and **Assign task** or **Reassign**, or **Change assignee** or **Withdraw assignment** for an assignment not yet accepted.
 
-A module with dependencies waits until its upstream result is adopted. The interface keeps the assign entry and shows the reason, with the button disabled. Finish the upstream review first. If a task is still unassigned after requirements are confirmed, or assignment failed and no member is available, the owner needs to pick an executor or handle the to-do as prompted. Do not treat a task waiting to be assigned as already running.
+A module with dependencies waits until the owner accepts its upstream deliverable. The interface keeps the assign entry and shows the reason, with the button disabled. Finish the upstream review first. If a task is still unassigned after requirements are confirmed, or assignment failed and no member is available, the owner needs to pick an executor or handle the to-do as prompted. Do not treat a task waiting to be assigned as already running.
 
 ## 3. Members decide whether to accept
 
@@ -85,7 +85,7 @@ One delivery can hold at most 20 files, no more than 200 MiB in total; each atta
 
 On the board, open a task pending confirmation, preview this version's files, and read the result note against the acceptance criteria. To ask for more, use **Request revision** and write specific feedback; the member revises, rechecks, and submits a new version. When the requirements are met, click **Adopt**, and the task moves to Completed.
 
-History keeps older snapshots, so check the current version when reviewing. Only after the upstream is adopted can a downstream task continue to assignment; downstream execution uses the files of the adopted version.
+History keeps older snapshots, so check the current version when reviewing. Only after the owner accepts the upstream deliverable can a downstream task continue to assignment; downstream execution uses the files of the accepted version.
 
 ![The owner's revision screen](/img/docs/collaboration/revision-request.png)
 *The owner writing revision requirements.*
@@ -97,10 +97,10 @@ History keeps older snapshots, so check the current version when reviewing. Only
 
 **Shared files** lists project files by source and version, and lets you preview submitted content. **Upload file** here is currently unavailable and shows the reason. To submit material with a task, go back to **Add material** in the delivery draft; do not wait for an upload to succeed on the Shared files page.
 
-After all modules are adopted, the owner checks the results and limitations, then uses the **Close project** entry to confirm completion and waits for signing and the server result.
+After accepting all module deliverables, the owner checks the results and limitations, then selects **Close project** to confirm completion. Wait for signing to finish and for the server to return the closeout result.
 
 ![The completed project](/img/docs/collaboration/project-completed.png)
-*After all tasks are adopted, the owner confirms close-out.*
+*After accepting all task deliverables, the owner confirms close-out.*
 
 ## Board status at a glance
 
@@ -109,8 +109,8 @@ After all modules are adopted, the owner checks the results and limitations, the
 | Inbox | The module has not been assigned, perhaps waiting on a dependency or manual assignment | The owner checks the blocking reason and executor |
 | To start | Assigned, waiting for the member to accept | The member reads, then accepts, ignores, or declines |
 | In progress | Running, waiting for a human answer, or the member is reviewing the draft | Check task details and handle the current request |
-| Pending confirmation | A delivery has been submitted | The owner reviews, requests revision, or adopts |
-| Completed | The module's result is adopted | The owner closes the project once all modules are done |
+| Pending confirmation | A delivery has been submitted | The owner reviews, requests revision, or accepts the deliverable |
+| Completed | The module's deliverable has been accepted by the owner | The owner closes the project once all modules are done |
 
 On a network interruption, submission failure, or signature error, keep the draft first, check sign-in and device status, and after recovery check whether a submission record already exists before retrying as prompted.
 

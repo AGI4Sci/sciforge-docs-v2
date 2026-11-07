@@ -104,7 +104,7 @@ This real output is opened in the current dev build. Browsing is verified; a ful
 
 Page: https://agi4sci.github.io/sciforge-docs-v2/en/docs/cases/virtual-cell-evidence-atlas
 
-Take stock in the Files panel: source data, rebuild scripts, derived tables, figures, report. Each stage needs clear inputs and outputs.
+Check the Files panel for source data, rebuild scripts, derived tables, figures, and the report. Each stage needs clear inputs and outputs.
 
 Before writing, check the plan and output directory, and record code version, input hashes, and environment.
 

@@ -12,7 +12,7 @@ Each case organizes inputs, agent execution, human review, evidence, and deliver
 | --- | --- | --- | --- |
 | [ECCITE-seq cross-scale virtual cell evidence atlas](./virtual-cell-evidence-atlas.md) | Launch primary case | Artifact browsing verified; a full agent rerun still needs continuous evidence capture | Perturbation review table, versioned figures, evidence relationships, research dossier |
 | [Virtual cell perturbation prediction benchmark](./virtual-cell-benchmark.md) | Advanced integration case | Experimental | Prediction files, contract checks, stratified metrics, failure analysis, rerun records |
-| [Pasilla RNA-seq three-person collaboration](./pasilla-collaboration.md) | Team collaboration primer | Learn requirements, delivery, rework, adoption, and closure through real screenshots | Two versions of the upstream report, member notes, downstream report, and adoption record |
+| [Pasilla RNA-seq three-person collaboration](./pasilla-collaboration.md) | Team collaboration primer | Learn requirements, delivery, rework, deliverable acceptance, and closure through real screenshots | Two versions of the upstream report, member notes, downstream report, and deliverable acceptance record |
 | [Scientific figures case](./scientific-figures-complex.md) | Data preparation and plotting examples | Uses synthetic data to demonstrate the features, run in the application | Four-panel figure, matrix heatmap, data comparison, failure recovery, and version records |
 
 ## How the cases divide the work
@@ -21,7 +21,7 @@ The first case answers: "How do you organize an existing cross-scale single-cell
 
 The second case answers: "How do you connect a user's existing perturbation prediction model to a reproducible evaluation?" The focus is preventing data leakage, fixing the protocol and environment, sealing predictions, and separating offline demos from official online submissions.
 
-The Pasilla case answers: "How do several members complete tasks in dependency order, with a human reviewing, adopting, and closing each version?" The focus is the operating flow, delivered versions, and downstream use of adopted results.
+The Pasilla case answers: "How do several members complete tasks in dependency order, with the owner reviewing and accepting each deliverable version, then closing the project?" The focus is the operating flow, delivered versions, and downstream use of deliverables accepted by the owner.
 
 ## Screenshot principles
 
