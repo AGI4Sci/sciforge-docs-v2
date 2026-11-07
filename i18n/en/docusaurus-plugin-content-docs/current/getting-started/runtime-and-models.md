@@ -21,7 +21,7 @@ Settings is at the bottom of the expanded left sidebar. Local accounts and SciFo
 With **Model API**, enter the Base URL, API Key, and model name provided by your service provider; if you are unsure about the protocol, use automatic detection. An existing key only means the field is configured; whether the upstream accepts it must be confirmed with an actual request.
 
 ![Model API settings](/img/docs/quickstart/quickstart-model-api.jpg)
-*Use it only to recognize the fields; enter your own service configuration.*
+*This screenshot illustrates the configuration fields. Enter your own service settings.*
 
 With **Coding Plan**, complete official sign-in or device-code authorization in the interface. The Coding Plan path currently supports Codex; Claude Code uses model access. If sign-in or connection fails, fix the current access path according to the prompt, then retry.
 

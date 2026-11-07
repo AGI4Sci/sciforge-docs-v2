@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # Configure a read-only sandbox
 
-“Do not modify files” in a prompt is a task requirement; you also need to configure execution permissions. This page uses the **Codex read-only sandbox** as the getting-started path; the file-scope option of the same name in Claude Code corresponds to **Plan mode**, and the two isolate work differently.
+“Do not modify files” in a prompt is a task requirement; you also need to configure execution permissions. This page uses the **Codex read-only sandbox** as the getting-started path; the file-scope option of the same name in Claude Code corresponds to **Plan mode**, and these modes enforce different restrictions.
 
 ## Where the setting lives
 

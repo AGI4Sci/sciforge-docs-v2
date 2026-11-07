@@ -117,8 +117,8 @@ verified; a full rerun still needs step-by-step checks.
 
 24
 00:02:00.967 --> 00:02:06.598
-Take stock in the Files panel: source data, rebuild scripts, derived tables,
-figures, report. Each stage needs clear inputs and outputs.
+Check the Files panel for source data, rebuild scripts, derived tables,
+figures, and the report. Each stage needs clear inputs and outputs.
 
 25
 00:02:06.598 --> 00:02:11.464

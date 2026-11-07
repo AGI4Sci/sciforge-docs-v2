@@ -6,7 +6,7 @@ sidebar_position: 2
 
 # ECCITE-seq cross-scale virtual cell evidence atlas
 
-This case organizes CRISPR perturbation, target annotation, pathways, transcriptional response, protein response, and cell fitness into an inspectable cross-scale evidence chain. SciForge manages the workspace, execution process, figures, evidence, and human review; it is not described as a built-in virtual cell predictor.
+This case organizes CRISPR perturbation, target annotation, pathways, transcriptional response, protein response, and cell fitness into an inspectable cross-scale evidence chain. SciForge manages the workspace, execution process, figures, evidence, and human review. SciForge itself is not a virtual cell predictor.
 
 :::info[Current verification status]
 
