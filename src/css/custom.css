@@ -109,9 +109,9 @@ body { letter-spacing: 0.005em; -webkit-font-smoothing: antialiased; }
 :focus-visible { outline: 2px solid var(--sf-accent); outline-offset: 4px; }
 
 .navbar { border-bottom: 1px solid var(--sf-line); box-shadow: none; padding-inline: clamp(20px, 3vw, 48px); }
-.navbar__brand { gap: 3px; margin-right: 2.25rem; }
+.navbar__brand { flex-shrink: 0; gap: 3px; margin-right: 2.25rem; }
 .navbar__logo { height: 30px; }
-.navbar__title { color: var(--sf-ink); font-size: 17px; font-weight: 750; letter-spacing: -0.5px; }
+.navbar__title { flex-shrink: 0; overflow: visible; white-space: nowrap; color: var(--sf-ink); font-size: 17px; font-weight: 750; letter-spacing: -0.5px; }
 .navbar__link { font-size: 15px; font-weight: 550; padding-inline: 14px; white-space: nowrap; }
 .navbar__link--active { color: var(--sf-accent); }
 .navbar-sidebar { background: var(--sf-surface); }
@@ -287,10 +287,20 @@ body { letter-spacing: 0.005em; -webkit-font-smoothing: antialiased; }
   .pagination-nav { grid-template-columns: 1fr; }
 }
 
-@media (min-width: 997px) and (max-width: 1200px) {
+/* Keep the brand and language selector readable before the mobile menu takes over. */
+@media (min-width: 997px) and (max-width: 1450px) {
   .navbar { padding-inline: 20px; }
   .navbar__brand { margin-right: 20px; }
-  .navbar__link { padding-inline: 10px; }
+  .navbar__link { padding-inline: 8px; }
+  .navbar__items--right > button[class*='trigger'] {
+    min-width: 44px; width: 44px; height: 44px; padding: 12px; margin: 0 4px; justify-content: center;
+  }
+  .navbar__items--right > button[class*='trigger'] span,
+  .navbar__items--right > button[class*='trigger'] kbd { display: none; }
+}
+@media (min-width: 997px) and (max-width: 1400px) {
+  /* Both repository links remain available in the footer and mobile menu. */
+  .navbar__items--right > a.navbar__link[href^='https://github.com/'] { display: none; }
 }
 
 /* A quiet directory surrounds a distinct, width-limited reading surface. */
@@ -339,3 +349,6 @@ body { letter-spacing: 0.005em; -webkit-font-smoothing: antialiased; }
   .theme-doc-markdown details { padding: 14px 16px; }
   [data-reading-kind="case"] .theme-doc-markdown > h2 { margin-top: 40px; }
 }
+
+.sf-mobile-language { display: none; }
+@media (max-width: 996px) { .sf-mobile-language { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; margin-inline: 4px; border-radius: 5px; color: var(--sf-ink); font-size: 14px; font-weight: 650; background: var(--sf-surface); } }

@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ReactNode} from 'react';
+import {useAlternatePageUtils} from '@docusaurus/theme-common/internal';
 import {useLocation} from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
@@ -109,11 +110,31 @@ function ImagePreview(): ReactNode {
   );
 }
 
+function MobileLanguageSwitch(): ReactNode {
+  const {i18n: {currentLocale}} = useDocusaurusContext();
+  const {createUrl} = useAlternatePageUtils();
+  const en = currentLocale === 'en';
+  const href = createUrl({locale: en ? 'zh-Hans' : 'en', fullyQualified: false});
+  useEffect(() => {
+    const target = document.querySelector('.navbar__items--right');
+    if (!target) return;
+    const link = document.createElement('a');
+    link.className = 'sf-mobile-language';
+    link.href = href;
+    link.lang = en ? 'zh-CN' : 'en';
+    link.textContent = en ? '中文' : 'EN';
+    link.setAttribute('aria-label', en ? 'Switch to Simplified Chinese' : 'Switch to English');
+    target.append(link);
+    return () => link.remove();
+  }, [en, href]);
+  return null;
+}
+
 export default function Root({children}: {children: ReactNode}): ReactNode {
   const {pathname} = useLocation();
   const kind = pathname.includes('/docs/cases/') ? 'case'
     : pathname.includes('/docs/features/') ? 'feature'
     : /\/docs\/(getting-started|workbench)\//.test(pathname) ? 'tutorial'
     : pathname.includes('/docs/') ? 'reference' : 'page';
-  return <div className="sf-site" data-reading-kind={kind}>{children}<ImagePreview /></div>;
+  return <div className="sf-site" data-reading-kind={kind}>{children}<MobileLanguageSwitch /><ImagePreview /></div>;
 }
