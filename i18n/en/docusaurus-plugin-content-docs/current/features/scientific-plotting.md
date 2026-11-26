@@ -42,7 +42,7 @@ In native DSH, open **Figures** in the session input area or enter `/scientific-
 
 For an existing script, select **Existing data and code (已有数据和代码)** and enter the workspace-relative paths to the data and Python script. You can add an original image for comparison. The panel labels it as user-provided and unverified, and saves the PNG from the new run separately.
 
-![Data and code fields on the New tab](/img/docs/scientific-figures/04-data-code-start.png)
+![Sample data, plotting instructions, and the Start plotting button on the New tab](/img/docs/scientific-figures/guide-new-from-data.png)
 
 ## Save data and reuse it in later revisions
 
@@ -58,7 +58,7 @@ Each code version saves a copy of its data, the parameters, and the source versi
 
 If the current figure changed after the candidate was generated, select the current figure and generate a new candidate from that version.
 
-![A generated chart in the session](/img/docs/scientific-figures/03-chat-attachment.png)
+![The current blue line and the orange candidate in the comparison panel](/img/docs/scientific-figures/guide-candidate-comparison.png)
 
 ## Analysis files, history, and recovery
 
@@ -86,7 +86,7 @@ If saving stopped after Python finished, open **Code and runs → Unfinished or 
 2. Click **Run frozen Python**. The run details show its status, inputs, parameters, and outputs. Expand the code comparison, environment, or logs if you need to investigate.
 3. After a successful run, select a PNG and click **Publish as a new figure (发布为新图件文档)**. To add a candidate to an existing figure, select **Publish as a candidate for an existing document (发布为现有文档的候选图)**, choose **Target document (目标文档)**, and click **Read and select current baseline (读取并选定当前基线)**. Once the baseline appears, click **Publish as candidate (发布为候选图)**. Find the new figure in **Figures**, or the candidate under the target figure's **Candidate** menu.
 
-![Code and run results in the panel](/img/docs/scientific-figures/02-code-and-run.png)
+![Sample source code, completed run status, and output file in Code and runs](/img/docs/scientific-figures/guide-code-and-runs.png)
 
 ## Rebuild the environment from the saved instructions
 
