@@ -14,7 +14,7 @@ description: 查找客户端、插件的适用版本与安装要求。
 | 旧教程截图基准 | 2026-11-06，主线 `3f6b0c3`。 |
 | 最新正式安装包 | [v0.2.16](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.16)。 |
 | Apple Silicon 预发行版 | [v0.2.18](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.18)，2026-11-26 发布。 |
-| 插件说明与扩展截图基准 | [公开源码构建 `9daddeb`](https://github.com/AGI4Sci/SciForge/commit/9daddeb)。随附桌面市场索引无可安装条目。 |
+| 插件说明与扩展截图基准 | [公开源码构建 `9daddeb`](https://github.com/AGI4Sci/SciForge/commit/9daddeb)。该构建随附的桌面市场索引当时无可安装条目。 |
 | [公开源码](https://github.com/AGI4Sci/SciForge) | 查看实际检出的提交。 |
 
 ## 界面入口
@@ -38,6 +38,25 @@ description: 查找客户端、插件的适用版本与安装要求。
 | 获取数据、运行分析 | 使用自己配置的 Agent 工具、脚本或计算环境。 |
 
 [插件许可证](./plugin-licenses.md)列出了各插件的版本与许可；具体安装步骤见[扩展与市场](../features/extensions.md)。
+
+## 历史案例核验记录
+
+### Pasilla 三人协作
+
+[案例](../cases/pasilla-collaboration.md)的三账号运行和截图来自 **2026-10-27**。分析覆盖数据前 50 行、7 个样本，交付为 Markdown 报告及成员说明。
+
+- B 的第 1 版包含 350 个子集 CPM 数值，逐项复算一致。第 2 版补齐校验，保留了这 350 个数值。
+- C 任务目录中的两份输入，与 A 采纳的第 2 版交付清单逐文件核对一致。
+- 用同一份摘录复算 C 的报告，前 5 名排序、组均值和差值均与报告一致，数值核对到小数点后 6 位。
+
+### 复杂科研图件
+
+[案例](../cases/scientific-figures-complex.md)运行于 **2026-11-05**。案例一至四的原始运行使用 v8/v9，案例五使用 v10。各案例保留了数据、代码、日志和产物。
+
+- 案例一中，10 个分组与时间点组合的统计值与独立计算一致。案例三重新生成了同样的两张图。
+- 案例四的输出清单包含带空格、中文或大写扩展名的文件。
+- 案例五的 CSV 与下一次运行的输入副本一致。中断后补存了原运行记录。
+- 环境核验截至生成环境记录，记录包括精确包版本和重建说明。使用条件见[科研图件](../features/scientific-plotting.md#当前能力与使用限制)。
 
 ## 反馈问题
 

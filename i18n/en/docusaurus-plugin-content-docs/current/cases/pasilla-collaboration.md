@@ -46,7 +46,7 @@ A invites B and C from **Members**. After they join, A opens module 1 from the *
 
 ## 3. B reviews the draft and submits two files
 
-B opens the draft and previews `README.md`. Use **Add materials → Upload from this device** to include `member-qc-notes.md`. Record the method and results in **Result summary**, then click **Submit** and confirm. Version 1 appears in the delivery section with both files, ready for A to review.
+B opens the delivery draft in the task details and clicks **Preview** to inspect `README.md`. B uses **Add materials → Upload from this device** to attach `member-qc-notes.md`, records the method and results in **Result summary**, and clicks **Submit** to confirm. Version 1 appears in the delivery section with both files, and the task moves to **Awaiting review** for A to review next.
 
 ![B's version 1 draft shows the report and separate member note](/img/docs/collaboration/delivery-draft.png)
 *Figure 3. The submission contains both the report and the separate note.*
@@ -71,7 +71,7 @@ After adopting version 2, A opens module 2 on the **Board** and assigns it to C.
 
 C opens the draft and previews `README.md`. The report identifies B's accepted version 2 and lists the 5 genes with the largest absolute mean differences. C clicks **Submit**. The task moves to **Awaiting review**.
 
-A opens C's delivery and clicks **Adopt delivery (采纳交付)**. When the project shows **Adopted 2/2**, A writes the summary and clicks **Complete project**. Once the project shows **Completed**, both deliveries are still available.
+A opens C’s delivery and clicks **Adopt delivery (采纳交付)**. After the project shows **Adopted 2/2**, A clicks **Complete project**, fills in **Completion summary**, and clicks **Confirm completion**. Both deliveries remain available when the project status changes to **Completed**.
 
 ![C previews the descriptive subset CPM comparison](/img/docs/collaboration/report-preview.png)
 *Figure 6. The group means and differences cover the 50-gene excerpt.*
@@ -81,16 +81,7 @@ A opens C's delivery and clicks **Adopt delivery (采纳交付)**. When the proj
 
 ## Case results
 
-This three-account run took place on **2026-10-27**. The screenshots are from that run. The example covers the first 50 rows from 7 samples and delivers Markdown reports and the member note. Full-dataset import, separate matrices, and PNG output are outside the scope of this example.
-
-<details>
-<summary>Recalculation and file records for this run</summary>
-
-- Independent recalculation matched all 350 subset CPM values in B's version 1. Version 2 kept those 350 values and added the requested checks.
-- Both inputs in C's task directory matched the files listed in A's accepted version 2 delivery.
-- Recalculation from the same excerpt matched C's top 5 ranking and the reported group means and differences to 6 decimal places.
-
-</details>
+This example uses the first 50 rows from 7 samples. The deliverables are Markdown reports and the member’s note. See the [run and verification record](../reference/version-and-compatibility.md#pasilla-collaboration) for the date, recalculation results, and file checks.
 
 ## Continue reading
 
