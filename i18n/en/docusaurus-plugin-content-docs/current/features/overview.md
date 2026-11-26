@@ -23,7 +23,7 @@ Pick the task you want to do from the table below. Built-in features open direct
 | Run repeated tasks | [Automation](./automation.md), [Create Loop](./create-loop.md) | Needs the app running and the matching executor. Multi-step flows and single scheduled instructions are configured separately. |
 | Sign in, connect a device, join a project, and deliver tasks | [Account](./identity-access.md), [Collaboration](./collaboration.md) | Local accounts and cloud identity are separate. Team actions also need an available service and role authorization. |
 | Use Content Space and notes | [Content Space](./content-space.md), [SiYuan Notes](./siyuan.md) | You configure the matching service. Server deployment tutorials are not included. |
-| Add plugins, working methods, or external tools | [Extensions & marketplace](./extensions.md) | Compatible signed packages, Skills, and MCP are each configured separately. An empty marketplace does not mean built-in features were uninstalled. |
+| Add plugins, working methods, or external tools | [Extensions & marketplace](./extensions.md) | Check the public catalog and desktop Market for availability, look up bundled extensions, or configure Skills and MCP. |
 
 ## Evidence and tool reference
 

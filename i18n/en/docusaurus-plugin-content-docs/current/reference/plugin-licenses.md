@@ -1,21 +1,17 @@
 ---
 title: Plugin licenses
-description: Licenses, historical directory scope, and distribution notes for the seven current standalone plugins.
+description: Licenses, historical directory scope, and distribution notes for the current standalone plugins.
 ---
 
 # Plugin licenses
 
-The table below lists the versions and licenses of the 7 current plugin packages. See each feature page for installation requirements and [Version and compatibility](./version-and-compatibility.md) for how the versions relate.
+The table lists the three standalone plugins maintained in the public source tree. Source versions identify code and license terms. Check the desktop Market index for installation availability. See [Version & Compatibility](./version-and-compatibility.md).
 
 | Plugin / source directory | Source version | Declared license | npm `private` field |
 | --- | --- | --- | --- |
-| Anchored Comments / `plugins/anchored-comments` | 0.2.1 | MIT | `true` |
-| Change Inspector / `plugins/change-inspector` | 0.1.2 | MIT | `true` |
-| Evidence DAG / `plugins/evidence-dag` | 1.0.0 | Apache-2.0 | `true` |
-| Git Checkpoints / `plugins/git-checkpoints` | 0.1.0 | MIT | `true` |
-| Project DAG / `plugins/project-dag` | 1.0.0 | Apache-2.0 | Not set |
-| Research Checkpoints / `plugins/research-checkpoints` | 0.1.0 | MIT | `true` |
-| Scientific Figures / `plugins/scientific-plotting` | 0.4.0-mvp.11 | MIT; the NOTICE and third-party licenses below are also retained | `true` |
+| Anchored Comments / `plugins/anchored-comments` | 0.2.3 | MIT | `true` |
+| Change Inspector / `plugins/change-inspector` | 0.1.3 | MIT | `true` |
+| Scientific Figures / `plugins/scientific-plotting` | 0.4.0-mvp.13 | MIT; the NOTICE and third-party licenses below are also retained | `true` |
 
 ## Source, installers, and npm publication
 
@@ -32,6 +28,8 @@ The current build includes the JavaScript and the actually loaded platform nativ
 
 ## Historical directories and scope
 
+The standalone Evidence DAG, Project DAG, Git Checkpoints, and Research Checkpoints plugins have been retired. Their app features ship as built-in modules. Refer to the archived license for each historical source package.
+
 Old plugins in the public repository carry their own LICENSE. When you update or migrate code, retain the corresponding license and attribution.
 
 | Historical directory | Historical license / current status |
@@ -39,6 +37,6 @@ Old plugins in the public repository carry their own LICENSE. When you update or
 | `plugins/biology-room` | Historical plugin MIT; the standalone directory is now retired, and the room functionality is provided by the bundled Biology Workbench 1.1.3 |
 | `plugins/life-science-preview` | Historical plugin MIT; the standalone directory is now retired, and previews are provided by the same bundled Biology Workbench |
 | `plugins/visual-review` | Historical plugin MIT; the standalone plugin and the old static domain have both been removed, see the [migration note](../features/visual-review.md) |
-| Old `scientific-compute` and `dataset-api` domains | Now retired, see the migration pages for [Scientific Compute](../features/scientific-compute.md) and [Dataset API](../features/dataset-api.md); not counted among the seven plugins |
+| Old `scientific-compute` and `dataset-api` domains | Now retired, see the migration pages for [Scientific Compute](../features/scientific-compute.md) and [Dataset API](../features/dataset-api.md); removed from the current plugin list |
 
 The licenses of the historical directories continue to apply to the code released at the time; deleting a directory, bundling a feature, or migrating a page does not constitute relicensing. The bundled Biology Workbench is part of the application source and should not simply inherit the old plugin's MIT declaration. When reusing historical code, go back to the LICENSE, NOTICE, and file headers of the corresponding version to confirm the applicable terms.

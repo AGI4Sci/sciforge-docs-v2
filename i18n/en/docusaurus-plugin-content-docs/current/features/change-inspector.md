@@ -10,11 +10,13 @@ Change Inspector helps you check which files the current task changed and what c
 
 ## How to use it
 
-Install a compatible package from a trusted source, enable the plugin, and grant the permissions it needs; see [Extension Center](./extensions.md) and [Version & Compatibility](../reference/version-and-compatibility.md). In the current session, where file changes have already occurred, you can ask the Agent:
+This guide refers to public source version **0.1.3**. The current public source build lists Change Inspector under **Not installable yet**. Once you have installed and enabled a compatible build, try it in an Agent session that recorded a file edit. See [Extension Center](./extensions.md) for installation sources.
 
-> Check which files this task changed, and explain each change. If the content is too long, show it in batches and tell me what is not yet shown.
+1. In a demo workspace, ask the Agent to make one edit, such as adding a review note to `notes.md`.
+2. In the same session, ask:
 
-Look at the file list first to confirm the scope of the changes matches the task, then check the specific content of the important files. If anything is still missing, have the Agent keep showing it in batches; when you need to verify the full content, read the actual files in batches directly.
+   > Check which files this task changed, and explain each change. If the content is too long, show it in batches and tell me what is not yet shown.
+3. Check that the list includes `notes.md` and open the diff to verify the edit. If the output is incomplete, ask for the next batch. If the list is empty, check the original session and compare the actual file or Git status.
 
 ## Tips
 

@@ -23,7 +23,7 @@ The table below lists the conditions for using each feature and its current limi
 | [Change Inspector](../features/change-inspector.md) | Needs the plugin | Have the Agent list this session's file differences, and page through them when too long. |
 | Artifact versions, checkpoints, Evidence / Project DAG, and dossier | Configured per feature | Save file versions and research records, and see the basis for conclusions in the evidence graph and the project graph. |
 | Scheduled tasks and Create Loop | Needs the app running | Set up repeating tasks or multi-step flows; operations that need confirmation pause and wait. |
-| Plugin marketplace, Skills, MCP | Configured by type | Install plugins, add working methods, or connect external tools as the pages direct. |
+| Plugin marketplace, Skills, MCP | Configured by type | The current public source build’s desktop Market lists no installable plugins. Configure Skills and MCP separately. |
 | Remote SSH management | Internal supplement | The public site does not provide VPN, SSH target registration, or server-side operation steps. |
 | Virtual cell models, Slurm/PBS/Kubernetes scheduling | Connect your own | Use the model or cluster environment you configured yourself. |
 

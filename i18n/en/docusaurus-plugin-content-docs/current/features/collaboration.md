@@ -65,7 +65,7 @@ Only the designated member can decide, and an expired request must wait to be re
 
 ## 5. Members review the draft and submit
 
-1. When execution finishes, open the delivery draft, preview the required files, and check the content.
+1. When execution finishes, open the draft and preview the required files. If Submit is disabled, read the message in the submission area and add any missing required files. Newer clients open the file picker directly from that message.
 2. Edit the **Result note**, stating what was actually done, the check results, and limitations.
 3. To add material, click **Add material**: choose this run's output from **Task files**, or use **Upload from this computer**. Extra material does not replace the required files.
 4. To have the AI revise, go to the task session through **Ask AI to revise**.
@@ -76,7 +76,7 @@ While submitting, wait for a clear result from device verification, signing, and
 One delivery can hold at most 20 files, no more than 200 MiB in total; each attached file is at most 100 MiB. Required files may also have task-specific format and size requirements, so follow the submission window's prompts.
 
 ![A member delivery draft](/img/docs/collaboration/delivery-draft.png)
-*The result note, required files, and extra material in a delivery draft.*
+*An earlier client’s delivery draft with the result note, required files, and extra material.*
 
 ![The submission process](/img/docs/collaboration/delivery-submitting.png)
 *Delivery files uploading and the submission progress.*
@@ -85,12 +85,12 @@ One delivery can hold at most 20 files, no more than 200 MiB in total; each atta
 
 On the board, open a task pending confirmation, preview this version's files, and read the result note against the acceptance criteria. To ask for more, use **Request revision** and write specific feedback; the member revises, rechecks, and submits a new version. When the requirements are met, click **Adopt**, and the task moves to Completed.
 
-History keeps older snapshots, so check the current version when reviewing. Only after the owner accepts the upstream deliverable can a downstream task continue to assignment; downstream execution uses the files of the accepted version.
+Check the version number in **Delivery history**. The owner reviews the latest submission, and downstream tasks use the version explicitly marked as adopted. If several versions appear, check which one a file belongs to before opening it. Downstream assignment can proceed once the upstream delivery is adopted.
 
 ![The owner's revision screen](/img/docs/collaboration/revision-request.png)
 *The owner writing revision requirements.*
 
-![Delivery version history](/img/docs/collaboration/delivery-history.png)
+![Delivery version history in an earlier client](/img/docs/collaboration/delivery-history.png)
 *Delivery version history.*
 
 ## 7. View shared files and close out

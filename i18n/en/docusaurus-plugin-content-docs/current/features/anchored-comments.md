@@ -10,12 +10,16 @@ Select a piece of text in a research record to leave a question, a suggested cha
 
 ## Add a comment
 
-1. In [Extensions & marketplace](./extensions.md), install and enable a compatible Anchored Comments plugin.
+This guide refers to public source version **0.2.3**. The Market index bundled with the current public source build has no installable entries. These steps apply once a compatible plugin is installed, enabled, and authorized to save comments in the workspace. See [Extension Center](./extensions.md) for installation sources.
+
+1. Open the workspace and select the session containing the text.
 2. Open **Research record**, and drag to select text within a single entry.
 3. Click **Add comment**, and check the selected text shown in the panel and the research-record entry it belongs to.
 4. Write your feedback and click **Save**.
 
 **Discuss selection** opens a chat draft that carries the selected text. To save it as a comment, use **Add comment**. If the panel already holds unsaved content, a new selection asks whether to keep or replace the draft.
+
+For example, select “Missing values were set to zero”, choose **Add comment**, and write “Check whether missing means not measured”. Save it, then ask the Agent to list the workspace comments and check that the quotation matches your note.
 
 ## View, edit, and delete
 
@@ -33,6 +37,6 @@ Submitting feedback to an external service also needs separate confirmation. If 
 
 - After the original text changes, re-check the quotation and its position.
 - Comments belong to the current workspace. Before sharing a project, check the comments and screenshots for content you do not want to share.
-- The current plugin version is **0.2.1**. For installation requirements and version notes, see [Version & Compatibility](../reference/version-and-compatibility.md).
+- If **Add comment** is missing, check that the plugin is enabled, then select text within a single Research record entry in the current session.
 
 Related: [Agent workflows](../workbench/agent-workflows.md), [Plugin license terms](../reference/plugin-licenses.md).
