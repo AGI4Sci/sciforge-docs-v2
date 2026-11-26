@@ -26,7 +26,7 @@ The **Access** shortcut at the top of the page jumps to the Computer Use configu
 | --- | --- | --- |
 | **Codex** | Requests Codex's `readOnly` sandbox and disables command network access within that sandbox | Suitable for the local file inspection in this tutorial; stop and check any request that widens permissions |
 | **Claude Code** | Uses Claude Code's `plan` permission mode | For analysis and planning; do not claim it provides the same filesystem sandbox isolation as Codex |
-| **DSH** | Has no file access range option of the same name; the native shell is off by default and, once enabled for a DSH you installed, approved command by command | This tutorial uses Codex; do not treat DSH's shell switch as a filesystem read-only sandbox |
+| **DSH** | Choose **Read only** under **File access range**. The native shell has a separate switch and is off by default | This tutorial uses Codex. When using DSH, check its file access range and native shell settings separately |
 
 MCP, remote commands, and Computer Use permissions must each be checked separately; for your first task, use only the tools needed to read the local project.
 

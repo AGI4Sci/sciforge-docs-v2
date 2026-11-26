@@ -19,16 +19,16 @@ Open the folder that holds your paper, code, or data. Create a session for the t
 
 1. Open the **Workspace location** menu at the top and select **Local workspace** or a configured, available remote target.
 2. Select the folder containing your files. The left sidebar shows the project name and workspace path.
-3. Create a session for a new goal; the new session appears under that project. To resume a task, select its session in the sidebar.
+3. Click **New Agent** in the left sidebar to open a session draft. The session appears under the project in the sidebar after you send the first message. To resume a task, select its existing session in the sidebar.
 
 ![Creating a session in a SciForge workspace](/img/docs/quickstart/quickstart-new-session.jpg)
-*The new session appears under the selected project.*
+*The new session appears under the selected project after you send the first message.*
 
 ## Add files by selecting, dropping, pasting, or referencing
 
 ### Reference a workspace file
 
-Open **Files** from the far-right toolbar and reference the file. You can also type `@` in the input box to search the workspace. Use `@"folder/file name"` for a path with spaces. The pending reference appears in the attachment tray above the input box with its name and path. This route works for a read-only demo without copying new files into the workspace.
+Open **Files** from the far-right toolbar and hover over the file. Click **Add reference**. You can also type `@` in the input box to search the workspace. Use `@"folder/file name"` for a path with spaces. The pending reference appears in the attachment tray above the input box with its name and path. This route works for a read-only demo without copying new files into the workspace.
 
 ![Files button in the far-right toolbar and the open workspace Files panel](/img/docs/guides/workspace-files-v0218-en.png)
 *Click **Files** on the far-right toolbar. The example workspace’s file tree opens beside it.*

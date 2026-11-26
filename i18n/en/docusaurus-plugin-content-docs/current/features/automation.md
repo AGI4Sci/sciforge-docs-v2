@@ -19,7 +19,7 @@ Automation has two entry points: **Scheduled tasks** is a built-in scheduling ca
 
 ## Create a scheduled task
 
-Open **Scheduled tasks** from the left, click **New task**, and configure the name, instruction, model, reasoning effort, run time, and workspace in order.
+Open **Scheduled tasks** from the left and click **New task**. Enter the name, instruction, model, reasoning effort, run time, and workspace. Click **Confirm** to add the task to the list. To try it immediately, click **Run once** on its card. When the run ends, check the status and **Last result**.
 
 ![SciForge scheduled tasks page](/img/docs/guides/scheduled-tasks.jpg)
 *Figure 1: A scheduled task puts the task content, model, schedule, and runtime environment in a single configuration table.*
@@ -40,7 +40,7 @@ When you need multiple steps, open **Create Loop** from the right toolbar or **M
 
 1. Create a Loop and add **AI agent task**, **Condition**, **HTTP request**, or **Human Approval** nodes.
 2. Define the input, output, and **Error handling** for each node.
-3. Click **Test node** to test a single node first, then click **Run once** to run the whole flow manually.
+3. Select the node you want to try and click **Test node → Run test**. When the dialog shows the test output, return to the canvas and click **Run once**. Open **Run history** to see the result for the full flow.
 4. Turn on **Enabled** only after a successful trial run, then configure **Schedule trigger**, **Webhook trigger**, **AI-callable**, or **Triggers** (agent hooks).
 
 **Restarting the app loses a run that was paused at a Human Approval node.** For important flows, save each step's input, output, and result; before rerunning, open **Run history** to check which nodes completed and whether a file write, request, or submission has already taken effect, so you do not write or submit twice.
