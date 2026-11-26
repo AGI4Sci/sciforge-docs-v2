@@ -30,6 +30,9 @@ Open the folder that holds your paper, code, or data. Create a session for the t
 
 Open **Files** from the far-right toolbar and reference the file. You can also type `@` in the input box to search the workspace. Use `@"folder/file name"` for a path with spaces. The pending attachment appears above the input box with its name and path. This route works for a read-only demo using existing files.
 
+![Files button in the far-right toolbar and the open workspace Files panel](/img/docs/guides/workspace-files-v0218-en.png)
+*Click **Files** on the far-right toolbar. The example workspace’s file tree opens beside it.*
+
 ### Import a file from outside the workspace
 
 Click **Add File**, drag a supported file into the input area, or paste a file or image from the clipboard. Pasted plain text goes into the message. When an import succeeds, an item appears in the attachment tray and a copy is saved in the workspace's session attachments directory. PDFs, images, scientific data, and web documents have their own format and size requirements. Follow the error if a file needs to be smaller or use a different format.
@@ -39,8 +42,11 @@ Click **Add File**, drag a supported file into the input area, or paste a file o
 1. **Before sending**, use the **attachment tray** above the input box to see the type, path, and displayed size. Open an attachment to preview it when available. Remove any unwanted item from the tray. Imported copies stay in the session's attachments directory. Open that directory from **Files** to remove a copy.
 2. **After sending**, a **sent file tag** below the message shows that the corresponding file was included. Click it to open a read-only preview. To see whether the assistant used the file, ask it to identify the file and a page, line, or short passage it cited, then compare that reference with the attachment. Use a model with image input when you want to analyze a picture.
 
-![Workspace Files panel](/img/docs/guides/workspace-files.jpg)
-*The Files panel shows folders and previews. Open it from the toolbar on the far right.*
+![Sample file in the attachment tray above the input box before sending](/img/docs/guides/workspace-attachment-before-v0218-en.png)
+*Before sending, `sample-notes.md` appears in the **Attachments** tray above the input box.*
+
+![Sample file tag below the user message after sending](/img/docs/guides/workspace-attachment-after-v0218-en.png)
+*After sending, the `sample-notes.md` tag appears below the message. Click it to preview the file.*
 
 ## Manage sessions and review changes
 
