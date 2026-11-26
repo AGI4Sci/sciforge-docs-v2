@@ -16,7 +16,7 @@ A remote workspace brings a SciForge Workspace Host session running on another m
 - When a session disconnects or errors, use **Reconnect** on the target session in the selector.
 - The open-source client does not include a connection management panel for registering SSH targets, VPN environments, and workspace authorization; remote sessions appear in the selector only after the deployer provides and attaches them.
 
-Remote files, terminals, and Agent commands actually act on the remote directory. Do not mistake "displayed in a local window" for "the data has been copied to your machine."
+Before running a command, use **Workspace location** to identify the remote connection and its path. Files, terminals, and agent commands act on that remote directory.
 
 :::note[Current boundaries]
 

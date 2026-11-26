@@ -10,7 +10,7 @@ Select a piece of text in a research record to leave a question, a suggested cha
 
 ## Add a comment
 
-This guide refers to public source version **0.2.3**. The Market index bundled with the current public source build has no installable entries. These steps apply once a compatible plugin is installed, enabled, and authorized to save comments in the workspace. See [Extension Center](./extensions.md) for installation sources.
+These steps cover **0.2.3**. Enable a compatible plugin and make sure you have permission to save comments in this workspace. See [Extension Center](./extensions.md) for installation.
 
 1. Open the workspace and select the session containing the text.
 2. Open **Research record**, and drag to select text within a single entry.
@@ -19,7 +19,7 @@ This guide refers to public source version **0.2.3**. The Market index bundled w
 
 **Discuss selection** opens a chat draft that carries the selected text. To save it as a comment, use **Add comment**. If the panel already holds unsaved content, a new selection asks whether to keep or replace the draft.
 
-For example, select “Missing values were set to zero”, choose **Add comment**, and write “Check whether missing means not measured”. Save it, then ask the Agent to list the workspace comments and check that the quotation matches your note.
+For example, select “Missing values were set to zero”, choose **Add comment**, and write “Check whether missing means not measured”. Save it and look up the comment in the session. The result should contain the quotation and your note.
 
 ## View, edit, and delete
 
@@ -29,7 +29,7 @@ Deleting a comment requires confirmation. Comments are stored in the workspace a
 
 ## Screenshots and feedback
 
-A screenshot needs a separate action; saving text does not take one automatically. The current app view can be saved only when the app supports screenshots and screenshot permission has been granted. Before capturing, check the screen for accounts, tokens, or other sensitive information.
+To include the current app view, take a screenshot separately in a client that supports it and has screenshot permission. Move account details, tokens, and other sensitive content out of view before capturing.
 
 Submitting feedback to an external service also needs separate confirmation. If no feedback service is configured, comments can only be saved and discussed locally.
 

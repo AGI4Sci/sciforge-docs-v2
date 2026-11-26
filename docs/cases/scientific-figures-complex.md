@@ -6,83 +6,90 @@ sidebar_position: 5
 
 # 科研图件案例：数据整理、绘图与结果保存
 
-下面五个案例展示科研图件可以处理的数据和得到的结果。数据均为明确构造的**合成测试数据**，不代表真实实验发现；截图和图片来自实际 SciForge 操作及保存的运行结果。具体操作见 [科研图件使用说明](../features/scientific-plotting.md)。
+先选一个与手头数据接近的案例，再打开 [科研图件使用说明](../features/scientific-plotting.md) 按步骤操作。以下图片和截图来自 SciForge 的实际运行，输入均为合成测试数据，适合用来核对处理方法和图件布局。
 
 ## 案例一：多文件纵向数据与四面板图
 
-将测量表与独立的样本信息表关联，按分组和时间点展示变化。示例包含 12 个样本、5 个时间点，共 60 条记录；按规则排除 2 条空值/NA 和 1 条 QC fail，保留 57 条，不插补。
+**先把测量表和样本信息表关联起来。** 示例有 12 个样本、5 个时间点，共 60 条记录。清洗时排除 2 条空值或 NA 和 1 条 QC fail，保留 57 条合成数据记录，缺失值不插补。
 
-一次得到均值±SEM、个体轨迹、48 小时散点和有效样本量热图，以及单独的 QC 图。SEM 使用样本标准差（ddof=1），有效 n 小于 2 时不画误差条；全部 10 个分组/时间点的统计值经过独立计算核对。原始数据、清洗结果和规则均保留，不做显著性检验，也不猜测测量单位。
+**用四个面板检查数据。** 主图画出均值 ± SEM、个体轨迹、48 小时散点和有效样本量热图。另存一张 QC 图，核对缺失与排除计数。保留原始数据、清洗表和处理规则，便于检查每个面板。
+
+**按有效样本数计算误差条。** SEM 使用样本标准差（`ddof=1`）。有效 `n < 2` 时省略该点的误差条。图中的统计为描述性汇总。时间轴以小时为单位，响应轴注明源数据未提供单位。
 
 <details>
 <summary>查看应用中的图件与会话</summary>
 
-![真实SciForge应用中的纵向四面板图与会话上下文](/img/docs/scientific-figures/complex/01-longitudinal-app.png)
+![SciForge 应用中的纵向四面板图和会话](/img/docs/scientific-figures/complex/01-longitudinal-app.png)
 
 ![科研图件面板细节](/img/docs/scientific-figures/complex/01-longitudinal-panel.png)
 
 </details>
 
-![原始运行输出：均值误差条、个体轨迹、终点分布与有效样本量](/img/docs/scientific-figures/complex/01-longitudinal-figure.png)
+![同次运行的主图：均值误差条、个体轨迹、48 小时分布和有效样本量](/img/docs/scientific-figures/complex/01-longitudinal-figure.png)
 
-![同一次实际运行的QC输出：缺失值和排除计数](/img/docs/scientific-figures/complex/02-longitudinal-qc.png)
+![同次运行的 QC 图：缺失值和排除计数](/img/docs/scientific-figures/complex/02-longitudinal-qc.png)
 
 ## 案例二：缺失值与零方差表达矩阵
 
-输入为 12 基因 × 8 样本的合成表达矩阵和独立分组文件，其中有 1 个缺失单元格，Gene12 全零。逐行用样本标准差计算 z-score，缺失值不插补、显示为灰色；排除零方差的 Gene12 后保留 11 行。
+把 12 基因 × 8 样本的合成表达矩阵和分组表一同加入。逐行用样本标准差计算 z-score。唯一的缺失单元格保留为灰色，排除全零的 Gene12 后剩 11 行，可在热图、统计值和运行日志中核对缺失及排除情况。
 
-得到热图与 treated−control 描述性均值差的双面板图。日志核对了缺失和排除情况。均值差不代表统计显著性或生物结论，名义相同效应也可能因浮点数差异改变排序，不应据此判断科学优先级。
+第二个面板显示 treated−control 描述性均值差。阅读时以实际差值为准。非常接近的值可能因浮点精度而换序，图中的排序适合浏览数据。
 
 <details>
 <summary>查看应用中的表达矩阵案例</summary>
 
-![真实应用中的表达矩阵案例](/img/docs/scientific-figures/complex/03-expression-app.png)
+![应用中的表达矩阵案例](/img/docs/scientific-figures/complex/03-expression-app.png)
 
 </details>
 
-![原始运行输出：缺失值遮罩与描述性均值差](/img/docs/scientific-figures/complex/03-expression-figure.png)
+![双面板结果：缺失值遮罩和描述性均值差](/img/docs/scientific-figures/complex/03-expression-figure.png)
 
 ## 案例三：运行失败后继续修改
 
-绘图代码出错时，可以查看保留的日志和异常，修改后再次运行。本例修复后生成了与案例一一致的两张图，并作为候选保留；确认接受前，已有图件仍保持原样，失败记录也可继续查看。
+在 **代码与运行** 打开失败记录，读日志，修正脚本后重新执行。重新执行成功后，回 **图件** 页。候选中会出现本例的两张图：四面板主图和 QC 图。比较后可接受候选。失败日志仍可从 **代码与运行** 的历史打开。
 
 <details>
 <summary>查看失败记录截图</summary>
 
-![实际应用中的故意失败运行与历史诊断](/img/docs/scientific-figures/complex/04-failure-app.png)
+![失败运行及其历史日志](/img/docs/scientific-figures/complex/04-failure-app.png)
 
 </details>
 
 ## 案例四：多张图与文件名支持
 
-一次运行可以保存多张图。本例的三张 PNG 包含不同目录下的同名文件，以及带空格、中文和大写扩展名的文件名，均成功保存。图片数量上限为 16 张，超限会明确提示失败；具体限制见 [分析文件说明](../features/scientific-plotting.md#分析文件历史与恢复)。
+把脚本生成的三张 PNG 写到输出目录。运行后在 **输出文件** 按路径区分不同目录下的同名文件。带空格、中文或大写扩展名的文件也会列出来。每次最多 16 张。超出时按 [输出上限](../features/scientific-plotting.md#分析文件历史与恢复) 调整脚本输出，保存代码版本后点 **执行已冻结 Python**。
 
 <details>
 <summary>查看图片超限提示</summary>
 
-![实际应用中的图片输出超限失败](/img/docs/scientific-figures/complex/05-output-limit-app.png)
+![一次输出超过图片上限时的运行结果](/img/docs/scientific-figures/complex/05-output-limit-app.png)
 
 </details>
 
 ## 案例五：保存分析结果，继续绘图
 
-除了图片，还可以保存清洗后的 CSV、统计 JSON 和清洗规则，再将结果用于下一步绘图。本例保存了从 60 条原始记录中保留的 57 条数据，后续绘图直接使用保存的数据副本，无需手工拷贝临时文件。分析文件可供后续处理，只有 PNG 可以发布为图件。
+先在脚本中保存清洗后的 CSV、统计 JSON 和清洗规则。到 **代码与运行** 找到这次输出，确认 CSV 包含从 60 条原始记录中保留的 57 条，再把这份文件加入下一版输入。保存新版本后，在 **版本与输入快照** 能看到这份 57 行的数据副本。需要发布图件时，使用绘图运行输出的 PNG。
 
-![已保存分析文件和摘要；CSV 不可当作图片发布](/img/docs/scientific-figures/hardening/04-analysis-artifacts.png)
+![运行详情中已保存的分析文件和摘要](/img/docs/scientific-figures/hardening/04-analysis-artifacts.png)
 
-运行已经结束且留下可确认的结果时，可以补齐尚未保存完整的记录，保留原来的日志和结果文件，无需重新运行 Python。本例通过受控中断测试验证了这一点。历史记录支持分页查看，单条损坏不阻断其他页。操作方法见 [分析文件、历史与恢复](../features/scientific-plotting.md#分析文件历史与恢复)。
+如果 Python 已结束，但保存中断，请到 **代码与运行 → 尚未结束或中断的运行**。出现 **完成中断记录** 时，选中对应运行并点击。补存完成后，从历史中打开同一条运行，原日志和结果文件会列在详情里。历史超过一页可继续翻页，单条记录损坏时仍可打开其他记录。操作见 [分析文件、历史与恢复](../features/scientific-plotting.md#分析文件历史与恢复)。
 
 <details>
 <summary>查看恢复前后与历史记录</summary>
 
-![保存中断后，安装版显示可完成的记录](/img/docs/scientific-figures/hardening/01-recovery-before.png)
+![安装版显示可以补齐保存的中断记录](/img/docs/scientific-figures/hardening/01-recovery-before.png)
 
-![完成同一运行的原结果保存后，日志与结果文件保留](/img/docs/scientific-figures/hardening/02-recovery-after.png)
+![同一次运行的原日志和输出已保存](/img/docs/scientific-figures/hardening/02-recovery-after.png)
 
-![真实安装版的分页运行历史](/img/docs/scientific-figures/hardening/03-pagination.png)
+![安装版的分页运行历史](/img/docs/scientific-figures/hardening/03-pagination.png)
 
 </details>
 
 ## 案例说明
 
-这些案例于 2026-11-05 实际运行，案例一至四使用 v8/v9，案例五使用 v10。数据、代码、日志与产物均有保存，统计结果和文件经过核对。环境记录提供精确包版本及重建说明，但不等于完整环境归档，本轮未执行依赖重装验证；更多范围与限制见 [科研图件使用说明](../features/scientific-plotting.md#当前能力与使用限制)。
+<details>
+<summary>查看运行日期、历史构建和核验范围</summary>
+
+案例运行于 **2026-11-05**。截图和结果对应当时的构建，案例一至四使用 v8/v9，案例五使用 v10。各案例保留了数据、代码、日志和产物。案例一的 10 个分组与时间点组合的统计值与独立计算一致。案例三重新生成了与案例一一致的两张图。案例五的 CSV 与下一次运行的输入副本一致，并在中断后补存了原运行记录。环境记录包含精确包版本及重建说明，核验范围截至环境记录生成。环境要求见 [科研图件使用说明](../features/scientific-plotting.md#当前能力与使用限制)。
+
+</details>

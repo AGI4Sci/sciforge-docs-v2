@@ -10,18 +10,17 @@ Change Inspector helps you check which files the current task changed and what c
 
 ## How to use it
 
-This guide refers to public source version **0.1.3**. The current public source build lists Change Inspector under **Not installable yet**. Once you have installed and enabled a compatible build, try it in an Agent session that recorded a file edit. See [Extension Center](./extensions.md) for installation sources.
+These steps cover **0.1.3**. Enable a compatible plugin, then try it in the same session that recorded a file edit. See [Extension Center](./extensions.md) for installation.
 
 1. In a demo workspace, ask the Agent to make one edit, such as adding a review note to `notes.md`.
 2. In the same session, ask:
 
    > Check which files this task changed, and explain each change. If the content is too long, show it in batches and tell me what is not yet shown.
-3. Check that the list includes `notes.md` and open the diff to verify the edit. If the output is incomplete, ask for the next batch. If the list is empty, check the original session and compare the actual file or Git status.
+3. The change list should include `notes.md`, and its diff should show the added line. Open the next batch if the list continues. If it is empty, return to the session that made the edit, then open the file or check Git status.
 
 ## Tips
 
-- The results contain only file changes already recorded in the current session, not the records of other sessions in the same workspace.
-- Changes made by manual edits or other tools may not appear in the records. When you need to confirm those changes, check the actual files and, if needed, compare with the Git status. An empty list does not mean the workspace was never modified.
+- The list shows edits recorded in the current session. Use the actual files or Git status to look for manual edits or changes from another tool or session.
 - When there are many files or changes, what is shown may be incomplete. First confirm what has not yet been shown, then keep checking in batches; do not rebuild a whole file from partial diffs alone.
 - If more edits happen during the review, refresh the file change list and re-check the affected files.
 - After you disable the plugin or revoke its permissions, you must enable it again or re-authorize it to continue checking.

@@ -6,55 +6,48 @@ sidebar_position: 30
 
 # Create Loop (multi-step workflows)
 
-Create Loop breaks a task into multiple inspectable steps. It sits above session execution: AI nodes generate or decide, condition and data-processing nodes control the path, HTTP nodes connect external systems, subflows reuse another Loop, and human approvals determine whether key actions proceed. Before using it, confirm that the models, network, and tools the chosen nodes need are available, and run the whole flow through in your current environment.
+Try a loop that turns a short note into three lines, then pauses for you to approve the result. Once that works, you can add a file write or an external request after the approval.
 
 ## How to open it
 
-- Entry: **Create Loop** in the right toolbar (expand **More tools** if it is not shown). Edit nodes on the canvas; the right panel shows settings for the current Loop.
-- Target: one Loop in the current workspace. Definitions and run records are stored on this machine.
-- Prerequisite: AI nodes need an available Runtime and model, HTTP nodes need network access, and schedules and local webhooks are triggered by the app process, so the app must remain running. A Loop can be started with manual **Run once**, a schedule, a webhook, or an Agent hook.
-
-## What you can do
-
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| Chain a multi-step task | Add **AI agent task**, **LLM generation**, **Condition**, **HTTP request**, human approval, subflow, and other nodes from the left node panel, then connect them | A Loop you can save |
-| Branch on data | Organize inputs and outputs with Condition, Switch, Merge, Filter, Loop, and similar nodes | Explicit data flow between nodes |
-| Validate before going live | Use **Test node** with mock upstream input for a single node, then **Run once** for the whole Loop | Node results and run logs |
-| Stop at key points | Add a **Human Approval** node, set the title, instruction, and timeout, then **Approve/Reject** on the card or in the run drawer | Controlled release |
-| Trigger automatically | Configure a schedule, webhook, or Agent hook | Scheduled, external, or event-driven triggers |
+Click **Create Loop** in the far-right toolbar. Look under **More Tools** if the icon is out of view. Name the loop and choose its working directory in the canvas settings. AI, image, and code nodes use this directory. The definition and run records are stored on your device.
 
 ## Typical workflow
 
-1. Open **Create Loop** from the right toolbar or **More tools**, name it, and confirm the working directory. AI, image, and code nodes all use that directory.
-2. Add trigger and task nodes and connect them in execution order. Write clear input references, error handling, and timeouts for each node.
-3. Use **Test node** with mock upstream input to validate a single node first. The current Loop is saved before testing.
-4. Click **Run once** and check each node's input, output, timing, and errors in the **Run log**, **Run history**, and **Audit report**.
-5. After validation, turn on **Enabled**, enable **AI-callable** as needed, configure schedules or webhooks, and keep human approvals before key steps.
+This example sends the three lines to an **Output** node after approval. Both a trial run and **Test node** execute the configured nodes. AI nodes send requests to the model provider. HTTP nodes send requests to the configured address. These requests may incur fees. Start with short text and leave out anything that writes to an external system.
+
+1. **Set up the Runtime.** Configure an available Runtime in **Settings → AI Assistants**. Once it can reply in a regular session, return to the canvas.
+2. **Add and connect the nodes.** Add **Manual trigger**, **AI agent task**, **Human Approval**, and **Output** from the left side. Connect the first three nodes in order. Connect the **Approved** output to **Output**, and leave **Rejected** unconnected.
+3. **Give the AI node one sample.** Select **AI agent task**, pick a model, and enter a short note in **Prompt**. Example input: “Monday: entered the sample table. Tuesday: standardized the units. Wednesday: reviewed missing values. Summarize each day in one line.” You can use **Test node** on the AI node to see whether it returns three lines. Testing saves the loop first.
+4. **Set up human approval.** Select **Human Approval** and enter a title, instructions, and timeout. In this example, approve when all three days are represented and the lines match the source.
+5. **Run the loop and decide.** Click **Run once** and confirm. When the run pauses, open the request with the approval title and **Approve** and **Reject** buttons on the card or in the run drawer. Read the upstream result. If it meets the criteria, click **Approve**. The pause ends, **Output** receives the three lines, and the run shows **Success** when it finishes. Click **Reject** if something is missing. The **Output** node is skipped.
+6. **Open the result.** In **Run log**, open **Output** to see the three lines. Find the run in **Run history** and use **Audit report** if you need the inputs, outputs, or timings. Run one representative sample end to end before processing a batch.
 
 ![SciForge Create Loop canvas](/img/docs/guides/create-loop.jpg)
-*Figure 1: The Create Loop canvas connects multiple processing nodes into a runnable flow. Select a node to inspect its parameters on the right.*
+*Connect the nodes on the canvas. Select one to see its parameters on the right.*
+
+## What you can do
+
+| Task | Where to configure it |
+| --- | --- |
+| Generate content or run an agent task | Add **LLM generation** or **AI agent task**, then enter the inputs and the result you need. |
+| Branch based on the data | Add **Condition**, a multi-way branch, merge, filter, or loop. Select the upstream node that supplies each input. |
+| Call an external service | Add **HTTP request** and set the destination and permissions. Put **Human Approval** before the request if someone needs to approve it. |
+| Reuse an existing flow | Add a subworkflow and select the loop and its inputs. |
+| Start automatically | After a successful trial run, turn on **Enabled**. Set up a schedule or webhook, enable **AI Callable**, or configure an Agent hook. Scheduled and local webhook triggers require the app to stay running. |
 
 ## Where things are saved, and what actions affect
 
-- Loop definitions and run history are saved on this machine. The run log and audit report show each step's input, output, and result; for important flows, also save the results you need to keep to an agreed location.
-- Nodes may read or write workspace files, and may use the output of upstream nodes. Before running, check the working directory and output paths; before a rerun, check existing files and submissions that already completed, to avoid repeating operations.
-- Starting a whole flow, stopping a run, and handling approvals all need confirmation. HTTP and AI nodes send real requests and may incur costs; **Test node** also performs real operations.
-- Raw Secret values are not written to run records. Manual approval needs you to choose approve or reject; after the app restarts, a run paused at that point cannot be resumed.
-
-## Known limitations
-
-- **Restarting the app loses a run that was paused at a manual approval.** Before rerunning, look at the inputs, outputs, and results each step saved, and confirm which operations have already completed, to avoid writing or submitting twice.
-- Schedules and webhooks depend on the app process. They do not fire while the app is closed.
-- A step that needs a Secret must be able to obtain the credentials it needs when rerun; if they are unavailable, execution stops, and you must restore the configuration first.
-- A single-node test proves only that node, not the whole flow. Tests also execute the node logic for real.
-- When randomness is not fixed, rerun differences are marked as indeterminate and cannot be treated directly as a reproduction failure.
+- Before running, set the working directory, timeouts, output paths, and how to handle failures. Save results you need later to the workspace.
+- Follow the app's confirmation when stopping the run or deciding an approval. Nodes that use a Secret need that credential to rerun. The run history hides the original value.
+- Restarting the app ends a run paused for approval. Open **Run history** to see which nodes completed. If any already wrote files or submitted a request, start a new loop with the saved output and only the remaining steps. To repeat this text-only example, run it again from **Manual trigger**.
+- If randomness is unfixed, differences between runs are marked inconclusive. Fix randomness before comparing runs for reproducibility.
 
 ## Related pages
 
-- [Automation and scheduled tasks](./automation.md): scheduled execution of a single AI instruction, and when to use Create Loop instead.
-- [Evidence & Reproducibility](./evidence-and-reproducibility.md): run records, artifact versions, and the evidence chain.
-- [Agent workflows](../workbench/agent-workflows.md): Agent hooks and execution boundaries in sessions.
-- [Permissions and security](../operations/security.md): external requests, writes, and confirmation rules.
+- [Automation and scheduled tasks](./automation.md)
+- [Evidence and reproducibility](./evidence-and-reproducibility.md)
+- [Agent workflows](../workbench/agent-workflows.md)
+- [Permissions and security](../operations/security.md)
 
-> Implementation basis: `@sciforge/domain-create-loop` v1.1.4.
+> Component version: `@sciforge/domain-create-loop` v1.1.4.

@@ -6,53 +6,45 @@ sidebar_position: 51
 
 # Browser Preview
 
-Browser Preview runs a native Chromium page in the right panel for viewing local development pages, research materials, or sites that require sign-in. It is both a window for human browsing and a page resource the Agent can observe and operate. Web content is always treated as untrusted data.
+Open a web page in the right panel of the SciForge desktop app. Browse and sign in yourself, or use the session to read the current page and perform an action. The page shows the result.
 
-## How to open it
+## Open a page
 
-- Entry: **Browser** in the right toolbar (expand **More tools** if it is not shown), or **Native browser** in the right panel.
-- Target: one browser page instance in the current session; one instance corresponds to one page.
-- Prerequisite: the SciForge desktop window. Opening a localhost development site in an ordinary browser cannot host the native view, and an explicit unavailable message appears.
-- Input box context: when a message contains an HTTP(S) link, that URL is attached for the Agent. It first attempts a read-only fetch, then hands off to the browser panel when it encounters sign-in or script-rendered content.
+1. Click **Browser** in the far-right toolbar. Use **More Tools** if it is out of view, or open **Native browser** in the right panel. If a development page in a regular browser says native preview is unavailable, open the SciForge desktop app.
+2. Enter an HTTP(S) address and press Enter. The address bar shows the current URL. Use the panel controls to go back or forward, reload, or go full screen.
+3. Sign in within the panel if the site requires it. Sessions in the same workspace share its browser sign-in. Use the site's account menu to see which account is active. Sign in separately for accounts used in an external browser.
 
-## What you can do
+Each native browser instance opens one page. Use the address bar to identify the active page when you switch panels.
 
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| Open a web page | Enter an HTTP(S) address in the address bar and press Enter | The native page, title, and current URL |
-| Browse and reload | Use the Back, Forward, Reload, and Fullscreen buttons | Page state and observable page content |
-| Let the Agent read | Have it read the URL or current page first | Bounded body text and interactive targets |
-| Let the Agent act | Navigate, click, fill, or scroll under explicit instructions | Page changes; actions bound to the current page version |
+## Read a page
 
-## Typical workflow
+Send a link in the session and specify what to find. For example, ask for a dataset's release date. The assistant first tries a read-only HTTP(S) request from your device. If the content needs sign-in or script rendering, open it in the **Browser** panel and direct the session to the current page. Use the title, URL, or quotations in the reply to find the source.
 
-1. Open Browser in the right panel and sign in to any sites you need. Sign-in state is saved in the current workspace's browser profile.
-2. Have the Agent read the page first and confirm the URL, title, and key content. Do not have it click immediately.
-3. When navigation is needed, you confirm it. Before clicks, key presses, or drags, check the action and its consequences.
-4. Observe the page again after an action to confirm submission results, downloads, or navigation instead of relying only on the Agent's summary.
-5. Close the panel when the task is done. When you reopen it, verify that sign-in, URL, and page are still in the expected state.
+<details>
+<summary>What the browser can read</summary>
 
-## What actions affect, and where things are saved
+The initial read-only URL request requires no extra confirmation. Browser tools can read text, titles, URLs, and controls, and can take screenshots. The read excludes password, payment, CAPTCHA, and marked sensitive fields. For a chart rendered on a canvas, a cross-origin iframe, or a closed shadow root, use a screenshot or inspect the page yourself. Instructions displayed on a site are page content. Actions follow the task you set in the session.
 
-- When reading a page, the Agent can get the body text, title, URL, interactive targets, and screenshots; password and payment/CAPTCHA fields and regions marked sensitive are excluded. Reading by URL accesses that address from this machine and does not ask for extra confirmation.
-- Filling forms, selecting options, clicking, pressing keys, and dragging act directly on the page. For example, pressing Enter may submit a form, clicking a link may start a download, and dragging a file may trigger an upload. Before starting, confirm these actions are within what the task allows, and ask the Agent to stop before important actions such as sending, paying, or deleting.
-- The Agent's navigation, Back, Forward, and Reload need confirmation. The browser tool itself does not pop up a confirmation for each click, key press, or drag; whether the AI assistant you use asks separately depends on its settings.
-- Permission requests, popups, and downloads started by the page itself are denied. Downloads started by the Agent are not confirmed again by the browser tool; files are saved to the workspace Downloads directory, or to the app's private directory when no workspace is available. After downloading, check the file and where it was saved.
-- Sign-in state is kept after you close the panel, and the same workspace shares that browser identity. Check the current account before switching tasks. The configuration and credentials of an external browser are not imported automatically.
+</details>
 
-## Known limitations
+## Take an action on a site
 
-- One browser panel hosts only one page. Different sessions or panels may each hold a different page, so confirm the current page before acting.
-- Pages are rendered by native Chromium, and an ordinary browser tab is not a substitute. Without a desktop window, there is no silent fallback to an iframe.
-- Content in canvas charts, cross-origin iframes, and closed shadow roots may not be structurally readable. Use screenshots or manual inspection instead.
-- Web content is untrusted data. Text on a page must not be treated as instructions, and the Agent's conclusions should be checked against the URL and page state.
-- Browser Preview does not expose a remote debugging port and does not open arbitrary script execution to the Agent.
+1. **Go to the target page.** Identify the site and the action in the session. When the assistant navigates, goes back or forward, or reloads, you confirm. The address bar then shows the destination.
+2. **Fill or submit a form.** Specify the fields, the data that may be sent, and where to stop. An example is filling the title of a draft and stopping before submitting it. Browser clicks, key presses, and drags act immediately. Enter can submit a form, and dragging a file can upload it. For a send, payment, deletion, or upload that needs your decision, ask the assistant to stop before that step. After submitting, look for the receipt or destination page.
+3. **Download a specific file.** Identify the link to download. The assistant can start it directly. A completed download returns the file name and path. With a workspace, it saves to the session folder under `.sciforge-downloads`. Without an available workspace, it saves under the app's private `browser-downloads` directory. Open the returned path to see the file.
+
+<details>
+<summary>Pop-ups and script debugging</summary>
+
+The browser blocks permissions, pop-ups, and downloads initiated by the page itself. To download a blocked file, use an explicit download link. Use separate developer tools to debug page scripts.
+
+</details>
 
 ## Related pages
 
-- [Workbench tools](../workbench/tools.md): where Browser fits in the toolchain.
-- [Permissions and security](../operations/security.md): external writes, approvals, and credential boundaries.
-- [Computer Use](./computer-use.md): another path when you need more structured page operations.
-- [Remote resources and collaboration](../operations/remote-and-collaboration.md): data boundaries in remote workspaces.
+- [Workbench tools](../workbench/tools.md)
+- [Permissions and security](../operations/security.md)
+- [Computer Use](./computer-use.md)
+- [Remote resources and collaboration](../operations/remote-and-collaboration.md)
 
-> Implementation basis: `@sciforge/domain-browser-preview` v1.0.8.
+> Component version: `@sciforge/domain-browser-preview` v1.0.8.

@@ -4,164 +4,122 @@ description: Select files, describe your plotting request in chat, run Python to
 sidebar_position: 20
 ---
 
-import Admonition from '@theme/Admonition';
-
 # Scientific Figures
 
-**Select files → tell the AI assistant how to plot them → review the result → accept when satisfied.** Scientific Figures keeps your request, Python code, run results, and image versions together. To revise a figure, describe the change you want in the input box.
-
-<Admonition type="info" title="Before you start">
-
-Prepare Python and Matplotlib first. Python plotting is currently supported; R and MATLAB are not.
-
-Plotting execution in SciForge currently supports only macOS environments that pass the safety check. On Windows and Linux, installing the plugin still does not let you run plotting through this entry point.
-
-</Admonition>
-
-For examples and screenshots of multi-file cleaning, four-panel figures, missing-value matrices, and retries after failure, see the [Complex scientific figures case](../cases/scientific-figures-complex.md).
+Draw your first line chart from two rows of sample data. Then change its color, compare the candidate with the current chart, and use the run history to find the code and data behind either version.
 
 ## Install and open Scientific Figures
 
-This guide refers to public source version **0.4.0-mvp.13**. The index bundled with the current public source build has no Scientific Figures package available. When your client offers a compatible entry, use [Extensions → Market](./extensions.md) and check the publisher and permissions before installing and enabling it.
-
-1. In **Extensions → Market**, confirm the plugin is enabled and that compatible DSH, Python, and Matplotlib are ready.
-2. Open a writable local workspace and a **DSH session** with a configured model. Scientific Figures uses this session to send requests and execute tasks.
-3. In SciForge's right sidebar, select **Scientific Figures** from the plugin picker. The default **Figure** page lets you select files, enter requests, and preview images.
-
-Confirm that Matplotlib is installed for the selected Python interpreter, then try a simple plotting task to check that it runs successfully. You can specify the interpreter with `pythonCommand` in the plugin configuration.
+1. Open [Extensions → Market](./extensions.md) and find **Scientific Figures**. If the entry offers **Install**, install it and wait for **Enabled**. If the entry appears under **Not installable yet**, expand that group to see why. Start at the next step if you have a compatible version enabled.
+2. On a macOS system that passes the execution checks, open a writable local workspace and a **DSH session** with a model configured. Plotting uses Python with Matplotlib installed. If you need to choose the interpreter, set `pythonCommand` in the plugin configuration.
+3. In the right sidebar's plugin picker, choose **Scientific Figures (科研图件)**. Start when the **Figures (图件)** tab opens. This guide gives the panel's Chinese button labels alongside their English names.
 
 <details>
-<summary>Package compatibility requirements</summary>
+<summary>Plugin version, platform, and native DSH entry</summary>
 
-Native DSH requires `>=0.2.1-rc.4 <0.3.0` and Node >=22. The package includes the native Canvas component for its platform; changing the platform, architecture, or Linux libc requires a matching build. Successful installation does not mean the current system can execute plotting tasks.
+The plugin steps here use **0.4.0-mvp.13**. Native DSH requires `>=0.2.1-rc.4 <0.3.0` and Node >=22. The package includes a native Canvas component. Choose a build that matches your platform, architecture, and Linux libc where applicable. The SciForge plotting entry runs on macOS. Windows and Linux can install compatible packages, while Python execution through this entry requires macOS. Implement plotting steps from R or MATLAB scripts in Python before using this entry.
 
-</details>
-
-<details>
-<summary>Open in native DSH</summary>
-
-In native DSH, use the **Figures** panel in the session input area, or enter `/scientific-figures`.
+In native DSH, open **Figures** in the session input area or enter `/scientific-figures`.
 
 </details>
 
 ## Select data and code to generate your first figure
 
-**Save the data and code so you can reproduce the image later.** Put the files in the current workspace, then select the files and a starting point under **New**:
+1. Save this sample as `data/trend.csv` in the workspace.
 
-| Starting point | Required inputs | What happens next |
-| --- | --- | --- |
-| **Start from data** (recommended) | Data file, plotting request | The assistant inspects the data, writes code, saves a copy of the data for this run, then runs the code to generate the first figure. |
-| **Existing data and code** | Data file, Python code, request | Saves the code and a copy of the data, then runs once to produce a result for later comparison. You can also provide an existing image for comparison. |
+   ```csv
+   time,response
+   0,1.2
+   1,1.8
+   ```
+2. Open **New (新建) → Start from data (从数据开始)** and enter `data/trend.csv` in **Data file (数据文件)**. Describe the chart you want. You can adapt this example:
 
-After clicking **Start plotting**, check the run results in the session on the left. When it finishes, click **Refresh** and select the figure. Continue entering changes on the **Figure** page; you do not need to select every original data file again.
+   ```text
+   Read data/trend.csv. Draw a blue line chart with time on the x-axis and response on the y-axis.
+   Use the column names as labels because the data has no units. Save the data and code, run it, and publish the PNG.
+   ```
+3. Click **Start plotting (开始绘图)**. When the session shows a result, return to **Figures**, click **Refresh (刷新)**, and select the new figure. The line should run from (0, 1.2) to (1, 1.8).
 
-For a first run, save these three lines as `data/trend.csv` in the workspace.
+For an existing script, select **Existing data and code (已有数据和代码)** and enter the workspace-relative paths to the data and Python script. You can add an original image for comparison. The panel labels it as user-provided and unverified, and saves the PNG from the new run separately.
 
-```csv
-time,response
-0,1.2
-1,1.8
-```
-
-```text
-Read data/trend.csv, using time as the x-axis and response as the y-axis.
-Draw a blue line chart with units on the axes. Do not fabricate data.
-Save the data and code for this run and actually execute it; for later changes, generate a candidate first and wait for my confirmation.
-```
-
-An image alone cannot provide the exact original data. An original image you supply is marked "user-supplied, not yet verified" and linked to the saved code and inputs. Images generated by running the code are saved separately so you can distinguish and compare them.
-
-![Selecting data and code on the New page](/img/docs/scientific-figures/04-data-code-start.png)
+![Data and code fields on the New tab](/img/docs/scientific-figures/04-data-code-start.png)
 
 ## Save data and reuse it in later revisions
 
-Each revision saves the code and a copy of the data, recording which file ran, which parameters were used, and which version the revision was based on. Earlier code, run results, and images remain available in the history. Even if the original file is later overwritten or deleted, the data in a saved version does not change.
+Select a chart in **Figures** and expand **All versions and sources (所有版本与来源)** to find the code and run behind it. Open **Code and runs (代码与运行)**, select the run, and click **Read run (读取运行)** to view its inputs, parameters, environment, and logs. The code and run lists each show 20 summaries per page. Use **More code versions (更多代码版本)** or **More run records (更多运行记录)** to see the next page.
 
-Later revisions use the last saved data copy by default. To use the latest workspace data instead, select **Re-read workspace data** in advanced settings, then save a new version.
-
-To reuse cleaned, filtered, or transformed data, first save it as a file, then select that file as the next input. Variables in Python memory do not automatically become the next step's data. Rerunning a specific version uses that version's saved code, parameters, and data copy.
-
-## Analysis files, history, and recovery
-
-Besides images, you can save analysis files such as cleaned CSV files, statistical results in JSON, and text notes. To continue an analysis, ask the assistant to find the files saved by a particular run, then select the ones you need as the next input. Only PNGs can be published as figures; for other files, you can view their saved paths and summaries.
-
-<details>
-<summary>Manually reference analysis files and check format limits</summary>
-
-When writing a script, write analysis files to `SCIENTIFIC_FIGURES_OUTPUT_DIR`, for example `cleaned.csv`, `summary.json`, and `rules.txt`.
-
-To reference a file manually, first ask the assistant to list the files and confirm which run's file to use. Combine the workspace-relative path `.scientific-figures/` with the `output.path` returned for that file, then add it to the new code version's `inputPaths` to save an input copy for the next step.
-
-CSV/TSV/TXT must be valid UTF-8, and JSON must be parseable. Files that do not meet these requirements fail to save. PNGs: at most 16 files, 20 MiB each, 64 MiB total. Analysis files: at most 32 files, 8 MiB each, 32 MiB total.
-
-</details>
-
-**Code and runs** shows 20 summaries per page. Click **More code versions / More runs** to view the next page, then select a record to view its details. A damaged record displays an error; other records remain available.
-
-If a run has ended but its results have not been saved, find its record under **Code and runs → Runs that have not finished or were interrupted**. The **Complete interrupted record** button appears only when the recorded results confirm that the run has ended. Clicking it saves the existing results without rerunning Python.
-
-You cannot complete an interrupted record if there are no results that confirm completion, Python cannot be confirmed to have stopped, or the record is reported as still in use. If a run failed, you still need to fix the problem and run it again.
-
-## Rebuild the environment from the saved instructions
-
-After a successful run, the Python and dependency versions, system information, and environment rebuild instructions are saved. To rebuild the environment, follow `_environment/REBUILD.md` in the run directory to create a separate environment and install the dependencies. In the same directory, `requirements.txt` records exact package versions, and `environment.json` records environment information.
-
-After changing the operating system or Python version, recheck the results. You must provide system libraries and drivers yourself.
+Each code version saves a copy of its data, the parameters, and the source version. To rerun it, load that version and use the saved inputs. To use updated workspace files, select **Read workspace data again (重新读取工作区数据)** in the advanced settings and save a new version.
 
 ## Revise a figure, compare it, then accept
 
-Continue describing changes in words, for example, "Keep the data, make the line blue, and shorten the title." The assistant saves a new code version, runs it, and publishes the output as a candidate figure.
+1. In **Figures**, select the sample chart and describe a change, such as keeping the data and making the line orange. After the new run finishes, click **Refresh**. The orange line appears as a candidate.
+2. Compare **Current (当前图)** and **Revised (修改后)**. Use **Candidate (候选)** to switch between results when several are available.
+3. Click **Request acceptance (申请接受)** and review the request in the session. Click **Allow (允许)** to make the orange line the current figure. The previous figure and its code stay in the history. Use **Keep current (保留当前图)** to retain the current figure instead.
 
-- **Current figure / After change**: compare the current figure with the selected candidate. If there are multiple candidates, switch using the **Candidates** drop-down.
-- **Request acceptance**: sends an acceptance request to the session. Check the candidate figure there, then click **Allow** to make it the current figure.
-- **Keep current figure**: reject the selected candidate and continue using the current figure.
+If the current figure changed after the candidate was generated, select the current figure and generate a new candidate from that version.
 
-Earlier images, code, and run records are kept after acceptance. If the current figure changes after a candidate was generated, generate a new candidate based on the current figure.
+![A generated chart in the session](/img/docs/scientific-figures/03-chat-attachment.png)
+
+## Analysis files, history, and recovery
+
+To reuse a result, have the script write files such as `cleaned.csv`, `summary.json`, or `rules.txt` to `SCIENTIFIC_FIGURES_OUTPUT_DIR`. Select the run under **Code and runs**, click **Read run**, and locate the saved path under **Output files (输出文件)**. When assigning the next analysis in the session, include the run and file you want to reuse. You can also add it manually. After saving a new code version, **Version and input snapshot (版本与输入快照)** lists the copied input. Write intermediate variables to files before passing them to another run.
+
+<details>
+<summary>Manual input paths and output limits</summary>
+
+Open **Code and runs → Advanced settings: parameters, inputs, and files (高级设置：参数、输入与文件)**. If you're starting from a parent version, select **Read workspace data again**. Prefix the relative path shown in **Output files** (the tool's `output.path`) with `.scientific-figures/`. Enter it in **Workspace input paths JSON (工作区输入路径 JSON)**, for example `[".scientific-figures/path-from-the-run/cleaned.csv"]`. This field sets `inputPaths`. Click **Save and freeze code (保存并冻结代码)** and look for the copy under **Version and input snapshot**.
+
+| Output | Format | Limit per run |
+| --- | --- | --- |
+| Publish as a figure or candidate | PNG | 16 files, 20 MiB each, 64 MiB total |
+| Reuse in analysis | Valid UTF-8 CSV, TSV, or TXT, or parseable JSON | 32 files, 8 MiB each, 32 MiB total |
+
+If saving fails, open the run and use the error to identify which format or size to change before rerunning.
+
+</details>
+
+If saving stopped after Python finished, open **Code and runs → Unfinished or interrupted runs (尚未结束或中断的运行)** and use **Complete interrupted record (完成中断记录)** on that run. After the save, the original logs and output appear in the run history. If the app reports missing results, an unconfirmed process state, or a busy record, address that issue first. For a failed run, read its error, fix the code or environment, and start again from **Run frozen Python (执行已冻结 Python)**. Other history entries remain accessible if a record is damaged.
 
 ## View code and run it manually
 
-To check the code or run process, open **Code and runs**. For everyday plotting, you can make requests directly in the session.
+1. In **Code and runs**, select a version and click **Load version (载入版本)**. After editing it, click **Save and freeze code**. The new version appears in the list.
+2. Click **Run frozen Python**. The run details show its status, inputs, parameters, and outputs. Expand the code comparison, environment, or logs if you need to investigate.
+3. After a successful run, select a PNG and click **Publish as a new figure (发布为新图件文档)**. To add a candidate to an existing figure, select **Publish as a candidate for an existing document (发布为现有文档的候选图)**, choose **Target document (目标文档)**, and click **Read and select current baseline (读取并选定当前基线)**. Once the baseline appears, click **Publish as candidate (发布为候选图)**. Find the new figure in **Figures**, or the candidate under the target figure's **Candidate** menu.
 
-1. Select a version and click **Load version** to view the Python source.
-2. After editing, click **Save and freeze code** to save a new version.
-3. Click **Run frozen Python** to view the run status and output. Expand parameters, input files, code comparisons, environment, and logs as needed.
-4. After a successful run, you can publish its output as a new figure. To publish a candidate for an existing figure, first check and confirm which current figure you want to revise, then publish the candidate.
+![Code and run results in the panel](/img/docs/scientific-figures/02-code-and-run.png)
 
-You can also expand **All versions and sources** to view the code and run records linked to a figure.
+## Rebuild the environment from the saved instructions
 
-![Viewing code and run results on the Code and runs page](/img/docs/scientific-figures/02-code-and-run.png)
+In **Code and runs**, open a successful run and use the output path to locate its `_environment/` directory.
 
-## Example: revise a line chart and keep its history
+- `environment.json` lists the Python version, system, and dependencies so you can compare environments.
+- `requirements.txt` pins the Python packages to the versions used by the run.
+- `REBUILD.md` walks you through creating a separate environment and installing the dependencies before rerunning.
 
-For a line chart with x-values `[1, 2, 3]` and y-values `[1, 3, 8]`, ask to keep the x-values and change the y-values to `[2, 4, 7]`. The assistant saves and runs the revised code, generating a candidate figure to compare with the current figure.
-
-![Viewing a generated line chart in the session](/img/docs/scientific-figures/03-chat-attachment.png)
-
-After checking the result, use **Request acceptance → Allow** to make the candidate the current figure. The original figure and earlier code are kept. After reopening the workspace, you can continue viewing accepted figures and their history.
+Install system libraries and drivers on the target machine. After changing the system or Python version, rerun the saved code against its saved inputs and compare the main outputs and values.
 
 ## Troubleshooting
 
-| What you see | What to do |
+| What you see | Next step |
 | --- | --- |
-| The assistant has finished, but the panel still shows the old figure | Click **Refresh** and check that the figure and candidate you want to view are selected. |
-| Sending fails | Confirm that a DSH session and model connection are available. Keep your input and retry when the session recovers. |
-| Python or Matplotlib is unavailable | Check the error in **Code and runs**, configure the correct interpreter and dependencies, then run again. |
-| The automatic image attachment shows `File not found` | Ask the assistant to read the corresponding run again. If the image still does not appear, check that the image file exists and confirm the plugin version. |
-| You cannot accept a candidate | Check that you clicked **Allow** in the session and whether the current figure has changed. Generate a new candidate if needed. |
-| A run failed, and you want to publish an existing output image | Fix the problem and complete a successful run first. Failed runs cannot be published as formal candidates. |
+| The session has a result but the panel shows an earlier figure | Click **Refresh**, then select the figure and candidate from this run. |
+| The plotting request failed to send | Keep the input. Restore the DSH session and model connection before retrying. |
+| Python or Matplotlib cannot be found | Open the error in **Code and runs**, then check the interpreter path and its Matplotlib installation. |
+| The session attachment says `File not found` | Read the run again, then look for the PNG in its output and check the plugin version. |
+| The candidate did not become the current figure | Open the request in the session and look for the **Allow** decision. If the current figure changed, generate a candidate from that figure. |
+| The code failed to execute | Read the run log, fix the error, and rerun. Publish the candidate after the run succeeds. |
 
 ## Current scope and limits
 
-Figure records are saved in `.scientific-figures/` in the current workspace. To use figures in research records or evidence graphs, organize their data, code, and run results together; see [Evidence & Reproducibility](./evidence-and-reproducibility.md).
+Figure data is saved in the workspace's `.scientific-figures/` directory. To include the figure in a research record, keep its data, code, and results. See [Evidence and reproducibility](./evidence-and-reproducibility.md).
 
-The first session's workspace determines the writable scope; switching directories does not expand permissions. Runs are refused in read-only environments, when isolation is unavailable, or when the workspace is in the system temporary directory.
-
-Local Python's writes are restricted by isolation, but it may still read other files or access the network. Run only trusted code. Model requests are also subject to your model service's data policy.
+Start in a writable workspace outside the system's temporary directory, with execution isolation enabled. The workspace used when the session starts defines the write scope. Python may still read other files or access the network, so run code you trust. Check the model provider's data policy before sending plotting data.
 
 ## Related pages
 
-- [Extension Center](./extensions.md): find installation sources, review permissions, and enable or disable plugins.
-- [Runtime and models](../getting-started/runtime-and-models.md): configure a model and prepare an available session.
-- [Workspaces and sessions](../workbench/workspaces-and-sessions.md): understand how workspace files relate to sessions.
-- [Feature status and limitations](../reference/feature-status.md): check the verified scope and release status.
-- [Version & Compatibility](../reference/version-and-compatibility.md): check version information and compatibility requirements.
+- [Scientific Figures cases](../cases/scientific-figures-complex.md)
+- [Extension Center](./extensions.md)
+- [Runtime and models](../getting-started/runtime-and-models.md)
+- [Workspaces and sessions](../workbench/workspaces-and-sessions.md)
+- [Feature status and limits](../reference/feature-status.md)
+- [Versions and compatibility](../reference/version-and-compatibility.md)
