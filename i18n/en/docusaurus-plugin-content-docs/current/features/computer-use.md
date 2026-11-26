@@ -11,8 +11,8 @@ Computer Use lets the Agent observe a page and click, type, press keys, or scrol
 ## Enable and check
 
 1. Open **Settings → AI assistant → Computer use**, turn on **Enable computer use**, and enable **Codex app-server** or **Claude Code CLI** under **Runtime access**.
-2. Check **Backend status** on the settings page; if it shows unavailable or unknown, click **Refresh status** and resolve any prompt shown.
-3. Under **macOS permissions**, verify that **Accessibility** and **Screen Recording** show **Granted**. If not, open macOS System Settings to grant them and restart SciForge if prompted.
+2. Check **Backend status** on the settings page. If it shows **unavailable** or **not reported**, click **Refresh status** and resolve any prompt shown.
+3. Under **macOS permissions**, verify that **Accessibility** and **Screen Recording** show **granted**. If not, open macOS System Settings to grant them and restart SciForge if prompted.
 4. Open the target page, and in the session state the task, allowed actions, stop conditions, and forbidden actions.
 
 ![SciForge Computer Use settings](/img/docs/guides/ai-assistants-computer-use.jpg)

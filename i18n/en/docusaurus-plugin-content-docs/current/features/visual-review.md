@@ -11,7 +11,7 @@ Use the standalone [Scientific Figures](./scientific-plotting.md) plugin to gene
 1. Choose the data and code in the workspace, and say what to change, for example "keep the data, make the line blue, and shorten the title". With only an image, the exact data cannot be recovered.
 2. Have the Agent save a new code version and actually run it, then click **Refresh (刷新)** to see the candidate figure.
 3. Compare the current version and the candidate under **Current (当前图)** and **Revised (修改后)**; when there are several candidates, switch among them in the **Candidate (候选)** dropdown.
-4. When satisfied, click **Request acceptance (申请接受)**, open the approval request in the session, and click **Allow (允许)** to make the candidate the current figure; to keep revising, state the next request.
+4. Select the candidate you want and click **Request acceptance (申请接受)**. Open the approval request in the session and click **Allow (允许)**. Return to **Figures** and click **Refresh (刷新)**. The approved candidate appears as **Current (当前图)**.
 
 The plugin keeps immutable code, input, run, and image versions; accepting a candidate updates the current figure, while the original figure and the run records are kept. After a figure changes, a candidate may need to be regenerated. It has no on-image boxes, arrows, or pins for annotation, and it does not register records with artifact versions or evidence relationships automatically.
 

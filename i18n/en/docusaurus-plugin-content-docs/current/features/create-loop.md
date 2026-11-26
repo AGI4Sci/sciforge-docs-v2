@@ -10,18 +10,22 @@ Try a loop that turns a short note into three lines, then pauses for you to appr
 
 ## How to open it
 
-Click **Create Loop** in the far-right toolbar. Look under **More tools** if the icon is out of view. Name the loop and set its **Working directory** in the canvas settings. AI, image, and code nodes use this directory. The definition and run records are stored on your device.
+Click **Create Loop** in the far-right toolbar. If the icon is out of view, open **More tools**. Click **New Create Loop**, then name it at the top of the canvas. The definition and run records are stored on your device.
 
 ## Typical workflow
 
-This example sends the three lines to an **Output** node after approval. Both **Run once** and **Test node** execute the configured nodes. AI nodes send requests to the model provider, and HTTP nodes send requests to the configured address; either may incur fees or write to external systems. Start with short text and leave out any nodes that write to an external system.
+This example sends the three lines to an **Output** node after approval. Both **Run once** and **Run test** execute the configured nodes. AI nodes send requests to the model provider, and HTTP nodes send requests to the configured address; either may incur fees or write to external systems. Start with short text and leave out any nodes that write to an external system.
 
 1. **Set up the Runtime.** Configure an available Runtime in **Settings → AI assistant**. Once it can reply in a regular session, return to the canvas.
-2. **Add and connect the nodes.** Add **Manual trigger**, **AI agent task**, **Human Approval**, and **Output** from the left side. Connect the first three nodes in order. Connect the **Approved** port on **Human Approval** to **Output**, and leave **Rejected** unconnected.
-3. **Select a model and enter a sample on the AI node.** Select **AI agent task**, pick a **Model** in the right panel (leave empty to use the current default model), and enter a short note in **Prompt**. You can adapt this example input: “Monday: entered the sample table. Tuesday: standardized the units. Wednesday: reviewed missing values. Summarize each day in one line.” To test the AI node on its own—knowing it will make a live model request—click **Test node**. Testing saves the loop first and shows the three generated lines in the node output.
+2. **Add and connect the nodes.** A new loop already has a **Manual trigger**. Add **AI agent task**, **Human Approval**, and **Output** from the left. Connect **Manual trigger → AI agent task → Human Approval**, then connect **Approved** on **Human Approval** to **Output**. Leave **Rejected** unconnected. Select **Manual trigger** to set its **Working directory** on the right. Leave it blank to use the app workspace. AI, image, and code nodes use that directory.
+3. **Set the AI model and sample.** Select **AI agent task** and choose a **Model** on the right. Leave it blank to use the current default. Enter a short note in **Prompt**. For example, “Monday: entered the sample table. Tuesday: standardized the units. Wednesday: reviewed missing values. Summarize each day in one line.”
+
+   To try this node on its own, click **Test node** on the right, then click **Run test** in the dialog. This saves the loop and makes a live model request. When it finishes, the dialog shows **Success** and the test output.
 4. **Set up human approval.** Select **Human Approval** and enter an **Approval title**, **Instruction**, and **Timeout (ms)**. In this example, approve when all three days are represented and the lines match the source.
-5. **Run the loop and decide.** Click **Run once** in the top-right corner and confirm. When the run pauses at **Human Approval**, the node shows **Waiting for user confirmation**. Open the approval request on the card or in the run drawer, where the title and **Approve** and **Reject** buttons appear, and read the upstream summary. If it meets the criteria, click **Approve**: the pause ends, **Output** receives the three lines, and the run status shows **Success**. If anything is missing, click **Reject**: the flow takes the **Rejected** port, and **Output** is marked **Skipped** without executing.
-6. **Open the result.** In the **Run log** tab on the right, open **Output** to see the three lines. Open the run in **Run history** and click **Audit report** if you need each node's inputs, outputs, and elapsed time. Run one representative sample end to end before processing a batch.
+5. **Run the loop and decide.** Click **Run once** at the top right. When the flow pauses at **Human Approval**, open the request on its card or in the run drawer. Look for the title you entered and the **Approve** and **Reject** buttons. In **Run log**, expand **AI agent task** to read its summary.
+   - Click **Approve** if the summary meets the criteria. **Output** receives the summary, and the run status changes to **Success**.
+   - Click **Reject** if anything is missing. In this example, the rejected port is unconnected, so **Output** does not run. Use **Run log** to see which nodes ran.
+6. **Open the result.** In **Run log** on the right, open **Output** to see the three lines. Open the run in **Run history** and click **Audit report** if you need each node's inputs, outputs, and elapsed time. Run one representative sample end to end before processing a batch.
 
 ![The manual trigger, AI agent task, human approval, and output nodes on the Create Loop canvas](/img/docs/guides/create-loop-approval-full.png)
 *The Approved port leads to Output. The right panel shows the approval instructions for this example.*

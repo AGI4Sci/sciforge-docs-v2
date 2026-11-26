@@ -40,7 +40,7 @@ In **Extensions → Market**, expand **Not installable yet** to see why an entry
 
 Try these examples with a compatible, enabled version of the DSH plugin.
 
-- **Anchored Comments.** In a workspace where you can save comments, open **Research record** and select “Missing values were filled with 0” within one entry. Click **Add comment**, write “Check whether a blank means the sample was not measured,” and click **Save (保存批注)**. To find the comment again, query it in the session. The result should contain both the quoted text and your note. See [Anchored Comments](./anchored-comments.md).
+- **Anchored Comments.** In a workspace where you can save comments, open **Research record** and select “Missing values were filled with 0” within one entry. Click **添加批注** (Add comment), write “Check whether a blank means the sample was not measured,” and click **保存批注** (Save comment). To find the comment again, query it in the session. The result should contain both the quoted text and your note. See [Anchored Comments](./anchored-comments.md).
 - **Change Inspector.** Use a session in a demo workspace to add a line to `notes.md`. In the same session, request the recorded changes. The list should include `notes.md`, and its diff should show the added line. Open the next batch if the list continues. See [Change Inspector](./change-inspector.md).
 - **Scientific Figures.** Use a writable local workspace, a configured DSH session, and Python with Matplotlib on a macOS system that passes the execution checks. Open **Scientific Figures → New → Start from data**, run the sample, and click **Refresh** to see the PNG in **Figures**. See [Scientific Figures](./scientific-plotting.md).
 
