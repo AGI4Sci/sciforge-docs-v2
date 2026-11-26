@@ -46,7 +46,7 @@ sidebar_position: 20
 
 已有脚本时，在 **新建** 选 **已有数据和代码**，填写数据与 Python 代码的工作区相对路径，再写绘图要求。你也可以附一张原图作参照，界面将它标为“用户提供、尚未验证”。用新运行产出的 PNG 检查代码和输入是否画出了预期结果。
 
-![在新建页面选择数据和代码](/img/docs/scientific-figures/04-data-code-start.png)
+![新建页的示例数据、绘图要求和开始绘图按钮](/img/docs/scientific-figures/guide-new-from-data.png)
 
 ## 找到图片、代码和运行结果
 
@@ -62,7 +62,7 @@ sidebar_position: 20
 
 如果候选生成后当前图又变了，先选中现在的图，再生成新的候选。
 
-![在会话中查看生成的折线图](/img/docs/scientific-figures/03-chat-attachment.png)
+![当前蓝色折线和橙色候选折线的对比](/img/docs/scientific-figures/guide-candidate-comparison.png)
 
 ## 分析文件、历史与恢复
 
@@ -90,7 +90,7 @@ sidebar_position: 20
 2. 点 **执行已冻结 Python**，在运行详情核对状态、输入、参数和输出。排查问题时可展开代码比较、环境与日志。
 3. 运行成功后，在 **输出文件** 选 PNG，点 **发布为新图件文档**。要添加到已有图件，勾选 **发布为现有文档的候选图**，选 **目标文档**，点 **读取并选定当前基线**，出现 **明确基线** 后点 **发布为候选图**。回到 **图件** 页，新图会出现在图件列表中，候选则出现在目标图件的 **候选** 下拉框。
 
-![在代码与运行页面查看代码和运行结果](/img/docs/scientific-figures/02-code-and-run.png)
+![代码与运行页的示例源码、成功状态和输出文件](/img/docs/scientific-figures/guide-code-and-runs.png)
 
 ## 按已保存的说明重建环境
 
