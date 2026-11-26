@@ -26,16 +26,25 @@ Extension details show the publisher, version, source, status, permissions, and 
 | --- | --- |
 | Look up a plugin or module and check its compatibility status | Open the [SciForge public catalog](https://agi4sci.github.io/SciForge-market/) |
 | Use a module bundled with the app | Open **Extensions** and check the bundled entry for details and where to open it |
-| Install a standalone plugin | Check **Extensions → Market** for available packages, or use **Install from file** with a compatible signed package from the maintainer |
+| Install a DSH plugin | Open **Extensions → Market** and check the current index for installable entries |
+| Import a local signed extension | Open **Extensions → Install from file** and select a supported `.sciforge-plugin` package |
 
 The market index bundled with the public source build checked for this guide (`9daddeb`) lists no installable plugins. Expand **Not installable yet** to see the reasons for Change Inspector and Scientific Figures.
 
 ![Desktop Market with the unavailable entries expanded](/img/docs/guides/extensions-market-public-en.png)
 *The desktop Market shows current installation status.*
 
-Once you have a compatible signed package, check its publisher, version, and permissions, then follow the prompts to install and enable it. A source marked for development is for local verification. Files in your workspace do not register themselves as extensions.
+When an installable entry appears, open its details and check the publisher, version, tool permissions, and required host operations. Choose **Install**, review the requested access, and select **Approve and install**. Then check that the entry shows **Enabled**. Open the tool or try it in a session to verify it works.
+
+Anchored Comments, Change Inspector, and Scientific Figures are DSH plugins. The desktop Market obtains `.sciforge-dsh-plugin` packages from its index. **Install from file** accepts `.sciforge-plugin` packages only. Follow the maintainer’s instructions for development builds.
 
 Use the available controls to enable, disable, uninstall, or roll back an installed extension. Handle restart or load errors before looking for its tools. Dockable extension pages can be placed on the left, right, bottom, or main area.
+
+### Plugin tutorials
+
+- [Anchored Comments](./anchored-comments.md): save a comment on selected text and return to the source.
+- [Change Inspector](./change-inspector.md): inspect file changes recorded in the current session.
+- [Scientific Figures](./scientific-plotting.md): plot data, compare candidates, and accept the chosen result.
 
 ## Use a Skill
 

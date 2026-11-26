@@ -11,9 +11,9 @@ When you cannot find a button the tutorial mentions, check the client and plugin
 
 | Item | Version or where to look |
 | --- | --- |
-| The client this manual matches | 2026-11-06, mainline `3f6b0c3`. |
-| Scientific Figures plugin | `0.4.0-mvp.11`. |
-| Installers and other plugins | See the download notes, the extension list, and the release records. |
+| Earlier tutorial screenshots | 2026-11-06, mainline `3f6b0c3`. |
+| Latest official installer | [v0.2.16](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.16), older than the public source build below. |
+| Updated plugin guides and Extension Center screenshots | [Public source build `9daddeb`](https://github.com/AGI4Sci/SciForge/commit/9daddeb). Its bundled desktop Market index has no installable entries. |
 | [Public source](https://github.com/AGI4Sci/SciForge) | Check the commit you actually checked out. |
 
 ## Interface entry points
@@ -21,7 +21,7 @@ When you cannot find a button the tutorial mentions, check the client and plugin
 - Common tools are in the vertical toolbar on the right; when the window is not tall enough, some tools move into "More tools".
 - When the left sidebar is narrowed, icons are usually kept; account and settings are below the sidebar. A narrow window may use an overlay instead.
 - After you select, drag, or paste files, you can check them in the attachment tray, and after sending you can still open the file references from the message.
-- To install a plugin, go to "Extensions & marketplace".
+- Open **Extensions → Market** to check whether a DSH plugin is available to install.
 - A collaboration project is divided into "Board, Members, Requirements, Shared files, Project info".
 
 For the full steps, see [Workbench](../workbench/workspaces-and-sessions.md), [Account](../features/identity-access.md), and [Team collaboration](../features/collaboration.md).
@@ -31,8 +31,8 @@ For the full steps, see [Workbench](../workbench/workspaces-and-sessions.md), [A
 | Feature | Conditions |
 | --- | --- |
 | Biology Room, Life Science Preview | Ship with the app; no separate install needed. |
-| Anchored Comments, Change Inspector | Install and enable the matching plugin, and configure permissions as the page directs. |
-| Scientific Figures | Install a compatible plugin, and prepare Python and Matplotlib. |
+| Anchored Comments, Change Inspector | Install and enable a compatible release, then check the permissions listed in the tutorial. |
+| Scientific Figures | Install and enable a compatible release. Desktop plotting needs supported macOS, DSH, Python, and Matplotlib. |
 | Team collaboration | Sign in to the cloud, connect a device, and obtain project permissions. |
 | Acquiring data, running analysis | Use the Agent tools, scripts, or compute environment you configured yourself. |
 

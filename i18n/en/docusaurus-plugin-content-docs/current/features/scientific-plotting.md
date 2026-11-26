@@ -22,7 +22,9 @@ For examples and screenshots of multi-file cleaning, four-panel figures, missing
 
 ## Install and open Scientific Figures
 
-1. The desktop Market in the current public source build has no Scientific Figures package available. If the maintainer provides a compatible signed package, choose **Extensions → Install from file**, check the publisher and permissions, then install and enable it.
+This guide refers to public source version **0.4.0-mvp.13**. The index bundled with the current public source build has no Scientific Figures package available. When your client offers a compatible entry, use [Extensions → Market](./extensions.md) and check the publisher and permissions before installing and enabling it.
+
+1. In **Extensions → Market**, confirm the plugin is enabled and that compatible DSH, Python, and Matplotlib are ready.
 2. Open a writable local workspace and a **DSH session** with a configured model. Scientific Figures uses this session to send requests and execute tasks.
 3. In SciForge's right sidebar, select **Scientific Figures** from the plugin picker. The default **Figure** page lets you select files, enter requests, and preview images.
 
@@ -52,6 +54,14 @@ In native DSH, use the **Figures** panel in the session input area, or enter `/s
 | **Existing data and code** | Data file, Python code, request | Saves the code and a copy of the data, then runs once to produce a result for later comparison. You can also provide an existing image for comparison. |
 
 After clicking **Start plotting**, check the run results in the session on the left. When it finishes, click **Refresh** and select the figure. Continue entering changes on the **Figure** page; you do not need to select every original data file again.
+
+For a first run, save these three lines as `data/trend.csv` in the workspace.
+
+```csv
+time,response
+0,1.2
+1,1.8
+```
 
 ```text
 Read data/trend.csv, using time as the x-axis and response as the y-axis.

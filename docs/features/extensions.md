@@ -26,16 +26,25 @@ sidebar_position: 4
 | --- | --- |
 | 查插件或模块的用途和适配状态 | 打开 [SciForge 公开目录](https://agi4sci.github.io/SciForge-market/) |
 | 使用客户端随附的模块 | 打开 **扩展**，查看内置条目的详情和功能入口 |
-| 安装独立插件 | 打开 **扩展 → 市场** 查看可安装条目，或使用 **从文件安装** 选择维护者提供的兼容签名包 |
+| 安装 DSH 插件 | 打开 **扩展 → 市场**，查看当前索引是否提供可安装条目 |
+| 导入本地签名扩展 | 打开 **扩展 → 从文件安装**，选择客户端支持的 `.sciforge-plugin` 扩展包 |
 
 本手册核对的公开源码构建（`9daddeb`）附带的市场索引当前没有可安装条目。Change Inspector 和 Scientific Figures 在 **暂不可安装** 下列出，并附原因。展开这一栏可以查看状态。
 
 ![桌面市场展开暂不可安装的条目](/img/docs/guides/extensions-market-public-zh.png)
 *桌面市场显示当前安装状态。*
 
-获得兼容的签名包后，核对发布者、版本和权限，再按客户端提示安装并启用。单独标明的开发来源适合本地开发验证。工作区里的文件不会自动注册为扩展。
+市场出现可安装条目后，先打开详情，核对发布者、版本、工具权限和所需的宿主接口。确认用途后点击 **安装**，检查所需权限并选择 **批准并安装**。安装完成后检查是否显示 **已启用**。使用前再打开对应工具或在会话中尝试一次。
+
+Anchored Comments、Change Inspector 和 Scientific Figures 属于 DSH 插件。`.sciforge-dsh-plugin` 包由桌面市场索引提供，**从文件安装**仅接收 `.sciforge-plugin`。开发构建中的插件需按维护者提供的流程验证。
 
 已安装扩展可按界面提供的操作启用、禁用、卸载或回滚。需要重启或加载失败时，先处理提示，再检查工具入口。支持停靠的扩展页面可放到左侧、右侧、底部或主区域。
+
+### 插件使用教程
+
+- [Anchored Comments](./anchored-comments.md)：选中一段文字，保存批注并回查原文。
+- [Change Inspector](./change-inspector.md)：核对当前会话记录的文件变更。
+- [Scientific Figures](./scientific-plotting.md)：从数据生成图件，比较候选图并接受选定结果。
 
 ## 使用 Skill
 

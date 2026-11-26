@@ -1,21 +1,17 @@
 ---
 title: 插件许可证
-description: 当前七个独立插件的许可证、历史目录范围与分发注意事项。
+description: 当前独立插件的许可证、历史目录范围与分发注意事项。
 ---
 
 # 插件许可证
 
-下表列出当前 7 个插件包的版本和许可证。安装要求见各功能页，版本关系见[版本与兼容性](./version-and-compatibility.md)。
+下表列出公开源码中仍维护的三个独立插件。源码版本用于核对代码和许可证；可用安装包以客户端市场索引为准。版本关系见[版本与兼容性](./version-and-compatibility.md)。
 
 | 插件 / 源码目录 | 源码版本 | 声明许可证 | npm `private` 字段 |
 | --- | --- | --- | --- |
-| Anchored Comments / `plugins/anchored-comments` | 0.2.1 | MIT | `true` |
-| Change Inspector / `plugins/change-inspector` | 0.1.2 | MIT | `true` |
-| Evidence DAG / `plugins/evidence-dag` | 1.0.0 | Apache-2.0 | `true` |
-| Git Checkpoints / `plugins/git-checkpoints` | 0.1.0 | MIT | `true` |
-| Project DAG / `plugins/project-dag` | 1.0.0 | Apache-2.0 | 未设置 |
-| Research Checkpoints / `plugins/research-checkpoints` | 0.1.0 | MIT | `true` |
-| Scientific Figures / `plugins/scientific-plotting` | 0.4.0-mvp.11 | MIT；另保留下述 NOTICE 与第三方许可 | `true` |
+| Anchored Comments / `plugins/anchored-comments` | 0.2.3 | MIT | `true` |
+| Change Inspector / `plugins/change-inspector` | 0.1.3 | MIT | `true` |
+| Scientific Figures / `plugins/scientific-plotting` | 0.4.0-mvp.13 | MIT；另保留下述 NOTICE 与第三方许可 | `true` |
 
 ## 源码、安装包与 npm 发布
 
@@ -32,6 +28,8 @@ description: 当前七个独立插件的许可证、历史目录范围与分发�
 
 ## 历史目录与适用范围
 
+早期独立的 Evidence DAG、Project DAG、Git Checkpoints 和 Research Checkpoints 插件已退役。对应功能由客户端内置模块提供，历史源码的许可仍以各自归档为准。
+
 公开仓库中的旧插件带有各自的 LICENSE。更新或迁移代码时，应保留相应的许可和署名。
 
 | 历史目录 | 历史许可 / 当前去向 |
@@ -39,6 +37,6 @@ description: 当前七个独立插件的许可证、历史目录范围与分发�
 | `plugins/biology-room` | 历史插件 MIT；当前独立目录已退役，房间功能由内置 Biology Workbench 1.1.3 提供 |
 | `plugins/life-science-preview` | 历史插件 MIT；当前独立目录已退役，预览由同一内置 Biology Workbench 提供 |
 | `plugins/visual-review` | 历史插件 MIT；当前独立插件及旧静态域均已移除，见[迁移说明](../features/visual-review.md) |
-| 旧 `scientific-compute`、`dataset-api` 域 | 当前已退役，见[科学计算](../features/scientific-compute.md)与[数据集 API](../features/dataset-api.md)迁移页；不计入七个插件 |
+| 旧 `scientific-compute`、`dataset-api` 域 | 当前已退役，见[科学计算](../features/scientific-compute.md)与[数据集 API](../features/dataset-api.md)迁移页；已从现行插件清单移除 |
 
 历史目录的许可证继续适用于其当时发布的代码；目录删除、功能内置或页面迁移均不构成重新许可。内置 Biology Workbench 属于应用源码范围，不应直接套用旧插件的 MIT 声明。复用历史代码时，应回到对应版本的 LICENSE、NOTICE 与文件头确认适用条款。

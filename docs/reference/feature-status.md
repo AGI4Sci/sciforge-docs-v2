@@ -23,7 +23,7 @@ sidebar_position: 1
 | [Change Inspector](../features/change-inspector.md) | 需要插件 | 让 Agent 列出本次会话的文件差异，过长时分页查看。 |
 | 产物版本、检查点、Evidence / Project DAG、档案 | 按功能配置 | 保存文件版本和研究记录，在证据图与项目图中查看结论依据。 |
 | 定时任务与 Create Loop | 需要应用运行 | 设置重复任务或多步骤流程；需要确认的操作会暂停等待处理。 |
-| 插件市场、Skills、MCP | 按类型配置 | 按页面提示安装插件、添加工作方法或连接外部工具。 |
+| 插件市场、Skills、MCP | 按类型配置 | 当前公开源码构建的桌面市场无可安装条目。Skill 和 MCP 可按各自流程配置。 |
 | Remote SSH 管理 | 内部补充 | 公开站不提供 VPN、SSH 目标登记与服务端操作步骤。 |
 | 虚拟细胞模型、Slurm/PBS/Kubernetes 调度 | 需自行接入 | 使用自己配置的模型或集群环境。 |
 
