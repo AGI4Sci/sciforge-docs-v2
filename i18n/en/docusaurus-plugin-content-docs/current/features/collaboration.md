@@ -28,7 +28,7 @@ The collaboration service receives requirements, project discussions, result not
 
 1. In the collaboration sidebar, click **+** and enter a project name.
 2. Open **Requirements**. Under **Goals and deliverables** and **Inputs and boundaries**, list the data the member can access, the file names to deliver, acceptance criteria, and the allowed actions.
-3. Click **Save requirements**. Review the generated modules, especially which inputs and dependencies each uses, then click **Confirm requirements**. If generation fails, use its error to identify what needs fixing before using **AI 补全** (draft with AI).
+3. Click **Save requirements**. Once drafted, **Work modules** and **Acceptance criteria** list each module's inputs, required file, prerequisites, and verification criteria; review them and click **Confirm requirements**. If generation fails, resolve the error shown on the page, then click **Complete with AI (AI 补全)** to retry.
 4. Invite people from **Members**. Invitees open the request from **Inbox** or the project invitation and click **Accept invitation**. Their names then appear under **Members**.
 
 For example, assign B a report on per-sample counts, including the method and results. Make C's module depend on the owner accepting B's report.
@@ -60,16 +60,16 @@ Dismiss the board reminder if you just want to close it. If the assignment has e
 ## 4. Handle agent questions and action confirmations
 
 - **Answer a question.** The requested member opens the task details, supplies the missing data or decision, and returns to the task session to follow progress.
-- **Decide on an action.** The requested member opens the request and reads what it will change or send, where it will act, and which version the request covers. Check its expiry, give a reason, and click **Approve action** or **Reject action**. For an expired request, wait for an updated one. The task session shows the execution result after the decision is submitted.
+- **Decide on an action.** Open the request in the task details. Check what it will change or send, where it will act, and which version it covers. Check when it expires. Say why you’re approving or rejecting it, then click **Approve action** or **Reject action**. If the request has expired, wait for a new one. After approval, return to the task session to see the result.
 
 Use the action buttons for authorization. Discussions can provide context.
 
 ## 5. Members review the draft and submit
 
-1. Open the delivery draft in the task details and preview the required files. If **Submit** is unavailable, the submission area names the missing file. Where **Choose required file** is available, pick a task output or upload a file, then click **用作必交文件** (Use as required file). It appears in the required files list, where you can preview it.
-2. In **Result summary**, describe what you did, the checks you ran, and the scope of the result. For another revision in the task session, use **Work with AI**, then return to the draft.
-3. To include a separate note, use **Add materials → Task files** or **Upload from this device**. Each submission allows up to 20 files and 200 MiB in total, with up to 100 MiB per attachment. Required files follow the task's format and size requirements.
-4. Click **Submit**, review the version, notes, and files in the confirmation dialog, and submit that version. When device verification, signing, and upload are complete, the delivery section shows the submitted version, and the task moves to **Awaiting review**. The member handles any system secure-storage request.
+1. Open the delivery draft in the task details and preview the required files. If **Submit** is unavailable, the submission area names the missing file. Where **Choose required file** is available, pick a task output or upload a file, then click **用作必交文件** (Use as required file). It appears in the required files list, where you can click **Preview** to inspect it.
+2. In **Result summary**, describe what you did, the checks you ran, and the scope of the result. For another revision in the task session, click **Work with AI**, then return to the draft.
+3. To include a separate note, click **Add materials → Task files** or **Upload from this device**. Each submission allows up to 20 files (including the required file) and 200 MiB in total, with up to 100 MiB per attachment. Required files follow the task's format and size requirements.
+4. Click **Submit**. In the dialog, review the version number, summary, and files. Click **Submit** again to send that version. After signing and upload, the version appears in the delivery section and the task moves to **Awaiting review** on the Board. The task details show **Awaiting confirmation**. If the system prompts for secure storage access, the member responds.
 
 ![A delivery draft](/img/docs/collaboration/delivery-draft.png)
 *The draft groups result notes, required files, and additional materials.*
@@ -79,10 +79,10 @@ Use the action buttons for authorization. Discussions can provide context.
 
 ## 6. The owner reviews and hands off downstream
 
-1. **Review the latest submission.** From **Board → Awaiting review**, open the task. In the task details, open the current submission at the top of the delivery section and compare its files and notes with the acceptance criteria.
-2. **Request specific changes.** Click **Request revision** and describe which part needs work, then click **Send revision request**. The member updates the files and submits a new version. Open the new submission at the top of the delivery section. Use **Version history** to see the previous submission.
+1. **Review the latest submission.** Open the task from **Board → Awaiting review**. Read **Result summary** in the submission at the top of the delivery section. Click **Preview** beside each file and compare it with the acceptance criteria.
+2. **Request specific changes.** Click **Request revision**, describe which part needs work, and click **Send revision request**. The member updates the files and submits a new version. Open the new submission at the top of the delivery section. Use **Version history** to see the previous submission.
 3. **Accept the version that meets the criteria.** Click **Adopt delivery (采纳交付)**. The task moves to **Completed**, and the delivery section shows **Adopted** and the version number.
-4. **Hand off the accepted version.** Once the upstream delivery is accepted, dispatch the downstream task. The next member opens their task session and uses the files from the accepted delivery.
+4. **Hand off the accepted version.** After adopting the upstream delivery, the owner dispatches the downstream task. The next member clicks **Accept task** and goes to their task session. The accepted files are in the task’s working directory in the **Files** panel on the right.
 
 ![The owner writes a revision request](/img/docs/collaboration/revision-request.png)
 *The request identifies what the member needs to change.*
@@ -94,7 +94,7 @@ Use the action buttons for authorization. Discussions can provide context.
 
 Under **Shared files**, find and preview files by source and version. To submit your own files, attach them from the task’s delivery draft with **Add materials**.
 
-Once every module is accepted, review the project results and click **Complete project**. The project is closed when signing is complete and its status shows **Completed**.
+Once every module is accepted, click **Complete project**. Fill in **Completion summary** and click **Confirm completion**. After signing, the project status changes to **Completed**.
 
 ![The completed project](/img/docs/collaboration/project-completed.png)
 *Both deliveries are accepted, and the project shows Completed.*

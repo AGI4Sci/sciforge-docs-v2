@@ -47,7 +47,9 @@ The second panel reports the descriptive treated−control mean difference. Smal
 
 ## Case 3: Recover from a failed run
 
-Open the failed run in **Code and runs**, read its log, fix the script, and run it again. After it succeeds, go to **Figures**. The four-panel figure and the QC figure appear as candidates. Compare them before accepting. The failed run's log remains in **Code and runs**.
+1. Open the failed run in **Code and runs (代码与运行)** and read its log. Fix the script, click **Save and freeze code (保存并冻结代码)**, then click **Run frozen Python (执行已冻结 Python)**.
+2. When the run succeeds, find the four-panel figure and the QC figure in **Output files (输出文件)**. For each PNG, select **Publish as a candidate for an existing document (发布为现有文档的候选图)** and choose its **Target document (目标文档)**. Click **Read and select current baseline (读取并选定当前基线)**. When **Explicit baseline (明确基线)** appears, click **Publish as candidate (发布为候选图)**.
+3. Return to **Figures (图件)** and click **Refresh (刷新)**. Open the rerun result under **Candidate (候选)** for each figure. To replace the current figure, click **Request acceptance (申请接受)** after comparing the two. Click **Allow (允许)** in the session, then refresh **Figures**. The approved candidate appears as **Current (当前图)**. The failed run’s log remains in **Code and runs**.
 
 <details>
 <summary>Failed run and history</summary>
@@ -56,9 +58,9 @@ Open the failed run in **Code and runs**, read its log, fix the script, and run 
 
 </details>
 
-## Case 4: Multiple images and file names
+## Case 4: Save multiple images in one run
 
-Write the three PNGs to the output directory. In **Output files**, use their paths to tell apart files with the same name. Names with spaces, Chinese characters, or an uppercase extension appear in the list. A run can save up to 16 images. If you exceed the [output limits](../features/scientific-plotting.md#analysis-files-history-and-recovery), adjust the script, save the new version, and select **Run frozen Python**.
+Write the three PNGs to the output directory. After the run, use the paths in **Output files (输出文件)** to tell apart files with the same name. A run can save up to 16 images. If you exceed the [output limits](../features/scientific-plotting.md#analysis-files-history-and-recovery), adjust the script, click **Save and freeze code**, then click **Run frozen Python**.
 
 <details>
 <summary>Image-limit message</summary>
@@ -69,11 +71,11 @@ Write the three PNGs to the output directory. In **Output files**, use their pat
 
 ## Case 5: Reuse an analysis result in another run
 
-Save the cleaned CSV, statistics JSON, and cleaning rules from the script. Open the run in **Code and runs** and find the CSV containing the 57 retained rows from the 60 source records. Add it to the next code version. **Version and input snapshot** then includes a copy of the CSV. Publish the PNG from the plotting run when the figure is ready.
+Save the cleaned CSV, statistics JSON, and cleaning rules from the script. Open the run in **Code and runs**, click **Read run (读取运行)**, and find the CSV in **Output files** containing the 57 retained rows from the 60 source records. [Add it to the next code version](../features/scientific-plotting.md#analysis-files-history-and-recovery) and click **Save and freeze code**. Expanding **Version and input snapshot (版本与输入快照)** then shows a copy of the 57-row CSV. Publish the PNG from the plotting run when the figure is ready.
 
 ![Saved files and summaries in the run details](/img/docs/scientific-figures/hardening/04-analysis-artifacts.png)
 
-If saving was interrupted after Python finished, open **Code and runs → Unfinished or interrupted runs**. When **Complete interrupted record** appears, use it on that run. After saving, open the same run from the history to see its original log and outputs. Use the next page when there are more records. Other entries remain available if one is damaged. See [Analysis files, history, and recovery](../features/scientific-plotting.md#analysis-files-history-and-recovery).
+If saving was interrupted after Python finished, open **Code and runs → Unfinished or interrupted runs (尚未结束或中断的运行)**. When **Complete interrupted record (完成中断记录)** appears, click it on that run. After saving completes, open the same run from the history to see its original log and outputs. Use the next page when there are more records. Other entries remain available if one is damaged. See [Analysis files, history, and recovery](../features/scientific-plotting.md#analysis-files-history-and-recovery).
 
 <details>
 <summary>Saving an interrupted record and browsing history</summary>
@@ -88,9 +90,4 @@ If saving was interrupted after Python finished, open **Code and runs → Unfini
 
 ## Case notes
 
-<details>
-<summary>Run date, builds, and recorded checks</summary>
-
-These cases ran on **2026-11-05**. The original runs used v8/v9 for cases 1–4 and v10 for case 5. The runs retain the data, code, logs, and outputs. In case 1, independent calculations matched all 10 group and time-point combinations. Case 3 regenerated the two figures from case 1. Case 5 retained an identical copy of the CSV for the next run and saved the original record after an interruption. The recorded scope covers generation of the environment record, including exact package versions and rebuild instructions. See [Current scope and limits](../features/scientific-plotting.md#current-scope-and-limits).
-
-</details>
+See the [run and verification record](../reference/version-and-compatibility.md#complex-scientific-figures) for the original run date, builds, and checks.
