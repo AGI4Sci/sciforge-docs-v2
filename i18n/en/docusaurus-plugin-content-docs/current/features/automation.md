@@ -36,14 +36,14 @@ Scheduled tasks require SciForge to keep running and the computer to be awake at
 
 ## Create a Loop
 
-When you need multiple steps, open **Create Loop** from the right toolbar or **More tools**. For full instructions, see [Create Loop (multi-step flows)](./create-loop.md); the shortest path is:
+When you need multiple steps, open **Create Loop** from the right toolbar or **More tools**. For full instructions, see [Create Loop (multi-step workflows)](./create-loop.md); the shortest path is:
 
-1. Create a Loop and add AI task, condition, HTTP request, or manual approval nodes.
-2. Define the input, output, and failure handling for each node.
-3. Test a single node first, then run the whole flow manually.
-4. Enable schedule triggers, Webhooks, or Agent hooks only after validation.
+1. Create a Loop and add **AI agent task**, **Condition**, **HTTP request**, or **Human Approval** nodes.
+2. Define the input, output, and **Error handling** for each node.
+3. Click **Test node** to test a single node first, then click **Run once** to run the whole flow manually.
+4. Turn on **Enabled** only after a successful trial run, then configure **Schedule trigger**, **Webhook trigger**, **AI-callable**, or **Triggers** (agent hooks).
 
-**Restarting the app loses a run that was paused at a manual approval node.** For important flows, save each step's input, output, and result; before rerunning, check whether a file, request, or submission has already completed, to avoid writing or submitting twice.
+**Restarting the app loses a run that was paused at a Human Approval node.** For important flows, save each step's input, output, and result; before rerunning, open **Run history** to check which nodes completed and whether a file write, request, or submission has already taken effect, so you do not write or submit twice.
 
 ## Automation acceptance
 

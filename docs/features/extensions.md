@@ -59,7 +59,7 @@ sidebar_position: 4
 
 ## 使用 Computer Use
 
-使用 Codex 或 Claude Code 时，从设置启用 Computer Use，查看运行状态。在 macOS 同时检查屏幕录制、辅助功能权限。先指定要操作的浏览器页面或 Electron 内嵌页面及任务范围，遇到登录、授权、付款、发送或删除时核对具体动作，再查看实际页面结果。
+使用 Codex 或 Claude Code 时，在 **设置 → AI 助手 → Computer use** 打开开关，页面会显示 Backend 运行状态与 macOS 的 **辅助功能**、**屏幕录制** 权限状态。在会话中指定要操作的浏览器页面或 Electron 内嵌页面及任务范围；遇到登录、授权、付款、发送或删除动作时，在确认提示中批准或拒绝，完成后回到目标页面查看结果。
 
 ![Computer Use 配置](/img/docs/guides/ai-assistants-computer-use.jpg)
 *在设置中查看启用状态和系统权限。*

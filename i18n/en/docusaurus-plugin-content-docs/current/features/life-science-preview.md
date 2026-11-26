@@ -10,32 +10,32 @@ Open a scientific file to see its summary and choose the chain, region, or chann
 
 ## Open a file
 
-Open **Files** from the toolbar on the far right and select a file in the current workspace. Supported types open in their scientific viewer. Other types open in the regular viewer. A remote workspace reads the preview from the remote file within the workspace's permissions and preview limits.
+Open **Files** from the toolbar on the far right and select a file in the current workspace. Supported formats open directly in their scientific viewer, showing the file name, format, and structured summary; other formats open in the regular viewer. A remote workspace reads the preview from the remote file within the workspace's permissions and preview size limits.
 
 ## Supported formats and preview content
 
-| File formats | What you can see | What to do next |
+| File formats | What you see when it opens | What to do next |
 | --- | --- | --- |
 | `.pdb`, `.cif`, `.mmcif`, `.sdf`, `.mol`, `.mol2`, `.xyz` | Chain, residue, and ligand summaries and a Mol* 3D view | Select a region. When coordinates are available, measure distances, angles, or dihedrals. |
-| `.fasta`, `.fa`, `.fna`, `.faa`, `.fastq`, `.gb`, `.gbk`, `.gff`, `.gff3`, `.gtf`, `.bed`, `.vcf` | Available record counts, lengths, features, intervals, or variant summaries | Select an interval and use its coordinates to read, validate, or analyze the source file. |
-| `.h5ad`, `.loom`, `.mtx`, `.h5`, `.hdf5`, `.zarr` | Available matrix dimensions, observation and variable fields, and names of dimensionality reductions | Find the fields you need, then open the full matrix with an appropriate analysis tool. |
+| `.fasta`, `.fa`, `.fna`, `.faa`, `.fastq`, `.gb`, `.gbk`, `.gff`, `.gff3`, `.gtf`, `.bed`, `.vcf` | Record counts, lengths, features, intervals, or variant summaries from the read portion | Select an interval and use its coordinates to read, validate, or analyze the source file. |
+| `.h5ad`, `.loom`, `.mtx`, `.h5`, `.hdf5`, `.zarr` | Matrix dimensions, observation and variable field names, and dimensionality reduction names from the read portion | Note the fields you need, then open the full matrix from the source file with an analysis tool. |
 | `.tif`, `.tiff`, `.ome.tif`, `.ome.tiff`, `.czi`, `.svs`, `.ndpi` | Dimensions, channels, and OME metadata. Supported TIFF and OME-TIFF files can show thumbnails and regions | Select a region of interest (ROI) or channel where available. Use an imaging tool for the pixels in CZI, SVS, or NDPI, or in a compressed or non-8-bit TIFF that only shows file information. |
-| `.mzml`, `.mzxml`, `.mgf`, `.fcs` | Available scan or event summaries, peak counts, intensity ranges, and some peak data. FCS mainly shows headers and keywords | Annotate a peak interval where available. Use an FCS tool to read the full event matrix. |
-| `.fai`, `.gzi`, `.tbi`, `.csi` | An index for an accompanying sequence or genome file | Reference the index with its companion data file. |
+| `.mzml`, `.mzxml`, `.mgf`, `.fcs` | Scan or event summaries, peak counts, intensity ranges, and sampled peaks from the read portion. FCS mainly shows headers and keywords | Annotate a peak interval where available. Use an FCS tool to read the full event matrix. |
+| `.fai`, `.gzi`, `.tbi`, `.csi` | An index for an accompanying sequence or genome file | Reference the index together with its companion data file. |
 
-Scroll in the preview to see later spectrum, omics, and image summary cards. Use Mol* to inspect trajectory or density files. Open the corresponding structure file for chain and residue summaries.
+Scroll down inside the preview to see additional spectrum, omics, and image summary cards. Use the Mol* view to inspect trajectory or density files; open the corresponding structure file for chain and residue summaries.
 
 ## Select molecular regions
 
-Click a residue in the Mol* 3D view to add it. Click the same residue again to remove it, or click empty space to clear the selection. In the selection panel, clicking a chain replaces the selection with that chain. You can also choose a ligand there. The highlights and selection list show the selected chains, residues, atoms, or ligands.
+Click a residue in the Mol* 3D view to add it to the selection. Click the same residue again to remove it, or click empty space to clear the selection. In the **Selection** panel below the viewport, clicking a `Chain <ID>` button replaces the current selection with that chain; you can also click a ligand button or the clear button there. The 3D highlight and the **Selection** panel list the currently selected chains, residues, atoms, or ligands.
 
-Click individual residues one at a time. Use **Shift**-click for a continuous polymer range. If the list shows a different range than intended, clear the selection and select the residues individually.
+Click individual residues one at a time. **Shift**-clicking in Mol* selects a continuous stretch along a polymer; if the **Selection** list shows a wider range than intended, click empty space or the clear button and click the needed residues individually.
 
-Selections are stored in the file's preview session. Look at the highlights after reopening a file. When continuing analysis in chat, include the chain and relevant residue or atom IDs in the task.
+Selections are stored in the file's preview session state. After closing and reopening a file, check the 3D highlight and **Selection** list before continuing. When continuing analysis in chat, include the chain ID and residue or atom numbers in your prompt.
 
 ## Continue analysis from a preview
 
-In the session, specify the file path, region or channel, and the question to analyze. For a remote workspace, use the remote source path. Use the preview to find the relevant part of the file. Use the source file for quantitative analysis, full format validation, or variant detection, and compare the result with the reported inputs and commands.
+In the session, specify the file path, selected region or channel, and the question to analyze. For a remote workspace, give the remote source file path. Use the preview summary to locate regions or field names; for quantitative analysis, full format validation, or variant calling, have your script or tool read the source file and report the input file, command, and output.
 
 ## Read limits and exported copies
 

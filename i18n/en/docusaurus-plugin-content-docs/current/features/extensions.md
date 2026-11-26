@@ -59,7 +59,7 @@ Open **Extensions → Skills** to find a method. Before enabling it, review its 
 
 ## Use Computer Use
 
-With Codex or Claude Code, enable Computer Use in **Settings** and look at its status. On macOS, check Screen Recording and Accessibility permissions. Identify the browser page or embedded Electron page and what can be done there. Review any login, authorization, payment, send, or delete action when it comes up, then look for its result on the page.
+With Codex or Claude Code, open **Settings → AI assistant → Computer use** and turn it on; the page shows the Backend status and macOS **Accessibility** and **Screen Recording** permissions. In the session, specify the target browser page or embedded Electron page and the allowed task scope. When a sign-in, authorization, payment, send, or delete action comes up, approve or reject it in the confirmation prompt, then check the result on the page.
 
 ![Computer Use settings](/img/docs/guides/ai-assistants-computer-use.jpg)
 *Settings show whether Computer Use is enabled and which system permissions it needs.*
