@@ -21,7 +21,8 @@ Pick the example closest to your data and follow the [Scientific Figures guide](
 
 ![Longitudinal figure and its session](/img/docs/scientific-figures/complex/01-longitudinal-app.png)
 
-![Scientific Figures panel](/img/docs/scientific-figures/complex/01-longitudinal-panel.png)
+![Full four-panel figure in Scientific Figures](/img/docs/scientific-figures/complex/longitudinal-panel-full.png)
+*The original PNG from this run, reopened in Scientific Figures 0.4.0-mvp.13.*
 
 </details>
 
@@ -90,6 +91,6 @@ If saving was interrupted after Python finished, open **Code and runs → Unfini
 <details>
 <summary>Run date, builds, and recorded checks</summary>
 
-These cases ran on **2026-11-05**. Cases 1–4 used v8/v9 and case 5 used v10. The runs retain the data, code, logs, and outputs. In case 1, independent calculations matched all 10 group and time-point combinations. Case 3 regenerated the two figures from case 1. Case 5 retained an identical copy of the CSV for the next run and saved the original record after an interruption. The recorded scope covers generation of the environment record, including exact package versions and rebuild instructions. See [Current scope and limits](../features/scientific-plotting.md#current-scope-and-limits).
+These cases ran on **2026-11-05**. The original runs used v8/v9 for cases 1–4 and v10 for case 5. The runs retain the data, code, logs, and outputs. In case 1, independent calculations matched all 10 group and time-point combinations. Case 3 regenerated the two figures from case 1. Case 5 retained an identical copy of the CSV for the next run and saved the original record after an interruption. The recorded scope covers generation of the environment record, including exact package versions and rebuild instructions. See [Current scope and limits](../features/scientific-plotting.md#current-scope-and-limits).
 
 </details>
