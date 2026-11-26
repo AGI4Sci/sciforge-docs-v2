@@ -23,8 +23,8 @@ This example sends the three lines to an **Output** node after approval. Both a 
 5. **Run the loop and decide.** Click **Run once** and confirm. When the run pauses, open the request with the approval title and **Approve** and **Reject** buttons on the card or in the run drawer. Read the upstream result. If it meets the criteria, click **Approve**. The pause ends, **Output** receives the three lines, and the run shows **Success** when it finishes. Click **Reject** if something is missing. The **Output** node is skipped.
 6. **Open the result.** In **Run log**, open **Output** to see the three lines. Find the run in **Run history** and use **Audit report** if you need the inputs, outputs, or timings. Run one representative sample end to end before processing a batch.
 
-![SciForge Create Loop canvas](/img/docs/guides/create-loop.jpg)
-*Connect the nodes on the canvas. Select one to see its parameters on the right.*
+![The manual trigger, AI agent task, human approval, and output nodes on the Create Loop canvas](/img/docs/guides/create-loop-approval-full.png)
+*The Approved port leads to Output. The right panel shows the approval instructions for this example.*
 
 ## What you can do
 

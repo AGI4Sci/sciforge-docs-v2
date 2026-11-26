@@ -61,12 +61,13 @@ function ImagePreview(): ReactNode {
     enhance();
     const observer = new MutationObserver(enhance);
     observer.observe(document.body, {childList: true, subtree: true});
-    document.addEventListener('click', handleClick);
-    document.addEventListener('keydown', handleKeyDown);
+    // Docusaurus details stop these events from bubbling beyond the section.
+    document.addEventListener('click', handleClick, true);
+    document.addEventListener('keydown', handleKeyDown, true);
     return () => {
       observer.disconnect();
-      document.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('click', handleClick, true);
+      document.removeEventListener('keydown', handleKeyDown, true);
     };
   }, [close]);
 

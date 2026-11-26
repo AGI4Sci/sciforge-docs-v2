@@ -21,7 +21,8 @@ sidebar_position: 5
 
 ![SciForge 应用中的纵向四面板图和会话](/img/docs/scientific-figures/complex/01-longitudinal-app.png)
 
-![科研图件面板细节](/img/docs/scientific-figures/complex/01-longitudinal-panel.png)
+![科研图件面板完整预览四面板主图](/img/docs/scientific-figures/complex/longitudinal-panel-full.png)
+*在科研图件 0.4.0-mvp.13 中重新打开本次运行保存的原图。*
 
 </details>
 
@@ -90,6 +91,6 @@ sidebar_position: 5
 <details>
 <summary>查看运行日期、历史构建和核验范围</summary>
 
-案例运行于 **2026-11-05**。截图和结果对应当时的构建，案例一至四使用 v8/v9，案例五使用 v10。各案例保留了数据、代码、日志和产物。案例一的 10 个分组与时间点组合的统计值与独立计算一致。案例三重新生成了与案例一一致的两张图。案例五的 CSV 与下一次运行的输入副本一致，并在中断后补存了原运行记录。环境记录包含精确包版本及重建说明，核验范围截至环境记录生成。环境要求见 [科研图件使用说明](../features/scientific-plotting.md#当前能力与使用限制)。
+案例运行于 **2026-11-05**。案例一至四的原始运行使用 v8/v9，案例五使用 v10。各案例保留了数据、代码、日志和产物。案例一的 10 个分组与时间点组合的统计值与独立计算一致。案例三重新生成了与案例一一致的两张图。案例五的 CSV 与下一次运行的输入副本一致，并在中断后补存了原运行记录。环境记录包含精确包版本及重建说明，核验范围截至环境记录生成。环境要求见 [科研图件使用说明](../features/scientific-plotting.md#当前能力与使用限制)。
 
 </details>
