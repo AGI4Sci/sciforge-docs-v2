@@ -14,18 +14,28 @@ Open **Extensions** from the left sidebar to see built-in and installed extensio
 
 Extension details show the publisher, version, source, status, permissions, and the features it contributes. After installing or enabling, related entries may appear in the left navigation, the vertical toolbar on the far right, or file preview. When there are many toolbar entries, use **More tools**; supported entries can be adjusted through **Customize toolbar**.
 
-![The Extension Center](/img/docs/guides/extensions-center.png)
-*For understanding extension sources and feature details.*
+![Extension Center in the public source build](/img/docs/guides/extensions-center-public-en.png)
+*The extensions list in a build from public source.*
 
-## Install and manage extensions
+![Version and source of a bundled extension](/img/docs/guides/extensions-details-public-en.png)
+*Open an entry to see its version, source, and status.*
 
-In the marketplace, pick an entry and read the description, publisher, permissions, and installation status before confirming the install. Whether it can be installed depends on the current index and app compatibility; a blocked entry shows the reason.
+## Check availability, install, and enable
 
-Ordinary local installation uses an official signed package, and checks the signature, file contents, and compatibility with the app version. Development sources are labeled separately and must not be treated as official signed installs. Files in a workspace never become enabled extensions automatically.
+| What you want to do | Where to go |
+| --- | --- |
+| Look up a plugin or module and check its compatibility status | Open the [SciForge public catalog](https://agi4sci.github.io/SciForge-market/) |
+| Use a module bundled with the app | Open **Extensions** and check the bundled entry for details and where to open it |
+| Install a standalone plugin | Check **Extensions → Market** for available packages, or use **Install from file** with a compatible signed package from the maintainer |
 
-Installed extensions can be enabled, disabled, uninstalled, or rolled back with the operations the interface offers; built-in extensions are managed with the app version. If it says a restart is needed, or the extension is invalid or failed to load, handle that prompt first, then check the feature's entry point.
+The market index bundled with the public source build checked for this guide (`9daddeb`) lists no installable plugins. Expand **Not installable yet** to see the reasons for Change Inspector and Scientific Figures.
 
-Extension pages that support docking can be placed on the left, right, bottom, or in the main area, and used together with the session. Changing position does not widen the extension's permissions.
+![Desktop Market with the unavailable entries expanded](/img/docs/guides/extensions-market-public-en.png)
+*The desktop Market shows current installation status.*
+
+Once you have a compatible signed package, check its publisher, version, and permissions, then follow the prompts to install and enable it. A source marked for development is for local verification. Files in your workspace do not register themselves as extensions.
+
+Use the available controls to enable, disable, uninstall, or roll back an installed extension. Handle restart or load errors before looking for its tools. Dockable extension pages can be placed on the left, right, bottom, or main area.
 
 ## Use a Skill
 

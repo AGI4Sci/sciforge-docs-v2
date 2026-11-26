@@ -22,7 +22,7 @@ For examples and screenshots of multi-file cleaning, four-panel figures, missing
 
 ## Install and open Scientific Figures
 
-1. In **Extensions → Marketplace**, find a Scientific Figures package compatible with your SciForge version. Check the publisher and permissions, then approve installation and enable it. If it is not listed, the maintainer must provide a signed package and its installation source.
+1. The desktop Market in the current public source build has no Scientific Figures package available. If the maintainer provides a compatible signed package, choose **Extensions → Install from file**, check the publisher and permissions, then install and enable it.
 2. Open a writable local workspace and a **DSH session** with a configured model. Scientific Figures uses this session to send requests and execute tasks.
 3. In SciForge's right sidebar, select **Scientific Figures** from the plugin picker. The default **Figure** page lets you select files, enter requests, and preview images.
 

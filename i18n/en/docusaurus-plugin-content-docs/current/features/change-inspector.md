@@ -10,7 +10,7 @@ Change Inspector helps you check which files the current task changed and what c
 
 ## How to use it
 
-Install a compatible package from a trusted source, enable the plugin, and grant the permissions it needs; see [Extension Center](./extensions.md) and [Version & Compatibility](../reference/version-and-compatibility.md). In the current session, where file changes have already occurred, you can ask the Agent:
+The desktop Market in the public source build currently lists Change Inspector under **Not installable yet**. If you have a compatible signed package from the maintainer, see [Extension Center](./extensions.md) for installation, activation, and permissions. In the current session, where file changes have already occurred, you can ask the Agent:
 
 > Check which files this task changed, and explain each change. If the content is too long, show it in batches and tell me what is not yet shown.
 
