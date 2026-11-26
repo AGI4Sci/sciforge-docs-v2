@@ -4,113 +4,96 @@ description: Walk through requirement confirmation, member delivery, revision, d
 sidebar_position: 4
 ---
 
-# Pasilla RNA-seq three-person collaboration
+# Pasilla RNA-seq collaboration
 
-This case uses a reporting task to demonstrate three-person collaboration: A owns requirements and review, B computes count QC and subset CPM, and C uses B's deliverables accepted by A for a descriptive comparison. The point is to hand work to members, review a specific version of a deliverable, and then pass it downstream.
+Use three accounts to follow a delivery through review and handoff. A owns the project. B submits a count QC and subset CPM report. C compares the groups using B's accepted version 2. Complete the sign-in, device, and model steps in the [Collaboration guide](../features/collaboration.md) first.
 
-For first-time use, complete sign-in, device connection, and model preparation in the [Collaboration guide](../features/collaboration.md).
+## Inputs and roles
 
-The screenshots on this page come from a real three-account collaboration demo and show requirement confirmation, member delivery, revision, deliverable acceptance, downstream handoff, and closeout end to end.
+Get the fruit-fly RNA-seq counts and sample annotations from [Bioconductor pasilla](https://bioconductor.org/packages/release/data/experiment/html/pasilla.html). Use the original header and the first **50 genes × 7 samples**, keeping their order and values. Compute each sample's subset CPM using the sum of that sample's counts across the 50 genes as the denominator. Interpret the results as a descriptive comparison of this excerpt.
 
-## Inputs and division of work
-
-The data comes from the public [Bioconductor pasilla](https://bioconductor.org/packages/release/data/experiment/html/pasilla.html) Drosophila RNA-seq count data. The demo uses the original headers and the first **50 genes × 7 samples**, keeping the order and values unchanged, along with the sample annotation.
-
-These 50 rows are an in-order excerpt of the original table, not a representative sample. The denominator for subset CPM is only the sum of counts for these 50 genes in each sample, not the full sequencing library size, and it is not for transcriptome-wide normalization or significance testing.
-
-| Person | Work | Deliverable this round |
+| Role | Where to work | Deliverables |
 | --- | --- | --- |
-| A: Owner | Confirm requirements, invite members, adjust assignments, request revisions, accept deliverables, and close out | Two deliverable acceptance records and a project summary |
-| B: Member | Compute excerpt total counts for 7 samples and subset CPM for 50 genes | Two README versions, plus a separate member-qc-notes.md member note |
-| C: Member | Read B's version 2 accepted by A and compare treated / untreated group means | One descriptive comparison README |
+| A, owner | Define two dependent modules in **Requirements**, then assign, review, and close the project from the **Board** | Two decisions to accept and a project summary |
+| B, assigned member | Open module 1 and calculate the excerpt totals for 7 samples and subset CPM for 50 genes | Two versions of `README.md`, each with a separate `member-qc-notes.md` |
+| C, downstream member | Open module 2, read B's accepted version 2, and compare the treated and untreated group means | One descriptive comparison in `README.md` |
 
-To follow along, first prepare the count data and sample annotation from the public source, then provide the inputs to the project.
+## 1. A defines two dependent modules
 
-## 1. A writes the requirements and confirms two serial modules
+In the project's **Requirements → Inputs and boundaries**, A pastes the original count-table header, the first 50 rows as TSV, and the group annotations for all 7 samples. A lists the two tasks and their deliverables under **Goals and deliverables**. B can read the excerpt in **Requirements** before accepting and find it in the module description under task details once assigned.
 
-A writes the real excerpt, output scope, and dependencies on the requirements page: B first produces the QC and subset CPM report; C uses only the version submitted by B and accepted by A. Once it is complete, A checks the modules and confirms the requirements.
-
-You can adapt the following target wording and fill in the actual data and sample annotation in the input area:
+Click **Save requirements**. When **Work modules** shows two entries and module 2 depends on module 1, click **Confirm requirements**. Adapt these example requirements to your task:
 
 ```text
-Module 1: Using the attached 50-gene × 7-sample counts, report each sample's excerpt total count,
-subset CPM, zero-count proportion, and column-sum check. The README includes the methods, reproducible code, and limitations.
-Members may attach their own check notes, which the owner previews and reviews.
+Module 1: Use the 50 genes × 7 samples in Inputs and boundaries. Report each sample's total count,
+subset CPM, fraction of zero counts, and column-sum check. Include the method, code to reproduce it,
+and scope in README.md. The member may attach a separate review note.
 
-Module 2: Depends on module 1's deliverable accepted by the owner; read its report and the member note, and compare
-the mean subset CPM of the treated and untreated groups, listing the 5 genes with the largest absolute mean difference.
-Descriptive comparison only; do not report p-values, FDR, or significance conclusions.
+Module 2: Use the accepted version of README.md and the member note from module 1.
+Compare the treated and untreated mean subset CPM. List the 5 genes with the largest
+absolute mean differences. Keep the comparison descriptive, without p-values, FDR, or significance claims.
 ```
 
-![The real requirement capture generates QC and downstream descriptive comparison modules, awaiting owner confirmation](/img/docs/collaboration/requirements-ready.png)
-*Figure 1: The inputs, output scope, and dependencies are written into the task description for members to read before accepting.*
-
-**What to check**: C's module depends on B's deliverables accepted by A; "B's AI has finished" is not a start condition for downstream work.
+![Two modules awaiting owner confirmation](/img/docs/collaboration/requirements-ready.png)
+*Figure 1. Requirements show the inputs, deliverables, and dependency.*
 
 ## 2. A invites members and assigns module 1 to B
 
-After confirming the requirements, A invites B and C and checks the task assignments. The system's initial assignment differs from the target division of work, so A reassigns module 1 to B through the UI; B reads the task and accepts.
+A invites B and C from **Members**. After they join, A opens module 1 from the **Board** and uses **Reassign** to give it to B. The card shows B under **Ready**. B opens the request, clicks **Accept task**, and starts from the task session.
 
-![B's task is not started, and module 2 shows waiting for the owner to accept the upstream deliverable](/img/docs/collaboration/task-offer.png)
-*Figure 2: Module 1's member is B; module 2 stays in the inbox, waiting for A to accept module 1's deliverable.*
-
-**What to check**: go by the member and status on the task card, not by natural-language descriptions of the division of work.
+![B's assignment and the downstream module waiting on its dependency](/img/docs/collaboration/task-offer.png)
+*Figure 2. B has module 1. Module 2 stays in the backlog until module 1 is accepted.*
 
 ## 3. B reviews the draft and submits two files
 
-After the local AI generates the README, B previews the report, adds member-qc-notes.md through **Add material → Upload from this computer**, and edits the result note. The version 1 manifest contains two items: the AI README and the member note.
+B opens the draft and previews `README.md`. Use **Add materials → Upload from this device** to include `member-qc-notes.md`. Record the method and results in **Result summary**, then click **Submit** and confirm. Version 1 appears in the delivery section with both files, ready for A to review.
 
-![B's version 1 draft lists the AI report and the member note](/img/docs/collaboration/delivery-draft.png)
-*Figure 3: The member reviews and then submits; the attached note is kept as a separate file.*
+![B's version 1 draft shows the report and separate member note](/img/docs/collaboration/delivery-draft.png)
+*Figure 3. The submission contains both the report and the separate note.*
 
-Before submitting, B checked the 350 subset CPM values and recorded the calculation method, the verification results, and the items that need owner review in the result note.
+## 4. A requests changes and B submits version 2
 
-**Tip**: before submitting, check both the file content and the result note so that the values, the text, and the work completed this round agree.
+A opens the version 1 submission and clicks **Request revision**. After entering the changes, A clicks **Send revision request**. In this run, A asked B to correct the report's review status, keep the separate note, and add the count and proportion of zeros plus the CPM column-sum check for each sample.
 
-## 4. A requests revisions and B submits version 2
+B updates `README.md`, keeps `member-qc-notes.md` separate, and submits version 2. A opens the version 2 submission at the top of the delivery section. It says it is awaiting owner review, shows the three additions, and still includes the member note. A clicks **Adopt delivery (采纳交付)**. The project shows **Adopted 1/2** and makes version 2 available downstream. Version 1 stays under **Version history**.
 
-A previews the sealed version 1 and uses **Request revision** to have B correct the review-status description, keep the separate note, and add per-sample zero-count counts, proportions, and a CPM column-sum check.
+![Version 2 with version 1 retained in Delivery History](/img/docs/collaboration/delivery-history.png)
+*Figure 4. A opens version 2 for review.*
 
-B revises, reviews again, and submits version 2; A previews this version and accepts it. Version 1 remains in history.
+## 5. C accepts the downstream task and opens the accepted files
 
-![The version 2 delivery note records the changes, with version 1 history below](/img/docs/collaboration/delivery-history.png)
-*Figure 4: The new version is used for this review; the old version can still be expanded.*
+After adopting version 2, A opens module 2 on the **Board** and assigns it to C. C clicks **Accept task**, opens the task session, and uses the **Files** panel on the right to open the task's working directory. SciForge places the accepted delivery there. C opens the two inputs whose names end in `README.md` and `member-qc-notes.md` and uses them for the group comparison.
 
-**What to check**: a revision produces a new delivery version; before accepting a deliverable, be clear about which version you are previewing.
+![C runs module 2 with the accepted version 2 as input](/img/docs/collaboration/upstream-input.png)
+*Figure 5. The project shows Adopted 1/2 while C runs the downstream task.*
 
-## 5. C accepts the downstream task and reads the accepted deliverables
+## 6. C submits the report and A closes the project
 
-Only after A accepts B's version 2 does module 2 become assignable. A reassigns it to C before C accepts the task; C accepts and runs it. The system places B's version 2 README and member note into C's task inputs, so no manual copying is needed.
+C opens the draft and previews `README.md`. The report identifies B's accepted version 2 and lists the 5 genes with the largest absolute mean differences. C clicks **Submit**. The task moves to **Awaiting review**.
 
-![C is running module 2, whose task description requires reading version 2 accepted by A and the member note](/img/docs/collaboration/upstream-input.png)
-*Figure 5: A has accepted 1/2 deliverables, and downstream C is running.*
+A opens C's delivery and clicks **Adopt delivery (采纳交付)**. When the project shows **Adopted 2/2**, A writes the summary and clicks **Complete project**. Once the project shows **Completed**, both deliveries are still available.
 
-Downstream uses B's version 2 files accepted by A; C can read these inputs directly in their own task and continue the analysis.
+![C previews the descriptive subset CPM comparison](/img/docs/collaboration/report-preview.png)
+*Figure 6. The group means and differences cover the 50-gene excerpt.*
 
-## 6. C previews the report, and A accepts the deliverable and closes the project
+![Project complete with 2/2 deliveries accepted](/img/docs/collaboration/project-completed.png)
+*Figure 7. A accepted both deliveries and closed the project.*
 
-C previews the report, confirms that only inputs accepted by A were used and that the descriptive-analysis limits are kept, then submits. A previews C's sealed report and accepts it; once all modules are complete, A fills in the summary and confirms closeout.
+## Case results
 
-![C previews the treated vs. untreated subset CPM comparison report in the task session](/img/docs/collaboration/report-preview.png)
-*Figure 6: The report scopes the data and does not interpret mean differences as statistical significance.*
+This three-account run took place on **2026-10-27**. The screenshots are from that run. The example covers the first 50 rows from 7 samples and delivers Markdown reports and the member note. Full-dataset import, separate matrices, and PNG output are outside the scope of this example.
 
-![The project finally shows complete and 2/2 deliverables accepted](/img/docs/collaboration/project-completed.png)
-*Figure 7: Both modules are complete, and the project itself is closed out.*
+<details>
+<summary>Recalculation and file records for this run</summary>
 
-## Case outcomes
+- Independent recalculation matched all 350 subset CPM values in B's version 1. Version 2 kept those 350 values and added the requested checks.
+- Both inputs in C's task directory matched the files listed in A's accepted version 2 delivery.
+- Recalculation from the same excerpt matched C's top 5 ranking and the reported group means and differences to 6 decimal places.
 
-| Stage | Result |
-| --- | --- |
-| Requirement capture and confirmation | Two real work modules with dependencies |
-| Review and adding material | The AI README is sealed together with the member note |
-| Revision and version retention | B delivered two versions; A accepted version 2 |
-| Downstream handoff | C used the version 2 report and member note submitted by B and accepted by A |
-| Human acceptance and closeout | A accepted both module deliverables; the project is finally complete |
+</details>
 
-This case shows the full collaboration flow from requirements to delivery. The analysis uses a data excerpt and a descriptive comparison, so read the results together with the relevant data scope and methods.
+## Continue reading
 
-## Further reading
-
-- [Collaboration guide](../features/collaboration.md): button paths, statuses, failure handling, and data boundaries.
-- [Runtime and models](../getting-started/runtime-and-models.md): prepare the execution environment and structured output configuration.
-- [Feature status and limitations](../reference/feature-status.md): what the current version supports.
+- [Collaboration guide](../features/collaboration.md)
+- [Runtime and models](../getting-started/runtime-and-models.md)
+- [Feature status and limits](../reference/feature-status.md)

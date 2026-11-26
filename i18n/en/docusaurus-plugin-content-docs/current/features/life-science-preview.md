@@ -6,69 +6,48 @@ sidebar_position: 10
 
 # Life Science Preview
 
-Life Science Preview ships with SciForge, with no separate plugin needed. It shows the structure and summaries of scientific files to help you locate material for further analysis. Full data analysis still requires reading the original files and running the appropriate tools.
+Open a scientific file to see its summary and choose the chain, region, or channel you want to analyze. Life Science Preview is included in SciForge's Biology Workbench. This page covers version **1.1.3**.
 
 ## Open a file
 
-Open a file in the current workspace's file panel. Supported formats display the corresponding scientific preview; other formats open as ordinary files.
-
-Both local and remote workspaces are supported. Remote files are read from the remote side, so previewing does not require downloading the entire file to this machine first. Reads remain subject to workspace permissions and size limits.
+Open **Files** from the toolbar on the far right and select a file in the current workspace. Supported types open in their scientific viewer. Other types open in the regular viewer. A remote workspace reads the preview from the remote file within the workspace's permissions and preview limits.
 
 ## Supported formats and preview content
 
-| Purpose | Supported formats | Preview content |
+| File formats | What you can see | What to do next |
 | --- | --- | --- |
-| View molecular structures | `.pdb`, `.cif`, `.mmcif`, `.sdf`, `.mol`, `.mol2`, `.xyz` | Chain, residue, and ligand summaries and a Mol* 3D view; distance, angle, or dihedral measurements when coordinates are available |
-| View sequences and genomes | `.fasta`, `.fa`, `.fna`, `.faa`, `.fastq`, `.gb`, `.gbk`, `.gff`, `.gff3`, `.gtf`, `.bed`, `.vcf` | Record counts, lengths, features, intervals, and variant summaries; analysis-region selection |
-| View omics file information | `.h5ad`, `.loom`, `.mtx`, `.h5`, `.hdf5`, `.zarr` | Readable file information such as matrix dimensions, observation and variable field names, and dimensionality-reduction result names; the full matrix is not read |
-| View biological imaging information | `.tif`, `.tiff`, `.ome.tif`, `.ome.tiff`, `.czi`, `.svs`, `.ndpi` | Dimensions, channels, and OME metadata; region of interest (ROI) and channel selection where supported, or thumbnails and local image regions for TIFF/OME-TIFF |
-| View spectral and flow cytometry summaries | `.mzml`, `.mzxml`, `.mgf`, `.fcs` | Readable scan or event summaries, peak counts, intensity ranges, and partial peak data; peak-interval annotations can be added |
-| View companion index files | `.fai`, `.gzi`, `.tbi`, `.csi` | Recognizes companion indexes for sequence or genome files for use in later operations; indexes are not parsed as sequence or variant data |
+| `.pdb`, `.cif`, `.mmcif`, `.sdf`, `.mol`, `.mol2`, `.xyz` | Chain, residue, and ligand summaries and a Mol* 3D view | Select a region. When coordinates are available, measure distances, angles, or dihedrals. |
+| `.fasta`, `.fa`, `.fna`, `.faa`, `.fastq`, `.gb`, `.gbk`, `.gff`, `.gff3`, `.gtf`, `.bed`, `.vcf` | Available record counts, lengths, features, intervals, or variant summaries | Select an interval and use its coordinates to read, validate, or analyze the source file. |
+| `.h5ad`, `.loom`, `.mtx`, `.h5`, `.hdf5`, `.zarr` | Available matrix dimensions, observation and variable fields, and names of dimensionality reductions | Find the fields you need, then open the full matrix with an appropriate analysis tool. |
+| `.tif`, `.tiff`, `.ome.tif`, `.ome.tiff`, `.czi`, `.svs`, `.ndpi` | Dimensions, channels, and OME metadata. Supported TIFF and OME-TIFF files can show thumbnails and regions | Select a region of interest (ROI) or channel where available. Use an imaging tool for the pixels in CZI, SVS, or NDPI, or in a compressed or non-8-bit TIFF that only shows file information. |
+| `.mzml`, `.mzxml`, `.mgf`, `.fcs` | Available scan or event summaries, peak counts, intensity ranges, and some peak data. FCS mainly shows headers and keywords | Annotate a peak interval where available. Use an FCS tool to read the full event matrix. |
+| `.fai`, `.gzi`, `.tbi`, `.csi` | An index for an accompanying sequence or genome file | Reference the index with its companion data file. |
+
+Scroll in the preview to see later spectrum, omics, and image summary cards. Use Mol* to inspect trajectory or density files. Open the corresponding structure file for chain and residue summaries.
 
 ## Select molecular regions
 
-In the molecular preview's selection panel, choose a chain or ligand to highlight it in the 3D view. Click **Clear** to remove the highlight. A selection can contain multiple chains, residues, atoms, or ligands.
+Click a residue in the Mol* 3D view to add it. Click the same residue again to remove it, or click empty space to clear the selection. In the selection panel, clicking a chain replaces the selection with that chain. You can also choose a ligand there. The highlights and selection list show the selected chains, residues, atoms, or ligands.
 
-**Selection state is separate from the source file.** Actions in the selection panel update the current file's preview-session state; they do not write selections into PDB, CIF, or other source files. The preview session and chat session are separate records, and an on-screen highlight does not mean the selection has been saved permanently.
+Click individual residues one at a time. Use **Shift**-click for a continuous polymer range. If the list shows a different range than intended, clear the selection and select the residues individually.
 
-After closing and reopening a file, check the selection you want to keep using. Include important chain, residue, or atom identifiers in your analysis request as well. That gives the AI assistant an explicit scope to follow even if the selection state was not retained.
-
-In the 3D view, clicking a residue adds it to the current selection; clicking a selected residue again deselects it. If you click residue A and then residue B, both remain selected. Clicking empty space clears the selection. Clicking a chain button in the selection panel replaces the current selection with the entire chain. Holding Shift while clicking may select a polymer range rather than toggle a single residue.
-
-Summaries for spectra, omics matrices, and biological images are arranged as cards. If the content is long, scroll within the preview panel to view it.
+Selections are stored in the file's preview session. Look at the highlights after reopening a file. When continuing analysis in chat, include the chain and relevant residue or atom IDs in the task.
 
 ## Continue analysis from a preview
 
-1. Confirm the current workspace, then open the target file in the file panel.
-2. Check the filename, format, size, and summary to confirm that it is the intended file.
-3. Select regions, residues, or channels as needed, then tell the AI assistant the file path, analysis scope, and goal in the session.
-4. In a remote workspace, have the assistant read the original file directly on the remote side. There is no need to copy an entire large file just to preview it.
-5. Check the original data, commands, and run results used in the analysis. Preview summaries help you locate and understand files; they do not replace computation records.
+In the session, specify the file path, region or channel, and the question to analyze. For a remote workspace, use the remote source path. Use the preview to find the relevant part of the file. Use the source file for quantitative analysis, full format validation, or variant detection, and compare the result with the reported inputs and commands.
 
 ## Read limits and exported copies
 
-- Summaries read only the beginning of a file: up to **2 MB (2,000,000 bytes)** of text or **4 MiB (4,194,304 bytes)** of binary data. Content beyond that is marked as incomplete, and counts in the summary may not represent the entire file.
-- Previewing does not modify the source file. Exporting copies the source file in its original format to a new workspace path; it does not convert formats or repair damaged files.
-- Opening and reading require no confirmation. Exporting a copy requires confirmation; check the save path before proceeding.
-- Previewing and exporting do not upload workspace files. To upload, convert, or repair a file, give the assistant a separate task.
+The summary reads the beginning of the file, up to **2 MB (2,000,000 bytes)** for text or **4 MiB (4,194,304 bytes)** for binary data. When the preview says it is incomplete, its counts cover only the portion it read. Calculate whole-file counts from the source. If a selection is too large, narrow it and try again.
 
-## Limits by preview type
+To export a copy, open the scientific file from **Files** on the right. Keep the preview open, and in a session with file-preview tools request a copy in the original format. Provide the source and a new workspace-relative destination. For example, open a FASTA file and request a copy at `exports/copy.fasta`. Use any available destination that keeps the original format.
 
-- Item lists may show only an initial portion and indicate that they are incomplete. Selections that are too large are rejected with a prompt; narrow the selection.
-- Omics previews mainly show file information. They do not read full matrices from HDF5, AnnData, Loom, or Zarr and cannot be used directly for quantitative analysis.
-- CZI, SVS, and NDPI display only readable file information, not actual pixel content.
-- FCS mainly displays the readable header, keywords, and partial peak data, without a full event matrix.
-- TIFF/OME-TIFF attempts to generate thumbnails and local image regions. Compressed or non-8-bit images may show only file information.
-- Sequence and genome summaries are based on partial text and cannot replace full format validation or variant calling.
-- Trajectory and density files can be viewed in the Mol* 3D view, but they do not generate chain, residue, and ligand summaries.
-
-## Version information
-
-Life Science Preview is part of the app's built-in Biology Workbench. This documentation corresponds to version **1.1.3**.
+Opening the preview and reading it require no confirmation. Approve the export after reviewing the source and destination in the write confirmation. Then open the destination folder in **Files**. The copy appears there with the same file extension.
 
 ## Related pages
 
-- [Biology Room](./biology-room.md): organize related scientific files and annotations in one place.
-- [Acquiring and organizing data](./dataset-api.md): download data and record its source, date, version, license, and verification results.
-- [Workbench tools](../workbench/tools.md): learn how to use file previews, the terminal, and the browser.
-- [Feature status and limitations](../reference/feature-status.md): check usage requirements and current limits.
+- [Biology Room](./biology-room.md)
+- [Get and organize data](./dataset-api.md)
+- [Workbench tools](../workbench/tools.md)
+- [Feature status and limits](../reference/feature-status.md)

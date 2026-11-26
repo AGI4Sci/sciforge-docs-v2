@@ -72,7 +72,7 @@ npm run build
 ## 迁移与维护
 
 - 本仓库由原文档仓库复制迁入，保留原 Git 历史与 MIT 作者署名（见 `LICENSE`），并非 GitHub 所有权转移。
-- 本轮按 2026-11-06 最新客户端主线 `3f6b0c3` 更新。公开源码、插件与案例版本见[版本与兼容性](./docs/reference/version-and-compatibility.md)。内部部署和 Remote SSH 管理留在私有文档。
+- 中英文手册同步更新。客户端发行版、截图基准、插件和案例版本见[版本与兼容性](./docs/reference/version-and-compatibility.md)。内部部署和 Remote SSH 管理留在私有文档。
 - 用户教程只在本仓维护；源码仓库保留入口和内部补充。更新流程见[文档同步检查清单](./docs/operations/docs-sync-checklist.md)。
 - 后续修改通过 Pull Request 审阅，合并到 `main` 后自动发布。
 - 回退：对出问题的后续提交使用 `git revert <commit>` 并走 Pull Request，合并后重新部署；不要直接部署迁移前版本，以免恢复旧域名配置。必要时可暂时继续使用原站。

@@ -12,8 +12,9 @@ When you cannot find a button the tutorial mentions, check the client and plugin
 | Item | Version or where to look |
 | --- | --- |
 | Earlier tutorial screenshots | 2026-11-06, mainline `3f6b0c3`. |
-| Latest official installer | [v0.2.16](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.16), older than the public source build below. |
-| Updated plugin guides and Extension Center screenshots | [Public source build `9daddeb`](https://github.com/AGI4Sci/SciForge/commit/9daddeb). Its bundled desktop Market index has no installable entries. |
+| Latest stable installer | [v0.2.16](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.16). |
+| Apple Silicon prerelease | [v0.2.18](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.18), published November 26, 2026. |
+| Source build for the plugin guides and Extension Center screenshots | [Public source build `9daddeb`](https://github.com/AGI4Sci/SciForge/commit/9daddeb). Its bundled desktop Market index has no installable entries. |
 | [Public source](https://github.com/AGI4Sci/SciForge) | Check the commit you actually checked out. |
 
 ## Interface entry points

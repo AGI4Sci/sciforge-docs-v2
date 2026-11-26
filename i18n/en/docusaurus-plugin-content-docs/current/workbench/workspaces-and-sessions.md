@@ -6,55 +6,50 @@ sidebar_position: 1
 
 # Workspaces and sessions
 
-A workspace determines where the Agent reads files, inspects Git, and runs commands; a session stores the messages, executions, and results around one goal. The same workspace can have multiple sessions.
+Open the folder that holds your paper, code, or data. Create a session for the task. The workspace is where the assistant reads files, checks Git, and runs commands. Reopen a session to return to its messages and results.
 
-## Get to know the current layout
+## Find your way around
 
-- **Left sidebar**: Organizes workspaces, sessions, and navigation contributed by extensions. Expand it to view collaborative projects, My Work, and the Inbox; local account, cloud status, usage summary, and Settings sit at the bottom.
-- **Center session area**: View tasks, tool calls, and answers, and enter tasks at the bottom.
-- **Far-right vertical toolbar**: Opens panels such as Files; when space is tight, find entries under "More tools." Which tools appear depends on what is installed and available.
-- **Docked panels**: Pages that support docking can be placed on the left, right, bottom, or in the main area; the session's right panel can also be split, resized, switched, and navigated forward and back where supported. The two layouts are not the same toggle.
-
-When the sidebar is collapsed, the full account summary and project tree are hidden; expand it first when you need those entries.
+- Open the **left sidebar** for workspaces, sessions, and extension pages. Expand it for collaboration projects, **My Work**, and **Inbox**. Account, cloud status, usage, and settings are at the bottom.
+- Enter tasks in the **session area** and follow replies and tool calls there.
+- Open **Files** and other panels from the **toolbar on the far right**. Look under **More Tools** if an icon is out of view. Available tools depend on which features are installed and enabled.
+- Drag a panel edge to resize it. Dockable pages can move to the left, right, bottom, or main area. Some panels support splitting, switching views, or navigating back and forward.
 
 ## Open a workspace
 
-1. In the workspace location selector, choose a local workspace or a configured, available target.
-2. Select the directory containing your paper, code, or data.
-3. Verify the workspace path and the project name in the sidebar, then create a session.
-4. Use a new session for a new goal; continue the existing session for the same goal.
+1. Open the workspace location menu and select a local workspace or a configured, available target.
+2. Select the folder containing your files. The sidebar shows the project name and workspace path.
+3. Create a session for a new goal. To resume a task, select its session in the sidebar.
 
-![SciForge new-session interface](/img/docs/quickstart/quickstart-new-session.jpg)
-*Illustrates the relationship between projects and sessions.*
+![Creating a session in a SciForge workspace](/img/docs/quickstart/quickstart-new-session.jpg)
+*The new session appears under the selected project.*
 
-## Add files: choose, drag, paste, or reference
+## Add files by selecting, dropping, pasting, or referencing
 
-**Attach file** in the input area opens the file picker; you can also drag supported files into the input area or paste files and images from the clipboard. Pasting ordinary text is still handled as text. PDFs, images, scientific data, and web documents are checked against type- and size-specific rules; unsupported files or failed imports show an error.
+### Reference a workspace file
 
-Open the **Files** panel from the far-right toolbar to browse, preview, and reference workspace objects. You can also type `@` to find workspace files; references containing spaces use the `@"directory/filename"` form.
+Open **Files** from the far-right toolbar and reference the file. You can also type `@` in the input box to search the workspace. Use `@"folder/file name"` for a path with spaces. The pending attachment appears above the input box with its name and path. This route works for a read-only demo using existing files.
 
-Before sending, the **attachment tray** above the input box lists the objects to send with their type, path, and known size. You can preview references that support preview or remove entries you do not need to send this time. After sending, the **sent file chips** below your message keep the file name and known size; click one to preview the corresponding workspace file. It is not a pending list you can keep editing.
+### Import a file from outside the workspace
 
-When using attachments, check in this order:
+Click **Add File**, drag a supported file into the input area, or paste a file or image from the clipboard. Pasted plain text goes into the message. When an import succeeds, an item appears in the attachment tray and a copy is saved in the workspace's session attachments directory. PDFs, images, scientific data, and web documents have their own format and size requirements. Follow the error if a file needs to be smaller or use a different format.
 
-1. Before sending, check the file names, paths, and sizes in the attachment tray, and remove entries chosen by mistake or not needed.
-2. After sending, use the file chips under the message to check what was sent; when you need the Agent to analyze content, explicitly ask it to read the matching file first, then explain what it found.
-3. When you reference a file already in the workspace, the Agent reads it as needed. A file chip only shows the file was added to the message; do not conclude from it that the content has been read or understood.
-4. Files selected or pasted from outside the workspace are imported into the workspace's session attachment directory. **Removing a tray entry does not delete the file that was already imported**; to clean up, check in the Files panel and then delete.
+### Check what you are sending
 
-Whether an image can be used for analysis depends on the model you use and its image support; after sending, check what was read. A read-only demo can reference existing workspace files directly, to avoid extra files from importing.
+1. **Before sending**, use the **attachment tray** above the input box to see the type, path, and displayed size. Open an attachment to preview it when available. Remove any unwanted item from the tray. Imported copies stay in the session's attachments directory. Open that directory from **Files** to remove a copy.
+2. **After sending**, a **sent file tag** below the message shows that the corresponding file was included. Click it to open a read-only preview. To see whether the assistant used the file, ask it to identify the file and a page, line, or short passage it cited, then compare that reference with the attachment. Use a model with image input when you want to analyze a picture.
 
-![SciForge workspace Files panel](/img/docs/guides/workspace-files.jpg)
-*Shows the purpose of directory browsing and preview; the current entry point is in the far-right vertical toolbar.*
+![Workspace Files panel](/img/docs/guides/workspace-files.jpg)
+*The Files panel shows folders and previews. Open it from the toolbar on the far right.*
 
 ## Manage sessions and review changes
 
-Click a session to continue its goal, use search to find history, archive sessions you are not using for now, and restore them as needed. Save important results to the workspace or a research record before deleting. Do not mix unrelated research goals in one session.
+Select a session to continue working, or use search to find one. Archive sessions you want to set aside and restore them when needed. Before deleting a session, save important results to the workspace or research record.
 
-After modifying files, ask the Agent to use the [Change Inspector](../features/change-inspector.md) to review this session's changes, then run `git status --short` to inspect the entire workspace. Closing a panel or switching sessions does not undo file modifications.
+Use [Change Inspector](../features/change-inspector.md) in a session with the compatible plugin to see the changes recorded for that session. Run `git status --short` to see Git's view of the workspace. Changes on disk persist after you close the panel or switch sessions.
 
-A clear session opening:
+Here is an example of a first task you can adapt:
 
-> Read the README, dependency configuration, and main entry points in the current workspace. First give the shortest path to run and test, without installing dependencies or modifying files; list anything you cannot confirm separately.
+> Read the workspace README, dependency configuration, and entry point. Tell me how to run and test the project and what information is missing. Keep this task read-only.
 
-Related pages: [Working with the Agent](./agent-workflows.md), [Workbench tools](./tools.md), [Identity & Access](../features/identity-access.md).
+Related pages: [Working with agents](./agent-workflows.md), [Workbench tools](./tools.md), and [Identity and sign-in](../features/identity-access.md).

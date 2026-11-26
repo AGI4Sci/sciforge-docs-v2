@@ -47,7 +47,7 @@ Enter:
 
 > Look at the current workspace, list only the top-level files and directories, and describe in one sentence what this project might be. Do not modify files or install dependencies.
 
-You do not need to add attachments for this task. To point at an existing file, use the file panel's reference action or type `@`. Choosing files from outside your machine, dragging them in, or pasting images may import files into the workspace first, which changes the file baseline for the read-only check; save that for a later task. For the difference between the attachment tray and the labels on sent files, see [workspaces and sessions](../workbench/workspaces-and-sessions.md).
+For this read-only trial, use **Files** or type `@` if you need to reference a file already in the workspace. Importing a file from outside the workspace saves a copy there. Try that in a later task. For the difference between the attachment tray and the labels on sent files, see [workspaces and sessions](../workbench/workspaces-and-sessions.md).
 
 ![First task prompt](/img/docs/quickstart/quickstart-first-task.jpg)
 *Shows the task text and the execution runtime.*

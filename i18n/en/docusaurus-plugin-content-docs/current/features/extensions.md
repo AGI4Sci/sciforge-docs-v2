@@ -6,79 +6,66 @@ sidebar_position: 4
 
 # Skills, MCP, and Extensions
 
-When you need to add tools or a specialized method, first work out what you are installing, then check its source and permissions. Extensions provide app panels and tools, Skills provide task methods, and MCP connects external tools or data.
+Open **Extensions** for tools and panels. Use **Skills** to reuse a method, and MCP to connect a session to an external tool or data source.
 
 ## Open the Extension Center
 
-Open **Extensions** from the left sidebar to see built-in and installed extensions, the marketplace, and Skills. Expand the sidebar first if you need the full navigation.
+Expand the left sidebar and click **Extensions**. An entry's details show its publisher, version, source, status, permissions, and what it adds.
 
-Extension details show the publisher, version, source, status, permissions, and the features it contributes. After installing or enabling, related entries may appear in the left navigation, the vertical toolbar on the far right, or file preview. When there are many toolbar entries, use **More tools**; supported entries can be adjusted through **Customize toolbar**.
+Open extension pages from the left navigation and tool panels from the toolbar on the far right. For a file-preview extension, open a file of the supported type from **Files**. If an icon is out of view, open **More Tools**. Use **Customize Toolbar** to move supported tools. Dockable pages can sit on the left, right, bottom, or in the main area.
 
-![Extension Center in the public source build](/img/docs/guides/extensions-center-public-en.png)
-*The extensions list in a build from public source.*
+![Extension Center](/img/docs/guides/extensions-center-public-en.png)
+*Open Extensions from the left sidebar to see where an item comes from.*
 
-![Version and source of a bundled extension](/img/docs/guides/extensions-details-public-en.png)
+![Details for a bundled extension](/img/docs/guides/extensions-details-public-en.png)
 *Open an entry to see its version, source, and status.*
 
 ## Check availability, install, and enable
 
 | What you want to do | Where to go |
 | --- | --- |
-| Look up a plugin or module and check its compatibility status | Open the [SciForge public catalog](https://agi4sci.github.io/SciForge-market/) |
-| Use a module bundled with the app | Open **Extensions** and check the bundled entry for details and where to open it |
-| Install a DSH plugin | Open **Extensions → Market** and check the current index for installable entries |
-| Import a local signed extension | Open **Extensions → Install from file** and select a supported `.sciforge-plugin` package |
+| Find out what a plugin does and see its compatibility status | Open the [SciForge public catalog](https://agi4sci.github.io/SciForge-market/) and select the entry. |
+| Install a DSH plugin in the desktop app | Open **Extensions → Market**. Available entries offer **Install**. The Market supplies `.sciforge-dsh-plugin` packages. |
+| Use a bundled module | Open its entry in **Extensions** to see whether it is enabled and where to open it. |
+| Install a signed extension from a local file | Open **Extensions → Install from file** and select a supported `.sciforge-plugin` package. Check its publisher, signature, and version compatibility. |
 
-The market index bundled with the public source build checked for this guide (`9daddeb`) lists no installable plugins. Expand **Not installable yet** to see the reasons for Change Inspector and Scientific Figures.
+To install from the Market, open the entry and review its publisher, permissions, and required host interfaces. Then click **Install → Approve and install**. Once the entry shows **Enabled**, open the tool and try it. The entry also provides the actions available for that extension, such as disabling, uninstalling, or rolling back. If the app requests a restart, reopen the tool afterward.
 
-![Desktop Market with the unavailable entries expanded](/img/docs/guides/extensions-market-public-en.png)
-*The desktop Market shows current installation status.*
+If an entry appears under **Not installable yet**, expand the group to see why. Use the maintainer's instructions for plugins supplied with a development build.
 
-When an installable entry appears, open its details and check the publisher, version, tool permissions, and required host operations. Choose **Install**, review the requested access, and select **Approve and install**. Then check that the entry shows **Enabled**. Open the tool or try it in a session to verify it works.
-
-Anchored Comments, Change Inspector, and Scientific Figures are DSH plugins. The desktop Market obtains `.sciforge-dsh-plugin` packages from its index. **Install from file** accepts `.sciforge-plugin` packages only. Follow the maintainer’s instructions for development builds.
-
-Use the available controls to enable, disable, uninstall, or roll back an installed extension. Handle restart or load errors before looking for its tools. Dockable extension pages can be placed on the left, right, bottom, or main area.
+![Unavailable entries in the desktop Market](/img/docs/guides/extensions-market-public-en.png)
+*Expand Not installable yet to see the reason for each entry.*
 
 ### Plugin tutorials
 
-- [Anchored Comments](./anchored-comments.md): save a comment on selected text and return to the source.
-- [Change Inspector](./change-inspector.md): inspect file changes recorded in the current session.
-- [Scientific Figures](./scientific-plotting.md): plot data, compare candidates, and accept the chosen result.
+Try these examples with a compatible, enabled version of the DSH plugin.
+
+- **Anchored Comments.** In a workspace where you can save comments, open **Research Record** and select “Missing values were filled with 0” within one entry. Click **Add Comment**, write “Check whether a blank means the sample was not measured,” and click **Save**. To find the comment again, query it in the session. The result should contain both the quoted text and your note. See [Anchored Comments](./anchored-comments.md).
+- **Change Inspector.** Use a session in a demo workspace to add a line to `notes.md`. In the same session, request the recorded changes. The list should include `notes.md`, and its diff should show the added line. Open the next batch if the list continues. See [Change Inspector](./change-inspector.md).
+- **Scientific Figures.** Use a writable local workspace, a configured DSH session, and Python with Matplotlib on a macOS system that passes the execution checks. Open **Scientific Figures → New → Start from data**, run the sample, and refresh the panel. The PNG appears in **Figures**. See [Scientific Figures](./scientific-plotting.md).
 
 ## Use a Skill
 
-A Skill usually contains method notes plus supporting scripts and material. Before enabling it, check:
+Open **Extensions → Skills** to find a method. Before enabling it, look at its project or global scope, what triggers it, and what scripts, software, materials, or credentials it uses. If it installs dependencies, accesses the network, or writes files, review those permissions when you run it. Try a small sample and compare its output against the Skill's criteria.
 
-- What tasks it suits, and when it triggers.
-- Whether it runs scripts, accesses the network, or writes files.
-- What software, data, and credentials it needs.
-- What check shows the result is reliable.
-
-![The Skills management page](/img/docs/guides/skills-center.png)
-*Shows what project-level and global Skill management is for.*
-
-Once a Skill is discovered, its scripts still run under the task's permissions. Dependency installs and external actions of a third-party Skill need separate checks; "enabled" is not a substitute for authorization.
+![Skills management](/img/docs/guides/skills-center.png)
+*See the Skills available to the current project or globally.*
 
 ## Connect an MCP Server
 
-When configuring MCP, check the service source, version, launch method or address, the credential scope, and what data the tools will read or send. Test the connection with low-impact operations first, then move to tasks that write.
-
-Before sending, uploading, deleting, or modifying anything in an external system, confirm the target and the user's authorization. A successful connection only shows that the service can be called; the task result still needs checking. Avoid writing keys directly into prompts, project requirements, or delivery content.
+1. Expand the left sidebar and open **Settings → AI Assistants** to identify the Runtime used in your session. Use the Runtime's own MCP configuration if it supports custom servers. SciForge's desktop settings manage the Runtime and its Market installs plugins. This desktop build has no general-purpose editor for custom MCP servers. If the session's Runtime does not support custom connections, use the tools it already provides.
+2. In a Runtime that supports custom connections, open its MCP server settings and enter the startup command or server address. Before saving, review the service's source, version, launch method or address, credential scope, and what data it can read, write, or send. Enter credentials in the configuration's credential input.
+3. Return to the session and use the service for a read-only query, such as listing a resource you know exists. The result should include that resource's name or ID. Before sending, uploading, deleting, or writing anything, identify the target, the destination for the data, and the permission to act. Find the new or changed item in the target system afterward.
 
 ## Use Computer Use
 
-Computer Use currently supports Codex and Claude Code, and can operate browsers and the embedded pages of Electron apps. First enable it in settings and check the run status; on macOS, also check the Screen Recording and Accessibility permissions. Limit the target page and the task scope, and check each action such as sign-in, authorization, payment, sending, or deleting.
+With Codex or Claude Code, enable Computer Use in **Settings** and look at its status. On macOS, check Screen Recording and Accessibility permissions. Identify the browser page or embedded Electron page and what can be done there. Review any login, authorization, payment, send, or delete action when it comes up, then look for its result on the page.
 
-![Computer Use configuration](/img/docs/guides/ai-assistants-computer-use.jpg)
-*After enabling Computer Use, check the run status and system permissions.*
+![Computer Use settings](/img/docs/guides/ai-assistants-computer-use.jpg)
+*Settings show whether Computer Use is enabled and which system permissions it needs.*
 
 ## When you cannot find a feature
 
-1. Check the status and error messages of the extension, Skill, or MCP.
-2. Check whether the current workspace, permissions, and Runtime support the capability you need.
-3. Start a new session so capabilities are discovered again; if a restart is needed, follow the interface prompt.
-4. If a tool entry has disappeared, check **More tools** and the toolbar customization settings.
-5. If a local extension fails to install, check the publisher, signature, and version compatibility; do not force-load it by turning off permission checks.
+Open **Extensions** and look for a disabled entry, an error, or a restart request. If the tool panel is out of view, use **More Tools** or **Customize Toolbar**. If an enabled Skill or MCP tool is missing from a session, try a new session. For a local installation failure, use the error to identify the package format, signature, publisher, or version to check.
 
-Related pages: [Workbench tools](../workbench/tools.md), [Permissions & security](../operations/security.md).
+Related pages: [Workbench tools](../workbench/tools.md) and [Permissions and security](../operations/security.md).

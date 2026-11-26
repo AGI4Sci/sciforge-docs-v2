@@ -12,8 +12,9 @@ description: 查找客户端、插件的适用版本与安装要求。
 | 内容 | 版本或查看位置 |
 | --- | --- |
 | 旧教程截图基准 | 2026-11-06，主线 `3f6b0c3`。 |
-| 最新正式安装包 | [v0.2.16](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.16)，早于下方公开源码构建。 |
-| 本轮插件说明与扩展截图 | [公开源码构建 `9daddeb`](https://github.com/AGI4Sci/SciForge/commit/9daddeb)。随附桌面市场索引无可安装条目。 |
+| 最新正式安装包 | [v0.2.16](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.16)。 |
+| Apple Silicon 预发行版 | [v0.2.18](https://github.com/AGI4Sci/SciForge/releases/tag/v0.2.18)，2026-11-26 发布。 |
+| 插件说明与扩展截图基准 | [公开源码构建 `9daddeb`](https://github.com/AGI4Sci/SciForge/commit/9daddeb)。随附桌面市场索引无可安装条目。 |
 | [公开源码](https://github.com/AGI4Sci/SciForge) | 查看实际检出的提交。 |
 
 ## 界面入口

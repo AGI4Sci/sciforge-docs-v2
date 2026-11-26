@@ -6,52 +6,37 @@ sidebar_position: 63
 
 # SiYuan Notes
 
-SiYuan Notes connects a user-provided remote SiYuan service to the workbench as a full-page editor for reading, editing, and archiving research records. It is used in the organization stage after task execution, and you can also consult notes during a task. SciForge does not bundle the kernel or run or manage that service for you.
+Open your SiYuan service from SciForge to read or update research notes, or save a session result to a specific document.
 
 ## How to open it
 
-- Entry: **SiYuan Notes** in the left sidebar opens the editor to the right of the session by default. From the page header you can move it to the left, bottom, or main area and resize it. Position and size are saved on this machine.
-- Target: the SiYuan service you run or subscribe to, along with its notebooks and documents.
-- Prerequisite: an accessible HTTP/HTTPS SiYuan address. If the service requires authentication, enter an API token in the page's settings, or use the `SIYUAN_API_TOKEN` environment variable. SciForge does not start or distribute the SiYuan kernel with the app.
+1. Prepare a reachable HTTP or HTTPS SiYuan service in server mode. You can use a service you deploy or subscribe to. Have the API Token ready if the service requires one.
+2. Click **SiYuan Notes** in the left sidebar. In its **Settings**, enter the service address and save. Leaving it blank uses the installation's default address. Enter the API Token in **Settings** or set `SIYUAN_API_TOKEN` in the launch environment. The token from Settings takes precedence and is stored in the app's encrypted storage.
+3. Once the editor opens, choose the notebook and document. For a connection error, retry or return to **Settings** and check the address and token.
 
-## What you can do
+The editor opens to the right of the session. You can move it from the header to the left, bottom, or main area and resize it. The app saves its position and size on this device.
 
-| What you want to do | How to do it | Output |
-| --- | --- | --- |
-| Connect your own SiYuan | Enter the service address in **Settings** on the page and save it; leave it blank to use the installation default | An editor session that persists across restarts |
-| Edit and browse notes | Use the SiYuan interface directly in the full-page editor | Document changes in SiYuan |
-| Search and read existing notes | Ask the Agent to search by path fragment, then read by document ID or path | The note location and Markdown body; long notes are marked as truncated |
-| Archive task summaries automatically | For a top-level Agent turn that finishes successfully and produces a final reply, SciForge writes an entry to a notebook automatically | A Markdown document in `SciForge 工作总结`, containing the request, final reply, time, and turn identifier |
-| Have the Agent write to a specific document | Ask the Agent to save results to SiYuan and provide the title, notebook, and path | The target document in SiYuan |
+## Open an existing note
 
-## Typical workflow
+Open **SiYuan Notes** from the left sidebar, then choose the notebook and document. Reopen the document after editing to see the saved text.
 
-1. First confirm in the SiYuan service that the target notebook exists and is writable. If authentication is required, prepare an API token and save it in the page's settings or set it in the launch environment.
-2. Open SiYuan Notes from the left sidebar and enter the service address in Settings. If the page reports an error, retry or open Settings to correct it.
-3. Read or edit in the editor. Do not place sensitive content that should not leave the local machine into a remote service.
-4. After an Agent task completes normally, check whether a corresponding record appears under `SciForge 工作总结`. If the service is temporarily unreachable, records queue and retry.
+To find material from a session, search by part of its path and use the resulting document ID or path to read the Markdown. If the result is marked as truncated, specify the section you need. **Content Space** can locate open SiYuan notebooks. Use the SiYuan editor or session tools to work with a document.
 
-## Where things are saved, and what actions affect
+## Save a session result to SiYuan
 
-- Content you read and edit comes from the connected SiYuan service. The API token saved in the page's settings is used first; otherwise the environment variable is used. A token entered on the page is kept in the app's encrypted storage.
-- Automatic archiving saves to a fixed notebook in SiYuan; when you ask the Agent to write a document, state the title, notebook, and path.
-- Archiving after a successful task is sent to the configured SiYuan service automatically, without asking each time. Before use, confirm the service address, the range of notes it can access, and which content is suitable to send to that service.
-- When the service is unreachable, pending archives stay on this machine waiting to be retried; the official notes still need to be written to the SiYuan service successfully.
+Specify the notebook, path, title, and content in the session. For example, save this session's QC summary as “Weekly QA” in the “Project A” notebook at `/Sample QC`. After writing, open that location in **SiYuan Notes**. The document should contain the session's QC summary.
 
-## Known limitations
+## View automatic archives
 
-- Server mode only: you must provide an accessible SiYuan service, and the address must be HTTP/HTTPS.
-- Content Space currently lists only the notebooks that are open in SiYuan; to read, edit, and search documents, use the SiYuan page or the Agent's tools. Content Space cannot upload or download files.
-- Automatic archiving covers only successful top-level Agent turns. Intermediate progress, failures, cancellations, and continuous sub-turns are not archived, and it does not produce a second AI summary or claim that the task is verified.
-- Archiving writes to the fixed notebook `SciForge 工作总结` and the `/SciForge` path; the notebook is created if it does not exist. Before retrying the same task turn, it checks whether the matching task note already exists, to avoid creating duplicates.
-- SciForge does not ship the SiYuan kernel; using it on this machine also means deploying the service yourself.
-- When the service is unreachable or a write result is uncertain, pending records are kept locally and retried on the next task or at startup. Unconfirmed writes are not repeated blindly.
+A successful top-level agent turn with a final reply is archived automatically to the connected SiYuan service. Decide which content can be sent to that service before starting. After the task, open **SiYuan Notes → SciForge 工作总结** and find the turn by time under `/SciForge`. Its document contains the request, the final reply, the timestamp, and the turn ID. The first archive creates the notebook if needed. To save an intermediate result, specify a destination document.
+
+If the service is down or the write cannot yet be verified, the archive stays on your device and SciForge retries at the next task or startup. Before retrying, it looks for a document from the same turn to avoid duplicates. After the connection returns, open `/SciForge` on that service and look for the document.
 
 ## Related pages
 
-- [Content Space](./content-space.md): choose a SiYuan notebook from the connected service.
-- [Collaboration](./collaboration.md): collaborative delivery and post-task local archiving are two different paths.
-- [Permissions and security](../operations/security.md): external service addresses, tokens, and data boundaries.
-- [Feature status and limitations](../reference/feature-status.md): the capability scope of the first version.
+- [Content Space](./content-space.md)
+- [Collaboration guide](./collaboration.md)
+- [Permissions and security](../operations/security.md)
+- [Feature status and limits](../reference/feature-status.md)
 
-> Implementation basis: `@sciforge/domain-siyuan-content-space-provider` v0.3.1.
+> Component version: `@sciforge/domain-siyuan-content-space-provider` v0.3.1.

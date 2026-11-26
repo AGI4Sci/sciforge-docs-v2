@@ -6,112 +6,109 @@ sidebar_position: 61
 
 # Collaboration guide
 
-The owner writes clear requirements and confirms the division of work. Members accept tasks, execute them in their own SciForge, review drafts, and submit. Finally the owner accepts the deliverable. Tasks that hand off to one another use the upstream files already accepted by the owner.
+The project owner uses **Requirements** to define the deliverables and the **Board** to assign and review tasks. The assigned member adds the required files and submits or revises the delivery. The next member works from the upstream version the owner accepted.
 
 ## Open a collaboration project
 
-1. Expand the left sidebar and complete [cloud sign-in and device connection](./identity-access.md) in the account area at the bottom.
-2. In the sidebar's collaboration area, open a project, **My work**, or **Inbox**. If you cannot see the project tree, expand the sidebar first.
-3. In an ordinary session, confirm the Runtime and model respond before starting a collaboration task.
+1. Expand the left sidebar and use the account area at the bottom to [sign in and connect your device](./identity-access.md). Each member uses their own account.
+2. Open a project, **My work**, or **Inbox** from the collaboration section. The project name appears at the top, and its tasks appear on the **Board**.
+3. Before accepting a task, send a short message in a regular session. Once your Runtime and model return a reply, open the assignment.
 
-Each member uses their own cloud account. Project requirements, discussions, result notes, and submitted files go to the collaboration service; an ordinary local workspace is not synced as a whole directory. Do not put model keys or sign-in credentials into any of these.
-
-Once a project is selected, there are five tabs at the top:
-
-| Tab | Purpose |
+| Project tab | Use it to |
 | --- | --- |
-| **Board** | See tasks and the progress of task acceptance, assignment, review, and deliverable acceptance |
-| **Members** | See project members; invite or manage members according to your current role |
-| **Requirements** | Edit goals, inputs, work modules, and acceptance criteria, and confirm requirements |
-| **Shared files** | See shared material, sealed task deliveries, and project results |
-| **Project info** | See the project description, status, and available management actions |
+| **Board** | Find tasks and see their assignment, delivery, and review status |
+| **Members** | Invite or manage people as allowed by your role |
+| **Requirements** | Define the goal, inputs, modules, and acceptance criteria |
+| **Shared files** | Open shared material, sealed deliveries, and project results |
+| **Project details** | See the project details and available management actions |
+
+The collaboration service receives requirements, project discussions, result notes, and submitted files. The local workspace remains on your device. Store credentials in the corresponding service settings.
 
 ## 1. The owner prepares and confirms requirements
 
-1. In the collaboration project area, use **+** to create a project and fill in a name.
-2. Open **Requirements** and edit **Goals & deliverables** and **Inputs & boundaries**. State the data sources, final files, how acceptance works, and the actions that must not be performed.
-3. Click **Save requirements** and wait for the work modules to be completed. On failure, read the message, check the model configuration, then use **Regenerate**.
-4. Check each module's goal, inputs, outputs, dependencies, and acceptance criteria. When all are correct, click **Confirm requirements**.
-5. Invite members under **Members**. Invitees enter from the inbox or the project invitation prompt, read the requirements, and accept the invitation.
+1. In the collaboration sidebar, click **+** and enter a project name.
+2. Open **Requirements**. Under **Goals and deliverables** and **Inputs and boundaries**, list the data the member can access, the file names to deliver, acceptance criteria, and the allowed actions.
+3. Click **Save requirements**. Review the generated modules, especially which inputs and dependencies each uses, then click **Confirm requirements**. If generation fails, use its error to identify what needs fixing before using **AI 补全** (draft with AI).
+4. Invite people from **Members**. Invitees open the request from **Inbox** or the project invitation and click **Accept invitation**. Their names then appear under **Members**.
 
-For example: "B counts the total samples and submits a report; C continues the comparison using the report submitted by B and accepted by the owner. The report must include the method, validation results, and limitations." Also provide inputs the members can actually read.
+For example, assign B a report on per-sample counts, including the method and results. Make C's module depend on the owner accepting B's report.
 
-![The Requirements page](/img/docs/collaboration/requirements-ready.png)
-*Dependencies between tasks.*
+![Requirements with two dependent modules](/img/docs/collaboration/requirements-ready.png)
+*Requirements show which module must be accepted before the next can start.*
 
 ## 2. Check assignments and blocking reasons
 
-On the board, the owner opens a task and checks the executor and upstream dependencies. Depending on the task's current state, choose a member and **Assign task** or **Reassign**, or **Change assignee** or **Withdraw assignment** for an assignment not yet accepted.
+As the owner, open the task from the **Board**. If the assignee is available and the upstream delivery is accepted, choose the member and click **Dispatch task**. The card moves to **Ready** and shows the assigned member. If dispatch fails, address the reason shown in the task and click **Dispatch again**. Before the member accepts an assignment, you can **Reassign** or **Withdraw assignment**.
 
-A module with dependencies waits until the owner accepts its upstream deliverable. The interface keeps the assign entry and shows the reason, with the button disabled. Finish the upstream review first. If a task is still unassigned after requirements are confirmed, or assignment failed and no member is available, the owner needs to pick an executor or handle the to-do as prompted. Do not treat a task waiting to be assigned as already running.
+| What the task shows | What to do |
+| --- | --- |
+| Waiting for an upstream delivery to be accepted | Open the upstream task and review the latest delivery. After accepting it, return to the downstream task. |
+| Unassigned, or dispatch failed because there is no eligible member | Choose an assignee or complete the requested assignment action. The card then shows the assigned member under **Ready**. |
 
 ## 3. Members decide whether to accept
 
-Members can see incoming assignments from **Inbox, My work, a board task card, or task details**. Read the goal, file requirements, dependencies, and validity period first, then choose:
+Open the request from **Inbox**, **My work**, the **Board** task card, or the task details. Read the goal, required files, dependencies, and expiry before responding.
 
 | Action | Result |
 | --- | --- |
-| **Accept task** | Confirms you take the task; it runs once your local Runtime is ready, or you are prompted to recover it |
-| **Ignore** | Handles the current assignment, and the task is removed from your related lists; it is not the same as dismissing a notice bar |
-| **Decline** | Explicitly declines the current assignment; the owner rearranges it according to the project state |
+| **Accept task** | The task is yours. When the Runtime is ready, the task session shows execution progress. Follow the message if the Runtime needs attention. |
+| **Dismiss** | The request is removed from the relevant lists for your account. |
+| **Reject** | The owner can arrange a new assignment. |
 
-Go by the buttons actually available; an assignment that has expired or been handled cannot be accepted again. Dismissing the assignment reminder on the board does not perform "Ignore" for you. After accepting, use the task session to see run progress and tool calls.
+Dismiss the board reminder if you just want to close it. If the assignment has expired, ask the owner for a new one.
 
 ## 4. Handle agent questions and action confirmations
 
-When a task needs more information, the designated member answers in the task details. If a request involves actions such as modifying files, writing to external systems, or deleting, first read the specific action, its scope of impact, the request version, and its validity period, write a decision note, then click **Approve this action** or **Decline this action**.
+- **Answer a question.** The requested member opens the task details, supplies the missing data or decision, and returns to the task session to follow progress.
+- **Decide on an action.** The requested member opens the request and reads what it will change or send, where it will act, and which version the request covers. Check its expiry, give a reason, and click **Approve action** or **Reject action**. For an expired request, wait for an updated one. The task session shows the execution result after the decision is submitted.
 
-Only the designated member can decide, and an expired request must wait to be refreshed. After submitting a decision, check the confirmation and later task progress; whether the action completed depends on what actually ran. An ordinary discussion message does not replace action approval.
+Use the action buttons for authorization. Discussions can provide context.
 
 ## 5. Members review the draft and submit
 
-1. When execution finishes, open the draft and preview the required files. If Submit is disabled, read the message in the submission area and add any missing required files. Newer clients open the file picker directly from that message.
-2. Edit the **Result note**, stating what was actually done, the check results, and limitations.
-3. To add material, click **Add material**: choose this run's output from **Task files**, or use **Upload from this computer**. Extra material does not replace the required files.
-4. To have the AI revise, go to the task session through **Ask AI to revise**.
-5. Check the file list and click **Submit**. In the confirmation window, check the version, note, and files, then confirm the submission.
+1. Open the delivery draft in the task details and preview the required files. If **Submit** is unavailable, the submission area names the missing file. Where **Choose required file** is available, pick a task output or upload a file, then click **用作必交文件** (Use as required file). It appears in the required files list, where you can preview it.
+2. In **Result summary**, describe what you did, the checks you ran, and the scope of the result. For another revision in the task session, use **Work with AI**, then return to the draft.
+3. To include a separate note, use **Add materials → Task files** or **Upload from this device**. Each submission allows up to 20 files and 200 MiB in total, with up to 100 MiB per attachment. Required files follow the task's format and size requirements.
+4. Click **Submit**, review the version, notes, and files in the confirmation dialog, and submit that version. When device verification, signing, and upload are complete, the delivery section shows the submitted version, and the task moves to **Awaiting review**. The member handles any system secure-storage request.
 
-While submitting, wait for a clear result from device verification, signing, and file upload. If a system secure-storage authorization prompt appears, handle it yourself. On success, a versioned **delivery snapshot** is created and waits for the owner's review. This version cannot be edited in place; a revision creates a new version.
+![A delivery draft](/img/docs/collaboration/delivery-draft.png)
+*The draft groups result notes, required files, and additional materials.*
 
-One delivery can hold at most 20 files, no more than 200 MiB in total; each attached file is at most 100 MiB. Required files may also have task-specific format and size requirements, so follow the submission window's prompts.
-
-![A member delivery draft](/img/docs/collaboration/delivery-draft.png)
-*An earlier client’s delivery draft with the result note, required files, and extra material.*
-
-![The submission process](/img/docs/collaboration/delivery-submitting.png)
-*Delivery files uploading and the submission progress.*
+![Delivery submission progress](/img/docs/collaboration/delivery-submitting.png)
+*The submission shows device verification, signing, and upload progress.*
 
 ## 6. The owner reviews and hands off downstream
 
-On the board, open a task pending confirmation, preview this version's files, and read the result note against the acceptance criteria. To ask for more, use **Request revision** and write specific feedback; the member revises, rechecks, and submits a new version. When the requirements are met, click **Adopt**, and the task moves to Completed.
+1. **Review the latest submission.** From **Board → Awaiting review**, open the task. In the task details, open the current submission at the top of the delivery section and compare its files and notes with the acceptance criteria.
+2. **Request specific changes.** Click **Request revision** and describe which part needs work, then click **Send revision request**. The member updates the files and submits a new version. Open the new submission at the top of the delivery section. Use **Version history** to see the previous submission.
+3. **Accept the version that meets the criteria.** Click **Adopt delivery (采纳交付)**. The task moves to **Completed**, and the delivery section shows **Adopted** and the version number.
+4. **Hand off the accepted version.** Once the upstream delivery is accepted, dispatch the downstream task. The next member opens their task session and uses the files from the accepted delivery.
 
-Check the version number in **Delivery history**. The owner reviews the latest submission, and downstream tasks use the version explicitly marked as adopted. If several versions appear, check which one a file belongs to before opening it. Downstream assignment can proceed once the upstream delivery is adopted.
+![The owner writes a revision request](/img/docs/collaboration/revision-request.png)
+*The request identifies what the member needs to change.*
 
-![The owner's revision screen](/img/docs/collaboration/revision-request.png)
-*The owner writing revision requirements.*
-
-![Delivery version history in an earlier client](/img/docs/collaboration/delivery-history.png)
-*Delivery version history.*
+![Delivery History with more than one version](/img/docs/collaboration/delivery-history.png)
+*Use the latest submission for review and the accepted one for downstream work.*
 
 ## 7. View shared files and close out
 
-**Shared files** lists project files by source and version, and lets you preview submitted content. **Upload file** here is currently unavailable and shows the reason. To submit material with a task, go back to **Add material** in the delivery draft; do not wait for an upload to succeed on the Shared files page.
+Under **Shared files**, find and preview files by source and version. To submit your own files, attach them from the task’s delivery draft with **Add materials**.
 
-After accepting all module deliverables, the owner checks the results and limitations, then selects **Close project** to confirm completion. Wait for signing to finish and for the server to return the closeout result.
+Once every module is accepted, review the project results and click **Complete project**. The project is closed when signing is complete and its status shows **Completed**.
 
 ![The completed project](/img/docs/collaboration/project-completed.png)
-*After accepting all task deliverables, the owner confirms close-out.*
+*Both deliveries are accepted, and the project shows Completed.*
 
 ## Board status at a glance
 
-| Column | Meaning | Next step |
-| --- | --- | --- |
-| Inbox | The module has not been assigned, perhaps waiting on a dependency or manual assignment | The owner checks the blocking reason and executor |
-| To start | Assigned, waiting for the member to accept | The member reads, then accepts, ignores, or declines |
-| In progress | Running, waiting for a human answer, or the member is reviewing the draft | Check task details and handle the current request |
-| Pending confirmation | A delivery has been submitted | The owner reviews, requests revision, or accepts the deliverable |
-| Completed | The module's deliverable has been accepted by the owner | The owner closes the project once all modules are done |
+| Column | Who acts next |
+| --- | --- |
+| Backlog | The owner resolves dependencies or selects an assignee. |
+| Ready | The assigned member responds to the dispatch. |
+| In progress | The member follows execution, answers questions, or reviews the draft. |
+| Awaiting review | The delivery is submitted and awaiting the owner. |
+| Completed | The delivery is accepted. The owner can close the project when every task is complete. |
 
-On a network interruption, submission failure, or signature error, keep the draft first, check sign-in and device status, and after recovery check whether a submission record already exists before retrying as prompted.
+For a network, submission, or signing error, keep the draft and restore account and device access. Then open the delivery section in the task details. If this version is present, it can go to review. If only the draft remains, return to the task details and submit it again.
 
-Continue reading: [Pasilla three-person collaboration case](../cases/pasilla-collaboration.md), [Identity & Access](./identity-access.md), [Runtime & models](../getting-started/runtime-and-models.md).
+Continue with [the Pasilla case study](../cases/pasilla-collaboration.md), [Identity and sign-in](./identity-access.md), or [Runtime and models](../getting-started/runtime-and-models.md).

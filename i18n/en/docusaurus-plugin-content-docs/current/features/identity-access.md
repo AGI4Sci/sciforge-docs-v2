@@ -10,7 +10,9 @@ Expand the workbench's left sidebar and look at the bottom for the **local accou
 
 ## A local account is an attribution marker
 
-Local features do not require sign-in. You can create a local account, confirm its display name, choose an account or rename it, and sign out of the account. A local account provides no security authentication and **does not isolate workspaces, chats, settings, API keys, or tool data**. On a shared computer, switching the display name is no substitute for operating-system account isolation.
+To use local features, create or select a local account in the account panel and set its display name. Use the same panel to rename or sign out of that account.
+
+On a shared computer, use separate operating-system accounts to isolate workspaces, chats, settings, API keys, and tool data. The SciForge local account marks attribution. To join a collaboration project, sign in to the cloud and connect the device as described below.
 
 The delete button on an account row first shows a confirmation area. Once confirmed, it deletes that local account and its attribution data on this machine, and this cannot be undone. When you delete the current account, the system selects the earliest-created remaining account; after the last account is deleted, no account is selected.
 
