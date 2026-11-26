@@ -28,11 +28,11 @@ In a session, have the Agent create or open a room, then view the files in it th
 
 ## Typical workflow
 
-1. List existing rooms first and check whether a room already contains the target file, to avoid creating duplicates.
-2. Open or create a room from the file; verify the returned path, format, SHA-256, and index fingerprint.
-3. Commit a set of changes against the current revision, using dry-run mode first to see whether there are changes and warnings.
-4. After applying the changes, read the room again and verify the revision, asset readiness, and annotation anchors.
-5. Refresh the room after source files change; to roll back, view history first, then restore the older revision to produce a new revision number.
+1. In a session, ask the Agent to list existing rooms first to see whether one already contains the target file, avoiding duplicate rooms.
+2. Open or create a room from a workspace file; the reply returns the room ID, revision number, asset path, format, SHA-256, and index fingerprint.
+3. Submit a set of changes against the current revision, running in dry-run mode first to see the planned changes and any warnings.
+4. After applying the changes, read the room again to see the updated revision number, asset readiness status, and annotation anchors.
+5. Refresh the room after source files change; to roll back, list the revision history first, then restore the older revision to generate a new revision number.
 
 ## Inputs, outputs, and permissions
 

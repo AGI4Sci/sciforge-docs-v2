@@ -37,9 +37,9 @@ Unified sign-in has three distinct states:
 
 | State | Purpose |
 | --- | --- |
-| Local account | Marks the current user and ownership on this machine |
-| Cloud sign-in | Confirms your cloud identity |
-| Device connection | Click **Connect this device** to authorize the current desktop installation to access Cloud capabilities |
+| Local Account | Marks the current user and ownership on this machine |
+| Cloud sign-in | Click **Sign in with browser** to confirm your cloud identity |
+| Device connection | Click **Connect this Desktop** to authorize the current desktop installation to access Cloud capabilities |
 
 A local account is not cloud authentication; a connected workspace also does not mean you have joined a collaboration Project.
 

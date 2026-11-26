@@ -14,16 +14,16 @@ These steps cover **0.2.3**. Enable a compatible plugin and make sure you have p
 
 1. Open the workspace and select the session containing the text.
 2. Open **Research record**, and drag to select text within a single entry.
-3. Click **Add comment**, and check the selected text shown in the panel and the research-record entry it belongs to.
-4. Write your feedback and click **Save**.
+3. Click **Add comment**. The panel loads the selected text and the research-record entry it belongs to.
+4. Write your feedback and click **Save (保存批注)**. The panel confirms that the comment is saved and refreshes the existing comments list.
 
-**Discuss selection** opens a chat draft that carries the selected text. To save it as a comment, use **Add comment**. If the panel already holds unsaved content, a new selection asks whether to keep or replace the draft.
+**Discuss selection** opens a chat draft that carries the selected text. To save it as a comment, use **Add comment**. If the panel already holds unsaved content, a new selection asks whether to **Keep current draft (保留当前草稿)** or **Discard old text and replace selection (放弃旧正文并替换选区)**.
 
 For example, select “Missing values were set to zero”, choose **Add comment**, and write “Check whether missing means not measured”. Save it and look up the comment in the session. The result should contain the quotation and your note.
 
 ## View, edit, and delete
 
-You can ask the Agent to list, view, or update the comments that already exist in the current workspace. The panel is mainly for creating new comments; to change an existing one, say in the session which comment to update and what to change.
+Click **Refresh existing comments (刷新已有批注)** in the panel to see saved comments in the current workspace (the panel displays up to 200 entries), or ask the Agent in the session to list, view, or update them. The panel is mainly for creating new comments; to change an existing one, say in the session which comment to update and what to change.
 
 Deleting a comment requires confirmation. Comments are stored in the workspace and do not change the commented source file. After you switch projects, select the content you want to comment on again.
 

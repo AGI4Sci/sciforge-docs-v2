@@ -12,8 +12,8 @@ Content Space is for viewing the connected note service and choosing a notebook.
 
 1. First connect your own SiYuan service as described on the [SiYuan Notes](./siyuan.md) page.
 2. Open **Content Space** in the right panel; **Shared files** on the full Collaboration page also provides this entry.
-3. Choose the connected SiYuan service, then choose a notebook from the list. If you cannot find the one you want, first confirm in SiYuan that the notebook is open.
-4. To read, edit, or search documents, open the **SiYuan Notes** page, or have the Agent use SiYuan's search, read, and write tools.
+3. Choose the connected SiYuan service, then select a notebook from the list. The panel shows the selected notebook; if the one you want is missing, open that notebook in SiYuan first.
+4. To read, edit, or search documents, open **SiYuan Notes** (labeled **Cloud Services** in some builds) from the left sidebar, or have the Agent use SiYuan's search, read, and write tools in a session.
 
 ## Tips
 

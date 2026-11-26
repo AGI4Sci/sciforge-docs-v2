@@ -12,9 +12,9 @@ First choose the file access range for the task, then check the terminal, plugin
 
 | Range | Suitable tasks | Main risks |
 | --- | --- | --- |
-| **Can only read files** | Project understanding, code review, data inventory, and planning | Codex uses a read-only sandbox; Claude uses Plan mode, and the two are not equivalent |
-| **Can edit workspace** | Modifying code and generating analyses, figures, and reports | Overwriting existing files, writing to the wrong directory, and mixing in unrelated changes |
-| **Can access all files** | Controlled tasks that explicitly require cross-directory reads or writes | Removes read-only or workspace scope limits and runs tools automatically, potentially affecting data and configuration outside the workspace |
+| **Read only** (**Can only read files**) | Project understanding, code review, data inventory, and planning | Codex uses a read-only sandbox; Claude uses Plan mode, and the two are not equivalent |
+| **Edit workspace** (**Can edit workspace**) | Modifying code and generating analyses, figures, and reports | Overwriting existing files, writing to the wrong directory, and mixing in unrelated changes |
+| **Full access** (**Can access all files**) | Controlled tasks that explicitly require cross-directory reads or writes | Removes read-only or workspace scope limits and runs tools automatically, potentially affecting data and configuration outside the workspace |
 
 For a first task, an unfamiliar repository, or an unreviewed Skill, start with the Codex read-only configuration. Both Codex and Claude allow workspace writes in their initial configuration, so you must change this deliberately; MCP, remote execution, and Computer Use each require separate permission checks. For details, see [Configuring a read-only sandbox](../getting-started/read-only-sandbox.md).
 

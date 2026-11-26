@@ -10,16 +10,16 @@ Open the folder that holds your paper, code, or data. Create a session for the t
 
 ## Find your way around
 
-- Open the **left sidebar** for workspaces, sessions, and extension pages. Expand it for collaboration projects, **My Work**, and **Inbox**. Account, cloud status, usage, and settings are at the bottom.
+- Open the **left sidebar** for workspaces, sessions, and extension pages. Expand it for collaboration projects, **My work**, and **Inbox**. Account, cloud status, usage, and settings are at the bottom.
 - Enter tasks in the **session area** and follow replies and tool calls there.
-- Open **Files** and other panels from the **toolbar on the far right**. Look under **More Tools** if an icon is out of view. Available tools depend on which features are installed and enabled.
+- Open **Files** and other panels from the **toolbar on the far right**. Look under **More tools** if an icon is out of view. Available tools depend on which features are installed and enabled.
 - Drag a panel edge to resize it. Dockable pages can move to the left, right, bottom, or main area. Some panels support splitting, switching views, or navigating back and forward.
 
 ## Open a workspace
 
-1. Open the workspace location menu and select a local workspace or a configured, available target.
-2. Select the folder containing your files. The sidebar shows the project name and workspace path.
-3. Create a session for a new goal. To resume a task, select its session in the sidebar.
+1. Open the **Workspace location** menu at the top and select **Local workspace** or a configured, available remote target.
+2. Select the folder containing your files. The left sidebar shows the project name and workspace path.
+3. Create a session for a new goal; the new session appears under that project. To resume a task, select its session in the sidebar.
 
 ![Creating a session in a SciForge workspace](/img/docs/quickstart/quickstart-new-session.jpg)
 *The new session appears under the selected project.*
@@ -28,19 +28,19 @@ Open the folder that holds your paper, code, or data. Create a session for the t
 
 ### Reference a workspace file
 
-Open **Files** from the far-right toolbar and reference the file. You can also type `@` in the input box to search the workspace. Use `@"folder/file name"` for a path with spaces. The pending attachment appears above the input box with its name and path. This route works for a read-only demo using existing files.
+Open **Files** from the far-right toolbar and reference the file. You can also type `@` in the input box to search the workspace. Use `@"folder/file name"` for a path with spaces. The pending reference appears in the attachment tray above the input box with its name and path. This route works for a read-only demo without copying new files into the workspace.
 
 ![Files button in the far-right toolbar and the open workspace Files panel](/img/docs/guides/workspace-files-v0218-en.png)
 *Click **Files** on the far-right toolbar. The example workspace’s file tree opens beside it.*
 
 ### Import a file from outside the workspace
 
-Click **Add File**, drag a supported file into the input area, or paste a file or image from the clipboard. Pasted plain text goes into the message. When an import succeeds, an item appears in the attachment tray and a copy is saved in the workspace's session attachments directory. PDFs, images, scientific data, and web documents have their own format and size requirements. Follow the error if a file needs to be smaller or use a different format.
+Click **Attach file**, drag a supported file into the input area, or paste a file or image from the clipboard. Pasted plain text goes into the message. When an import succeeds, an item appears in the attachment tray and a copy is saved in the workspace's session attachments directory. PDFs, images, scientific data, and web documents have their own format and size requirements. Follow the error message if a file needs to be smaller or use a different format.
 
 ### Check what you are sending
 
-1. **Before sending**, use the **attachment tray** above the input box to see the type, path, and displayed size. Open an attachment to preview it when available. Remove any unwanted item from the tray. Imported copies stay in the session's attachments directory. Open that directory from **Files** to remove a copy.
-2. **After sending**, a **sent file tag** below the message shows that the corresponding file was included. Click it to open a read-only preview. To see whether the assistant used the file, ask it to identify the file and a page, line, or short passage it cited, then compare that reference with the attachment. Use a model with image input when you want to analyze a picture.
+1. **Before sending**, the **attachment tray** above the input box lists each pending item's type, path, and displayed size. Click an item to preview it when supported. Click **Remove attachment** or **Remove file reference** to drop an unwanted item from the tray. Imported copies stay in the session's attachments directory; open that directory from **Files** to delete a copy from disk.
+2. **After sending**, a **sent-file tag** below the user message shows only that the file was sent with the message. Click it to open a read-only preview. To verify whether the assistant actually read and used the file's contents, ask it to cite the file name along with a page number, line number, or short verbatim quote, then open the attachment to compare. Use a model that supports image input when analyzing pictures.
 
 ![Sample file in the attachment tray above the input box before sending](/img/docs/guides/workspace-attachment-before-v0218-en.png)
 *Before sending, `sample-notes.md` appears in the **Attachments** tray above the input box.*

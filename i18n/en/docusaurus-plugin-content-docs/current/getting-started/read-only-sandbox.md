@@ -13,16 +13,16 @@ sidebar_position: 3
 1. Expand the left sidebar and open **Settings** from the bottom.
 2. Go to **AI assistant**.
 3. In the AI assistant configuration cards at the top of the page, find **Codex**.
-4. Find the **File access range** dropdown under that Runtime and select **Can only read files**.
+4. Find the **File access range** dropdown under that Runtime and select **Read only** (or **Can only read files** in earlier builds).
 5. Wait for the setting to apply, then reconnect or restart SciForge after finishing the current task; do not keep using a running task whose permissions are not yet confirmed.
 6. Return to the workbench, start a new session, and confirm in the bottom-right of the input box that the execution runtime is `codex`.
 
 The **Access** shortcut at the top of the page jumps to the Computer Use configuration; the file access range is in each Runtime's own configuration section.
 
 ![File access range in the SciForge AI assistant settings](/img/docs/guides/ai-assistants.jpg)
-*The value shown allows workspace changes; select “Can only read files” for read-only tasks.*
+*The value shown allows workspace changes; select “Read only” (“Can only read files”) for read-only tasks.*
 
-| Runtime | What “Can only read files” actually means | Boundaries |
+| Runtime | What “Read only / Can only read files” actually means | Boundaries |
 | --- | --- | --- |
 | **Codex** | Requests Codex's `readOnly` sandbox and disables command network access within that sandbox | Suitable for the local file inspection in this tutorial; stop and check any request that widens permissions |
 | **Claude Code** | Uses Claude Code's `plan` permission mode | For analysis and planning; do not claim it provides the same filesystem sandbox isolation as Codex |

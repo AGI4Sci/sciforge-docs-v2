@@ -10,33 +10,33 @@ Expand the workbench's left sidebar and look at the bottom for the **local accou
 
 ## A local account is an attribution marker
 
-To use local features, create or select a local account in the account panel and set its display name. Use the same panel to rename or sign out of that account.
+- **Use local features only**: Open the account panel from the bottom of the left sidebar, click **Create account** or select an existing Local Account, and set its **Display name**. Use **Edit name** to rename it or **Exit account** to sign out locally.
+- **Join cloud collaboration**: Select a Local Account first, then sign in under **SciForge Cloud** and connect your device as described below. A linked account syncs its display name to SciForge Cloud and collaborators.
+- **Share a computer across people**: Use separate operating-system accounts on the machine. OS accounts isolate workspaces, chats, settings, API keys, and tool data; a SciForge Local Account only labels ownership on this device.
 
-On a shared computer, use separate operating-system accounts to isolate workspaces, chats, settings, API keys, and tool data. The SciForge local account marks attribution. To join a collaboration project, sign in to the cloud and connect the device as described below.
+The **Delete account** button on an account row first opens a confirmation area. Once confirmed, it deletes that Local Account and its local attribution data on this machine, which cannot be undone. If you delete the active account, SciForge switches to the earliest-created remaining account; after the last account is deleted, the sidebar shows **No Local Account selected**.
 
-The delete button on an account row first shows a confirmation area. Once confirmed, it deletes that local account and its attribution data on this machine, and this cannot be undone. When you delete the current account, the system selects the earliest-created remaining account; after the last account is deleted, no account is selected.
-
-**Delete account** here is local identity management. It is not cloud account cancellation, project deletion, or workspace file cleanup. Signing out of a local account, signing out of the cloud, and disconnecting a device each do something different, so check the button name and its target before acting.
+**Delete account** applies to the local account and its associated local data. **Exit account** (local), **Sign out** (cloud), and **Disconnect this Desktop** act on different targets; check which section of the panel you are using before clicking.
 
 ## Sign in to the cloud and connect a device
 
-1. Create or choose a local account first. Until one is selected, "Browser sign-in" is unavailable.
-2. Under **SciForge Cloud**, click **Browser sign-in** and complete authentication in the system browser. You do not need to paste a password or token into a session.
-3. After returning, check the cloud identity. If no device is connected yet, click **Connect this device**.
-4. Collaboration features that depend on cloud identity can continue only when the identity is valid and the device is active.
+1. Create or select a Local Account first. While **No Local Account selected** is shown, **Sign in with browser** is unavailable.
+2. Under **SciForge Cloud**, click **Sign in with browser** and complete authentication in the system browser. Do not paste passwords or tokens into a chat session.
+3. Return to the app to see your cloud identity. If the device status shows **This Desktop is not connected**, click **Connect this Desktop**.
+4. Once the status shows **This Desktop is connected**, you can open collaboration projects, **My work**, and **Inbox** from the sidebar.
 
 The local account, the model provider sign-in, and the SciForge cloud sign-in are separate configurations. Cloud features depend on the current app configuration and service availability.
 
 | Panel state or action | Meaning and what to do |
 | --- | --- |
-| Not signed in to the cloud | Local features still work; cloud projects need sign-in |
-| This device is not connected | Being signed in is not a device connection; connect the device from the interface |
-| Connecting this device | Wait for the device registration result and avoid repeating the action |
-| This device is connected | The device is active; a valid cloud identity and project permission are still required |
-| This device is disconnected / connection error | Cloud permissions cannot be used as if connected normally; check the error and recover as prompted |
+| Not signed in to Cloud | Local features still work; cloud projects need sign-in |
+| This Desktop is not connected | Being signed in is not a device connection; click **Connect this Desktop** |
+| Connecting this Desktop | Wait for device registration to finish without clicking repeatedly |
+| This Desktop is connected | The device is active; a valid cloud identity and project permission are still required |
+| This Desktop is disconnected / This Desktop has a connection issue | Cloud permissions are unavailable; check **Connection details** and recover as prompted |
 | Sign in again | Completes cloud authentication again; it does not automatically accept project invitations or tasks |
-| Sign out | Clears the current cloud sign-in session; do not treat it as having revoked the device registration |
-| Disconnect this device | Revokes this device's cloud access; local features are kept |
+| Sign out | Clears the current cloud sign-in session; it does not revoke device registration |
+| Disconnect this Desktop | Revokes this device's cloud access while keeping local features |
 
 When a device is revoked, the identity changes, or device validity cannot be confirmed, cloud authentication rights are withdrawn. Do not use a cached display name to decide you are still authorized. If sign-in or connection fails, retry as the panel suggests and keep the original task and drafts.
 

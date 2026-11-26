@@ -10,20 +10,20 @@ Computer Use lets the Agent observe a page and click, type, press keys, or scrol
 
 ## Enable and check
 
-1. Open **Settings → AI assistant → Computer use**, turn on the main switch, and choose Codex or Claude Code for this use.
-2. Check the run status on the settings page; if it is unavailable, handle the page's prompt first.
-3. In macOS System Settings, grant the Screen Recording and Accessibility permissions, then return to the app and confirm the status.
-4. Open the target page, and in the session state the task, the allowed actions, the stopping conditions, and the forbidden actions.
+1. Open **Settings → AI assistant → Computer use**, turn on **Enable computer use**, and enable **Codex app-server** or **Claude Code CLI** under **Runtime access**.
+2. Check **Backend status** on the settings page; if it shows unavailable or unknown, click **Refresh status** and resolve any prompt shown.
+3. Under **macOS permissions**, verify that **Accessibility** and **Screen Recording** show **Granted**. If not, open macOS System Settings to grant them and restart SciForge if prompted.
+4. Open the target page, and in the session state the task, allowed actions, stop conditions, and forbidden actions.
 
 ![SciForge Computer Use settings](/img/docs/guides/ai-assistants-computer-use.jpg)
 *Figure 1: Enable Computer Use on the settings page, and check its run status and system permissions.*
 
 ## Run a task
 
-1. First have the Agent observe the current page, and check the page identity and the target content.
-2. Carry out actions step by step. Every call that changes state needs your confirmation; check the specific action before allowing it, because a confirmation does not authorize later actions of the same kind.
-3. Before signing in, authorizing, sending, uploading, buying, paying, deleting, or submitting a formal result, confirm the target of the action and its consequences.
-4. When done, stop the task or release the session, and go back to the page to check the actual result.
+1. Have the Agent observe the current page first; the reply reports the page title, URL, and target controls.
+2. Carry out actions step by step. Every call that changes state prompts for your confirmation; review the specific action before allowing it, as a confirmation does not authorize later actions of the same kind.
+3. Before signing in, authorizing, sending, uploading, buying, paying, deleting, or submitting a formal result, review the target and consequences. If an outcome is uncertain, check the page receipt before retrying so you do not submit twice.
+4. When done, stop the task or close the session to release the operating lease, and inspect the final result on the page.
 
 ## What actions affect, and tips
 

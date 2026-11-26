@@ -25,10 +25,10 @@ Run this in the project directory and save the output:
 git status --short
 ```
 
-If there are already modifications, record them clearly first; for a non-Git project, use a copy. Go to **Settings → AI assistant → Codex** and set **File access range** to **Can only read files**, keeping an appropriate tool approval policy. Wait for the setting to apply, finish any existing tasks, then reconnect or restart and start a new session.
+If there are already modifications, record them clearly first; for a non-Git project, use a copy. Go to **Settings → AI assistant → Codex** and set **File access range** to **Read only** (or **Can only read files** in earlier builds), keeping an appropriate tool approval policy. Wait for the setting to apply, finish any existing tasks, then reconnect or restart and start a new session.
 
 ![File permission settings](/img/docs/guides/ai-assistants.jpg)
-*“Can edit workspace” in the figure allows writes; change it to “Can only read files” before starting this tutorial.*
+*“Can edit workspace” in the figure allows writes; change it to “Read only” (“Can only read files”) before starting this tutorial.*
 
 For detailed steps, see [configure a read-only sandbox](./read-only-sandbox.md). Write the no-modification instruction into the prompt as well; if you see a request to widen permissions, stop and check, because this task needs no write access.
 
